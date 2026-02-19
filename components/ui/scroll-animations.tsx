@@ -1,0 +1,207 @@
+"use client";
+
+import { useRef } from "react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useSpring,
+  useReducedMotion,
+  type Variant,
+} from "framer-motion";
+
+// ─── ScaleReveal ──────────────────────────────────────────
+
+interface ScaleRevealProps {
+  children: React.ReactNode;
+  delay?: number;
+  duration?: number;
+  className?: string;
+  once?: boolean;
+}
+
+export function ScaleReveal({
+  children,
+  delay = 0,
+  duration = 0.6,
+  className,
+  once = false,
+}: ScaleRevealProps): React.ReactElement {
+  const prefersReduced = useReducedMotion();
+
+  return (
+    <motion.div
+      initial={prefersReduced ? false : { opacity: 0, scale: 0.85 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once, margin: "-80px" }}
+      transition={{ duration, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+// ─── BlurFadeIn ───────────────────────────────────────────
+
+interface BlurFadeInProps {
+  children: React.ReactNode;
+  direction?: "up" | "down" | "none";
+  delay?: number;
+  duration?: number;
+  blurAmount?: number;
+  className?: string;
+  once?: boolean;
+}
+
+const blurDirectionOffsets: Record<
+  NonNullable<BlurFadeInProps["direction"]>,
+  number
+> = {
+  up: 30,
+  down: -30,
+  none: 0,
+};
+
+export function BlurFadeIn({
+  children,
+  direction = "up",
+  delay = 0,
+  duration = 0.7,
+  blurAmount = 8,
+  className,
+  once = false,
+}: BlurFadeInProps): React.ReactElement {
+  const prefersReduced = useReducedMotion();
+  const yOffset = blurDirectionOffsets[direction];
+
+  return (
+    <motion.div
+      initial={
+        prefersReduced
+          ? false
+          : { opacity: 0, y: yOffset, filter: `blur(${blurAmount}px)` }
+      }
+      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      viewport={{ once, margin: "-80px" }}
+      transition={{ duration, delay, ease: "easeOut" }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+// ─── TextReveal ───────────────────────────────────────────
+
+interface TextRevealProps {
+  text: string;
+  as?: "h1" | "h2" | "h3" | "h4" | "p" | "span";
+  staggerDelay?: number;
+  duration?: number;
+  delay?: number;
+  className?: string;
+  once?: boolean;
+}
+
+const motionTags = {
+  h1: motion.h1,
+  h2: motion.h2,
+  h3: motion.h3,
+  h4: motion.h4,
+  p: motion.p,
+  span: motion.span,
+};
+
+const textContainerVariants = {
+  hidden: {},
+  visible: (custom: { staggerDelay: number; delay: number }) => ({
+    transition: {
+      staggerChildren: custom.staggerDelay,
+      delayChildren: custom.delay,
+    },
+  }),
+};
+
+const wordVariants: Record<string, Variant> = {
+  hidden: { opacity: 0, y: "100%" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] },
+  },
+};
+
+export function TextReveal({
+  text,
+  as = "h2",
+  staggerDelay = 0.05,
+  duration: _duration,
+  delay = 0,
+  className,
+  once = false,
+}: TextRevealProps): React.ReactElement {
+  const prefersReduced = useReducedMotion();
+  const MotionTag = motionTags[as];
+  const words = text.split(/\s+/);
+
+  if (prefersReduced) {
+    return <MotionTag className={className}>{text}</MotionTag>;
+  }
+
+  return (
+    <MotionTag
+      variants={textContainerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once, margin: "-80px" }}
+      custom={{ staggerDelay, delay }}
+      className={className}
+    >
+      {words.map((word, i) => (
+        <span
+          key={`${word}-${i}`}
+          style={{ display: "inline-block", overflow: "hidden", verticalAlign: "bottom" }}
+        >
+          <motion.span variants={wordVariants} style={{ display: "inline-block" }}>
+            {word}
+          </motion.span>
+          {i < words.length - 1 && "\u00A0"}
+        </span>
+      ))}
+    </MotionTag>
+  );
+}
+
+// ─── ParallaxSection ──────────────────────────────────────
+
+interface ParallaxSectionProps {
+  children: React.ReactNode;
+  offset?: number;
+  className?: string;
+}
+
+export function ParallaxSection({
+  children,
+  offset = 50,
+  className,
+}: ParallaxSectionProps): React.ReactElement {
+  const ref = useRef<HTMLDivElement>(null);
+  const prefersReduced = useReducedMotion();
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+
+  const rawY = useTransform(scrollYProgress, [0, 1], [offset, -offset]);
+  const y = useSpring(rawY, { stiffness: 100, damping: 30 });
+
+  return (
+    <div ref={ref} className={className}>
+      <motion.div style={prefersReduced ? undefined : { y }}>
+        {children}
+      </motion.div>
+    </div>
+  );
+}

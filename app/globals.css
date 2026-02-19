@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  /* Colors */
+  --color-primary: #137fec;
+  --color-background-light: #f6f7f8;
+  --color-background-dark: #101922;
+  --color-neutral-100: #eef4fb;
+  --color-neutral-200: #dce8f6;
+  --color-neutral-300: #baceea;
+  --color-neutral-800: #1d2e3f;
+  --color-neutral-900: #101922;
+
+  /* Fonts */
+  --font-display: var(--font-inter), sans-serif;
+}
+
+body {
+  font-family: var(--font-display);
+}
+
+/* Text outline effect */
+.text-outline-effect {
+  -webkit-text-stroke: 1px rgba(19, 127, 236, 0.2);
+  color: transparent;
+}
+.dark .text-outline-effect {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+}
+
+
+/* Grid lines background pattern */
+.grid-lines {
+  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right, rgba(19, 127, 236, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(19, 127, 236, 0.05) 1px, transparent 1px);
+}
+.dark .grid-lines {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+/* Dot pattern background */
+.dot-pattern {
+  background-image: radial-gradient(#ffffff 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Infinite marquee scroll for client logos */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+/* Hide scrollbar for horizontal scroll containers */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
