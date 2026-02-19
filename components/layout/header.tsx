@@ -2,15 +2,17 @@ import Link from "next/link";
 import { Logo } from "@/components/layout/logo";
 import { NavLinks } from "@/components/layout/nav-links";
 import { Icon } from "@/components/ui/icon";
-import type { LinkComponent } from "@/lib/types/strapi";
+import type { LinkComponent, StrapiMedia } from "@/lib/types/strapi";
 
 interface HeaderProps {
+  logo: StrapiMedia | null;
   navLinks: LinkComponent[];
   ctaText: string;
   ctaUrl: string;
 }
 
 export function Header({
+  logo,
   navLinks,
   ctaText,
   ctaUrl,
@@ -20,7 +22,7 @@ export function Header({
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <div className="flex-shrink-0">
-            <Logo />
+            <Logo logo={logo} />
           </div>
           <NavLinks links={navLinks} />
           <div className="flex items-center gap-4">

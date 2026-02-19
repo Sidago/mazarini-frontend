@@ -130,6 +130,7 @@ export interface Global {
   documentId: string;
   siteName: string;
   siteDescription: string | null;
+  logo: StrapiMedia | null;
   favicon: StrapiMedia | null;
   defaultSeo: SeoComponent | null;
   navLinks: LinkComponent[];
