@@ -9,7 +9,7 @@ interface LogoProps {
 
 export function Logo({ logo, size = "default" }: LogoProps): React.ReactElement {
   const imageUrl = getStrapiMediaUrl(logo ?? null);
-  const imgSize = size === "default" ? "h-10" : "h-8";
+  const imgSize = size === "default" ? "h-13" : "h-10";
 
   return (
     <Link href="/" className="flex items-center gap-2">
