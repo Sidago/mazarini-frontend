@@ -8,6 +8,8 @@ export function getStrapiUrl(): string {
   return STRAPI_PUBLIC_URL;
 }
 
+console.log("Using Strapi URL:", STRAPI_PUBLIC_URL);
+
 export function getStrapiMediaUrl(media: StrapiMedia | null): string {
   if (!media) return "";
   const { url } = media;

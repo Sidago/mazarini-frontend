@@ -42,7 +42,7 @@ export default async function Home(): Promise<React.ReactElement> {
 
   try {
     homepage = await getHomepage();
-    console.log("Fetched homepage data:", homepage);
+    // console.log("Fetched homepage data:", homepage);
   } catch (error) {
     console.error("Failed to fetch homepage data:", error);
     // Strapi unavailable or permissions not set — render with fallback data
