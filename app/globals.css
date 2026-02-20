@@ -3,15 +3,15 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
-  /* Colors */
-  --color-primary: #137fec;
+  /* Colors — Obsidian + Construction Orange palette */
+  --color-primary: #F28C28;
   --color-background-light: #f6f7f8;
-  --color-background-dark: #101922;
+  --color-background-dark: #1A1A1A;
   --color-neutral-100: #eef4fb;
   --color-neutral-200: #dce8f6;
   --color-neutral-300: #baceea;
-  --color-neutral-800: #1d2e3f;
-  --color-neutral-900: #101922;
+  --color-neutral-800: #2d2d2d;
+  --color-neutral-900: #1A1A1A;
 
   /* Fonts */
   --font-display: var(--font-inter), sans-serif;
@@ -23,7 +23,7 @@ body {
 
 /* Text outline effect */
 .text-outline-effect {
-  -webkit-text-stroke: 1px rgba(19, 127, 236, 0.2);
+  -webkit-text-stroke: 1px rgba(242, 140, 40, 0.2);
   color: transparent;
 }
 .dark .text-outline-effect {
@@ -35,8 +35,8 @@ body {
 .grid-lines {
   background-size: 40px 40px;
   background-image:
-    linear-gradient(to right, rgba(19, 127, 236, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(19, 127, 236, 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(242, 140, 40, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(242, 140, 40, 0.05) 1px, transparent 1px);
 }
 .dark .grid-lines {
   background-image:

@@ -18,7 +18,7 @@ export function StatItem({
       <span className="text-4xl md:text-5xl font-black tracking-tighter mb-2 group-hover:scale-110 transition-transform origin-left">
         <CountUp value={value} />
         {suffix && (
-          <span className="text-blue-200 text-3xl align-top">{suffix}</span>
+          <span className="text-orange-200 text-3xl align-top">{suffix}</span>
         )}
       </span>
       <span className="text-sm font-medium uppercase tracking-widest opacity-80">

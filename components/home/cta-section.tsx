@@ -55,7 +55,7 @@ export function CtaSection({
                   <Link
                     key={cta.id}
                     href={cta.url}
-                    className="px-10 py-5 bg-primary text-white font-bold rounded shadow-lg shadow-primary/30 hover:bg-blue-600 hover:-translate-y-1 transition-all uppercase tracking-wide"
+                    className="px-10 py-5 bg-primary text-white font-bold rounded shadow-lg shadow-primary/30 hover:bg-amber-600 hover:-translate-y-1 transition-all uppercase tracking-wide"
                   >
                     {cta.text}
                   </Link>

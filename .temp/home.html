@@ -1,18 +1,14 @@
 <!DOCTYPE html>
-
 <html lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Mazzarini Group - Home Page Variant 2</title>
+<title>Mazzarini Group - Modern Obsidian Variant</title>
 <meta content="Modern construction and real estate development company home page." name="description"/>
-<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
-<!-- Material Icons -->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<!-- Tailwind CSS -->
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">
       tailwind.config = {
@@ -20,14 +16,19 @@
         theme: {
           extend: {
             colors: {
-              "primary": "#137fec",
+              "primary": "#F28C28", // Construction Orange
+              "primary-dark": "#D97706", // Darker shade for hovers
+              "nav-bg": "#1A1A1A", // Deep Charcoal
+              "obsidian": "#1A1A1A", // Deep Charcoal base
+              "obsidian-light": "#2A2A2A", // Lighter charcoal for cards/hovers
+              "concrete": "#262626", // Dark textured gray feel
               "background-light": "#f6f7f8",
-              "background-dark": "#101922",
+              "background-dark": "#1A1A1A",
               "neutral-100": "#eef4fb",
               "neutral-200": "#dce8f6",
               "neutral-300": "#baceea",
-              "neutral-800": "#1d2e3f",
-              "neutral-900": "#101922",
+              "neutral-800": "#2d2d2d", // Slightly lighter than obsidian
+              "neutral-900": "#1A1A1A",
             },
             fontFamily: {
               "display": ["Inter", "sans-serif"]
@@ -38,15 +39,13 @@
       }
     </script>
 <style>
-        /* Custom styles for grid layouts and heavy typography */
         .text-outline-effect {
-            -webkit-text-stroke: 1px rgba(19, 127, 236, 0.2);
+            -webkit-text-stroke: 1px rgba(242, 140, 40, 0.2);
             color: transparent;
         }
         .dark .text-outline-effect {
             -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
         }
-        
         .hover-grayscale-trigger .hover-grayscale-target {
             filter: grayscale(100%);
             transition: filter 0.5s ease;
@@ -54,84 +53,87 @@
         .hover-grayscale-trigger:hover .hover-grayscale-target {
             filter: grayscale(0%);
         }
-
-        /* Modular grid lines */
         .grid-lines {
             background-size: 40px 40px;
             background-image:
-                linear-gradient(to right, rgba(19, 127, 236, 0.05) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(19, 127, 236, 0.05) 1px, transparent 1px);
+                linear-gradient(to right, rgba(242, 140, 40, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(242, 140, 40, 0.05) 1px, transparent 1px);
         }
         .dark .grid-lines {
             background-image:
                 linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
         }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }.bg-concrete-texture {
+            background-color: #262626;
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23333333' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+        }
     </style>
 </head>
-<body class="bg-background-light dark:bg-background-dark text-neutral-800 dark:text-neutral-100 font-display antialiased selection:bg-primary selection:text-white">
-<!-- Sticky Header -->
-<header class="sticky top-0 z-50 w-full border-b border-neutral-200 dark:border-neutral-800 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm">
+<body class="bg-background-light dark:bg-obsidian text-neutral-800 dark:text-neutral-100 font-display antialiased selection:bg-primary selection:text-white">
+<header class="sticky top-0 z-50 w-full border-b border-white/5 bg-nav-bg shadow-lg">
 <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
-<div class="flex items-center justify-between h-20">
-<!-- Logo -->
-<div class="flex-shrink-0 flex items-center gap-2">
-<div class="w-10 h-10 bg-primary text-white flex items-center justify-center font-black text-xl rounded">M</div>
-<span class="font-bold text-xl tracking-tight uppercase text-neutral-900 dark:text-white">Mazzarini<span class="text-primary">.</span></span>
+<div class="flex items-center justify-between h-24">
+<div class="flex-shrink-0 flex items-center gap-3">
+<div class="text-white flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-primary">engineering</span>
 </div>
-<!-- Navigation -->
+<span class="font-black text-2xl tracking-tight uppercase text-white">Mazarini<span class="text-primary font-light"> Inc.</span></span>
+</div>
 <nav class="hidden md:flex space-x-8 lg:space-x-12">
-<a class="text-sm font-semibold uppercase tracking-widest hover:text-primary transition-colors" href="#">Projects</a>
-<a class="text-sm font-semibold uppercase tracking-widest hover:text-primary transition-colors" href="#">Expertise</a>
-<a class="text-sm font-semibold uppercase tracking-widest hover:text-primary transition-colors" href="#">About</a>
-<a class="text-sm font-semibold uppercase tracking-widest hover:text-primary transition-colors" href="#">News</a>
+<a class="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-primary transition-colors duration-300" href="#">Projects</a>
+<a class="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-primary transition-colors duration-300" href="#">Services</a>
+<a class="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-primary transition-colors duration-300" href="#">Expertise</a>
+<a class="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-primary transition-colors duration-300" href="#">About</a>
+<a class="text-sm font-bold uppercase tracking-widest text-gray-300 hover:text-primary transition-colors duration-300" href="#">News</a>
 </nav>
-<!-- Actions -->
 <div class="flex items-center gap-4">
-<button aria-label="Search" class="p-2 text-neutral-600 dark:text-neutral-300 hover:text-primary transition-colors">
+<button aria-label="Search" class="p-2 text-white hover:text-primary transition-colors">
 <span class="material-icons-outlined">search</span>
 </button>
-<a class="hidden sm:inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-semibold text-white bg-primary hover:bg-blue-600 transition-all rounded shadow-lg shadow-primary/20 uppercase tracking-wide" href="#">
-                        Work With Us
-                    </a>
+<a class="hidden sm:inline-flex items-center justify-center px-8 py-3 border border-transparent text-sm font-bold text-white bg-primary hover:bg-white hover:text-nav-bg transition-all rounded shadow-[0_0_15px_rgba(242,140,40,0.3)] uppercase tracking-wide" href="#">
+                    Work With Us
+                </a>
 </div>
 </div>
 </div>
 </header>
 <main>
-<!-- Split Screen Hero Section -->
-<section class="relative w-full min-h-[calc(100vh-5rem)] flex flex-col lg:flex-row border-b border-neutral-200 dark:border-neutral-800">
-<!-- Left Content -->
-<div class="w-full lg:w-1/2 flex flex-col justify-center px-6 sm:px-12 lg:px-20 py-20 lg:py-0 bg-background-light dark:bg-background-dark grid-lines relative overflow-hidden">
-<!-- Decorative Elements -->
+<section class="relative w-full min-h-[calc(100vh-6rem)] flex flex-col lg:flex-row border-b border-neutral-200 dark:border-neutral-800">
+<div class="w-full lg:w-1/2 flex flex-col justify-center px-6 sm:px-12 lg:px-20 py-20 lg:py-0 bg-background-light dark:bg-obsidian grid-lines relative overflow-hidden">
 <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-transparent"></div>
 <div class="relative z-10 max-w-2xl">
-<div class="inline-flex items-center gap-2 px-3 py-1 mb-8 border border-primary/30 rounded text-xs font-bold text-primary uppercase tracking-wider bg-primary/5">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 mb-8 border border-primary/30 rounded text-xs font-bold text-primary uppercase tracking-wider bg-primary/10">
 <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-                        Architectural Excellence
-                    </div>
+                    Architectural Excellence
+                </div>
 <h1 class="text-5xl sm:text-6xl xl:text-7xl font-black tracking-tight text-neutral-900 dark:text-white leading-[1.1] mb-8">
-                        Precision in <br/>
-<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">Every Beam.</span>
+                    Precision in <br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-neutral-800 to-neutral-500 dark:from-white dark:to-neutral-400">Every Beam.</span>
 </h1>
 <p class="text-lg text-neutral-600 dark:text-neutral-400 max-w-lg mb-10 leading-relaxed font-light">
-                        We don't just build structures; we engineer the future landscape of modern living. Leading the way in sustainable commercial and residential development since 1985.
-                    </p>
+                    We don't just build structures; we engineer the future landscape of modern living. Leading the way in sustainable commercial and residential development since 1985.
+                </p>
 <div class="flex flex-col sm:flex-row gap-4">
-<a class="inline-flex items-center justify-center px-8 py-4 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-bold uppercase tracking-wide rounded hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-all group" href="#projects">
-                            Explore Projects
-                            <span class="material-icons-outlined ml-2 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+<a class="inline-flex items-center justify-center px-8 py-4 bg-primary text-white font-bold uppercase tracking-wide rounded hover:bg-neutral-900 transition-all group shadow-lg shadow-primary/25" href="#projects">
+                        Explore Projects
+                        <span class="material-icons-outlined ml-2 group-hover:translate-x-1 transition-transform">arrow_forward</span>
 </a>
 <button class="inline-flex items-center justify-center px-8 py-4 border border-neutral-300 dark:border-neutral-700 font-bold uppercase tracking-wide rounded hover:border-primary hover:text-primary transition-all">
-                            Our Philosophy
-                        </button>
+                        Our Philosophy
+                    </button>
 </div>
 </div>
 </div>
-<!-- Right Image -->
-<div class="w-full lg:w-1/2 min-h-[50vh] lg:min-h-auto relative bg-neutral-900 overflow-hidden group">
+<div class="w-full lg:w-1/2 min-h-[50vh] lg:min-h-auto relative bg-obsidian overflow-hidden group">
 <img alt="Low angle view of modern steel skyscraper construction" class="absolute inset-0 w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out scale-105 group-hover:scale-100" data-alt="Low angle view of modern steel skyscraper construction" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7RRYzGJ2SA-68FGb7mfQazvAOBbOxoqi9EqozHTsMVSXTPIbBEtLun2UcxhI18pliEWjU7VgZNHZQjT2fR5PLmLfGC8hq7uSVyOYTxCHZ_q4AutvPJTVexFIRqWvDcB2aFqPzJunP7frRRy-_SOP9XMS1qmTzIjW7Msp3FYbsbNUcvsRwRwEtMFzE8fO7GCZ2A_snGxSw_jzeSumQtxkNv-PeBwqwlu0vWlLLzvrDIDlqOJB1_S7twl1GEWmm3E1X6h2a2pFqfG6A"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent lg:bg-gradient-to-l lg:from-transparent lg:to-black/30"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-obsidian/20 to-transparent lg:bg-gradient-to-l lg:from-transparent lg:to-obsidian/30"></div>
 <div class="absolute bottom-8 left-8 sm:bottom-12 sm:left-12 text-white max-w-sm">
 <p class="text-sm font-bold text-primary mb-1 uppercase tracking-widest">Featured Project</p>
 <h3 class="text-2xl font-bold mb-2">The Meridian Spire</h3>
@@ -139,50 +141,128 @@
 </div>
 </div>
 </section>
-<!-- By The Numbers Bar -->
-<section class="w-full bg-primary text-white border-b border-primary/20">
+<section class="w-full bg-concrete border-b border-white/5 text-white">
 <div class="max-w-[1600px] mx-auto">
-<div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/20 border-x border-white/20">
+<div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10 border-x border-white/10">
 <div class="p-8 md:p-10 flex flex-col items-center md:items-start group hover:bg-white/5 transition-colors">
-<span class="text-4xl md:text-5xl font-black tracking-tighter mb-2 group-hover:scale-110 transition-transform origin-left">38<span class="text-blue-200 text-3xl align-top">+</span></span>
-<span class="text-sm font-medium uppercase tracking-widest opacity-80">Years Experience</span>
+<span class="text-4xl md:text-5xl font-black tracking-tighter mb-2 group-hover:scale-110 transition-transform origin-left">38<span class="text-primary text-3xl align-top">+</span></span>
+<span class="text-sm font-medium uppercase tracking-widest opacity-60 group-hover:opacity-100 transition-opacity">Years Experience</span>
 </div>
 <div class="p-8 md:p-10 flex flex-col items-center md:items-start group hover:bg-white/5 transition-colors">
-<span class="text-4xl md:text-5xl font-black tracking-tighter mb-2 group-hover:scale-110 transition-transform origin-left">500<span class="text-blue-200 text-3xl align-top">+</span></span>
-<span class="text-sm font-medium uppercase tracking-widest opacity-80">Projects Completed</span>
+<span class="text-4xl md:text-5xl font-black tracking-tighter mb-2 group-hover:scale-110 transition-transform origin-left">500<span class="text-primary text-3xl align-top">+</span></span>
+<span class="text-sm font-medium uppercase tracking-widest opacity-60 group-hover:opacity-100 transition-opacity">Projects Completed</span>
 </div>
 <div class="p-8 md:p-10 flex flex-col items-center md:items-start group hover:bg-white/5 transition-colors">
-<span class="text-4xl md:text-5xl font-black tracking-tighter mb-2 group-hover:scale-110 transition-transform origin-left">$2B</span>
-<span class="text-sm font-medium uppercase tracking-widest opacity-80">Project Value</span>
+<span class="text-4xl md:text-5xl font-black tracking-tighter mb-2 group-hover:scale-110 transition-transform origin-left text-primary">$2B</span>
+<span class="text-sm font-medium uppercase tracking-widest opacity-60 group-hover:opacity-100 transition-opacity">Project Value</span>
 </div>
 <div class="p-8 md:p-10 flex flex-col items-center md:items-start group hover:bg-white/5 transition-colors">
 <span class="text-4xl md:text-5xl font-black tracking-tighter mb-2 group-hover:scale-110 transition-transform origin-left">150</span>
-<span class="text-sm font-medium uppercase tracking-widest opacity-80">Global Partners</span>
+<span class="text-sm font-medium uppercase tracking-widest opacity-60 group-hover:opacity-100 transition-opacity">Global Partners</span>
 </div>
 </div>
 </div>
 </section>
-<!-- Expertise Grid -->
-<section class="py-24 px-4 sm:px-6 lg:px-8 bg-background-light dark:bg-background-dark max-w-[1600px] mx-auto" id="expertise">
-<div class="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-neutral-200 dark:border-neutral-800 pb-8">
+<section class="py-24 px-4 sm:px-6 lg:px-8 bg-concrete-texture text-white max-w-[1600px] mx-auto border-b border-neutral-700" id="services">
+<div class="mb-16 border-b border-white/10 pb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<h2 class="text-sm font-bold text-primary uppercase tracking-widest mb-3">Our Services</h2>
+<p class="text-3xl md:text-4xl font-black text-white max-w-2xl">
+                    Integrated solutions for complex challenges.
+                </p>
+</div>
+<a class="inline-flex items-center text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors" href="#">
+                All Capabilities <span class="material-icons-outlined ml-1 text-lg">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-white/10">
+<div class="group relative border-r border-b border-white/10 p-10 hover:bg-obsidian transition-colors duration-500">
+<span class="text-neutral-500 text-sm font-mono mb-6 block group-hover:text-primary transition-colors">01</span>
+<div class="mb-6 text-white opacity-60 group-hover:text-primary group-hover:opacity-100 transition-all">
+<span class="material-symbols-outlined text-4xl">architecture</span>
+</div>
+<h3 class="text-2xl font-bold mb-4 group-hover:translate-x-2 transition-transform duration-300">Design &amp; Build</h3>
+<p class="text-neutral-400 text-sm leading-relaxed mb-6">From initial concept to final handover, we provide a seamless single-point responsibility for your entire project lifecycle.</p>
+<div class="w-8 h-8 rounded-full border border-neutral-600 group-hover:border-primary flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+<span class="material-icons-outlined text-sm group-hover:text-primary">arrow_outward</span>
+</div>
+</div>
+<div class="group relative border-r border-b border-white/10 p-10 hover:bg-obsidian transition-colors duration-500">
+<span class="text-neutral-500 text-sm font-mono mb-6 block group-hover:text-primary transition-colors">02</span>
+<div class="mb-6 text-white opacity-60 group-hover:text-primary group-hover:opacity-100 transition-all">
+<span class="material-symbols-outlined text-4xl">engineering</span>
+</div>
+<h3 class="text-2xl font-bold mb-4 group-hover:translate-x-2 transition-transform duration-300">General Contracting</h3>
+<p class="text-neutral-400 text-sm leading-relaxed mb-6">Traditional contracting services with modern efficiency. We manage subcontractors, vendors, and logistics with precision.</p>
+<div class="w-8 h-8 rounded-full border border-neutral-600 group-hover:border-primary flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+<span class="material-icons-outlined text-sm group-hover:text-primary">arrow_outward</span>
+</div>
+</div>
+<div class="group relative border-r border-b border-white/10 p-10 hover:bg-obsidian transition-colors duration-500">
+<span class="text-neutral-500 text-sm font-mono mb-6 block group-hover:text-primary transition-colors">03</span>
+<div class="mb-6 text-white opacity-60 group-hover:text-primary group-hover:opacity-100 transition-all">
+<span class="material-symbols-outlined text-4xl">real_estate_agent</span>
+</div>
+<h3 class="text-2xl font-bold mb-4 group-hover:translate-x-2 transition-transform duration-300">Development Management</h3>
+<p class="text-neutral-400 text-sm leading-relaxed mb-6">Expert guidance through land acquisition, feasibility studies, zoning approvals, and financial modeling.</p>
+<div class="w-8 h-8 rounded-full border border-neutral-600 group-hover:border-primary flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+<span class="material-icons-outlined text-sm group-hover:text-primary">arrow_outward</span>
+</div>
+</div>
+<div class="group relative border-r border-b border-white/10 p-10 hover:bg-obsidian transition-colors duration-500">
+<span class="text-neutral-500 text-sm font-mono mb-6 block group-hover:text-primary transition-colors">04</span>
+<div class="mb-6 text-white opacity-60 group-hover:text-primary group-hover:opacity-100 transition-all">
+<span class="material-symbols-outlined text-4xl">eco</span>
+</div>
+<h3 class="text-2xl font-bold mb-4 group-hover:translate-x-2 transition-transform duration-300">Sustainability Consulting</h3>
+<p class="text-neutral-400 text-sm leading-relaxed mb-6">LEED certification guidance and energy-efficient building strategies for a greener, cost-effective future.</p>
+<div class="w-8 h-8 rounded-full border border-neutral-600 group-hover:border-primary flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+<span class="material-icons-outlined text-sm group-hover:text-primary">arrow_outward</span>
+</div>
+</div>
+<div class="group relative border-r border-b border-white/10 p-10 hover:bg-obsidian transition-colors duration-500">
+<span class="text-neutral-500 text-sm font-mono mb-6 block group-hover:text-primary transition-colors">05</span>
+<div class="mb-6 text-white opacity-60 group-hover:text-primary group-hover:opacity-100 transition-all">
+<span class="material-symbols-outlined text-4xl">foundation</span>
+</div>
+<h3 class="text-2xl font-bold mb-4 group-hover:translate-x-2 transition-transform duration-300">Infrastructure</h3>
+<p class="text-neutral-400 text-sm leading-relaxed mb-6">Heavy civil construction capabilities including roads, bridges, and utility networks for large-scale developments.</p>
+<div class="w-8 h-8 rounded-full border border-neutral-600 group-hover:border-primary flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+<span class="material-icons-outlined text-sm group-hover:text-primary">arrow_outward</span>
+</div>
+</div>
+<div class="group relative border-r border-b border-white/10 p-10 hover:bg-obsidian transition-colors duration-500">
+<span class="text-neutral-500 text-sm font-mono mb-6 block group-hover:text-primary transition-colors">06</span>
+<div class="mb-6 text-white opacity-60 group-hover:text-primary group-hover:opacity-100 transition-all">
+<span class="material-symbols-outlined text-4xl">handyman</span>
+</div>
+<h3 class="text-2xl font-bold mb-4 group-hover:translate-x-2 transition-transform duration-300">Facility Maintenance</h3>
+<p class="text-neutral-400 text-sm leading-relaxed mb-6">Post-construction support and ongoing maintenance programs to ensure longevity and operational efficiency.</p>
+<div class="w-8 h-8 rounded-full border border-neutral-600 group-hover:border-primary flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+<span class="material-icons-outlined text-sm group-hover:text-primary">arrow_outward</span>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 px-4 sm:px-6 lg:px-8 bg-background-light dark:bg-obsidian max-w-[1600px] mx-auto border-t border-neutral-200 dark:border-neutral-800" id="expertise">
+<div class="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8">
 <div>
 <h2 class="text-sm font-bold text-primary uppercase tracking-widest mb-3">Our Expertise</h2>
 <p class="text-3xl md:text-4xl font-black text-neutral-900 dark:text-white max-w-2xl">
-                        Comprehensive development across three core sectors.
-                    </p>
+                    Comprehensive development across three core sectors.
+                </p>
 </div>
 <a class="hidden md:inline-flex items-center text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors" href="#">
-                    View All Services <span class="material-icons-outlined ml-1 text-lg">arrow_forward</span>
+                View All Sectors <span class="material-icons-outlined ml-1 text-lg">arrow_forward</span>
 </a>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<!-- Card 1: Residential -->
-<div class="group relative bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 h-[500px] flex flex-col overflow-hidden rounded hover:border-primary transition-colors duration-300">
+<div class="group relative bg-white dark:bg-obsidian-light border border-neutral-200 dark:border-neutral-700 h-[500px] flex flex-col overflow-hidden rounded hover:border-primary transition-colors duration-300 shadow-xl">
 <div class="h-2/3 overflow-hidden relative">
 <div class="absolute inset-0 bg-primary/20 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 <img alt="Modern luxury residential apartment complex exterior" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 filter grayscale group-hover:grayscale-0" data-alt="Modern luxury residential apartment complex exterior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0H63Opl2StLBshXsBH8_a62ZNzXWT0-vqO8AyWMzl_GAcZ9wEwBgGhjNGbL0m8TW4_EIdTVdZzwnhAdRxvEsbne9k5DzKWHJytbLVaqrlfZr0_rXZ1tkgUtQF5glH__wYOV27cB6DS_fQIeg-j_JDa5o02341Vu_c7A2Cimy63QEJ-I97kIBuF4I94qVkpoWq357jPuzpKjwhv5hh9Bd2Fa7N0ayPZLs4BatHTkrUz33wGvfOOzxpaQq9iyg3YeZNCo6NEFW7nRl5"/>
 </div>
-<div class="h-1/3 p-8 flex flex-col justify-between relative bg-white dark:bg-neutral-900 group-hover:bg-neutral-50 dark:group-hover:bg-neutral-800 transition-colors">
+<div class="h-1/3 p-8 flex flex-col justify-between relative bg-white dark:bg-obsidian-light group-hover:bg-neutral-50 dark:group-hover:bg-[#333] transition-colors">
 <div class="absolute top-0 right-0 w-12 h-12 bg-primary text-white flex items-center justify-center -mt-6 mr-8 rounded z-20 shadow-lg translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
 <span class="material-icons-outlined">apartment</span>
 </div>
@@ -190,18 +270,17 @@
 <h3 class="text-2xl font-bold text-neutral-900 dark:text-white mb-2">Residential</h3>
 <p class="text-neutral-500 dark:text-neutral-400 text-sm line-clamp-2">Luxury living spaces, high-rise condominiums, and multi-family complexes designed for community.</p>
 </div>
-<div class="w-full h-1 bg-neutral-100 dark:bg-neutral-800 mt-4 overflow-hidden rounded-full">
+<div class="w-full h-1 bg-neutral-100 dark:bg-neutral-700 mt-4 overflow-hidden rounded-full">
 <div class="h-full bg-primary w-0 group-hover:w-full transition-all duration-700 ease-out"></div>
 </div>
 </div>
 </div>
-<!-- Card 2: Commercial -->
-<div class="group relative bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 h-[500px] flex flex-col overflow-hidden rounded hover:border-primary transition-colors duration-300">
+<div class="group relative bg-white dark:bg-obsidian-light border border-neutral-200 dark:border-neutral-700 h-[500px] flex flex-col overflow-hidden rounded hover:border-primary transition-colors duration-300 shadow-xl">
 <div class="h-2/3 overflow-hidden relative">
 <div class="absolute inset-0 bg-primary/20 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 <img alt="Glass facade of modern commercial office building" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 filter grayscale group-hover:grayscale-0" data-alt="Glass facade of modern commercial office building" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHSNYK5PaILxbPFV1ZtjLuGReBlbmS7xHoiGn0JHjwPfvV307fYlMVfmqPaTlSolyjcvXVNV_06eyLJjXMiscoDIbUBNe-ji6RI5OJFxuUJl3qgG24VSVOzTAVr1iitgN1yaWXT-Y_BRVu2VLUS0ypIfdWfvPFuffRc72aMIBAbvhoswo7aHQRT0ljlG4l0jW3eyvs4w3RPF9oHIzfhlc6uGeYBwujRwhC21v4wb9zaSSN8I0I7RizJsiXDjZpOkPVvMob-dBlwA9s"/>
 </div>
-<div class="h-1/3 p-8 flex flex-col justify-between relative bg-white dark:bg-neutral-900 group-hover:bg-neutral-50 dark:group-hover:bg-neutral-800 transition-colors">
+<div class="h-1/3 p-8 flex flex-col justify-between relative bg-white dark:bg-obsidian-light group-hover:bg-neutral-50 dark:group-hover:bg-[#333] transition-colors">
 <div class="absolute top-0 right-0 w-12 h-12 bg-primary text-white flex items-center justify-center -mt-6 mr-8 rounded z-20 shadow-lg translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
 <span class="material-icons-outlined">business</span>
 </div>
@@ -209,18 +288,17 @@
 <h3 class="text-2xl font-bold text-neutral-900 dark:text-white mb-2">Commercial</h3>
 <p class="text-neutral-500 dark:text-neutral-400 text-sm line-clamp-2">State-of-the-art office spaces, retail hubs, and mixed-use developments that drive business forward.</p>
 </div>
-<div class="w-full h-1 bg-neutral-100 dark:bg-neutral-800 mt-4 overflow-hidden rounded-full">
+<div class="w-full h-1 bg-neutral-100 dark:bg-neutral-700 mt-4 overflow-hidden rounded-full">
 <div class="h-full bg-primary w-0 group-hover:w-full transition-all duration-700 ease-out"></div>
 </div>
 </div>
 </div>
-<!-- Card 3: Industrial -->
-<div class="group relative bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 h-[500px] flex flex-col overflow-hidden rounded hover:border-primary transition-colors duration-300">
+<div class="group relative bg-white dark:bg-obsidian-light border border-neutral-200 dark:border-neutral-700 h-[500px] flex flex-col overflow-hidden rounded hover:border-primary transition-colors duration-300 shadow-xl">
 <div class="h-2/3 overflow-hidden relative">
 <div class="absolute inset-0 bg-primary/20 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 <img alt="Industrial warehouse logistics center interior" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 filter grayscale group-hover:grayscale-0" data-alt="Industrial warehouse logistics center interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxF9m5hyv4YJ8Fd63ACp6Osx0eHD9wCY8oetCcOuh12bMWU0dtnI9bLkJsjTBf0qbMVsnMLFg7Lrfd-8rzEC3Q943-6auWgESJrvZtB_jqqCL1u27KMMXkGWUbuZ_ls-e9g-Kh9aOhoZo5sNZUcf42Y4h2LFdvIE3X9mgS-VjEC0dL2zFm7AMUORqajeHCS1gDArlZuep8pKhUUlLHfUcKZ5DPQXiKDN0aiiHxQeqnFLzoZnKNtdskIlUHzMWG_buyOvH0ccekgxdu"/>
 </div>
-<div class="h-1/3 p-8 flex flex-col justify-between relative bg-white dark:bg-neutral-900 group-hover:bg-neutral-50 dark:group-hover:bg-neutral-800 transition-colors">
+<div class="h-1/3 p-8 flex flex-col justify-between relative bg-white dark:bg-obsidian-light group-hover:bg-neutral-50 dark:group-hover:bg-[#333] transition-colors">
 <div class="absolute top-0 right-0 w-12 h-12 bg-primary text-white flex items-center justify-center -mt-6 mr-8 rounded z-20 shadow-lg translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
 <span class="material-icons-outlined">factory</span>
 </div>
@@ -228,7 +306,7 @@
 <h3 class="text-2xl font-bold text-neutral-900 dark:text-white mb-2">Industrial</h3>
 <p class="text-neutral-500 dark:text-neutral-400 text-sm line-clamp-2">Efficient warehousing, logistics centers, and manufacturing plants engineered for performance.</p>
 </div>
-<div class="w-full h-1 bg-neutral-100 dark:bg-neutral-800 mt-4 overflow-hidden rounded-full">
+<div class="w-full h-1 bg-neutral-100 dark:bg-neutral-700 mt-4 overflow-hidden rounded-full">
 <div class="h-full bg-primary w-0 group-hover:w-full transition-all duration-700 ease-out"></div>
 </div>
 </div>
@@ -236,19 +314,142 @@
 </div>
 <div class="mt-8 text-center md:hidden">
 <a class="inline-flex items-center text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors" href="#">
-                    View All Services <span class="material-icons-outlined ml-1 text-lg">arrow_forward</span>
+                View All Services <span class="material-icons-outlined ml-1 text-lg">arrow_forward</span>
 </a>
 </div>
 </section>
-<!-- Project Showcase Slider -->
-<section class="py-24 overflow-hidden bg-neutral-100 dark:bg-neutral-900/50 border-y border-neutral-200 dark:border-neutral-800">
+<section class="py-20 border-t border-neutral-200 dark:border-neutral-800 bg-background-light dark:bg-obsidian">
+<div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col md:flex-row justify-between items-end mb-12">
+<div>
+<span class="text-sm font-bold text-primary uppercase tracking-widest mb-2 block">Our Network</span>
+<h2 class="text-2xl md:text-3xl font-bold text-neutral-900 dark:text-white">Associate Clients</h2>
+</div>
+<div class="text-neutral-500 text-sm font-medium mt-4 md:mt-0">Trusted by over 150 global partners.</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-0 border border-neutral-200 dark:border-neutral-800">
+<div class="h-32 flex items-center justify-center border-r border-b border-neutral-200 dark:border-neutral-800 p-6 grayscale hover:grayscale-0 transition-all duration-500 bg-white dark:bg-obsidian hover:bg-neutral-50 dark:hover:bg-neutral-800">
+<span class="text-xl font-black tracking-tighter text-neutral-800 dark:text-neutral-200">NEXUS</span>
+</div>
+<div class="h-32 flex items-center justify-center border-r border-b border-neutral-200 dark:border-neutral-800 p-6 grayscale hover:grayscale-0 transition-all duration-500 bg-white dark:bg-obsidian hover:bg-neutral-50 dark:hover:bg-neutral-800">
+<span class="text-xl font-serif font-bold italic text-neutral-800 dark:text-neutral-200">Aeterna</span>
+</div>
+<div class="h-32 flex items-center justify-center border-r border-b border-neutral-200 dark:border-neutral-800 p-6 grayscale hover:grayscale-0 transition-all duration-500 bg-white dark:bg-obsidian hover:bg-neutral-50 dark:hover:bg-neutral-800">
+<span class="text-xl font-bold tracking-widest text-neutral-800 dark:text-neutral-200">VANTAGE</span>
+</div>
+<div class="h-32 flex items-center justify-center border-r border-b border-neutral-200 dark:border-neutral-800 p-6 grayscale hover:grayscale-0 transition-all duration-500 bg-white dark:bg-obsidian hover:bg-neutral-50 dark:hover:bg-neutral-800">
+<span class="text-2xl font-mono font-bold text-neutral-800 dark:text-neutral-200">CORE</span>
+</div>
+<div class="h-32 flex items-center justify-center border-r border-b border-neutral-200 dark:border-neutral-800 p-6 grayscale hover:grayscale-0 transition-all duration-500 bg-white dark:bg-obsidian hover:bg-neutral-50 dark:hover:bg-neutral-800">
+<span class="text-xl font-extrabold text-neutral-800 dark:text-neutral-200">STRATA</span>
+</div>
+<div class="h-32 flex items-center justify-center border-b border-neutral-200 dark:border-neutral-800 p-6 grayscale hover:grayscale-0 transition-all duration-500 bg-white dark:bg-obsidian hover:bg-neutral-50 dark:hover:bg-neutral-800">
+<span class="text-xl font-light uppercase text-neutral-800 dark:text-neutral-200">Horizon</span>
+</div>
+<div class="h-32 flex items-center justify-center border-r border-b lg:border-b-0 border-neutral-200 dark:border-neutral-800 p-6 grayscale hover:grayscale-0 transition-all duration-500 bg-white dark:bg-obsidian hover:bg-neutral-50 dark:hover:bg-neutral-800">
+<span class="text-xl font-black text-neutral-800 dark:text-neutral-200">BLOC</span>
+</div>
+<div class="h-32 flex items-center justify-center border-r border-b lg:border-b-0 border-neutral-200 dark:border-neutral-800 p-6 grayscale hover:grayscale-0 transition-all duration-500 bg-white dark:bg-obsidian hover:bg-neutral-50 dark:hover:bg-neutral-800">
+<span class="text-xl font-serif font-bold text-neutral-800 dark:text-neutral-200">Meridian</span>
+</div>
+<div class="h-32 flex items-center justify-center border-r border-b lg:border-b-0 border-neutral-200 dark:border-neutral-800 p-6 grayscale hover:grayscale-0 transition-all duration-500 bg-white dark:bg-obsidian hover:bg-neutral-50 dark:hover:bg-neutral-800">
+<span class="text-xl font-bold italic tracking-tighter text-neutral-800 dark:text-neutral-200">OMEGA</span>
+</div>
+<div class="h-32 flex items-center justify-center border-r border-b md:border-b-0 border-neutral-200 dark:border-neutral-800 p-6 grayscale hover:grayscale-0 transition-all duration-500 bg-white dark:bg-obsidian hover:bg-neutral-50 dark:hover:bg-neutral-800">
+<span class="text-xl font-mono font-medium text-neutral-800 dark:text-neutral-200">Structure</span>
+</div>
+<div class="h-32 flex items-center justify-center border-r border-neutral-200 dark:border-neutral-800 p-6 grayscale hover:grayscale-0 transition-all duration-500 bg-white dark:bg-obsidian hover:bg-neutral-50 dark:hover:bg-neutral-800">
+<span class="text-xl font-black uppercase text-neutral-800 dark:text-neutral-200">Apex</span>
+</div>
+<div class="h-32 flex items-center justify-center p-6 grayscale hover:grayscale-0 transition-all duration-500 bg-white dark:bg-obsidian hover:bg-neutral-50 dark:hover:bg-neutral-800">
+<span class="text-xl font-bold tracking-widest text-neutral-800 dark:text-neutral-200">ZENITH</span>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-neutral-100 dark:bg-neutral-900 overflow-hidden">
+<div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+<h2 class="text-4xl md:text-5xl font-black text-neutral-900 dark:text-white mb-4">Client Stories</h2>
+<div class="h-1 w-24 bg-primary mb-6"></div>
+<p class="text-neutral-500 dark:text-neutral-400 max-w-xl">Hear from the visionaries we've collaborated with to build iconic structures.</p>
+</div>
+<div class="flex overflow-x-auto pb-12 px-4 sm:px-6 lg:px-8 gap-6 snap-x snap-mandatory scrollbar-hide">
+<div class="min-w-[90vw] md:min-w-[500px] snap-center bg-white dark:bg-obsidian-light rounded-lg overflow-hidden shadow-lg border border-neutral-200 dark:border-neutral-700 flex flex-col md:flex-row h-auto md:h-[350px]">
+<div class="w-full md:w-2/5 h-64 md:h-full relative">
+<img alt="Portrait of Elena Rostova, CEO" class="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" data-alt="Portrait of Elena Rostova, CEO" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRnnrDM10PaqcAqcfSL7hAGVFXaUoUA9c9Bd1lSZ23zMhx6dCrtrqWreAAYP9r2e2dK1RJiMFqLOtknxX3hIRMyxW2MLkgC335qZvoc5Wt_2Q3zCcEgRAvRZbDS0Y1wyXhwYNTscadC9ves9w2Fxx6eoeMzxW9g2jWmrmyhHEhSX_mxoTTfYoAz8tSvloNstQqutVkPJklDJLW5q5-qbfmCEbR6n4dGnXI9Tu_Ir6hTLT1M6p0pDyuj8rSufOABDuG1OA9wZZLe7BD"/>
+</div>
+<div class="w-full md:w-3/5 p-8 flex flex-col justify-between">
+<div>
+<span class="text-primary text-6xl font-serif leading-none opacity-30">"</span>
+<p class="text-neutral-700 dark:text-neutral-300 text-lg italic leading-relaxed relative -mt-4 z-10">
+                            Mazzarini Group transformed our vision into a structural masterpiece. Their attention to detail in the Meridian Spire project was nothing short of extraordinary.
+                        </p>
+</div>
+<div class="mt-6">
+<h4 class="text-neutral-900 dark:text-white font-bold text-lg">Elena Rostova</h4>
+<p class="text-neutral-500 dark:text-neutral-400 text-sm">CEO, Vertex Holdings</p>
+</div>
+</div>
+</div>
+<div class="min-w-[90vw] md:min-w-[500px] snap-center bg-white dark:bg-obsidian-light rounded-lg overflow-hidden shadow-lg border border-neutral-200 dark:border-neutral-700 flex flex-col md:flex-row h-auto md:h-[350px]">
+<div class="w-full md:w-2/5 h-64 md:h-full relative">
+<img alt="Portrait of Marcus Chen, Lead Architect" class="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" data-alt="Portrait of Marcus Chen, Lead Architect" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArL-2pDuL38s0UtKbnDWSWjNIUgLv-NOPCnyH3amHeAGK1-Tq8uMaz9tlHMC_oYY9EysRQ3JEoKjNqpXc6ATLwutZGXXwz_Hd8MGrno4ZLCnpAxv6k9D-vyA2hR63YFEcwXxlzq5cb4Dj0KZgxGrIFiXOeicerpRem8kXIHbmaakB14FBYGX8cr1RpoXyboJFfWVnNT67kamyfk6MHpdSU3S8qN1RWi5FaCeOypQfgWg2aQwaGItgMLmyMgIblCq8Lgtw_HFfojJm5"/>
+</div>
+<div class="w-full md:w-3/5 p-8 flex flex-col justify-between">
+<div>
+<span class="text-primary text-6xl font-serif leading-none opacity-30">"</span>
+<p class="text-neutral-700 dark:text-neutral-300 text-lg italic leading-relaxed relative -mt-4 z-10">
+                            A partner that truly understands the language of architecture. They didn't just build our designs; they enhanced them through engineering ingenuity.
+                        </p>
+</div>
+<div class="mt-6">
+<h4 class="text-neutral-900 dark:text-white font-bold text-lg">Marcus Chen</h4>
+<p class="text-neutral-500 dark:text-neutral-400 text-sm">Principal, Chen &amp; Associates</p>
+</div>
+</div>
+</div>
+<div class="min-w-[90vw] md:min-w-[500px] snap-center bg-white dark:bg-obsidian-light rounded-lg overflow-hidden shadow-lg border border-neutral-200 dark:border-neutral-700 flex flex-col md:flex-row h-auto md:h-[350px]">
+<div class="w-full md:w-2/5 h-64 md:h-full relative">
+<img alt="Portrait of Sarah Jenkins, Operations Director" class="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" data-alt="Portrait of Sarah Jenkins, Operations Director" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAD6yDddyFkOOnREedYTxAmG5IGsp1E_2xV52tjD1nsMfu060L1kT87K-yZLZYLkOFiyWXZq2b_yBSq0GT21Df4BJ4J2oeDpYmfrcCVZ_yeVS_ILqpOEGMxrY1o28P6B4YiICCXHjtrg6sQxVhtMKB-4nVm5EDuZZKPBYnf0k9ft5OUGazRoKAtdpdTZ6U5V-abmo6x6bivUsIDWeoiPNQ2zOBrC3zxUTVGgukgkJqm_YD6F4OGJSRHAeiPlnEv0jPVRApDDoMRzbAc"/>
+</div>
+<div class="w-full md:w-3/5 p-8 flex flex-col justify-between">
+<div>
+<span class="text-primary text-6xl font-serif leading-none opacity-30">"</span>
+<p class="text-neutral-700 dark:text-neutral-300 text-lg italic leading-relaxed relative -mt-4 z-10">
+                           Delivered 3 months ahead of schedule and under budget. The North Point Logistics hub is now the benchmark for our entire global supply chain network.
+                        </p>
+</div>
+<div class="mt-6">
+<h4 class="text-neutral-900 dark:text-white font-bold text-lg">Sarah Jenkins</h4>
+<p class="text-neutral-500 dark:text-neutral-400 text-sm">COO, Global Logistics Inc.</p>
+</div>
+</div>
+</div>
+<div class="min-w-[90vw] md:min-w-[500px] snap-center bg-white dark:bg-obsidian-light rounded-lg overflow-hidden shadow-lg border border-neutral-200 dark:border-neutral-700 flex flex-col md:flex-row h-auto md:h-[350px]">
+<div class="w-full md:w-2/5 h-64 md:h-full relative">
+<img alt="Portrait of David Thorne, Real Estate Developer" class="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" data-alt="Portrait of David Thorne, Real Estate Developer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXuohK8H2zULMaL_kXm4yvWG516Nx7aIYRL8jK4Tin8nUzt0DbrXsk0NTJq1Eg2PVfLDErXx-FcPvLgoxuId1Lbdo46zHMinuvtGOHNAcPwoJOmdPL94tjbkI5SQ7P9BCMBzkROTM-gjyjOnh-f_S0T5F6uWhFHmmBDS7HB0I9urm_eDzISfnYkLs78W9APo5zJv4vvDE2dlq97hmRrSDvNt0QwifNwIConFZukg9LoseMWe4w5fdemA-pOmohMOwOyKGylLsXL2hw"/>
+</div>
+<div class="w-full md:w-3/5 p-8 flex flex-col justify-between">
+<div>
+<span class="text-primary text-6xl font-serif leading-none opacity-30">"</span>
+<p class="text-neutral-700 dark:text-neutral-300 text-lg italic leading-relaxed relative -mt-4 z-10">
+                           The Cascade Residence required a delicate touch to preserve the natural surroundings. Mazzarini's team executed the project with profound respect for the environment.
+                        </p>
+</div>
+<div class="mt-6">
+<h4 class="text-neutral-900 dark:text-white font-bold text-lg">David Thorne</h4>
+<p class="text-neutral-500 dark:text-neutral-400 text-sm">Founder, Thorne Development</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 overflow-hidden bg-neutral-100 dark:bg-obsidian border-y border-neutral-200 dark:border-neutral-800">
 <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 mb-12">
 <h2 class="text-4xl md:text-5xl font-black text-neutral-900 dark:text-white mb-4">Recent Work</h2>
 <div class="h-1 w-24 bg-primary"></div>
 </div>
-<!-- Horizontal Scroll Container -->
 <div class="flex overflow-x-auto pb-12 px-4 sm:px-6 lg:px-8 gap-6 snap-x snap-mandatory scrollbar-hide hover-grayscale-trigger">
-<!-- Project 1 -->
 <div class="min-w-[85vw] md:min-w-[600px] lg:min-w-[800px] snap-center group relative cursor-pointer rounded-lg overflow-hidden">
 <img alt="Minimalist corporate office interior with concrete walls" class="w-full h-[500px] object-cover hover-grayscale-target" data-alt="Minimalist corporate office interior with concrete walls" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6we5qQggZp2i8Ry5RTi6dyas_3JxdA_y_sgwC4Iq2ShE8Bb2PJg-rbE6H3Me6tvpJAb_4TCN8CmWRAX519Zgn17WMwFxhMWbOC0eWG8PK4AgWcilol3Zf0KbmhHSUs3nuNbrGG5hkrMFa192gPzHuZZAg8ihh_-B3Gpm7UbEJQOP8wvYcTP3QeSIHyjyZhb2HxbpTfRUqaC2RH6fE4gn7SLekLZJl-6yjmgaK-DxSOsvXEJ34OAzylV2iV013mAN5B83aqlZ1hqVY"/>
 <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent p-8 md:p-12 flex flex-col justify-end">
@@ -259,7 +460,6 @@
 </div>
 </div>
 </div>
-<!-- Project 2 -->
 <div class="min-w-[85vw] md:min-w-[600px] lg:min-w-[800px] snap-center group relative cursor-pointer rounded-lg overflow-hidden">
 <img alt="Modern residential home with large glass windows" class="w-full h-[500px] object-cover hover-grayscale-target" data-alt="Modern residential home with large glass windows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCm1x3OfOApKqxWoR3GXeqdYzE4HU5nal99mZAj3T-gK5aoUAzLwp5J72-we67mhEy17RO3tyirCtxt9bhusF72S9iS97dwN6jZXGf6LV78JvEBvisQ-tMaYABYnQjL0s81zC4jZSpcnxAxEMianlgKktnKntQjfrDVdjrGY3YFXVHuAtP19vwgX9fQHRv-_134hUZPvw7Sf1br6-MQZbdBVjnAmvBBXYZz_gpcqy8eRzJeeMwXq-I3E8mvZaBhvNJPcayFvobDHnnN"/>
 <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent p-8 md:p-12 flex flex-col justify-end">
@@ -270,7 +470,6 @@
 </div>
 </div>
 </div>
-<!-- Project 3 -->
 <div class="min-w-[85vw] md:min-w-[600px] lg:min-w-[800px] snap-center group relative cursor-pointer rounded-lg overflow-hidden">
 <img alt="Massive industrial logistics center exterior" class="w-full h-[500px] object-cover hover-grayscale-target" data-alt="Massive industrial logistics center exterior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARojqSyn4jELK2p00psqFqnf5KiR5IST4RC3LjgpVqGpaLW15ou2LNNtMUboFM9QFp-6tTXUqD7yD0EZEDDagMOcksCAEgJjicnQ4REC-XLWXi7_eJIn_tmZ4sW8NAYOs5FJKJwqTtdZqx5w4ZQTergWk4DILpo-2tlZ03olzgZRklKzufE-o-f_tx-rjmKmC3_5H5E3n7ErPncf7xtLwTJjmFI-H8lf_NURQP6JccPhLefYR-RmN6-zS7Js5QqVoOCFUh-BkezBiX"/>
 <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent p-8 md:p-12 flex flex-col justify-end">
@@ -294,40 +493,35 @@
 </div>
 </div>
 </section>
-<!-- CTA Section -->
-<section class="relative py-32 bg-neutral-900 text-white overflow-hidden">
-<!-- Abstract architectural background pattern -->
+<section class="relative py-32 bg-obsidian text-white overflow-hidden border-t border-neutral-800">
 <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 20px 20px;"></div>
 <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
 <h2 class="text-5xl md:text-7xl font-black mb-8 tracking-tight">Let's Build <span class="text-primary">Together.</span></h2>
 <p class="text-xl md:text-2xl text-neutral-300 mb-12 font-light">Whether you're planning a skyscraper or a bespoke residence, we bring the expertise to turn blueprints into landmarks.</p>
 <div class="flex flex-col sm:flex-row justify-center gap-6">
-<a class="px-10 py-5 bg-primary text-white font-bold rounded shadow-lg shadow-primary/30 hover:bg-blue-600 hover:-translate-y-1 transition-all uppercase tracking-wide" href="#">Start Your Project</a>
+<a class="px-10 py-5 bg-primary text-white font-bold rounded shadow-lg shadow-primary/30 hover:bg-white hover:text-neutral-900 hover:-translate-y-1 transition-all uppercase tracking-wide" href="#">Start Your Project</a>
 <a class="px-10 py-5 bg-transparent border border-white/20 text-white font-bold rounded hover:bg-white hover:text-neutral-900 hover:-translate-y-1 transition-all uppercase tracking-wide" href="#">View Career Openings</a>
 </div>
 </div>
 </section>
 </main>
-<!-- Footer -->
-<footer class="bg-white dark:bg-background-dark border-t border-neutral-200 dark:border-neutral-800 pt-20 pb-10">
+<footer class="bg-white dark:bg-obsidian border-t border-neutral-200 dark:border-neutral-800 pt-20 pb-10">
 <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
 <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
-<!-- Brand -->
 <div class="col-span-1 lg:col-span-1">
 <div class="flex items-center gap-2 mb-6">
 <div class="w-8 h-8 bg-primary text-white flex items-center justify-center font-black text-lg rounded">M</div>
-<span class="font-bold text-lg tracking-tight uppercase text-neutral-900 dark:text-white">Mazzarini<span class="text-primary">.</span></span>
+<span class="font-bold text-lg tracking-tight uppercase text-neutral-900 dark:text-white">Mazarini<span class="text-primary">.</span></span>
 </div>
 <p class="text-neutral-500 dark:text-neutral-400 mb-6 text-sm leading-relaxed">
-                        Mazzarini Group is a premier construction and development firm dedicated to excellence, sustainability, and innovation in the built environment.
-                    </p>
+                    Mazzarini Group is a premier construction and development firm dedicated to excellence, sustainability, and innovation in the built environment.
+                </p>
 <div class="flex gap-4">
-<a class="text-neutral-400 hover:text-primary transition-colors" href="#"><span class="sr-only">LinkedIn</span><svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg></a>
-<a class="text-neutral-400 hover:text-primary transition-colors" href="#"><span class="sr-only">Twitter</span><svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg></a>
-<a class="text-neutral-400 hover:text-primary transition-colors" href="#"><span class="sr-only">Instagram</span><svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.069-4.85.069-3.204 0-3.584-.012-4.849-.069-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg></a>
+<a class="text-neutral-400 hover:text-primary transition-colors" href="#"><span class="sr-only">LinkedIn</span><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg></a>
+<a class="text-neutral-400 hover:text-primary transition-colors" href="#"><span class="sr-only">Twitter</span><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg></a>
+<a class="text-neutral-400 hover:text-primary transition-colors" href="#"><span class="sr-only">Instagram</span><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.069-4.85.069-3.204 0-3.584-.012-4.849-.069-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg></a>
 </div>
 </div>
-<!-- Footer Links 1 -->
 <div>
 <h4 class="text-sm font-bold uppercase tracking-widest text-neutral-900 dark:text-white mb-6">Company</h4>
 <ul class="space-y-4 text-sm text-neutral-500 dark:text-neutral-400">
@@ -337,7 +531,6 @@
 <li><a class="hover:text-primary transition-colors" href="#">News &amp; Press</a></li>
 </ul>
 </div>
-<!-- Footer Links 2 -->
 <div>
 <h4 class="text-sm font-bold uppercase tracking-widest text-neutral-900 dark:text-white mb-6">Expertise</h4>
 <ul class="space-y-4 text-sm text-neutral-500 dark:text-neutral-400">
@@ -347,13 +540,12 @@
 <li><a class="hover:text-primary transition-colors" href="#">Sustainable Design</a></li>
 </ul>
 </div>
-<!-- Newsletter -->
 <div>
 <h4 class="text-sm font-bold uppercase tracking-widest text-neutral-900 dark:text-white mb-6">Stay Updated</h4>
 <p class="text-neutral-500 dark:text-neutral-400 mb-4 text-sm">Subscribe to our quarterly report.</p>
 <form class="flex flex-col gap-3">
 <input class="bg-neutral-100 dark:bg-neutral-800 border-none text-neutral-900 dark:text-white px-4 py-3 rounded focus:ring-2 focus:ring-primary outline-none text-sm" placeholder="Email Address" type="email"/>
-<button class="bg-primary text-white font-bold py-3 px-4 rounded hover:bg-blue-600 transition-colors uppercase text-sm tracking-wide" type="submit">Subscribe</button>
+<button class="bg-primary text-white font-bold py-3 px-4 rounded hover:bg-white hover:text-neutral-900 transition-colors uppercase text-sm tracking-wide" type="submit">Subscribe</button>
 </form>
 </div>
 </div>
@@ -366,4 +558,5 @@
 </div>
 </div>
 </footer>
+
 </body></html>

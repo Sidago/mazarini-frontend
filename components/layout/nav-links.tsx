@@ -12,7 +12,7 @@ export function NavLinks({ links }: NavLinksProps): React.ReactElement {
         <Link
           key={link.id}
           href={link.url}
-          className="text-sm font-semibold uppercase tracking-widest hover:text-primary transition-colors"
+          className="text-sm font-semibold uppercase tracking-widest text-gray-300 hover:text-primary transition-colors"
           {...(link.isExternal
             ? { target: "_blank", rel: "noopener noreferrer" }
             : {})}

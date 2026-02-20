@@ -28,7 +28,7 @@ export function NewsletterForm(): React.ReactElement {
         />
         <button
           type="submit"
-          className="bg-primary text-white font-bold py-3 px-4 rounded hover:bg-blue-600 transition-colors uppercase text-sm tracking-wide"
+          className="bg-primary text-white font-bold py-3 px-4 rounded hover:bg-amber-600 transition-colors uppercase text-sm tracking-wide"
         >
           Subscribe
         </button>

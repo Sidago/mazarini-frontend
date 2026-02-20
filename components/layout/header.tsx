@@ -18,7 +18,7 @@ export function Header({
   ctaUrl,
 }: HeaderProps): React.ReactElement {
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-neutral-200 dark:border-neutral-800 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 w-full bg-gradient-to-b from-black/90 via-black/60 to-transparent backdrop-blur-[1px] transition-all duration-300">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <div className="flex-shrink-0">
@@ -28,14 +28,12 @@ export function Header({
           <div className="flex items-center gap-4">
             <button
               aria-label="Search"
-              className="p-2 text-neutral-600 dark:text-neutral-300 hover:text-primary transition-colors"
-            >
+              className="p-2 text-neutral-300 hover:text-primary transition-colors">
               <Icon name="search" />
             </button>
             <Link
               href={ctaUrl}
-              className="hidden sm:inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-semibold text-white bg-primary hover:bg-blue-600 transition-all rounded shadow-lg shadow-primary/20 uppercase tracking-wide"
-            >
+              className="hidden sm:inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-semibold text-white bg-primary hover:bg-amber-600 transition-all rounded shadow-lg shadow-primary/20 uppercase tracking-wide">
               {ctaText}
             </Link>
           </div>
