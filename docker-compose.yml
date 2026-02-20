@@ -3,10 +3,10 @@ services:
     build:
       context: .
       args:
-        NEXT_PUBLIC_STRAPI_URL: http://localhost:1337
+        NEXT_PUBLIC_STRAPI_URL: http://localhost:1338
     ports:
-      - "3000:3000"
+      - "3001:3001"
     environment:
-      - NEXT_PUBLIC_STRAPI_URL=http://localhost:1337
-      - STRAPI_URL=http://host.docker.internal:1337
+      - NEXT_PUBLIC_STRAPI_URL=http://localhost:1338
+      - STRAPI_URL=http://host.docker.internal:1338
     restart: unless-stopped
