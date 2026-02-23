@@ -1,7 +1,7 @@
 import type { StrapiMedia } from "@/lib/types/strapi";
 
 // Public URL for browser-facing assets (images, media)
-const STRAPI_PUBLIC_URL = "http://75.119.135.164:5001";
+const STRAPI_PUBLIC_URL = process.env.NEXT_PUBLIC_STRAPI_URL ?? "http://75.119.135.164:5001";
 
 export function getStrapiUrl(): string {
   return STRAPI_PUBLIC_URL;

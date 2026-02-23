@@ -19,6 +19,7 @@ const FALLBACK_HOMEPAGE: Homepage = {
   heroSubtitle:
     "We transform blueprints into landmarks. With decades of expertise in commercial and residential construction, Mazzarini Group delivers projects that stand the test of time.",
   heroImage: null,
+  heroVideo: null,
   heroFeatured: null,
   heroCTAs: [],
   stats: [],
@@ -51,13 +52,11 @@ export default async function Home(): Promise<React.ReactElement> {
   return (
     <>
       <HeroSection
-        badge={homepage.heroBadge}
         title={homepage.heroTitle}
         highlightText={homepage.heroHighlightText}
-        subtitle={homepage.heroSubtitle}
         ctas={homepage.heroCTAs}
         heroImage={homepage.heroImage}
-        heroFeatured={homepage.heroFeatured}
+        heroVideo={homepage.heroVideo}
       />
       <StatsBar stats={homepage.stats} />
       <ExpertiseSection

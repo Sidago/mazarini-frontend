@@ -82,6 +82,20 @@ export interface HeroFeaturedComponent {
   year: string | null;
 }
 
+export interface SubNavSubItem {
+  id: number;
+  name: string;
+  linkTo: string | null;
+  image: StrapiMedia | null;
+}
+
+export interface SubNavItem {
+  id: number;
+  documentId: string;
+  name: string;
+  subItems: SubNavSubItem[];
+}
+
 export interface Testimonial {
   id: number;
   documentId: string;
@@ -109,6 +123,7 @@ export interface Homepage {
   heroHighlightText: string | null;
   heroSubtitle: string | null;
   heroImage: StrapiMedia | null;
+  heroVideo: StrapiMedia | null;
   heroFeatured: HeroFeaturedComponent | null;
   heroCTAs: LinkComponent[];
   stats: StatComponent[];
@@ -134,6 +149,7 @@ export interface Global {
   favicon: StrapiMedia | null;
   defaultSeo: SeoComponent | null;
   navLinks: LinkComponent[];
+  sub_nav_items: SubNavItem[];
   headerCtaText: string | null;
   headerCtaUrl: string | null;
   footerDescription: string | null;

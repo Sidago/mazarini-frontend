@@ -54,6 +54,7 @@ export default async function RootLayout({
         <Header
           logo={global?.logo ?? null}
           navLinks={global?.navLinks ?? []}
+          subNavItems={global?.sub_nav_items ?? []}
           ctaText={global?.headerCtaText ?? "Work With Us"}
           ctaUrl={global?.headerCtaUrl ?? "#contact"}
         />
