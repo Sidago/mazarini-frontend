@@ -33,7 +33,7 @@ export function SubNav({ items }: SubNavProps): React.ReactElement {
               onMouseEnter={() => setActiveIndex(index)}
               onMouseLeave={() => setActiveIndex(null)}>
               <span
-                className={`text-sm font-semibold uppercase tracking-widest transition-colors cursor-pointer py-3 inline-block ${
+                className={`text-xs font-semibold uppercase tracking-widest transition-colors cursor-pointer py-3 inline-block ${
                   activeIndex === index
                     ? "text-white"
                     : "text-white/80 hover:text-white"
@@ -48,7 +48,7 @@ export function SubNav({ items }: SubNavProps): React.ReactElement {
       {/* Full-width mega-menu dropdown */}
       {activeItem && activeItem.subItems?.length > 0 && (
         <div
-          className="absolute top-11.5 left-0 w-full z-50"
+          className="absolute top-11.5 left-[10%] right-[10%] w-[80%] z-50"
           onMouseEnter={() => setActiveIndex(activeIndex)}
           onMouseLeave={() => setActiveIndex(null)}>
           <div className="bg-neutral-900/98 backdrop-blur-md border-t border-white/10">
