@@ -1,4 +1,5 @@
 import { HeroSection } from "@/components/home/hero-section";
+import { IntroSection } from "@/components/home/intro-section";
 import { StatsBar } from "@/components/home/stats-bar";
 import { ExpertiseSection } from "@/components/home/expertise-section";
 import { ProjectShowcase } from "@/components/home/project-showcase";
@@ -22,6 +23,11 @@ const FALLBACK_HOMEPAGE: Homepage = {
   heroVideo: null,
   heroFeatured: null,
   heroCTAs: [],
+  introHeading:
+    "Delivering a premium construction experience on every project we build.",
+  introHighlightText: "premium construction experience",
+  introDescription:
+    "With decades of expertise in commercial and residential construction, Mazzarini Group delivers projects that stand the test of time. Our commitment to quality craftsmanship and client satisfaction drives every decision we make.",
   stats: [],
   expertiseHeading: "Our Expertise",
   expertiseSubheading:
@@ -59,6 +65,11 @@ export default async function Home(): Promise<React.ReactElement> {
         heroVideo={homepage.heroVideo}
       />
       <StatsBar stats={homepage.stats} />
+      <IntroSection
+        heading={homepage.introHeading}
+        highlightText={homepage.introHighlightText}
+        description={homepage.introDescription}
+      />
       <ExpertiseSection
         heading={homepage.expertiseHeading}
         subheading={homepage.expertiseSubheading}

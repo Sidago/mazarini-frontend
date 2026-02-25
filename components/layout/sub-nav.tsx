@@ -23,9 +23,9 @@ export function SubNav({ items }: SubNavProps): React.ReactElement {
     : "";
 
   return (
-    <nav className="hidden md:block relative">
+    <nav className="hidden md:block relative border-b border-white/10">
       {/* Nav link row */}
-      <div className="border-b border-white/10 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-center gap-10 h-12">
           {items.map((item, index) => (
             <div

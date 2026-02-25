@@ -1,3 +1,6 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Logo } from "@/components/layout/logo";
 import { SubNav } from "@/components/layout/sub-nav";
@@ -20,12 +23,28 @@ export function Header({
   ctaText,
   ctaUrl,
 }: HeaderProps): React.ReactElement {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    function handleScroll(): void {
+      setScrolled(window.scrollY > 50);
+    }
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const midpoint = Math.ceil(navLinks.length / 2);
   const leftLinks = navLinks.slice(0, midpoint);
   const rightLinks = navLinks.slice(midpoint);
 
   return (
-    <header className="absolute top-0 left-0 z-50 w-full">
+    <header
+      className={`fixed top-0 left-0 z-50 w-full transition-all duration-300 ${
+        scrolled
+          ? "bg-neutral-900/60 backdrop-blur-md shadow-lg"
+          : "bg-transparent"
+      }`}
+    >
       {/* Top utility bar */}
       <div className="border-b border-white/10">
         <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">

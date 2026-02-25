@@ -127,6 +127,9 @@ export interface Homepage {
   heroFeatured: HeroFeaturedComponent | null;
   heroCTAs: LinkComponent[];
   stats: StatComponent[];
+  introHeading: string | null;
+  introHighlightText: string | null;
+  introDescription: string | null;
   expertiseHeading: string | null;
   expertiseSubheading: string | null;
   expertise: Expertise[];
