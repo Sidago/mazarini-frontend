@@ -13,6 +13,7 @@ export async function getHomepage(): Promise<Homepage> {
     "populate[expertise][populate][image]": "true",
     "populate[testimonials][populate][image]": "true",
     "populate[our_clients][populate][image]": "true",
+    "populate[experienceImage]": "true",
   });
   // console.log("Fetched homepage data:", res.data);
   return res.data;

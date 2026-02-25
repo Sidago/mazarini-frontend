@@ -6,6 +6,7 @@ import { ProjectFilterSection } from "@/components/home/project-filter-section";
 import { ProjectShowcase } from "@/components/home/project-showcase";
 import { OurClientsSection } from "@/components/home/our-clients-section";
 import { TestimonialSection } from "@/components/home/testimonial-section";
+import { ExperienceSection } from "@/components/home/experience-section";
 import { CtaSection } from "@/components/home/cta-section";
 import { getHomepage } from "@/lib/api/homepage";
 import type { Homepage } from "@/lib/types/strapi";
@@ -43,6 +44,12 @@ const FALLBACK_HOMEPAGE: Homepage = {
   testimonials: [],
   our_clients: [],
   ctaCTAs: [],
+  experienceHeading: "The Mazzarini Experience, Built on Trust",
+  experienceHighlightText: "Trust",
+  experienceDescription:
+    "Our success is built on a foundation of reliability, relationships, ingenuity, and proven outcomes. We have a passion for elevating the business of building and ensuring an exceptional experience for every client.",
+  experienceImage: null,
+  experienceCtaText: "TRUST, BUILT",
 };
 
 export default async function Home(): Promise<React.ReactElement> {
@@ -76,6 +83,13 @@ export default async function Home(): Promise<React.ReactElement> {
         heading={homepage.expertiseHeading}
         subheading={homepage.expertiseSubheading}
         expertises={homepage.expertise ?? []}
+      />
+      <ExperienceSection
+        heading={homepage.experienceHeading}
+        highlightText={homepage.experienceHighlightText}
+        description={homepage.experienceDescription}
+        image={homepage.experienceImage}
+        ctaText={homepage.experienceCtaText}
       />
       <ProjectShowcase
         heading={homepage.projectsHeading}

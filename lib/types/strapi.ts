@@ -141,6 +141,11 @@ export interface Homepage {
   testimonials: Testimonial[];
   our_clients: OurClient[];
   ctaCTAs: LinkComponent[];
+  experienceHeading: string | null;
+  experienceHighlightText: string | null;
+  experienceDescription: string | null;
+  experienceImage: StrapiMedia | null;
+  experienceCtaText: string | null;
 }
 
 export interface Global {
