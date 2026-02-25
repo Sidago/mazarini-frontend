@@ -2,6 +2,7 @@ import { HeroSection } from "@/components/home/hero-section";
 import { IntroSection } from "@/components/home/intro-section";
 import { StatsBar } from "@/components/home/stats-bar";
 import { ExpertiseSection } from "@/components/home/expertise-section";
+import { ProjectFilterSection } from "@/components/home/project-filter-section";
 import { ProjectShowcase } from "@/components/home/project-showcase";
 import { OurClientsSection } from "@/components/home/our-clients-section";
 import { TestimonialSection } from "@/components/home/testimonial-section";
@@ -70,6 +71,7 @@ export default async function Home(): Promise<React.ReactElement> {
         highlightText={homepage.introHighlightText}
         description={homepage.introDescription}
       />
+      <ProjectFilterSection projects={homepage.projects ?? []} />
       <ExpertiseSection
         heading={homepage.expertiseHeading}
         subheading={homepage.expertiseSubheading}

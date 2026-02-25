@@ -8,6 +8,11 @@ import {
   useSpring,
   useReducedMotion,
   type Variant,
+  useMotionValueEvent,
+  useMotionValue,
+  useAnimationFrame,
+  wrap,
+  useVelocity,
 } from "framer-motion";
 
 // ─── ScaleReveal ──────────────────────────────────────────
@@ -35,8 +40,7 @@ export function ScaleReveal({
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once, margin: "-80px" }}
       transition={{ duration, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className={className}
-    >
+      className={className}>
       {children}
     </motion.div>
   );
@@ -85,8 +89,7 @@ export function BlurFadeIn({
       whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       viewport={{ once, margin: "-80px" }}
       transition={{ duration, delay, ease: "easeOut" }}
-      className={className}
-    >
+      className={className}>
       {children}
     </motion.div>
   );
@@ -156,14 +159,18 @@ export function TextReveal({
       whileInView="visible"
       viewport={{ once, margin: "-80px" }}
       custom={{ staggerDelay, delay }}
-      className={className}
-    >
+      className={className}>
       {words.map((word, i) => (
         <span
           key={`${word}-${i}`}
-          style={{ display: "inline-block", overflow: "hidden", verticalAlign: "bottom" }}
-        >
-          <motion.span variants={wordVariants} style={{ display: "inline-block" }}>
+          style={{
+            display: "inline-block",
+            overflow: "hidden",
+            verticalAlign: "bottom",
+          }}>
+          <motion.span
+            variants={wordVariants}
+            style={{ display: "inline-block" }}>
             {word}
           </motion.span>
           {i < words.length - 1 && "\u00A0"}
@@ -201,6 +208,78 @@ export function ParallaxSection({
     <div ref={ref} className={className}>
       <motion.div style={prefersReduced ? undefined : { y }}>
         {children}
+      </motion.div>
+    </div>
+  );
+}
+
+// ─── Infinite scroll ─────────────────────
+
+interface ParallaxProps {
+  children: string;
+  baseVelocity: number;
+  className?: string;
+}
+
+export function ParallaxText({ children, baseVelocity = 100, className }: ParallaxProps) {
+  const baseX = useMotionValue(0);
+  const { scrollY } = useScroll();
+  const scrollVelocity = useVelocity(scrollY);
+  const smoothVelocity = useSpring(scrollVelocity, {
+    damping: 50,
+    stiffness: 400,
+  });
+  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], {
+    clamp: false,
+  });
+
+  /**
+   * This is a magic wrapping for the length of the text - you
+   * have to replace for wrapping that works for you or dynamically
+   * calculate
+   */
+  const x = useTransform(baseX, (v) => `${wrap(-20, -45, v)}%`);
+
+  const directionFactor = useRef<number>(1);
+  useAnimationFrame((t, delta) => {
+    let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
+
+    /**
+     * This is what changes the direction of the scroll once we
+     * switch scrolling directions.
+     */
+    if (velocityFactor.get() < 0) {
+      directionFactor.current = -1;
+    } else if (velocityFactor.get() > 0) {
+      directionFactor.current = 1;
+    }
+
+    moveBy += directionFactor.current * moveBy * velocityFactor.get();
+
+    baseX.set(baseX.get() + moveBy);
+  });
+
+  /**
+   * The number of times to repeat the child text should be dynamically calculated
+   * based on the size of the text and viewport. Likewise, the x motion value is
+   * currently wrapped between -20 and -45% - this 25% is derived from the fact
+   * we have four children (100% / 4). This would also want deriving from the
+   * dynamically generated number of children.
+   */
+  const defaultTextClass =
+    "inline-block text-[18vw] md:text-[14vw] font-black italic text-white/10 leading-none mx-4";
+
+  return (
+    <div className="w-full h-full flex items-center overflow-hidden">
+      <motion.div className="flex whitespace-nowrap" style={{ x }}>
+        {Array.from({ length: 10 }).map((_, i) => (
+          <span
+            key={i}
+            className={className ?? defaultTextClass}
+            style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
+            {children}
+          </span>
+        ))}
       </motion.div>
     </div>
   );
