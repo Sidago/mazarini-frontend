@@ -31,7 +31,7 @@ export function MobileMenu({
       </button>
 
       {isOpen && (
-        <div className="fixed inset-0 top-20 z-40 bg-neutral-900/98 backdrop-blur-md overflow-y-auto">
+        <div className="fixed inset-0 top-20 z-100 bg-neutral-900/98 backdrop-blur-md overflow-y-auto">
           <div className="px-6 py-8 flex flex-col gap-6">
             {/* Main nav items */}
             {subNavItems.map((item) => (
