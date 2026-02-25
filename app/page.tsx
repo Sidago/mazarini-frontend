@@ -7,6 +7,7 @@ import { ProjectShowcase } from "@/components/home/project-showcase";
 import { OurClientsSection } from "@/components/home/our-clients-section";
 import { TestimonialSection } from "@/components/home/testimonial-section";
 import { ExperienceSection } from "@/components/home/experience-section";
+import { BelongSection } from "@/components/home/belong-section";
 import { CtaSection } from "@/components/home/cta-section";
 import { getHomepage } from "@/lib/api/homepage";
 import type { Homepage } from "@/lib/types/strapi";
@@ -50,6 +51,11 @@ const FALLBACK_HOMEPAGE: Homepage = {
     "Our success is built on a foundation of reliability, relationships, ingenuity, and proven outcomes. We have a passion for elevating the business of building and ensuring an exceptional experience for every client.",
   experienceImage: null,
   experienceCtaText: "TRUST, BUILT",
+  belongHeading: "You Belong Here",
+  belongDescription:
+    "You're talented, resourceful, and driven. We're passionate, progressive, and disciplined, and our team members are the true foundation of our business. Let's build a future together.",
+  belongImage: null,
+  belongCtaText: "JOIN OUR TEAM",
 };
 
 export default async function Home(): Promise<React.ReactElement> {
@@ -91,10 +97,16 @@ export default async function Home(): Promise<React.ReactElement> {
         image={homepage.experienceImage}
         ctaText={homepage.experienceCtaText}
       />
-      <ProjectShowcase
+      <BelongSection
+        heading={homepage.belongHeading}
+        description={homepage.belongDescription}
+        image={homepage.belongImage}
+        ctaText={homepage.belongCtaText}
+      />
+      {/* <ProjectShowcase
         heading={homepage.projectsHeading}
         projects={homepage.projects ?? []}
-      />
+      /> */}
       <OurClientsSection clients={homepage.our_clients ?? []} />
       <TestimonialSection testimonials={homepage.testimonials ?? []} />
       <CtaSection

@@ -146,6 +146,10 @@ export interface Homepage {
   experienceDescription: string | null;
   experienceImage: StrapiMedia | null;
   experienceCtaText: string | null;
+  belongHeading: string | null;
+  belongDescription: string | null;
+  belongImage: StrapiMedia | null;
+  belongCtaText: string | null;
 }
 
 export interface Global {
