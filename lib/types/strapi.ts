@@ -150,6 +150,8 @@ export interface Homepage {
   belongDescription: string | null;
   belongImage: StrapiMedia | null;
   belongCtaText: string | null;
+  newsHeading: string | null;
+  news: News[];
 }
 
 export interface Global {
@@ -199,6 +201,16 @@ export interface About {
   documentId: string;
   title: string;
   blocks: ContentBlock[];
+}
+
+export interface News {
+  id: number;
+  documentId: string;
+  title: string;
+  description: string | null;
+  slug: string;
+  category: string | null;
+  image: StrapiMedia | null;
 }
 
 export interface Expertise {

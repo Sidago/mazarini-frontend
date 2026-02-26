@@ -15,6 +15,7 @@ export async function getHomepage(): Promise<Homepage> {
     "populate[our_clients][populate][image]": "true",
     "populate[experienceImage]": "true",
     "populate[belongImage]": "true",
+    "populate[news][populate][image]": "true",
   });
   // console.log("Fetched homepage data:", res.data);
   return res.data;
