@@ -13,7 +13,7 @@ export function ProjectFilterCard({
 
   return (
     <Link
-      href={`/projects/${project.documentId}`}
+      href={`/projects/${project.id}`}
       className="group relative block overflow-hidden rounded-lg"
     >
       <div className="relative w-full aspect-[4/3]">

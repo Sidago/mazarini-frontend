@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Activity, useState } from "react";
 import Link from "next/link";
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import type { SubNavItem, SubNavSubItem } from "@/lib/types/strapi";
@@ -25,28 +25,36 @@ export function SubNav({ items }: SubNavProps): React.ReactElement {
   return (
     <nav className="hidden md:block relative border-b border-white/10">
       {/* Nav link row */}
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-400 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-center gap-10 h-12">
-          {items.map((item, index) => (
-            <div
-              key={item.id}
-              onMouseEnter={() => setActiveIndex(index)}
-              onMouseLeave={() => setActiveIndex(null)}>
-              <span
-                className={`text-xs font-semibold uppercase tracking-widest transition-colors cursor-pointer py-3 inline-block ${
-                  activeIndex === index
-                    ? "text-white"
-                    : "text-white/80 hover:text-white"
-                }`}>
-                {item.name}
-              </span>
-            </div>
-          ))}
+          {items.map((item, index) => {
+            const slug = item?.slug ?? "/";
+            return (
+              <Link
+                key={item.id}
+                href={slug}
+                onMouseEnter={() => setActiveIndex(index)}
+                onMouseLeave={() => setActiveIndex(null)}>
+                <span
+                  className={`text-xs font-semibold uppercase tracking-widest transition-colors cursor-pointer py-3 inline-block ${
+                    activeIndex === index
+                      ? "text-white"
+                      : "text-white/80 hover:text-white"
+                  }`}>
+                  {item.name}
+                </span>
+              </Link>
+            );
+          })}
         </div>
       </div>
 
       {/* Full-width mega-menu dropdown */}
-      {activeItem && activeItem.subItems?.length > 0 && (
+      {/* {activeItem && activeItem.subItems?.length > 0 && ( */}
+      <Activity
+        mode={
+          activeItem && activeItem?.subItems?.length > 0 ? "visible" : "hidden"
+        }>
         <div
           className="absolute top-11.5 left-[10%] right-[10%] w-[80%] z-50"
           onMouseEnter={() => setActiveIndex(activeIndex)}
@@ -57,13 +65,13 @@ export function SubNav({ items }: SubNavProps): React.ReactElement {
                 {/* Left — large section title */}
                 <div className="col-span-3 flex items-start">
                   <h3 className="text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight">
-                    {activeItem.name}
+                    {activeItem?.name}
                   </h3>
                 </div>
                 {/* Center — sub-items in a two-column grid */}
                 <div className="col-span-5">
                   <div className="grid grid-cols-2 gap-x-8 gap-y-1">
-                    {activeItem.subItems.map((sub: SubNavSubItem) => (
+                    {activeItem?.subItems.map((sub: SubNavSubItem) => (
                       <Link
                         key={sub.id}
                         href={sub.linkTo ?? "#"}
@@ -82,7 +90,7 @@ export function SubNav({ items }: SubNavProps): React.ReactElement {
                     /* eslint-disable-next-line @next/next/no-img-element */
                     <img
                       src={featuredImageUrl}
-                      alt={activeItem.name}
+                      alt={activeItem?.name ?? "Featured image"}
                       className="w-full h-52 object-cover"
                     />
                     ) : (
@@ -93,7 +101,8 @@ export function SubNav({ items }: SubNavProps): React.ReactElement {
             </div>
           </div>
         </div>
-      )}
+      </Activity>
+      {/* )} */}
     </nav>
   );
 }

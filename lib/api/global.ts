@@ -12,6 +12,6 @@ export async function getGlobal(): Promise<Global> {
     "populate[socialLinks]": "true",
     "populate[bottomLinks]": "true",
   });
-  console.log("Fetched global data:", res.data);
+  // console.log("Fetched global data:", res.data);
   return res.data;
 }

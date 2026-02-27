@@ -93,6 +93,7 @@ export interface SubNavItem {
   id: number;
   documentId: string;
   name: string;
+  slug?: string;
   subItems: SubNavSubItem[];
 }
 
@@ -229,8 +230,19 @@ export interface Project {
   title: string;
   description: string;
   category: string;
+  location: string | null;
+  type: string | null;
   image: StrapiMedia[];
-  detailed_description: HTMLElement;
+  detail_discriptions: unknown;
+}
+
+export interface ProjectsPage {
+  id: number;
+  documentId: string;
+  pageTitle: string;
+  pageDescription: string | null;
+  featuredProjects: Project[];
+  featuredCTA: string | null;
 }
 
 export interface Service {
