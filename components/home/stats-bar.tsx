@@ -10,7 +10,7 @@ export function StatsBar({ stats }: StatsBarProps): React.ReactElement {
   return (
     <section className="w-full bg-primary text-white border-b border-primary/20">
       <FadeIn direction="up" duration={0.5}>
-        <div className="max-w-[1600px] mx-auto">
+        <div className="max-w-400 mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/20 border-x border-white/20">
             {stats.map((stat) => (
               <StatItem

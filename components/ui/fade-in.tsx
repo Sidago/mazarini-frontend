@@ -123,7 +123,7 @@ export function CountUp({
   className,
 }: CountUpProps): React.ReactElement {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const isInView = useInView(ref, { once: true });
   const [display, setDisplay] = useState("0");
 
   // Extract the numeric part and any prefix (like $)

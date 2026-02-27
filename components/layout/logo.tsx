@@ -12,7 +12,7 @@ export function Logo({ logo, size = "default" }: LogoProps): React.ReactElement 
   const imgSize = size === "default" ? "h-13" : "h-10";
 
   return (
-    <Link href="/" className="flex items-center gap-2">
+    <Link href="#" className="flex items-center gap-2">
       {imageUrl ? (
         <img
           src={imageUrl}

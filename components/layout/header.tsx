@@ -6,6 +6,7 @@ import { Logo } from "@/components/layout/logo";
 import { SubNav } from "@/components/layout/sub-nav";
 import { Icon } from "@/components/ui/icon";
 import { MobileMenu } from "@/components/layout/mobile-menu";
+import { SearchModal } from "@/components/ui/search-modal";
 import type { LinkComponent, StrapiMedia, SubNavItem } from "@/lib/types/strapi";
 
 interface HeaderProps {
@@ -24,6 +25,7 @@ export function Header({
   ctaUrl,
 }: HeaderProps): React.ReactElement {
   const [scrolled, setScrolled] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   useEffect(() => {
     function handleScroll(): void {
@@ -54,6 +56,7 @@ export function Header({
               <button
                 aria-label="Search"
                 className="p-1 text-white/70 hover:text-white transition-colors"
+                onClick={() => setIsSearchOpen(true)}
               >
                 <Icon name="search" />
               </button>
@@ -70,6 +73,15 @@ export function Header({
                 </Link>
               ))}
             </div>
+
+            {/* Mobile search button */}
+            <button
+              aria-label="Search"
+              className="md:hidden p-1 text-white/70 hover:text-white transition-colors"
+              onClick={() => setIsSearchOpen(true)}
+            >
+              <Icon name="search" />
+            </button>
 
             {/* Center logo */}
             <div className="absolute left-1/2 -translate-x-1/2">
@@ -104,6 +116,7 @@ export function Header({
               subNavItems={subNavItems}
               ctaText={ctaText}
               ctaUrl={ctaUrl}
+              onSearchOpen={() => setIsSearchOpen(true)}
             />
           </div>
         </div>
@@ -111,6 +124,8 @@ export function Header({
 
       {/* Main navigation bar */}
       <SubNav items={subNavItems} />
+
+      <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
     </header>
   );
 }

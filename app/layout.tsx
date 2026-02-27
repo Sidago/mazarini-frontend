@@ -5,6 +5,7 @@ import { Footer } from "@/components/layout/footer";
 import { PageLoader } from "@/components/ui/page-loader";
 import { getGlobal } from "@/lib/api/global";
 import "./globals.css";
+import { getStrapiMediaUrl } from "@/lib/api/client";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -35,8 +36,10 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>): Promise<React.ReactElement> {
   let global = null;
+  let fabIcon = undefined;
   try {
     global = await getGlobal();
+    fabIcon = getStrapiMediaUrl(global?.favicon);
   } catch {
     // Strapi may be unavailable — render with fallback
   }
@@ -44,14 +47,14 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="icon" href={fabIcon} sizes="32x32" />
         <link
           href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
           rel="stylesheet"
         />
       </head>
       <body
-        className={`${inter.variable} font-display bg-background-light dark:bg-background-dark text-neutral-800 dark:text-neutral-100 antialiased selection:bg-primary selection:text-white`}
-      >
+        className={`${inter.variable} font-display bg-background-light dark:bg-background-dark text-neutral-800 dark:text-neutral-100 antialiased selection:bg-primary selection:text-white`}>
         <PageLoader />
         <Header
           logo={global?.logo ?? null}

@@ -232,3 +232,12 @@ export interface Project {
   image: StrapiMedia[];
   detailed_description: HTMLElement;
 }
+
+export interface Service {
+  id: number;
+  documentId: string;
+  title: string;
+  discriptions: string;
+  catagory: string | null;
+  image: StrapiMedia | null;
+}
