@@ -201,7 +201,26 @@ export interface About {
   id: number;
   documentId: string;
   title: string;
+  heroTitle: string;
+  heroText: string;
+  heroVideo: StrapiMedia | null;
+  heroImage: StrapiMedia | null;
+  introHeading: string | null;
+  introHighlight: string | null;
+  introDiscription: string | null;
+  timelineHeading: string | null;
+  timelineDescription: string | null;
   blocks: ContentBlock[];
+}
+
+export interface TimelineEntry {
+  id: number;
+  documentId: string;
+  decade: string;
+  title: string;
+  description: string;
+  image: StrapiMedia;
+  order: number | null;
 }
 
 export interface News {
