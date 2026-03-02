@@ -17,7 +17,7 @@ function BlockRenderer({ block }: { block: ContentBlock }): React.ReactElement {
       );
     case "shared.media":
       return (
-        <div className="relative w-full h-[400px] rounded-lg overflow-hidden">
+        <div className="relative w-full h-100 rounded-lg overflow-hidden">
           <Image
             src={getStrapiMediaUrl(block.file)}
             alt={block.file.alternativeText ?? ""}

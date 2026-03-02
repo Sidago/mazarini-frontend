@@ -13,9 +13,6 @@ export default async function ProjectsPage(): Promise<React.ReactElement> {
       getProjectsPage().catch(() => null),
       getProjects(),
     ]);
-
-    // console.log("Projects page data:", pageData);
-    console.log("Projects data:", projects);
   } catch (error) {
     // Strapi may be unavailable
     console.error("Error fetching projects data:", error);
@@ -37,7 +34,7 @@ export default async function ProjectsPage(): Promise<React.ReactElement> {
 
       {/* Page heading */}
       <section className="pt-16 lg:pt-24 pb-8 bg-background-light dark:bg-background-dark">
-        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-400 mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn direction="up">
             <h2 className="text-4xl md:text-5xl font-black text-neutral-900 dark:text-white mb-4">  
               {pageTitle}

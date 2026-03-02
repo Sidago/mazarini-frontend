@@ -26,17 +26,17 @@ export function SubNav({ items }: SubNavProps): React.ReactElement {
     <nav className="hidden md:block relative border-b border-white/10">
       {/* Nav link row */}
       <div className="max-w-400 mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-center gap-10 h-12">
+        <div className="flex items-center justify-center gap-10">
           {items.map((item, index) => {
             const slug = item?.slug ?? "/";
             return (
               <Link
                 key={item.id}
-                href={slug}
+                href={slug === "home" ? "/" : `/${slug}`}
                 onMouseEnter={() => setActiveIndex(index)}
                 onMouseLeave={() => setActiveIndex(null)}>
                 <span
-                  className={`text-xs font-semibold uppercase tracking-widest transition-colors cursor-pointer py-3 inline-block ${
+                  className={`text-xs font-semibold uppercase tracking-widest transition-colors cursor-pointer py-4 inline-block ${
                     activeIndex === index
                       ? "text-white"
                       : "text-white/80 hover:text-white"
@@ -60,7 +60,7 @@ export function SubNav({ items }: SubNavProps): React.ReactElement {
           onMouseEnter={() => setActiveIndex(activeIndex)}
           onMouseLeave={() => setActiveIndex(null)}>
           <div className="bg-neutral-900/98 backdrop-blur-md border-t border-white/10">
-            <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div className="max-w-400 mx-auto px-4 sm:px-6 lg:px-8 py-12">
               <div className="grid grid-cols-12 gap-8">
                 {/* Left — large section title */}
                 <div className="col-span-3 flex items-start">

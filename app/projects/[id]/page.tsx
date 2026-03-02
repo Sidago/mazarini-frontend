@@ -4,6 +4,7 @@ import { FadeIn } from "@/components/ui/fade-in";
 import { Icon } from "@/components/ui/icon";
 import { getProject } from "@/lib/api/projects";
 import { getStrapiMediaUrl } from "@/lib/api/client";
+import { log } from "console";
 
 interface ProjectDetailPageProps {
   params: Promise<{ id: string }>;
@@ -16,18 +17,20 @@ export default async function ProjectDetailPage({
   let project;
   try {
     project = await getProject(id);
-  } catch {
+    project = Array.isArray(project) ? project[0] : project;
+  } catch (error) {
     notFound();
   }
 
   if (!project) notFound();
 
-  const heroImage = getStrapiMediaUrl(project.image[0] ?? null);
+  console.log("Project Info:", project);
+  const heroImage = getStrapiMediaUrl(project?.image[0] ?? null);
 
   return (
     <>
       {/* Hero image */}
-      <section className="relative w-full h-[60vh] min-h-[400px] overflow-hidden bg-neutral-900">
+      <section className="relative w-full h-[60vh] min-h-100 overflow-hidden bg-neutral-900">
         {heroImage && (
           <img
             src={heroImage}
@@ -35,10 +38,10 @@ export default async function ProjectDetailPage({
             className="absolute inset-0 w-full h-full object-cover"
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent" />
 
         <div className="absolute bottom-0 left-0 right-0 z-10 pb-12">
-          <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-400 mx-auto px-4 sm:px-6 lg:px-8">
             <FadeIn direction="up">
               <div className="flex flex-wrap gap-2 mb-4">
                 <span className="px-3 py-1 border border-white/30 rounded text-xs font-bold text-white uppercase tracking-wider bg-black/20 backdrop-blur-sm">
@@ -70,8 +73,7 @@ export default async function ProjectDetailPage({
           <FadeIn>
             <Link
               href="/projects"
-              className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:text-amber-500 transition-colors mb-12"
-            >
+              className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:text-amber-500 transition-colors mb-12">
               <Icon name="arrow_back" className="text-lg" />
               Back to Projects
             </Link>
@@ -85,11 +87,11 @@ export default async function ProjectDetailPage({
           </FadeIn>
 
           {/* Additional images */}
-          {project.image.length > 1 && (
+          {project?.image?.length > 1 && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-              {project.image.slice(1).map((img) => (
+              {project.image.slice(1).map((img: any) => (
                 <FadeIn key={img.id}>
-                  <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden">
+                  <div className="relative w-full aspect-4/3 rounded-lg overflow-hidden">
                     <img
                       src={getStrapiMediaUrl(img)}
                       alt={img.alternativeText ?? project.title}
