@@ -6,7 +6,11 @@ import { FadeIn } from "@/components/ui/fade-in";
 import { AboutHero } from "@/components/about/about-hero";
 import { TimelineSection } from "@/components/about/timeline-section";
 import { IntroSection } from "@/components/home/intro-section";
-import type { About as AboutType, ContentBlock, TimelineEntry } from "@/lib/types/strapi";
+import type {
+  About as AboutType,
+  ContentBlock,
+  TimelineEntry,
+} from "@/lib/types/strapi";
 
 export const dynamic = "force-dynamic";
 
@@ -25,43 +29,6 @@ const FALLBACK_ABOUT: AboutType = {
   timelineDescription: null,
   blocks: [],
 };
-
-function BlockRenderer({ block }: { block: ContentBlock }): React.ReactElement {
-  switch (block.__component) {
-    case "shared.rich-text":
-      return (
-        <div
-          className="prose prose-lg dark:prose-invert max-w-none"
-          dangerouslySetInnerHTML={{ __html: block.body }}
-        />
-      );
-    case "shared.media":
-      return (
-        <div className="relative w-full h-100 rounded-lg overflow-hidden">
-          <Image
-            src={getStrapiMediaUrl(block.file)}
-            alt={block.file.alternativeText ?? ""}
-            fill
-            className="object-cover"
-            sizes="(max-width: 1024px) 100vw, 800px"
-          />
-        </div>
-      );
-    case "shared.quote":
-      return (
-        <blockquote className="border-l-4 border-primary pl-6 py-4">
-          {block.title && (
-            <p className="text-xl font-bold text-neutral-900 dark:text-white mb-2">
-              {block.title}
-            </p>
-          )}
-          <p className="text-neutral-600 dark:text-neutral-300 italic text-lg">
-            {block.body}
-          </p>
-        </blockquote>
-      );
-  }
-}
 
 export default async function About(): Promise<React.ReactElement> {
   let about: AboutType = FALLBACK_ABOUT;
@@ -96,18 +63,6 @@ export default async function About(): Promise<React.ReactElement> {
         description={about.timelineDescription}
         entries={timelineEntries}
       />
-
-      {about.blocks?.length > 0 && (
-        <div className="bg-neutral-950 py-20 lg:py-28">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-            {about.blocks.map((block, index) => (
-              <FadeIn key={block.id} delay={index * 0.1}>
-                <BlockRenderer block={block} />
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      )}
     </>
   );
 }

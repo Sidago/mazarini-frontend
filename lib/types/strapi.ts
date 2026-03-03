@@ -58,8 +58,18 @@ export interface StatComponent {
 
 export interface SocialLinkComponent {
   id: number;
-  platform: "linkedin" | "twitter" | "instagram" | "facebook";
+  platform: "linkedin" | "twitter" | "instagram" | "facebook" | "youtube";
   url: string;
+}
+
+export interface ContactSubmissionPayload {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  companyName: string;
+  inquiryType: string;
+  notes: string;
 }
 
 export interface SeoComponent {
@@ -211,6 +221,17 @@ export interface About {
   timelineHeading: string | null;
   timelineDescription: string | null;
   blocks: ContentBlock[];
+}
+
+export interface Contact {
+  id: number;
+  documentId: string;
+  heroTitle: string;
+  heroText: string;
+  heroVideo: StrapiMedia | null;
+  heroImage: StrapiMedia | null;
+  formTitle: string | null;
+  formDescription: string | null;
 }
 
 export interface TimelineEntry {
