@@ -252,6 +252,16 @@ export interface News {
   slug: string;
   category: string | null;
   image: StrapiMedia | null;
+  publishedDate: string | null;
+}
+
+export interface NewsPage {
+  id: number;
+  documentId: string;
+  pageTitle: string;
+  pageDescription: string | null;
+  featuredNews: News[];
+  featuredCTA: string | null;
 }
 
 export interface Expertise {
