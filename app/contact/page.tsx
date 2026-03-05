@@ -1,9 +1,9 @@
-import { AboutHero } from "@/components/about/about-hero";
 import { ContactInfo } from "@/components/contact/contact-info";
 import { ContactForm } from "@/components/contact/contact-form";
 import { getGlobal } from "@/lib/api/global";
 import { getContact } from "@/lib/api/contact";
 import type { Contact, SocialLinkComponent } from "@/lib/types/strapi";
+import { ImgOrVideoHero } from "@/components/common/img-video-hero";
 
 export const dynamic = "force-dynamic";
 
@@ -44,7 +44,7 @@ export default async function ContactPage(): Promise<React.ReactElement> {
   return (
     <>
       {/* Contact Hero Section like about hero page */}
-      <AboutHero
+      <ImgOrVideoHero
         title={contact.heroTitle}
         text={contact.heroText}
         heroVideo={contact.heroVideo}

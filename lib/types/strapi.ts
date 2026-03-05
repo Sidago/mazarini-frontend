@@ -293,3 +293,25 @@ export interface Service {
   catagory: string | null;
   image: StrapiMedia | null;
 }
+
+// Locations
+export interface LocationPage {
+  id: number;
+  documentId: string;
+  title: string;
+  heroTitle: string;
+  heroText: string;
+  heroVideo: StrapiMedia | null;
+  heroImage: StrapiMedia | null;
+}
+
+export interface Location {
+  id: number;
+  documentId: string;
+  state: string;
+  city: string;
+  phoneNumber: string;
+  email: string;
+  address: string;
+  mapEmbedUrl: string | null;
+}

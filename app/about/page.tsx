@@ -3,7 +3,6 @@ import { getAbout } from "@/lib/api/about";
 import { getTimelineEntries } from "@/lib/api/timeline";
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import { FadeIn } from "@/components/ui/fade-in";
-import { AboutHero } from "@/components/about/about-hero";
 import { TimelineSection } from "@/components/about/timeline-section";
 import { IntroSection } from "@/components/home/intro-section";
 import type {
@@ -11,6 +10,7 @@ import type {
   ContentBlock,
   TimelineEntry,
 } from "@/lib/types/strapi";
+import { ImgOrVideoHero } from "@/components/common/img-video-hero";
 
 export const dynamic = "force-dynamic";
 
@@ -45,7 +45,7 @@ export default async function About(): Promise<React.ReactElement> {
 
   return (
     <>
-      <AboutHero
+      <ImgOrVideoHero
         title={about.heroTitle}
         text={about.heroText}
         heroVideo={about.heroVideo}

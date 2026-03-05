@@ -1,20 +1,21 @@
-import { HeroVideo } from "@/components/home/hero-video";
-import { FadeIn } from "@/components/ui/fade-in";
-import type { StrapiMedia } from "@/lib/types/strapi";
+import { StrapiMedia } from "@/lib/types/strapi";
+import { HeroVideo } from "../home/hero-video";
+import { FadeIn } from "../ui/fade-in";
 
-interface AboutHeroProps {
+
+interface ImgOrVideoHeroProps {
   title: string;
   text: string;
   heroVideo: StrapiMedia | null;
   heroImage: StrapiMedia | null;
 }
 
-export function AboutHero({
+export function ImgOrVideoHero({
   title,
   text,
   heroVideo,
   heroImage,
-}: AboutHeroProps): React.ReactElement {
+}: ImgOrVideoHeroProps): React.ReactElement {
   return (
     <section className="relative w-full h-screen overflow-hidden">
       {/* Video / Image background */}
