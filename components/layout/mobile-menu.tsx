@@ -1,6 +1,6 @@
 "use client";
 
-import { Activity, useState } from "react";
+import { Activity, useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import { Icon } from "@/components/ui/icon";
@@ -22,6 +22,11 @@ export function MobileMenu({
   onSearchOpen,
 }: MobileMenuProps): React.ReactElement {
   const [isOpen, setIsOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <>
@@ -34,8 +39,7 @@ export function MobileMenu({
         </button>
       </div>
 
-      {
-        // isOpen &&
+      {mounted &&
         createPortal(
           <Activity mode={isOpen ? "visible" : "hidden"}>
             <div className="fixed inset-0 top-20 z-100 bg-neutral-900/98 backdrop-blur-md overflow-y-auto">

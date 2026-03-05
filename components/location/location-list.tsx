@@ -12,7 +12,7 @@ export function LocationList({
   if (locations.length === 0) {
     return (
       <section className="py-24 lg:py-32">
-        <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-400 px-4 sm:px-6 lg:px-8">
           <p className="text-center text-lg text-neutral-500 dark:text-neutral-400">
             No locations available at the moment.
           </p>
@@ -23,7 +23,7 @@ export function LocationList({
 
   return (
     <section className="py-24 lg:py-32 bg-background-light dark:bg-background-dark">
-      <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-400 px-4 sm:px-6 lg:px-8">
         <FadeIn>
           <div className="mb-16 max-w-2xl">
             <h2 className="text-4xl font-bold text-neutral-900 dark:text-white sm:text-5xl">

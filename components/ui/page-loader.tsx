@@ -7,6 +7,8 @@ export function PageLoader(): React.ReactElement | null {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
     if (document.readyState === "complete") {
       setIsLoading(false);
       return;

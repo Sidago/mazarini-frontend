@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { Icon } from "@/components/ui/icon";
 import { useSearch } from "@/hooks/use-search";
@@ -75,6 +75,11 @@ function ResultSection({ title, items }: ResultSectionProps): React.ReactElement
 export function SearchModal({ isOpen, onClose }: SearchModalProps): React.ReactElement | null {
   const { query, setQuery, results, isLoading, reset } = useSearch();
   const inputRef = useRef<HTMLInputElement>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (isOpen) {
@@ -113,7 +118,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps): React.ReactE
     onClose();
   }
 
-  if (!isOpen) return null;
+  if (!isOpen || !mounted) return null;
 
   return createPortal(
     <div className="fixed inset-0 z-200 flex flex-col">

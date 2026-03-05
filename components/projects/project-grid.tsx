@@ -57,7 +57,7 @@ function Dropdown({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2 }}
-            className="absolute top-full left-0 mt-2 min-w-[200px] bg-white dark:bg-neutral-800 rounded shadow-xl z-50 overflow-hidden"
+            className="absolute top-full left-0 mt-2 min-w-50 bg-white dark:bg-neutral-800 rounded shadow-xl z-50 overflow-hidden"
           >
             <button
               type="button"
@@ -138,7 +138,7 @@ export function ProjectGrid({
 
   return (
     <section className="py-16 lg:py-24 bg-background-light dark:bg-background-dark">
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-400 mx-auto px-4 sm:px-6 lg:px-8">
         {/* Filter bar */}
         <div className="flex flex-wrap items-center gap-6 mb-12">
           <div className="flex flex-wrap items-center gap-4">

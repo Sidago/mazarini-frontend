@@ -1,7 +1,7 @@
 import { ImgOrVideoHero } from "@/components/common/img-video-hero";
 import { LocationList } from "@/components/location/location-list";
 import { getLocationPage, getLocations } from "@/lib/api/location";
-import { Location, type LocationPage } from "@/lib/types/strapi";
+import { Location, type LocationPage as LocationPageType } from "@/lib/types/strapi";
 import React from "react";
 
 export const metadata = {
@@ -10,7 +10,7 @@ export const metadata = {
     "Discover Mazzarini Group's global presence. Explore our offices and project locations worldwide.",
 };
 
-const FALLBACK_LOCATION: LocationPage = {
+const FALLBACK_LOCATION: LocationPageType = {
   id: 0,
   documentId: "",
   title: "Our Locations",
@@ -21,8 +21,8 @@ const FALLBACK_LOCATION: LocationPage = {
   heroImage: null,
 };
 
-export async function LocationPage(): Promise<React.ReactElement> {
-  let locationPage: LocationPage = FALLBACK_LOCATION;
+export default async function LocationPage(): Promise<React.ReactElement> {
+  let locationPage: LocationPageType = FALLBACK_LOCATION;
   let locations: Location[] = [];
 
   try {
@@ -46,5 +46,3 @@ export async function LocationPage(): Promise<React.ReactElement> {
     </>
   );
 }
-
-export default LocationPage;

@@ -26,7 +26,7 @@ export function Footer({
 }: FooterProps): React.ReactElement {
   return (
     <footer className="bg-white dark:bg-background-dark border-t border-neutral-200 dark:border-neutral-800 pt-20 pb-10">
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-400 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
           <div className="col-span-1 lg:col-span-1">
             <div className="mb-6">

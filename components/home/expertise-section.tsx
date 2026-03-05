@@ -35,12 +35,12 @@ export function ExpertiseSection({
       <div className="absolute inset-0 flex items-center pointer-events-none select-none">
         <ParallaxText
           baseVelocity={-1}
-          className="inline-block text-[20vw] md:text-[15vw] font-black text-neutral-900/[0.04] dark:text-white/[0.04] leading-none mx-4">
+          className="inline-block text-[20vw] md:text-[15vw] font-black text-neutral-900/4 dark:text-white/4 leading-none mx-4">
           Expertise
         </ParallaxText>
       </div>
 
-      <div className="relative z-10 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 max-w-400 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
           {/* ── Left: heading + description ── */}
           <div className="lg:w-[30%] lg:sticky lg:top-32 shrink-0">
@@ -86,7 +86,7 @@ export function ExpertiseSection({
                   key={item.id}
                   direction="right"
                   delay={index * 0.1}
-                  className="min-w-[300px] md:min-w-[350px] snap-start shrink-0">
+                  className="min-w-75 md:min-w-87.5 snap-start shrink-0">
                   <ExpertiseCard expertise={item} />
                 </FadeIn>
               ))}
