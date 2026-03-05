@@ -30,7 +30,7 @@ export function PageLoader(): React.ReactElement | null {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6, ease: "easeInOut" }}
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-background-dark"
+          className="fixed inset-0 z-9999 flex items-center justify-center bg-background-dark"
         >
           <motion.span
             initial={{ opacity: 0, letterSpacing: "0.3em" }}

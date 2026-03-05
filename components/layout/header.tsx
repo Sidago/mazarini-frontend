@@ -49,7 +49,7 @@ export function Header({
     >
       {/* Top utility bar */}
       <div className="border-b border-white/10">
-        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-400 mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-18">
             {/* Left utility links */}
             <div className="hidden md:flex items-center gap-6">
