@@ -25,7 +25,7 @@ export function SubNav({ items }: SubNavProps): React.ReactElement {
   return (
     <nav className="hidden md:block relative border-b border-white/10">
       {/* Nav link row */}
-      <div className="max-w-400 mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-50 max-w-400 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-center gap-10">
           {items.map((item, index) => {
             const slug = item?.slug ?? "/";
@@ -56,7 +56,7 @@ export function SubNav({ items }: SubNavProps): React.ReactElement {
           activeItem && activeItem?.subItems?.length > 0 ? "visible" : "hidden"
         }>
         <div
-          className="absolute top-11.5 left-[10%] right-[10%] w-[80%] z-50"
+          className="absolute top-[3.09rem] left-[10%] right-[10%] w-[80%] z-40"
           onMouseEnter={() => setActiveIndex(activeIndex)}
           onMouseLeave={() => setActiveIndex(null)}>
           <div className="bg-neutral-900/98 backdrop-blur-md border-t border-white/10">
