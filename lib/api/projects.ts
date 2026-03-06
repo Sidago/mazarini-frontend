@@ -25,7 +25,5 @@ export async function getProjectsPage(): Promise<ProjectsPage> {
   const res = await strapiGet<StrapiResponse<ProjectsPage>>("/projects-page", {
     "populate[featuredProjects][populate][image]": "true",
   });
-
-  console.log("Fetched projects page data:", res.data);
   return res.data;
 }
