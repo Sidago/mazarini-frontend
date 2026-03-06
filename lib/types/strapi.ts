@@ -304,6 +304,28 @@ export interface Service {
   image: StrapiMedia | null;
 }
 
+// Experience
+export interface ExperienceStep {
+  id: number;
+  documentId: string;
+  title: string;
+  description: string;
+  image: StrapiMedia | null;
+  ctaText: string | null;
+  ctaUrl: string | null;
+  order: number;
+}
+
+export interface ExperiencePage {
+  id: number;
+  documentId: string;
+  heroTitle: string;
+  heroText: string | null;
+  heroVideo: StrapiMedia | null;
+  heroImage: StrapiMedia | null;
+  experience_steps: ExperienceStep[];
+}
+
 // Locations
 export interface LocationPage {
   id: number;
