@@ -302,6 +302,22 @@ export interface Service {
   discriptions: string;
   catagory: string | null;
   image: StrapiMedia | null;
+  heroImage: StrapiMedia | null;
+  detail_discriptions: unknown;
+  slug: string | null;
+}
+
+export interface ServicesPage {
+  id: number;
+  documentId: string;
+  pageTitle: string;
+  pageDescription: string | null;
+  heroTitle: string;
+  heroText: string | null;
+  heroVideo: StrapiMedia | null;
+  heroImage: StrapiMedia | null;
+  featuredCTA?: string | null;
+  featuredServices: Service[];
 }
 
 // Experience
