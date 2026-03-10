@@ -27,7 +27,7 @@ export function ProjectShowcase({
 
   return (
     <section className="py-24 overflow-hidden bg-neutral-100 dark:bg-neutral-900/50 border-y border-neutral-200 dark:border-neutral-800">
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+      <div className="max-w-400 mx-auto px-4 sm:px-6 lg:px-8 mb-12">
         <FadeIn direction="up">
           <h2 className="text-4xl md:text-5xl font-black text-neutral-900 dark:text-white mb-4">
             {heading ?? "Recent Work"}
@@ -49,14 +49,14 @@ export function ProjectShowcase({
           <ScaleReveal
             key={project.id}
             delay={index * 0.1}
-            className="min-w-[85vw] md:min-w-[600px] lg:min-w-[800px] snap-center"
+            className="min-w-[85vw] md:min-w-150 lg:min-w-200 snap-center"
           >
             <ProjectCard project={project} />
           </ScaleReveal>
         ))}
       </div>
       <FadeIn delay={0.4}>
-        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 mt-4 flex justify-between items-center text-sm font-medium text-neutral-500">
+        <div className="max-w-400 mx-auto px-4 sm:px-6 lg:px-8 mt-4 flex justify-between items-center text-sm font-medium text-neutral-500">
           <span>01 — {String(projects.length).padStart(2, "0")}</span>
           <div className="flex gap-2">
             <motion.button

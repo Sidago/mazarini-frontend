@@ -4,8 +4,10 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { PageLoader } from "@/components/ui/page-loader";
 import { getGlobal } from "@/lib/api/global";
+import { getServices } from "@/lib/api/services";
 import "./globals.css";
 import { getStrapiMediaUrl } from "@/lib/api/client";
+import type { SubNavItem } from "@/lib/types/strapi";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -44,6 +46,26 @@ export default async function RootLayout({
     // Strapi may be unavailable — render with fallback
   }
 
+  // Auto-populate "Services" sub-nav with actual service entries
+  let subNavItems: SubNavItem[] = global?.sub_nav_items ?? [];
+  try {
+    const services = await getServices();
+    subNavItems = subNavItems.map((item) => {
+      if (item.slug !== "services") return item;
+      return {
+        ...item,
+        subItems: services.map((s) => ({
+          id: s.id,
+          name: s.title,
+          linkTo: `/services/${s.id}`,
+          image: s.image,
+        })),
+      };
+    });
+  } catch {
+    // Services unavailable — keep original sub-nav items
+  }
+
   return (
     <html lang="en">
       <head>
@@ -59,7 +81,7 @@ export default async function RootLayout({
         <Header
           logo={global?.logo ?? null}
           navLinks={global?.navLinks ?? []}
-          subNavItems={global?.sub_nav_items ?? []}
+          subNavItems={subNavItems}
           ctaText={global?.headerCtaText ?? "Work With Us"}
           ctaUrl={global?.headerCtaUrl ?? "#contact"}
         />
