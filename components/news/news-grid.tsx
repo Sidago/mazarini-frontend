@@ -124,8 +124,8 @@ export function NewsGrid({ news }: NewsGridProps): React.ReactElement {
   }, [news, categoryFilter, searchQuery]);
 
   return (
-    <section className="py-16 lg:py-24 bg-background-light dark:bg-background-dark">
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-12 lg:py-24 bg-background-light dark:bg-background-dark">
+      <div className="max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Filter bar */}
         <div className="flex flex-wrap items-center gap-6 mb-12">
           <div className="flex flex-wrap items-center gap-4">
@@ -155,7 +155,7 @@ export function NewsGrid({ news }: NewsGridProps): React.ReactElement {
         {/* News cards grid */}
         <motion.div
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12"
         >
           <AnimatePresence mode="popLayout">
             {filtered.map((item) => (

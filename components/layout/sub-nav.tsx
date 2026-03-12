@@ -60,7 +60,7 @@ export function SubNav({ items }: SubNavProps): React.ReactElement {
           activeItem && activeItem?.subItems?.length > 0 ? "visible" : "hidden"
         }>
         <div
-          className="absolute top-[3.09rem] left-[10%] right-[10%] w-[80%] z-40"
+          className="absolute top-[3.09rem] left-[5%] right-[5%] w-[90%] z-40"
           onMouseEnter={() => setActiveIndex(activeIndex)}
           onMouseLeave={() => {
             setActiveIndex(null);

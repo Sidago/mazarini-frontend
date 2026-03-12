@@ -2,7 +2,10 @@ import { FadeIn } from "@/components/ui/fade-in";
 import { ProjectCarousel } from "@/components/projects/project-carousel";
 import { ProjectGrid } from "@/components/projects/project-grid";
 import { getProjects, getProjectsPage } from "@/lib/api/projects";
-import type { Project, ProjectsPage as ProjectsPageType } from "@/lib/types/strapi";
+import type {
+  Project,
+  ProjectsPage as ProjectsPageType,
+} from "@/lib/types/strapi";
 
 export default async function ProjectsPage(): Promise<React.ReactElement> {
   let pageData: ProjectsPageType | null = null;
@@ -32,11 +35,11 @@ export default async function ProjectsPage(): Promise<React.ReactElement> {
         <ProjectCarousel projects={featuredProjects} ctaText={ctaText} />
       )}
 
-      {/* Page heading */}
-      <section className="pt-16 lg:pt-24 pb-8 bg-background-light dark:bg-background-dark">
-        <div className="max-w-400 mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Page heading + Filterable grid - same centered container */}
+      <section className="pt-16 lg:pt-24 bg-background-light dark:bg-background-dark">
+        <div className="max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn direction="up">
-            <h2 className="text-4xl md:text-5xl font-black text-neutral-900 dark:text-white mb-4">  
+            <h2 className="text-4xl md:text-5xl font-black text-neutral-900 dark:text-white mb-4">
               {pageTitle}
             </h2>
           </FadeIn>
@@ -48,7 +51,6 @@ export default async function ProjectsPage(): Promise<React.ReactElement> {
         </div>
       </section>
 
-      {/* Filterable grid */}
       <ProjectGrid projects={projects} />
     </>
   );

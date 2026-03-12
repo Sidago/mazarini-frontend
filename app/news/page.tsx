@@ -37,9 +37,9 @@ export default async function NewsPage(): Promise<React.ReactElement> {
         <NewsCarousel news={featuredNews} ctaText={ctaText} />
       )}
 
-      {/* Page heading */}
-      <section className="pt-16 lg:pt-24 pb-8 bg-background-light dark:bg-background-dark">
-        <div className="max-w-400 mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Page heading - left aligned with grid */}
+      <section className="pt-16 lg:pt-24 bg-background-light dark:bg-background-dark">
+        <div className="max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn direction="up">
             <h2 className="text-4xl md:text-5xl font-black text-neutral-900 dark:text-white mb-4">
               {pageTitle}
@@ -53,7 +53,6 @@ export default async function NewsPage(): Promise<React.ReactElement> {
         </div>
       </section>
 
-      {/* Filterable grid */}
       <NewsGrid news={news} />
     </>
   );

@@ -1,5 +1,6 @@
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import { FadeIn } from "@/components/ui/fade-in";
+import { ServiceAccordion } from "@/components/services/service-accordion";
 import type { Service } from "@/lib/types/strapi";
 
 interface ServiceDetailSectionProps {
@@ -42,69 +43,16 @@ export function ServiceDetailSection({
               </p>
             </FadeIn>
 
-            {/* Detail descriptions rendered as content blocks with left border */}
-            {Array.isArray(service.detail_discriptions) &&
-              (service.detail_discriptions as DetailBlock[]).length > 0 && (
-                <div className="space-y-0">
-                  {(service.detail_discriptions as DetailBlock[]).map(
-                    (block, index) => (
-                      <DetailBlockItem
-                        key={block.id ?? index}
-                        block={block}
-                        index={index}
-                      />
-                    ),
-                  )}
-                </div>
+            {/* Accordion detail items */}
+            {Array.isArray(service.accordion_items) &&
+              service.accordion_items.length > 0 && (
+                <FadeIn direction="right" delay={0.2}>
+                  <ServiceAccordion items={service.accordion_items} />
+                </FadeIn>
               )}
           </div>
         </div>
       </div>
     </section>
   );
-}
-
-interface DetailBlock {
-  id?: number;
-  type: string;
-  children?: DetailChild[];
-}
-
-interface DetailChild {
-  type: string;
-  text?: string;
-  bold?: boolean;
-  children?: DetailChild[];
-}
-
-interface DetailBlockItemProps {
-  block: DetailBlock;
-  index: number;
-}
-
-function DetailBlockItem({
-  block,
-  index,
-}: DetailBlockItemProps): React.ReactElement {
-  const text = extractBlockText(block);
-  if (!text) return <></>;
-
-  return (
-    <FadeIn direction="right" delay={0.15 + index * 0.05}>
-      <div className="border-l-4 border-primary pl-6 py-4">
-        <p className="text-white font-bold text-lg">{text}</p>
-      </div>
-    </FadeIn>
-  );
-}
-
-function extractBlockText(block: DetailBlock): string {
-  if (!block.children) return "";
-  return block.children
-    .map((child) => {
-      if (child.text) return child.text;
-      if (child.children) return extractBlockText(child as DetailBlock);
-      return "";
-    })
-    .join("");
 }

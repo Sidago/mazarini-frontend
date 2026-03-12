@@ -18,7 +18,9 @@ export async function getService(id: string): Promise<Service> {
     "filters[id][$eq]": id,
     "populate[image]": "true",
     "populate[heroImage]": "true",
+    "populate[accordion_items]": "true",
   });
+  console.log("Fetched service data:", res.data);
   return res.data;
 }
 

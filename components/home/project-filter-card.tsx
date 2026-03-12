@@ -6,6 +6,12 @@ interface ProjectFilterCardProps {
   project: Project;
 }
 
+function truncateWords(text: string, maxWords: number): string {
+  const words = text.split(/\s+/);
+  if (words.length <= maxWords) return text;
+  return words.slice(0, maxWords).join(" ") + "...";
+}
+
 export function ProjectFilterCard({
   project,
 }: ProjectFilterCardProps): React.ReactElement {
@@ -14,9 +20,9 @@ export function ProjectFilterCard({
   return (
     <Link
       href={`/projects/${project.id}`}
-      className="group relative block overflow-hidden rounded-lg"
+      className="group block px-2"
     >
-      <div className="relative w-full aspect-4/3">
+      <div className="relative w-[90%]  aspect-[10/10.5] overflow-hidden rounded-lg">
         {imageUrl && (
           <img
             src={imageUrl}
@@ -24,15 +30,14 @@ export function ProjectFilterCard({
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
         )}
-        <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/30 to-transparent transition-colors duration-500 group-hover:from-black/90" />
-        <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
-          <span className="inline-block w-fit px-3 py-1 mb-3 border border-white/30 rounded text-[11px] font-bold text-white uppercase tracking-wider bg-black/20 backdrop-blur-sm">
-            {project.category}
-          </span>
-          <h3 className="text-xl md:text-2xl font-bold text-white leading-tight">
-            {project.title}
-          </h3>
-        </div>
+      </div>
+      <div className="mt-4 px-1">
+        <h3 className="text-xl font-bold text-neutral-900 dark:text-white leading-tight">
+          {project.title}
+        </h3>
+        <p className="mt-1 text-neutral-500 dark:text-neutral-400">
+          {truncateWords(project.description, 6)}
+        </p>
       </div>
     </Link>
   );

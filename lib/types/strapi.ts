@@ -295,6 +295,12 @@ export interface ProjectsPage {
   featuredCTA: string | null;
 }
 
+export interface AccordionItem {
+  id: number;
+  title: string;
+  description: string;
+}
+
 export interface Service {
   id: number;
   documentId: string;
@@ -304,6 +310,7 @@ export interface Service {
   image: StrapiMedia | null;
   heroImage: StrapiMedia | null;
   detail_discriptions: unknown;
+  accordion_items: AccordionItem[];
   slug: string | null;
 }
 
