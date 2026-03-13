@@ -370,3 +370,25 @@ export interface Location {
   address: string;
   mapEmbedUrl: string | null;
 }
+
+// Our Teams
+
+export interface Teams {
+  id: number;
+  documentId: string;
+  name: string;
+  position: string;
+  catagory: string;
+  bio: string | null;
+  location: string | null;
+  image: StrapiMedia | null;
+}
+
+export interface TeamsPage {
+  id: number;
+  documentId: string;
+  heroTitle: string;
+  heroText: string;
+  heroVedio: StrapiMedia | null;
+  heroImage: StrapiMedia | null;
+}

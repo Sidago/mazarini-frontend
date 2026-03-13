@@ -18,7 +18,7 @@ export function NewsCard({
       className={`flex flex-col ${reversed ? "sm:flex-row-reverse" : "sm:flex-row"} gap-6 sm:gap-8`}>
       {/* Image */}
       {imageUrl && (
-        <div className="w-full sm:w-[280px] md:w-[320px] shrink-0 aspect-[4/3] overflow-hidden">
+        <div className="w-full sm:w-70 md:w-[320px] shrink-0 aspect-4/3 overflow-hidden">
           <img
             src={imageUrl}
             alt={news.image?.alternativeText ?? news.title}
