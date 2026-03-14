@@ -392,3 +392,67 @@ export interface TeamsPage {
   heroVedio: StrapiMedia | null;
   heroImage: StrapiMedia | null;
 }
+
+// R&D Page
+
+export interface RdWhyCard {
+  id: number;
+  documentId: string;
+  label: string;
+  image: StrapiMedia | null;
+  order: number | null;
+}
+
+export interface RdPillar {
+  id: number;
+  documentId: string;
+  title: string;
+  description: string;
+  image: StrapiMedia | null;
+  order: number | null;
+}
+
+export interface RdPage {
+  id: number;
+  documentId: string;
+  heroTitle: string;
+  heroText: string | null;
+  heroImage: StrapiMedia | null;
+  heroVideo: StrapiMedia | null;
+
+  whyTitle: string | null;
+  whyDescription: string | null;
+  whyWatermark: string | null;
+  whyCards: RdWhyCard[];
+
+  pillarsTitle: string | null;
+  pillarsDescription: string | null;
+  pillarsWatermark: string | null;
+  pillars: RdPillar[];
+
+  projectsTitle: string | null;
+  projectsDescription: string | null;
+  projectsWatermark: string | null;
+  featuredProjects: Project[];
+
+  newsTitle: string | null;
+  newsWatermark: string | null;
+  newsCtaText: string | null;
+  newsCtaUrl: string | null;
+  featuredNews: News[];
+
+  partnersTitle: string | null;
+  partnersDescription: string | null;
+  partnersWatermark: string | null;
+  partners: OurClient[];
+
+  leadershipTitle: string | null;
+  leadershipDescription: string | null;
+  leadershipWatermark: string | null;
+  featuredLeadership: Teams[];
+
+  contactTitle: string | null;
+  contactDescription: string | null;
+  contactCtaText: string | null;
+  contactCtaUrl: string | null;
+}
