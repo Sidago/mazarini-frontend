@@ -37,7 +37,7 @@ const INITIAL_FORM_STATE: FormState = {
 };
 
 const INPUT_CLASS =
-  "w-full bg-neutral-800 border border-neutral-700 text-white px-4 py-3 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-sm transition-colors placeholder:text-neutral-500";
+  "w-full bg-neutral-800 border border-neutral-700 text-white px-4 py-2.5 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-sm transition-colors placeholder:text-neutral-500";
 
 export function ContactForm(): React.ReactElement {
   const [form, setForm] = useState<FormState>(INITIAL_FORM_STATE);
@@ -118,7 +118,7 @@ export function ContactForm(): React.ReactElement {
         <span className="material-icons-outlined text-primary text-5xl mb-4 block">
           check_circle
         </span>
-        <h3 className="text-2xl font-bold text-white mb-2">Thank You!</h3>
+        <h3 className="text-2xl font-bold text-white mb-1">Thank You!</h3>
         <p className="text-neutral-400 mb-6">
           Your message has been sent successfully. We&apos;ll get back to you
           shortly.
@@ -137,14 +137,14 @@ export function ContactForm(): React.ReactElement {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-neutral-900 rounded-2xl p-8 md:p-12 space-y-4"
+      className="bg-neutral-900 rounded-2xl p-8 md:p-10 space-y-3"
     >
       {/* First Name + Last Name */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label
             htmlFor="firstName"
-            className="block text-sm text-neutral-400 mb-2"
+            className="block text-sm text-neutral-400 mb-1"
           >
             First Name <span className="text-primary">*</span>
           </label>
@@ -162,7 +162,7 @@ export function ContactForm(): React.ReactElement {
         <div>
           <label
             htmlFor="lastName"
-            className="block text-sm text-neutral-400 mb-2"
+            className="block text-sm text-neutral-400 mb-1"
           >
             Last Name <span className="text-primary">*</span>
           </label>
@@ -183,7 +183,7 @@ export function ContactForm(): React.ReactElement {
       <div>
         <label
           htmlFor="email"
-          className="block text-sm text-neutral-400 mb-2"
+          className="block text-sm text-neutral-400 mb-1"
         >
           Email Address <span className="text-primary">*</span>
         </label>
@@ -203,7 +203,7 @@ export function ContactForm(): React.ReactElement {
       <div>
         <label
           htmlFor="phone"
-          className="block text-sm text-neutral-400 mb-2"
+          className="block text-sm text-neutral-400 mb-1"
         >
           Phone
         </label>
@@ -222,7 +222,7 @@ export function ContactForm(): React.ReactElement {
       <div>
         <label
           htmlFor="companyName"
-          className="block text-sm text-neutral-400 mb-2"
+          className="block text-sm text-neutral-400 mb-1"
         >
           Company Name <span className="text-primary">*</span>
         </label>
@@ -242,7 +242,7 @@ export function ContactForm(): React.ReactElement {
       <div>
         <label
           htmlFor="inquiryType"
-          className="block text-sm text-neutral-400 mb-2"
+          className="block text-sm text-neutral-400 mb-1"
         >
           Inquiry Type <span className="text-primary">*</span>
         </label>
@@ -266,7 +266,7 @@ export function ContactForm(): React.ReactElement {
       <div>
         <label
           htmlFor="notes"
-          className="block text-sm text-neutral-400 mb-2"
+          className="block text-sm text-neutral-400 mb-1"
         >
           Notes <span className="text-primary">*</span>
         </label>
@@ -274,7 +274,7 @@ export function ContactForm(): React.ReactElement {
           id="notes"
           name="notes"
           required
-          rows={5}
+          rows={4}
           value={form.notes}
           onChange={handleChange}
           className={`${INPUT_CLASS} resize-none`}
@@ -284,7 +284,7 @@ export function ContactForm(): React.ReactElement {
 
       {/* Attachments */}
       <div>
-        <label className="block text-sm text-neutral-400 mb-2">
+        <label className="block text-sm text-neutral-400 mb-1">
           Attachments{" "}
           <span className="text-neutral-600">
             (max {MAX_FILE_SIZE_MB}MB per file)
