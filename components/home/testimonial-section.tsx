@@ -28,7 +28,7 @@ export function TestimonialSection({
 
   return (
     <section className="py-24 bg-neutral-100 dark:bg-neutral-900 overflow-hidden">
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+      <div className="max-w-400 mx-auto px-4 sm:px-6 lg:px-8 mb-12">
         <TextReveal
           text="Client Stories"
           as="h2"
@@ -60,7 +60,7 @@ export function TestimonialSection({
           />
         ))}
       </div>
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 mt-4 flex justify-end">
+      <div className="max-w-400 mx-auto px-4 sm:px-6 lg:px-8 mt-4 flex justify-end">
         <div className="flex gap-2">
           <motion.button
             onClick={() => scroll("left")}

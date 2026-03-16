@@ -22,7 +22,7 @@ export function TestimonialCard({
       viewport={{ once: false, margin: "-60px" }}
       transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
       whileHover={{ y: -6 }}
-      className="min-w-[90vw] md:min-w-[500px] snap-center bg-white dark:bg-neutral-800 rounded-lg overflow-hidden shadow-lg border border-neutral-200 dark:border-neutral-700 flex flex-col md:flex-row h-auto md:h-[350px] transition-shadow duration-300 hover:shadow-2xl">
+      className="min-w-[90vw] md:min-w-125 snap-center bg-white dark:bg-neutral-800 rounded-lg overflow-hidden shadow-lg border border-neutral-200 dark:border-neutral-700 flex flex-col md:flex-row h-auto md:h-87.5 transition-shadow duration-300 hover:shadow-2xl">
       <div className="w-full md:w-2/5 h-64 md:h-full relative overflow-hidden">
         {imageUrl && (
           <motion.img
@@ -33,7 +33,7 @@ export function TestimonialCard({
             transition={{ duration: 0.5, ease: "easeOut" }}
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-white/20 dark:from-neutral-800/20 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t md:bg-linear-to-r from-white/20 dark:from-neutral-800/20 to-transparent" />
       </div>
       <div className="w-full md:w-3/5 p-8 flex flex-col justify-between">
         <div>

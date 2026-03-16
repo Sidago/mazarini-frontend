@@ -48,7 +48,7 @@ export function ProjectFilterSection({
     <section
       ref={sectionRef}
       className="relative bg-neutral-950 py-24 lg:py-32 overflow-hidden">
-      <div className="relative z-10 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 max-w-400 mx-auto px-4 sm:px-6 lg:px-8">
         {/* ── Filter bar with background text ── */}
         <div className="relative pb-16 mb-10 md:py-24">
           {/* Scrolling "Projects" text — positioned behind the filter bar */}
@@ -88,7 +88,7 @@ export function ProjectFilterSection({
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -8 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute top-full left-0 mt-2 min-w-[220px] bg-white rounded shadow-xl z-50 overflow-hidden">
+                      className="absolute top-full left-0 mt-2 min-w-55 bg-white rounded shadow-xl z-50 overflow-hidden">
                       <button
                         type="button"
                         onClick={() => {

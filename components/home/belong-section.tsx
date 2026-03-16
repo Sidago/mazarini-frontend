@@ -28,18 +28,18 @@ export function BelongSection({
       <div className="absolute flex items-center pointer-events-none select-none">
         <ParallaxText
           baseVelocity={-1}
-          className="inline-block text-[20vw] md:text-[15vw] font-black text-neutral-900/[0.06] leading-none mx-4"
+          className="inline-block text-[20vw] md:text-[15vw] font-black text-neutral-900/6 leading-none mx-4"
         >
           {heading ?? "You Belong Here"}
         </ParallaxText>
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+      <div className="relative z-10 max-w-400 mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
         {/* Image */}
         {imageUrl && (
           <FadeIn direction="up" duration={0.7}>
-            <div className="w-[280px] sm:w-[350px] md:w-[420px] lg:w-[500px] mb-10">
+            <div className="w-70 sm:w-87.5 md:w-105 lg:w-125 mb-10">
               <img
                 src={imageUrl}
                 alt={heading ?? ""}
