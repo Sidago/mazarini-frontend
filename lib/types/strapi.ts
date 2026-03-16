@@ -395,6 +395,56 @@ export interface TeamsPage {
 
 // R&D Page
 
+// Subcontractors Page
+
+export interface SubcontractorQuote {
+  id: number;
+  quote: string;
+  authorName: string;
+  company: string | null;
+  designation: string | null;
+}
+
+export interface OnboardingItem {
+  id: number;
+  text: string;
+}
+
+export interface TradePartnerTab {
+  id: number;
+  tabName: string;
+  title: string;
+  description: string;
+  image: StrapiMedia | null;
+}
+
+export interface SubcontractorsPage {
+  id: number;
+  documentId: string;
+  heroTitle: string;
+  heroText: string;
+  heroVideo: StrapiMedia | null;
+  heroImage: StrapiMedia | null;
+  quoteTitle: string | null;
+  quotes: SubcontractorQuote[];
+  onboardingTitle: string | null;
+  onboardingCtaText: string | null;
+  onboardingCtaUrl: string | null;
+  onboardingRequirements: OnboardingItem[];
+  onboardingExtraTitle: string | null;
+  onboardingExtraRequirements: OnboardingItem[];
+  formTitle: string | null;
+  formDescription: string | null;
+  tradePartnersTitle: string | null;
+  tradePartnersDescription: string | null;
+  tradePartnerTabs: TradePartnerTab[];
+  faqTitle: string | null;
+  faqDescription: string | null;
+  faqItems: AccordionItem[];
+}
+
+// R&D Page
+
 export interface RdWhyCard {
   id: number;
   documentId: string;

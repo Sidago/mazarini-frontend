@@ -20,7 +20,7 @@ export function OurClientsSection({
 
   return (
     <section className="py-24 bg-white dark:bg-neutral-950 overflow-hidden">
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+      <div className="max-w-400 mx-auto px-4 sm:px-6 lg:px-8 mb-16">
         <FadeIn direction="up">
           <div className="text-center max-w-2xl mx-auto">
             <h2 className="text-sm font-bold text-primary uppercase tracking-widest mb-3">
@@ -36,9 +36,9 @@ export function OurClientsSection({
 
       <div className="relative group">
         {/* Left fade */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white dark:from-neutral-950 to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-24 bg-linear-to-r from-white dark:from-neutral-950 to-transparent z-10 pointer-events-none" />
         {/* Right fade */}
-        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white dark:from-neutral-950 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-24 bg-linear-to-l from-white dark:from-neutral-950 to-transparent z-10 pointer-events-none" />
 
         <div className="flex animate-marquee group-hover:[animation-play-state:paused]"> 
           {duplicated.map((client, i) => {
@@ -46,7 +46,7 @@ export function OurClientsSection({
             return (
               <div
                 key={`${client.id}-${i}`}
-                className="flex-shrink-0 mx-8 md:mx-12 flex items-center justify-center w-[140px] md:w-[180px] h-[80px] md:h-[100px]"
+                className="shrink-0 mx-8 md:mx-12 flex items-center justify-center w-35 md:w-45 h-20 md:h-25"
               >
                 {imageUrl && (
                   <img
