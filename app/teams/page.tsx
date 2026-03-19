@@ -17,7 +17,7 @@ export default async function TeamPage(): Promise<React.ReactElement> {
     heroImage: null,
   };
   try {
-    const [teams, teamPage] = await Promise.all([
+    [teams, teamPage] = await Promise.all([
       await getTeams(),
       await getTeamsPage(),
     ]);
