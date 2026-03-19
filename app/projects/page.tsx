@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { FadeIn } from "@/components/ui/fade-in";
 import { ProjectCarousel } from "@/components/projects/project-carousel";
 import { ProjectGrid } from "@/components/projects/project-grid";

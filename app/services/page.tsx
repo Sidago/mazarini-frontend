@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { FadeIn } from "@/components/ui/fade-in";
 import { ServiceGrid } from "@/components/services/service-grid";
 import { getServices, getServicesPage } from "@/lib/api/services";

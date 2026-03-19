@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { FadeIn } from "@/components/ui/fade-in";
 import { NewsCarousel } from "@/components/news/news-carousel";
 import { NewsGrid } from "@/components/news/news-grid";

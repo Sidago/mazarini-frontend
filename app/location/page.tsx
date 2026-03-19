@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { ImgOrVideoHero } from "@/components/common/img-video-hero";
 import { LocationList } from "@/components/location/location-list";
 import { getLocationPage, getLocations } from "@/lib/api/location";
