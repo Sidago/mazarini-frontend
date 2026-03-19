@@ -1,13 +1,27 @@
 import { ImgOrVideoHero } from "@/components/common/img-video-hero";
 import TeamList from "@/components/team/team-list";
 import { getTeams, getTeamsPage } from "@/lib/api/our-team";
+import { Teams, TeamsPage } from "@/lib/types/strapi";
 import React from "react";
 
 export default async function TeamPage(): Promise<React.ReactElement> {
-  const [teams, teamPage] = await Promise.all([
-    await getTeams(),
-    await getTeamsPage(),
-  ]);
+  let teams: Teams[] = [];
+  let teamPage: TeamsPage = {
+    id: 0,
+    documentId: "",
+    heroTitle: "Our Team",
+    heroText: "Meet the people who make it all happen.",
+    heroVedio: null,
+    heroImage: null,
+  };
+  try {
+    const [teams, teamPage] = await Promise.all([
+      await getTeams(),
+      await getTeamsPage(),
+    ]);
+  } catch (error) {
+    console.error("Error fetching team data:", error);
+  }
 
   return (
     <>

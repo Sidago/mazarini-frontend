@@ -47,8 +47,12 @@ export default async function SubcontractorsPage(): Promise<React.ReactElement> 
 
   try {
     page = await getSubcontractorsPage();
-  } catch {
+  } catch (error) {
     // Strapi unavailable — render with fallback data
+    console.log(
+      "Error patching Subcontractors page data, rendering with fallback content",
+      error,
+    );
   }
 
   return (
