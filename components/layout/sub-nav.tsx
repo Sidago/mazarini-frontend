@@ -7,9 +7,10 @@ import type { SubNavItem, SubNavSubItem } from "@/lib/types/strapi";
 
 interface SubNavProps {
   items: SubNavItem[];
+  scrolled: boolean;
 }
 
-export function SubNav({ items }: SubNavProps): React.ReactElement {
+export function SubNav({ items, scrolled }: SubNavProps): React.ReactElement {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [hoveredSubIndex, setHoveredSubIndex] = useState<number | null>(null);
 
@@ -25,7 +26,8 @@ export function SubNav({ items }: SubNavProps): React.ReactElement {
   const displayImageUrl = displayImage ? getStrapiMediaUrl(displayImage) : "";
 
   return (
-    <nav className="hidden md:block relative border-b border-white/10">
+    <nav
+      className={`hidden md:block relative border-b ${scrolled ? "border-black/20" : "border-white/15"}`}>
       {/* Nav link row */}
       <div className="relative z-50 max-w-400 mx-auto px-4 sm:px-6 lg:px-8 top-0.5">
         <div className="flex items-center justify-center gap-10">
@@ -41,10 +43,8 @@ export function SubNav({ items }: SubNavProps): React.ReactElement {
                 }}
                 onMouseLeave={() => setActiveIndex(null)}>
                 <span
-                  className={`text-xs font-semibold uppercase tracking-widest transition-colors cursor-pointer py-4 inline-block ${
-                    activeIndex === index
-                      ? "text-white"
-                      : "text-white/80 hover:text-white"
+                  className={`text-xs font-semibold uppercase tracking-widest transition-colors cursor-pointer py-4 inline-block ${scrolled ? "text-black/90 hover:text-black/60" : "text-white/90 hover:text-white/60"} ${
+                    activeIndex === index ? "text-white" : ""
                   }`}>
                   {item.name}
                 </span>
@@ -101,9 +101,7 @@ export function SubNav({ items }: SubNavProps): React.ReactElement {
                     <img
                       src={displayImageUrl}
                       alt={
-                        hoveredSub?.name ??
-                        activeItem?.name ??
-                        "Featured image"
+                        hoveredSub?.name ?? activeItem?.name ?? "Featured image"
                       }
                       className="w-full h-52 object-cover transition-opacity duration-300"
                     />

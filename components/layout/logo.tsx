@@ -5,19 +5,20 @@ import type { StrapiMedia } from "@/lib/types/strapi";
 interface LogoProps {
   logo?: StrapiMedia | null;
   size?: "default" | "small";
+  scrolled: boolean;
 }
 
-export function Logo({ logo, size = "default" }: LogoProps): React.ReactElement {
+export function Logo({ logo, size = "default", scrolled }: LogoProps): React.ReactElement {
   const imageUrl = getStrapiMediaUrl(logo ?? null);
   const imgSize = size === "default" ? "h-13" : "h-10";
 
   return (
-    <Link href="/" className="flex items-center gap-2">
+    <Link href="/" className="flex items-center gap-2 ">
       {imageUrl ? (
         <img
           src={imageUrl}
           alt={logo?.alternativeText ?? "Logo"}
-          className={`${imgSize} w-auto object-contain`}
+          className={`${imgSize} w-auto object-contain ${scrolled ? "filter brightness-60" : ""}`}
         />
       ) : (
         <FallbackLogo size={size} />

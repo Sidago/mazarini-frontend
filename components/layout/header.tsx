@@ -7,7 +7,11 @@ import { SubNav } from "@/components/layout/sub-nav";
 import { Icon } from "@/components/ui/icon";
 import { MobileMenu } from "@/components/layout/mobile-menu";
 import { SearchModal } from "@/components/ui/search-modal";
-import type { LinkComponent, StrapiMedia, SubNavItem } from "@/lib/types/strapi";
+import type {
+  LinkComponent,
+  StrapiMedia,
+  SubNavItem,
+} from "@/lib/types/strapi";
 
 interface HeaderProps {
   logo: StrapiMedia | null;
@@ -42,33 +46,29 @@ export function Header({
   return (
     <header
       className={`fixed top-0 left-0 z-50 w-full transition-all duration-300 ${
-        scrolled
-          ? "bg-neutral-900/60 backdrop-blur-md shadow-lg"
-          : "bg-transparent"
-      }`}
-    >
+        scrolled ? "bg-white/95" : "bg-transparent"
+      }`}>
       {/* Top utility bar */}
-      <div className="border-b border-white/10">
+      <div
+        className={`border-b  ${scrolled ? "border-black/20" : "border-white/15"}`}>
         <div className="max-w-400 mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-18">
             {/* Left utility links */}
             <div className="hidden md:flex items-center gap-6">
               <button
                 aria-label="Search"
-                className="p-1 text-white/70 hover:text-white transition-colors"
-                onClick={() => setIsSearchOpen(true)}
-              >
+                className={`p-1 hover:text-white transition-colors ${scrolled ? "text-black/80" : " text-white/80 "}`}
+                onClick={() => setIsSearchOpen(true)}>
                 <Icon name="search" />
               </button>
               {leftLinks.map((link) => (
                 <Link
                   key={link.id}
                   href={link.url}
-                  className="text-xs font-semibold uppercase tracking-widest text-white/80 hover:text-white transition-colors"
+                  className={`text-xs font-semibold uppercase tracking-widest transition-colors ${scrolled ? "text-black/90 hover:text-black/60" : " text-white/90 hover:text-white/60 "} `}
                   {...(link.isExternal
                     ? { target: "_blank", rel: "noopener noreferrer" }
-                    : {})}
-                >
+                    : {})}>
                   {link.text}
                 </Link>
               ))}
@@ -77,15 +77,15 @@ export function Header({
             {/* Mobile search button */}
             <button
               aria-label="Search"
-              className="md:hidden p-1 text-white/70 hover:text-white transition-colors"
-              onClick={() => setIsSearchOpen(true)}
-            >
+              className={`md:hidden p-1 hover:text-white transition-colors ${scrolled ? "text-black/80" : " text-white/80 "}`}
+              onClick={() => setIsSearchOpen(true)}>
               <Icon name="search" />
             </button>
 
             {/* Center logo */}
-            <div className="absolute left-1/2 -translate-x-1/2">
-              <Logo logo={logo} />
+            <div
+              className={`absolute left-1/2 -translate-x-1/2 ${scrolled ? "text-black/80" : " text-white/80 "}`}>
+              <Logo logo={logo} scrolled={scrolled} />
             </div>
 
             {/* Right utility links + CTA */}
@@ -94,18 +94,16 @@ export function Header({
                 <Link
                   key={link.id}
                   href={link.url}
-                  className="text-xs font-semibold uppercase tracking-widest text-white/80 hover:text-white transition-colors"
+                  className={`text-xs font-semibold uppercase tracking-widest ${scrolled ? "text-black/90 hover:text-black/60" : "text-white/90 hover:text-white/60"} transition-colors`}
                   {...(link.isExternal
                     ? { target: "_blank", rel: "noopener noreferrer" }
-                    : {})}
-                >
+                    : {})}>
                   {link.text}
                 </Link>
               ))}
               <Link
                 href={ctaUrl}
-                className="inline-flex items-center justify-center px-5 py-2 text-xs font-bold uppercase tracking-widest text-neutral-900 bg-primary hover:bg-amber-500 transition-all"
-              >
+                className="inline-flex items-center justify-center px-5 py-2 text-xs font-bold uppercase tracking-widest text-neutral-900 bg-primary hover:bg-amber-500 transition-all">
                 {ctaText}
               </Link>
             </div>
@@ -123,9 +121,12 @@ export function Header({
       </div>
 
       {/* Main navigation bar */}
-      <SubNav items={subNavItems} />
+      <SubNav items={subNavItems} scrolled={scrolled} />
 
-      <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+      <SearchModal
+        isOpen={isSearchOpen}
+        onClose={() => setIsSearchOpen(false)}
+      />
     </header>
   );
 }
