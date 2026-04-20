@@ -52,14 +52,15 @@ export function Footer({
           <NewsletterForm />
         </div>
         <div className="border-t border-neutral-200 dark:border-neutral-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-neutral-500 dark:text-neutral-500 uppercase tracking-wider">
-          <p>{copyright ?? "\u00a9 2024 Mazzarini Group. All rights reserved."}</p>
+          <p>
+            {copyright ?? "\u00a9 2024 Mazarini Group. All rights reserved."}
+          </p>
           <div className="flex gap-6">
             {bottomLinks.map((link) => (
               <Link
                 key={link.id}
                 href={link.url}
-                className="hover:text-primary transition-colors"
-              >
+                className="hover:text-primary transition-colors">
                 {link.text}
               </Link>
             ))}

@@ -15,6 +15,13 @@
 
   /* Fonts */
   --font-display: var(--font-inter), sans-serif;
+  --font-headline: var(--font-noto-serif), serif;
+
+  /* Stats section colors */
+  --color-stat-navy: #1b3a5b;
+  --color-on-surface: #1a1c1f;
+  --color-on-surface-variant: #43474e;
+  --color-surface: #f9f9fd;
 }
 
 body {

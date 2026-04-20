@@ -1,28 +1,40 @@
-import { FadeIn } from "@/components/ui/fade-in";
 import { StatItem } from "@/components/home/stat-item";
 import type { StatComponent } from "@/lib/types/strapi";
 
 interface StatsBarProps {
   stats: StatComponent[];
+  description?: string | null;
 }
 
-export function StatsBar({ stats }: StatsBarProps): React.ReactElement {
+export function StatsBar({
+  stats,
+  description,
+}: StatsBarProps): React.ReactElement {
+  if (!stats.length) return <></>;
+
   return (
-    <section className="w-full bg-primary text-white border-b border-primary/20">
-      <FadeIn direction="up" duration={0.5}>
-        <div className="max-w-400 mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/20 border-x border-white/20">
-            {stats.map((stat) => (
-              <StatItem
-                key={stat.id}
-                value={stat.value}
-                suffix={stat.suffix ?? undefined}
-                label={stat.label}
-              />
-            ))}
+    <section className="bg-surface py-16">
+      <div className="max-w-360 mx-auto px-8 md:px-16 py-24 flex flex-col gap-8 lg:gap-16">
+        {description && (
+          <div className="w-[60%]">
+            <p className="font-headline leading-relaxed text-on-surface whitespace-pre-line">
+              {description}
+            </p>
           </div>
+        )}
+
+        <div className="lg:w-2/3 grid grid-cols-2 gap-y-12 w-[60%] ml-auto">
+          {stats.map((stat) => (
+            <StatItem
+              key={stat.id}
+              value={stat.value}
+              suffix={stat.suffix}
+              label={stat.label}
+              description={stat.description}
+            />
+          ))}
         </div>
-      </FadeIn>
+      </div>
     </section>
   );
 }

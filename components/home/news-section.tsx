@@ -45,9 +45,8 @@ export function NewsSection({
                   key={item.id}
                   direction="up"
                   delay={index * 0.1}
-                  duration={0.7}
-                >
-                  <NewsCard news={item} reversed={index % 2 !== 0} />
+                  duration={0.7}>
+                  <NewsCard news={item} />
                 </FadeIn>
               ))}
             </div>
@@ -58,8 +57,7 @@ export function NewsSection({
                 <div className="mt-16">
                   <Link
                     href="/news"
-                    className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary hover:text-primary/80 transition-colors"
-                  >
+                    className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary hover:text-primary/80 transition-colors">
                     View All News
                     <span>&rsaquo;</span>
                   </Link>

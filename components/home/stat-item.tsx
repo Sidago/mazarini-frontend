@@ -4,26 +4,31 @@ import { CountUp } from "@/components/ui/fade-in";
 
 interface StatItemProps {
   value: string;
-  suffix?: string;
+  suffix?: string | null;
   label: string;
+  description?: string | null;
 }
 
 export function StatItem({
   value,
   suffix,
   label,
+  description,
 }: StatItemProps): React.ReactElement {
   return (
-    <div className="p-8 md:p-10 flex flex-col items-center md:items-start group hover:bg-white/5 transition-colors">
-      <span className="text-4xl md:text-5xl font-black tracking-tighter mb-2 group-hover:scale-110 transition-transform origin-left">
+    <div className="flex flex-col items-start group">
+      <span className="font-headline text-5xl text-stat-navy font-medium mb-2 tracking-tight group-hover:opacity-90 transition-opacity">
         <CountUp value={value} />
-        {suffix && (
-          <span className="text-orange-200 text-3xl align-top">{suffix}</span>
-        )}
+        {suffix && <span>{suffix}</span>}
       </span>
-      <span className="text-sm font-medium uppercase tracking-widest opacity-80">
+      <h3 className="font-headline text-lg font-bold text-on-surface">
         {label}
-      </span>
+      </h3>
+      {description && (
+        <p className="text-sm text-on-surface-variant leading-relaxed max-w-sm">
+          {description}
+        </p>
+      )}
     </div>
   );
 }

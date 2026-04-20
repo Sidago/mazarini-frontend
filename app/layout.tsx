@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Noto_Serif } from "next/font/google";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { PageLoader } from "@/components/ui/page-loader";
@@ -15,6 +15,12 @@ const inter = Inter({
   weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
+const notoSerif = Noto_Serif({
+  variable: "--font-noto-serif",
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
+
 export async function generateMetadata(): Promise<Metadata> {
   try {
     const global = await getGlobal();
@@ -25,7 +31,7 @@ export async function generateMetadata(): Promise<Metadata> {
     };
   } catch {
     return {
-      title: "Mazzarini Group",
+      title: "Mazarini Group",
       description:
         "Modern construction and real estate development company. Leading the way in sustainable commercial and residential development.",
     };
@@ -76,7 +82,7 @@ export default async function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} font-display bg-background-light dark:bg-background-dark text-neutral-800 dark:text-neutral-100 antialiased selection:bg-primary selection:text-white`}>
+        className={`${inter.variable} ${notoSerif.variable} font-display bg-background-light dark:bg-background-dark text-neutral-800 dark:text-neutral-100 antialiased selection:bg-primary selection:text-white`}>
         <PageLoader />
         <Header
           logo={global?.logo ?? null}

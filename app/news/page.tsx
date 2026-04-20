@@ -7,9 +7,9 @@ import { getNews, getNewsPage } from "@/lib/api/news";
 import type { News, NewsPage as NewsPageType } from "@/lib/types/strapi";
 
 export const metadata = {
-  title: "News & Insights | Mazzarini Group",
+  title: "News & Insights | Mazarini Group",
   description:
-    "Stay up to date with the latest news, insights, and updates from Mazzarini Group.",
+    "Stay up to date with the latest news, insights, and updates from Mazarini Group.",
 };
 
 export default async function NewsPage(): Promise<React.ReactElement> {
@@ -30,7 +30,7 @@ export default async function NewsPage(): Promise<React.ReactElement> {
   const pageTitle = pageData?.pageTitle ?? "News & Insights";
   const pageDescription =
     pageData?.pageDescription ??
-    "Stay up to date with the latest news, insights, and updates from Mazzarini Group.";
+    "Stay up to date with the latest news, insights, and updates from Mazarini Group.";
 
   return (
     <>

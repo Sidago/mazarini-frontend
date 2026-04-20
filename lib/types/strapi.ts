@@ -54,6 +54,7 @@ export interface StatComponent {
   value: string;
   suffix: string | null;
   label: string;
+  description: string | null;
 }
 
 export interface SocialLinkComponent {

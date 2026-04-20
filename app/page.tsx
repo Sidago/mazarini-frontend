@@ -22,7 +22,7 @@ const FALLBACK_HOMEPAGE: Homepage = {
   heroTitle: "Precision in Every Beam.",
   heroHighlightText: "Every Beam.",
   heroSubtitle:
-    "We transform blueprints into landmarks. With decades of expertise in commercial and residential construction, Mazzarini Group delivers projects that stand the test of time.",
+    "We transform blueprints into landmarks. With decades of expertise in commercial and residential construction, Mazarini Group delivers projects that stand the test of time.",
   heroImage: null,
   heroVideo: null,
   heroFeatured: null,
@@ -31,7 +31,7 @@ const FALLBACK_HOMEPAGE: Homepage = {
     "Delivering a premium construction experience on every project we build.",
   introHighlightText: "premium construction experience",
   introDescription:
-    "With decades of expertise in commercial and residential construction, Mazzarini Group delivers projects that stand the test of time. Our commitment to quality craftsmanship and client satisfaction drives every decision we make.",
+    "With decades of expertise in commercial and residential construction, Mazarini Group delivers projects that stand the test of time. Our commitment to quality craftsmanship and client satisfaction drives every decision we make.",
   stats: [],
   expertiseHeading: "Our Expertise",
   expertiseSubheading:
@@ -46,7 +46,7 @@ const FALLBACK_HOMEPAGE: Homepage = {
   testimonials: [],
   our_clients: [],
   ctaCTAs: [],
-  experienceHeading: "The Mazzarini Experience, Built on Trust",
+  experienceHeading: "The Mazarini Experience, Built on Trust",
   experienceHighlightText: "Trust",
   experienceDescription:
     "Our success is built on a foundation of reliability, relationships, ingenuity, and proven outcomes. We have a passion for elevating the business of building and ensuring an exceptional experience for every client.",
@@ -81,7 +81,6 @@ export default async function Home(): Promise<React.ReactElement> {
         heroImage={homepage.heroImage}
         heroVideo={homepage.heroVideo}
       />
-      <StatsBar stats={homepage.stats} />
       <IntroSection
         heading={homepage.introHeading}
         highlightText={homepage.introHighlightText}
@@ -92,6 +91,10 @@ export default async function Home(): Promise<React.ReactElement> {
         heading={homepage.expertiseHeading}
         subheading={homepage.expertiseSubheading}
         expertises={homepage.expertise ?? []}
+      />
+      <StatsBar
+        stats={homepage.stats}
+        description={homepage.introDescription}
       />
       <ExperienceSection
         heading={homepage.experienceHeading}
@@ -106,10 +109,7 @@ export default async function Home(): Promise<React.ReactElement> {
         image={homepage.belongImage}
         ctaText={homepage.belongCtaText}
       />
-      <NewsSection
-        heading={homepage.newsHeading}
-        news={homepage.news ?? []}
-      />
+      <NewsSection heading={homepage.newsHeading} news={homepage.news ?? []} />
       {/* <ProjectShowcase
         heading={homepage.projectsHeading}
         projects={homepage.projects ?? []}

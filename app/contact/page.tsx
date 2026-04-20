@@ -8,9 +8,9 @@ import { ImgOrVideoHero } from "@/components/common/img-video-hero";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Contact Us | Mazzarini Group",
+  title: "Contact Us | Mazarini Group",
   description:
-    "Get in touch with Mazzarini Group. Start a project, ask a question, or explore partnership opportunities.",
+    "Get in touch with Mazarini Group. Start a project, ask a question, or explore partnership opportunities.",
 };
 
 const FALLBACK_CONTACT: Contact = {

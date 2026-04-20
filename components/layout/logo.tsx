@@ -8,7 +8,11 @@ interface LogoProps {
   scrolled: boolean;
 }
 
-export function Logo({ logo, size = "default", scrolled }: LogoProps): React.ReactElement {
+export function Logo({
+  logo,
+  size = "default",
+  scrolled,
+}: LogoProps): React.ReactElement {
   const imageUrl = getStrapiMediaUrl(logo ?? null);
   const imgSize = size === "default" ? "h-13" : "h-10";
 
@@ -27,21 +31,23 @@ export function Logo({ logo, size = "default", scrolled }: LogoProps): React.Rea
   );
 }
 
-function FallbackLogo({ size }: { size: "default" | "small" }): React.ReactElement {
+function FallbackLogo({
+  size,
+}: {
+  size: "default" | "small";
+}): React.ReactElement {
   const boxSize = size === "default" ? "w-10 h-10 text-xl" : "w-8 h-8 text-lg";
   const textSize = size === "default" ? "text-xl" : "text-lg";
 
   return (
     <>
       <div
-        className={`${boxSize} bg-primary text-white flex items-center justify-center font-black rounded`}
-      >
+        className={`${boxSize} bg-primary text-white flex items-center justify-center font-black rounded`}>
         M
       </div>
       <span
-        className={`font-bold ${textSize} tracking-tight uppercase text-neutral-900 dark:text-white`}
-      >
-        Mazzarini<span className="text-primary">.</span>
+        className={`font-bold ${textSize} tracking-tight uppercase text-neutral-900 dark:text-white`}>
+        Mazarini<span className="text-primary">.</span>
       </span>
     </>
   );

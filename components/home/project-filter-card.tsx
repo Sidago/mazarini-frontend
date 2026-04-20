@@ -6,23 +6,14 @@ interface ProjectFilterCardProps {
   project: Project;
 }
 
-function truncateWords(text: string, maxWords: number): string {
-  const words = text.split(/\s+/);
-  if (words.length <= maxWords) return text;
-  return words.slice(0, maxWords).join(" ") + "...";
-}
-
 export function ProjectFilterCard({
   project,
 }: ProjectFilterCardProps): React.ReactElement {
   const imageUrl = getStrapiMediaUrl(project.image[0] ?? null);
 
   return (
-    <Link
-      href={`/projects/${project.id}`}
-      className="group block px-2"
-    >
-      <div className="relative w-[90%]  aspect-[10/10.5] overflow-hidden rounded-lg">
+    <Link href={`/projects/${project.id}`} className="group block">
+      <div className="relative w-full aspect-33/40 overflow-hidden">
         {imageUrl && (
           <img
             src={imageUrl}
@@ -30,14 +21,17 @@ export function ProjectFilterCard({
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
         )}
-      </div>
-      <div className="mt-4 px-1">
-        <h3 className="text-xl font-bold text-neutral-900 dark:text-white leading-tight">
-          {project.title}
-        </h3>
-        <p className="mt-1 text-neutral-500 dark:text-neutral-400">
-          {truncateWords(project.description, 6)}
-        </p>
+        <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/10 to-black/50" />
+        <div className="absolute top-5 left-5">
+          <span className="text-[11px] font-bold text-white uppercase tracking-widest">
+            {project.category}
+          </span>
+        </div>
+        <div className="absolute bottom-6 left-5 right-5">
+          <h3 className="text-2xl font-bold text-white leading-tight">
+            {project.title}
+          </h3>
+        </div>
       </div>
     </Link>
   );

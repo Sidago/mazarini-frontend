@@ -3,13 +3,16 @@ export const dynamic = "force-dynamic";
 import { ImgOrVideoHero } from "@/components/common/img-video-hero";
 import { LocationList } from "@/components/location/location-list";
 import { getLocationPage, getLocations } from "@/lib/api/location";
-import { Location, type LocationPage as LocationPageType } from "@/lib/types/strapi";
+import {
+  Location,
+  type LocationPage as LocationPageType,
+} from "@/lib/types/strapi";
 import React from "react";
 
 export const metadata = {
-  title: "Our Locations | Mazzarini Group",
+  title: "Our Locations | Mazarini Group",
   description:
-    "Discover Mazzarini Group's global presence. Explore our offices and project locations worldwide.",
+    "Discover Mazarini Group's global presence. Explore our offices and project locations worldwide.",
 };
 
 const FALLBACK_LOCATION: LocationPageType = {
@@ -18,7 +21,7 @@ const FALLBACK_LOCATION: LocationPageType = {
   title: "Our Locations",
   heroTitle: "Our Locations",
   heroText:
-    "Discover Mazzarini Group's global presence. Explore our offices and project locations worldwide.",
+    "Discover Mazarini Group's global presence. Explore our offices and project locations worldwide.",
   heroVideo: null,
   heroImage: null,
 };

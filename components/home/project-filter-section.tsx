@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Icon } from "@/components/ui/icon";
 import { FadeIn } from "@/components/ui/fade-in";
 import { ProjectFilterCard } from "@/components/home/project-filter-card";
@@ -19,6 +19,13 @@ export function ProjectFilterSection({
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "center center"],
+  });
+  const oddY = useTransform(scrollYProgress, [0, 1], [360, 0]);
+  const oddOpacity = useTransform(scrollYProgress, [0, 0.15, 0.9], [0, 0, 1]);
 
   // Extract unique categories from projects
   const categories = Array.from(
@@ -131,24 +138,32 @@ export function ProjectFilterSection({
           </FadeIn>
         </div>
 
-        {/* ── Project cards grid ── */}
-        <motion.div
-          layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project) => (
-              <motion.div
-                key={project.id}
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.35, ease: "easeOut" }}>
-                <ProjectFilterCard project={project} />
-              </motion.div>
-            ))}
+        {/* ── Project cards carousel ── */}
+        <div className="overflow-x-auto scrollbar-hide -mx-4 sm:-mx-6 lg:-mx-8">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={selectedCategory ?? "all"}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="flex gap-5 px-4 sm:px-6 lg:px-8 py-16 snap-x snap-mandatory"
+            >
+              {filteredProjects.map((project, index) => {
+                const isOdd = index % 2 == 0;
+                return (
+                  <motion.div
+                    key={project.id}
+                    style={isOdd ? { y: oddY, opacity: oddOpacity } : undefined}
+                    className="min-w-[80vw] sm:min-w-0 sm:w-82.5 shrink-0 snap-start"
+                  >
+                    <ProjectFilterCard project={project} />
+                  </motion.div>
+                );
+              })}
+            </motion.div>
           </AnimatePresence>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

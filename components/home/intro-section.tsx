@@ -1,4 +1,5 @@
 import { FadeIn } from "@/components/ui/fade-in";
+import { div } from "framer-motion/client";
 
 interface IntroSectionProps {
   heading: string | null;
@@ -40,13 +41,13 @@ export function IntroSection({
   }
 
   return (
-    <section className="bg-neutral-950 py-20 lg:py-28">
-      <div className="max-w-400 mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+    <section className="bg-neutral-950 py-30 lg:py-40 min-h-[80vh]! flex items-center">
+      <div className="max-w-300 mx-auto px-4 sm:px-6 lg:px-8 ">
+        <div className=" gap-12 lg:gap-20 items-start">
           {/* Left — large heading */}
           {heading && (
             <FadeIn direction="left" duration={0.7}>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight tracking-tight">
+              <h2 className="md:w-[85%] text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight">
                 {renderHeading(heading, highlightText)}
               </h2>
             </FadeIn>
@@ -54,13 +55,16 @@ export function IntroSection({
 
           {/* Right — description */}
           {description && (
-            <FadeIn direction="right" delay={0.2} duration={0.7}>
-              <div className="lg:pt-4">
-                <p className="text-base lg:text-lg text-white/60 leading-relaxed">
-                  {description}
-                </p>
-              </div>
-            </FadeIn>
+            <div className="flex justify-beteen w-full items-start gap-12 lg:gap-20 mt-12">
+              <div className="hidden md:block md:w-[60%]"></div>
+              <FadeIn direction="right" className="w-full" delay={0.2} duration={0.7}>
+                <div className="lg:pt-4 w-full">
+                  <p className="text-base lg:text-lg text-white/60 leading-relaxed">
+                    {description}
+                  </p>
+                </div>
+              </FadeIn>
+            </div>
           )}
         </div>
       </div>

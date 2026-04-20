@@ -46,7 +46,7 @@ export function Header({
   return (
     <header
       className={`fixed top-0 left-0 z-50 w-full transition-all duration-300 ${
-        scrolled ? "bg-white/95" : "bg-transparent"
+        scrolled ? "bg-white" : "bg-transparent"
       }`}>
       {/* Top utility bar */}
       <div
