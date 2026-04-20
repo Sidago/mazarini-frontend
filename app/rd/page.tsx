@@ -17,6 +17,8 @@ export default async function RdPage(): Promise<React.ReactElement> {
         text={data.heroText ?? ""}
         heroVideo={data.heroVideo}
         heroImage={data.heroImage}
+        ctaText={data.heroCtaText}
+        ctaUrl={data.heroCtaUrl}
       />
       <RdSections data={data} />
     </>

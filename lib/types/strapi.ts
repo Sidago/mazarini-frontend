@@ -221,6 +221,8 @@ export interface About {
   heroText: string;
   heroVideo: StrapiMedia | null;
   heroImage: StrapiMedia | null;
+  heroCtaText: string | null;
+  heroCtaUrl: string | null;
   introHeading: string | null;
   introHighlight: string | null;
   introDiscription: string | null;
@@ -236,6 +238,8 @@ export interface Contact {
   heroText: string;
   heroVideo: StrapiMedia | null;
   heroImage: StrapiMedia | null;
+  heroCtaText: string | null;
+  heroCtaUrl: string | null;
   formTitle: string | null;
   formDescription: string | null;
 }
@@ -352,6 +356,8 @@ export interface ExperiencePage {
   heroText: string | null;
   heroVideo: StrapiMedia | null;
   heroImage: StrapiMedia | null;
+  heroCtaText: string | null;
+  heroCtaUrl: string | null;
   experience_steps: ExperienceStep[];
 }
 
@@ -363,6 +369,8 @@ export interface LocationPage {
   heroTitle: string;
   heroText: string;
   heroVideo: StrapiMedia | null;
+  heroCtaText: string | null;
+  heroCtaUrl: string | null;
   heroImage: StrapiMedia | null;
 }
 
@@ -397,6 +405,8 @@ export interface TeamsPage {
   heroText: string;
   heroVedio: StrapiMedia | null;
   heroImage: StrapiMedia | null;
+  heroCtaText: string | null;
+  heroCtaUrl: string | null;
 }
 
 // R&D Page
@@ -431,6 +441,8 @@ export interface SubcontractorsPage {
   heroText: string;
   heroVideo: StrapiMedia | null;
   heroImage: StrapiMedia | null;
+  heroCtaText: string | null;
+  heroCtaUrl: string | null;
   quoteTitle: string | null;
   quotes: SubcontractorQuote[];
   onboardingTitle: string | null;
@@ -475,6 +487,8 @@ export interface RdPage {
   heroText: string | null;
   heroImage: StrapiMedia | null;
   heroVideo: StrapiMedia | null;
+  heroCtaText: string | null;
+  heroCtaUrl: string | null;
 
   whyTitle: string | null;
   whyDescription: string | null;

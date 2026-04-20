@@ -15,6 +15,8 @@ export default async function TeamPage(): Promise<React.ReactElement> {
     heroText: "Meet the people who make it all happen.",
     heroVedio: null,
     heroImage: null,
+    heroCtaText: null,
+    heroCtaUrl: null,
   };
   try {
     [teams, teamPage] = await Promise.all([
@@ -32,6 +34,8 @@ export default async function TeamPage(): Promise<React.ReactElement> {
         text={teamPage.heroText}
         heroVideo={teamPage?.heroVedio}
         heroImage={teamPage?.heroImage}
+        ctaText={teamPage.heroCtaText}
+        ctaUrl={teamPage.heroCtaUrl}
       />
       <TeamList teams={teams} />
     </>

@@ -22,6 +22,8 @@ const FALLBACK_ABOUT: AboutType = {
   heroText: "Learn more about who we are and what we do.",
   heroVideo: null,
   heroImage: null,
+  heroCtaText: null,
+  heroCtaUrl: null,
   introHeading: null,
   introHighlight: null,
   introDiscription: null,
@@ -50,6 +52,8 @@ export default async function About(): Promise<React.ReactElement> {
         text={about.heroText}
         heroVideo={about.heroVideo}
         heroImage={about.heroImage}
+        ctaText={about.heroCtaText}
+        ctaUrl={about.heroCtaUrl}
       />
 
       <IntroSection

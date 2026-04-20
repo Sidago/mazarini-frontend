@@ -85,6 +85,9 @@ body {
   transform-box: fill-box;
   transform-origin: center;
 }
+.group:hover .animate-spin-slow-ccw {
+  animation-play-state: paused;
+}
 
 /* Hide scrollbar for horizontal scroll containers */
 .scrollbar-hide::-webkit-scrollbar {

@@ -100,7 +100,7 @@ export function Footer({
 
             <Link
               href="/contact"
-              className="group relative w-44 h-44 flex items-center justify-center">
+              className="group relative w-42 h-42 flex items-center justify-center">
               {/* Rotating circle text */}
               <svg
                 className="absolute inset-0 w-full h-full animate-spin-slow-ccw"
@@ -111,10 +111,10 @@ export function Footer({
                     d="M 88,88 m -68,0 a 68,68 0 1,1 136,0 a 68,68 0 1,1 -136,0"
                   />
                 </defs>
-                <text fill="white" fontSize="11" fontWeight="600">
+                <text fill="white" fontSize="11.5" fontWeight="600">
                   <textPath
                     href="#footer-circle-path"
-                    textLength="427"
+                    textLength="420"
                     lengthAdjust="spacing">
                     CONTACT US TODAY · CONTACT US TODAY · CONTACT US TODAY ·
                   </textPath>

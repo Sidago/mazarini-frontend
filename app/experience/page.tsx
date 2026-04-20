@@ -12,6 +12,8 @@ const FALLBACK_PAGE: ExperiencePage = {
   heroText: "Discover how we deliver exceptional results at every stage.",
   heroVideo: null,
   heroImage: null,
+  heroCtaText: null,
+  heroCtaUrl: null,
   experience_steps: [],
 };
 

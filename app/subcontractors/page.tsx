@@ -22,6 +22,8 @@ const FALLBACK: SubcontractorsPage = {
   heroText: "Building together with our valued trade partners.",
   heroVideo: null,
   heroImage: null,
+  heroCtaText: null,
+  heroCtaUrl: null,
   quoteTitle: null,
   quotes: [],
   onboardingTitle: "Onboarding Information",
@@ -63,6 +65,8 @@ export default async function SubcontractorsPage(): Promise<React.ReactElement> 
         text={page.heroText}
         heroVideo={page.heroVideo}
         heroImage={page.heroImage}
+        ctaText={page.heroCtaText}
+        ctaUrl={page.heroCtaUrl}
       />
 
       {/* Quote Carousel */}

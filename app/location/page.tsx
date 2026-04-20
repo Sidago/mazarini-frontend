@@ -24,6 +24,8 @@ const FALLBACK_LOCATION: LocationPageType = {
     "Discover Mazarini Group's global presence. Explore our offices and project locations worldwide.",
   heroVideo: null,
   heroImage: null,
+  heroCtaText: null,
+  heroCtaUrl: null,
 };
 
 export default async function LocationPage(): Promise<React.ReactElement> {
@@ -46,6 +48,8 @@ export default async function LocationPage(): Promise<React.ReactElement> {
         text={locationPage.heroText}
         heroVideo={locationPage?.heroVideo}
         heroImage={locationPage?.heroImage}
+        ctaText={locationPage.heroCtaText}
+        ctaUrl={locationPage.heroCtaUrl}
       />
       <LocationList locations={locations} />
     </>

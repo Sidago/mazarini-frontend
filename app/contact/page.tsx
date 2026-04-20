@@ -21,6 +21,8 @@ const FALLBACK_CONTACT: Contact = {
     "We'd love to hear from you. Get in touch and let's build something great together.",
   heroVideo: null,
   heroImage: null,
+  heroCtaText: null,
+  heroCtaUrl: null,
   formTitle: "Contact us",
   formDescription:
     "Have a project in mind or want to learn more about how we can help? Reach out to our team and we'll get back to you as soon as possible.",
@@ -49,6 +51,8 @@ export default async function ContactPage(): Promise<React.ReactElement> {
         text={contact.heroText}
         heroVideo={contact.heroVideo}
         heroImage={contact.heroImage}
+        ctaText={contact.heroCtaText}
+        ctaUrl={contact.heroCtaUrl}
       />
 
       <section className="py-20 md:py-32 bg-background-light">
