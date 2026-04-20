@@ -9,6 +9,7 @@ import { TestimonialSection } from "@/components/home/testimonial-section";
 import { ExperienceSection } from "@/components/home/experience-section";
 import { BelongSection } from "@/components/home/belong-section";
 import { NewsSection } from "@/components/home/news-section";
+import { SparkSection } from "@/components/home/spark-section";
 import { CtaSection } from "@/components/home/cta-section";
 import { getHomepage } from "@/lib/api/homepage";
 import type { Homepage } from "@/lib/types/strapi";
@@ -57,6 +58,12 @@ const FALLBACK_HOMEPAGE: Homepage = {
     "You're talented, resourceful, and driven. We're passionate, progressive, and disciplined, and our team members are the true foundation of our business. Let's build a future together.",
   belongImage: null,
   belongCtaText: "JOIN OUR TEAM",
+  sparkHeading: "Igniting Progress",
+  sparkDescription:
+    "We believe that every breakthrough starts with a spark of curiosity — a question, an idea, a bold 'what if?' For nearly 90 years, we've challenged conventional thinking, embraced innovation, and pioneered smarter ways to build.",
+  sparkImage: null,
+  sparkCtaText: "SEE OUR SPARK",
+  sparkCtaUrl: "/about",
   newsHeading: "News\n& Insights",
   news: [],
 };
@@ -108,6 +115,13 @@ export default async function Home(): Promise<React.ReactElement> {
         description={homepage.belongDescription}
         image={homepage.belongImage}
         ctaText={homepage.belongCtaText}
+      />
+      <SparkSection
+        heading={homepage.sparkHeading}
+        description={homepage.sparkDescription}
+        image={homepage.sparkImage}
+        ctaText={homepage.sparkCtaText}
+        ctaUrl={homepage.sparkCtaUrl}
       />
       <NewsSection heading={homepage.newsHeading} news={homepage.news ?? []} />
       {/* <ProjectShowcase

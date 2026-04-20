@@ -162,6 +162,11 @@ export interface Homepage {
   belongDescription: string | null;
   belongImage: StrapiMedia | null;
   belongCtaText: string | null;
+  sparkHeading: string | null;
+  sparkDescription: string | null;
+  sparkImage: StrapiMedia | null;
+  sparkCtaText: string | null;
+  sparkCtaUrl: string | null;
   newsHeading: string | null;
   news: News[];
 }

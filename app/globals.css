@@ -70,6 +70,22 @@ body {
   animation: marquee 25s linear infinite;
 }
 
+/* Circular rotating text animation */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 12s linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.animate-spin-slow-ccw {
+  animation: spin-slow 12s linear infinite reverse;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
 /* Hide scrollbar for horizontal scroll containers */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
