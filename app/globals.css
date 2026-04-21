@@ -24,6 +24,11 @@
   --color-surface: #f9f9fd;
 }
 
+html,
+body {
+  overflow-x: clip;
+}
+
 body {
   font-family: var(--font-display);
 }

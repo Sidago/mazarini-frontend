@@ -114,6 +114,7 @@ export function Header({
               subNavItems={subNavItems}
               ctaText={ctaText}
               ctaUrl={ctaUrl}
+              scrolled={scrolled}
               onSearchOpen={() => setIsSearchOpen(true)}
             />
           </div>

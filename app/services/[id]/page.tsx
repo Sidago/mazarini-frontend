@@ -1,10 +1,12 @@
 import { notFound } from "next/navigation";
 import { FadeIn } from "@/components/ui/fade-in";
 import { ServiceDetailSection } from "@/components/services/service-detail-section";
+import { ServiceRelatedProjects } from "@/components/services/service-related-projects";
 import { ContactForm } from "@/components/contact/contact-form";
 import { getService, getServicesPage } from "@/lib/api/services";
+import { getProjects } from "@/lib/api/projects";
 import { ImgOrVideoHero } from "@/components/common/img-video-hero";
-import type { Service } from "@/lib/types/strapi";
+import type { Project, Service } from "@/lib/types/strapi";
 
 interface ServiceDetailPageProps {
   params: Promise<{ id: string }>;
@@ -38,6 +40,16 @@ export default async function ServiceDetailPage({
     }
   }
 
+  let relatedProjects: Project[] = [];
+  try {
+    const allProjects = await getProjects();
+    relatedProjects = [...allProjects]
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 5);
+  } catch {
+    // projects unavailable — section will be hidden
+  }
+
   const title = service.title ?? "Service Detail";
   const text = service.discriptions
     ? service.discriptions.substring(0, 160)
@@ -55,6 +67,9 @@ export default async function ServiceDetailPage({
 
       {/* Detail content section — image + text */}
       <ServiceDetailSection service={service} />
+
+      {/* Related projects */}
+      <ServiceRelatedProjects projects={relatedProjects} />
 
       {/* Contact form section */}
       <section className="py-20 md:py-32 bg-background-light dark:bg-background-dark">
