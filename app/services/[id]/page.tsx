@@ -6,7 +6,9 @@ import { ContactForm } from "@/components/contact/contact-form";
 import { getService, getServicesPage } from "@/lib/api/services";
 import { getProjects } from "@/lib/api/projects";
 import { ImgOrVideoHero } from "@/components/common/img-video-hero";
-import type { Project, Service } from "@/lib/types/strapi";
+import type { News, Project, Service } from "@/lib/types/strapi";
+import { NewsSection } from "@/components/home/news-section";
+import { getNews } from "@/lib/api/news";
 
 interface ServiceDetailPageProps {
   params: Promise<{ id: string }>;
@@ -50,6 +52,21 @@ export default async function ServiceDetailPage({
     // projects unavailable — section will be hidden
   }
 
+  let news: News[] = [];
+  const newsHeading = "News\n& Insights";
+  try {
+    const allNews = await getNews();
+    news = allNews
+      .sort(
+        (a, b) =>
+          new Date(b.publishedDate as string).getTime() -
+          new Date(a.publishedDate as string).getTime(),
+      )
+      .slice(0, 3);
+  } catch {
+    // Strapi unavailable or permissions not set — news section will be hidden
+  }
+
   const title = service.title ?? "Service Detail";
   const text = service.discriptions
     ? service.discriptions.substring(0, 160)
@@ -71,21 +88,28 @@ export default async function ServiceDetailPage({
       {/* Related projects */}
       <ServiceRelatedProjects projects={relatedProjects} />
 
+      {/* News & Insights section */}
+      <NewsSection heading={newsHeading} news={news ?? []} />
+
       {/* Contact form section */}
-      <section className="py-20 md:py-32 bg-background-light dark:bg-background-dark">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn direction="up">
-            <h2 className="text-3xl md:text-4xl font-black text-neutral-900 dark:text-white mb-4 text-center">
-              Get in Touch
-            </h2>
-          </FadeIn>
-          <FadeIn direction="up" delay={0.1}>
-            <p className="text-lg text-neutral-600 dark:text-neutral-400 text-center mb-12">
-              Interested in our {service.title.toLowerCase()} services? Reach
-              out and let&apos;s discuss your project.
-            </p>
-          </FadeIn>
-          <ContactForm />
+      <section className="py-20 md:py-32 w-full bg-background-light dark:bg-background-dark">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col md:flex-row justify-between items-center gap-12">
+          <div className="w-full">
+            <FadeIn direction="up">
+              <h2 className="text-3xl md:text-6xl font-black text-neutral-900 dark:text-white mb-4 text-left">
+                Get in Touch
+              </h2>
+            </FadeIn>
+            <FadeIn direction="up" delay={0.1}>
+              <p className="text-lg text-neutral-600 dark:text-neutral-400 text-left">
+                Interested in our {service.title.toLowerCase()} services? Reach
+                out and let&apos;s discuss your project.
+              </p>
+            </FadeIn>
+          </div>
+          <div className="w-full">
+            <ContactForm />
+          </div>
         </div>
       </section>
     </>

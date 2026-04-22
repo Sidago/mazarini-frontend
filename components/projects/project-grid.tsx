@@ -137,10 +137,10 @@ export function ProjectGrid({
   }, [projects, categoryFilter, locationFilter, typeFilter, searchQuery]);
 
   return (
-    <section className="py-12 lg:py-24 bg-background-light dark:bg-background-dark">
-      <div className="max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="pb-12 pt-12 lg:pb-24 bg-background-light dark:bg-background-dark">
+      <div className=" max-w-[97%] sm:max-w-[90%] md:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Filter bar */}
-        <div className="flex flex-wrap items-center gap-6 mb-12">
+        <div className="flex flex-wrap items-center gap-6 mb-8">
           <div className="flex flex-wrap items-center gap-4">
             <Dropdown
               label="Category"
@@ -182,7 +182,7 @@ export function ProjectGrid({
         {/* Project cards grid */}
         <motion.div
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
         >
           <AnimatePresence mode="popLayout">
             {filtered.map((project) => (

@@ -38,8 +38,8 @@ export default async function ProjectsPage(): Promise<React.ReactElement> {
       )}
 
       {/* Page heading + Filterable grid - same centered container */}
-      <section className="pt-16 lg:pt-24 bg-background-light dark:bg-background-dark">
-        <div className="max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="pt-16 lg:pt-24 mt-16 bg-background-light dark:bg-background-dark">
+        <div className="max-w-[97%] sm:max-w-[90%] md:max-w-[70%] mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn direction="up">
             <h2 className="text-4xl md:text-5xl font-black text-neutral-900 dark:text-white mb-4">
               {pageTitle}
