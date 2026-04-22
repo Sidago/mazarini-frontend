@@ -26,7 +26,7 @@ export async function strapiGet<T>(
       url.searchParams.set(key, value),
     );
   }
-  const res = await fetch(url.toString(), { next: { revalidate: 60 } });
+  const res = await fetch(url.toString(), { cache: "no-store" });
   if (!res.ok) {
     throw new Error(`Strapi API error: ${res.status} ${res.statusText}`);
   }

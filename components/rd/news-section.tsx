@@ -13,7 +13,7 @@ export function NewsSection({ data }: NewsSectionProps): React.ReactElement {
   return (
     <section
       id="news"
-      className="relative w-screen h-screen flex-none bg-neutral-900 text-white overflow-hidden flex items-center"
+      className="relative w-screen min-h-screen md:h-screen flex-none bg-neutral-900 text-white overflow-hidden flex items-center py-20 md:py-0"
     >
       {/* Watermark */}
       {data.newsWatermark && (

@@ -15,6 +15,20 @@ interface ImgOrVideoHeroProps {
   ctaUrl?: string | null;
 }
 
+function WithLineBreaks({ text }: { text: string }) {
+  const lines = text.split(/\r?\n/);
+  return (
+    <>
+      {lines.map((line, i) => (
+        <span key={i}>
+          {line}
+          {i < lines.length - 1 && <br />}
+        </span>
+      ))}
+    </>
+  );
+}
+
 export function ImgOrVideoHero({
   title,
   text,
@@ -39,14 +53,14 @@ export function ImgOrVideoHero({
       {/* Content overlay */}
       <div className="relative z-20 flex flex-col justify-center h-full px-6 lg:pl-[18%] lg:pr-16 text-left">
         <FadeIn delay={0.3}>
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white leading-[1.1] max-w-5xl">
-            {title}
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.1] max-w-5xl">
+            <WithLineBreaks text={title} />
           </h1>
         </FadeIn>
 
         <FadeIn delay={0.5}>
-          <p className="mt-8 text-lg sm:text-xl text-white/80 max-w-2xl leading-relaxed whitespace-pre-line">
-            {text}
+          <p className="mt-8 text-lg sm:text-xl text-white/90 max-w-2xl leading-relaxed">
+            <WithLineBreaks text={text} />
           </p>
         </FadeIn>
 

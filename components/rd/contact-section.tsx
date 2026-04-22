@@ -10,7 +10,7 @@ export function ContactSection({ data }: ContactSectionProps): React.ReactElemen
   return (
     <section
       id="contact"
-      className="relative w-screen h-screen flex-none bg-background-light text-neutral-900 overflow-hidden flex items-center"
+      className="relative w-screen min-h-screen md:h-screen flex-none bg-background-light text-neutral-900 overflow-hidden flex items-center py-20 md:py-0"
     >
       {/* Watermark */}
       <span

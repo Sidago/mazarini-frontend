@@ -18,15 +18,16 @@ export function WhySection({ data }: WhySectionProps): React.ReactElement {
       id="why"
       dark={false}
       watermark={data.whyWatermark ?? "Why"}
+      contentClassName="pl-[15%] pr-[5%]"
             leftContent={
-        <>
+        <div className="">
           <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-6">
             {data.whyTitle ?? "Why We're Investing in R&D"}
           </h2>
           <p className="text-lg leading-relaxed text-neutral-600 max-w-sm">
             {data.whyDescription}
           </p>
-        </>
+        </div> 
       }
       rightContent={
         <DragScrollRow>
@@ -35,7 +36,7 @@ export function WhySection({ data }: WhySectionProps): React.ReactElement {
             return (
               <div
                 key={card.id}
-                className="relative flex-none w-56 h-72 overflow-hidden rounded-sm"
+                className="relative flex-none w-95 h-130 overflow-hidden"
               >
                 {url ? (
                   // eslint-disable-next-line @next/next/no-img-element

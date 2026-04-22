@@ -12,7 +12,7 @@ export function PartnersSection({ data }: PartnersSectionProps): React.ReactElem
   return (
     <section
       id="partners"
-      className="relative w-screen h-screen flex-none bg-background-light text-neutral-900 overflow-hidden flex items-center"
+      className="relative w-screen min-h-screen md:h-screen flex-none bg-background-light text-neutral-900 overflow-hidden flex items-center py-20 md:py-0"
     >
       {/* Watermark */}
       {data.partnersWatermark && (

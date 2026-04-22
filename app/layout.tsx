@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Noto_Serif } from "next/font/google";
 import { Header } from "@/components/layout/header";
-import { Footer } from "@/components/layout/footer";
+import { ConditionalFooter } from "@/components/layout/conditional-footer";
 import { PageLoader } from "@/components/ui/page-loader";
 import { getGlobal } from "@/lib/api/global";
 import { getServices } from "@/lib/api/services";
@@ -92,7 +92,7 @@ export default async function RootLayout({
           ctaUrl={global?.headerCtaUrl ?? "contact"}
         />
         <main>{children}</main>
-        <Footer
+        <ConditionalFooter
           description={global?.footerDescription ?? null}
           columns={global?.footerColumns ?? []}
           socialLinks={global?.socialLinks ?? []}

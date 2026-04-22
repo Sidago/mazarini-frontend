@@ -219,10 +219,32 @@ interface ParallaxProps {
   children: string;
   baseVelocity: number;
   className?: string;
+  /** CSS color value, e.g. "rgba(255,255,255,0.08)" */
+  color?: string;
+  /** Scroll axis for the marquee. Defaults to "horizontal". */
+  direction?: "horizontal" | "vertical";
+  /** Horizontal position of the strip when direction is "vertical". */
+  position?: "start" | "middle" | "end";
+  /** Flip the text 180° (vertical mode only). */
+  flip?: boolean;
 }
 
-export function ParallaxText({ children, baseVelocity = 100, className }: ParallaxProps) {
-  const baseX = useMotionValue(0);
+const verticalJustify: Record<"start" | "middle" | "end", string> = {
+  start: "justify-start",
+  middle: "justify-center",
+  end: "justify-end",
+};
+
+export function ParallaxText({
+  children,
+  baseVelocity = 100,
+  className,
+  color,
+  direction = "horizontal",
+  position = "middle",
+  flip = false,
+}: ParallaxProps) {
+  const basePos = useMotionValue(0);
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
   const smoothVelocity = useSpring(scrollVelocity, {
@@ -233,50 +255,41 @@ export function ParallaxText({ children, baseVelocity = 100, className }: Parall
     clamp: false,
   });
 
-  /**
-   * This is a magic wrapping for the length of the text - you
-   * have to replace for wrapping that works for you or dynamically
-   * calculate
-   */
-  const x = useTransform(baseX, (v) => `${wrap(-20, -45, v)}%`);
+  const pos = useTransform(basePos, (v) => `${wrap(-20, -45, v)}%`);
 
-  const directionFactor = useRef<number>(1);
-  useAnimationFrame((t, delta) => {
-    let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
-
-    /**
-     * This is what changes the direction of the scroll once we
-     * switch scrolling directions.
-     */
-    if (velocityFactor.get() < 0) {
-      directionFactor.current = -1;
-    } else if (velocityFactor.get() > 0) {
-      directionFactor.current = 1;
-    }
-
-    moveBy += directionFactor.current * moveBy * velocityFactor.get();
-
-    baseX.set(baseX.get() + moveBy);
+  const scrollDir = useRef<number>(1);
+  useAnimationFrame((_t, delta) => {
+    let moveBy = scrollDir.current * baseVelocity * (delta / 1000);
+    if (velocityFactor.get() < 0) scrollDir.current = -1;
+    else if (velocityFactor.get() > 0) scrollDir.current = 1;
+    moveBy += scrollDir.current * moveBy * velocityFactor.get();
+    basePos.set(basePos.get() + moveBy);
   });
 
-  /**
-   * The number of times to repeat the child text should be dynamically calculated
-   * based on the size of the text and viewport. Likewise, the x motion value is
-   * currently wrapped between -20 and -45% - this 25% is derived from the fact
-   * we have four children (100% / 4). This would also want deriving from the
-   * dynamically generated number of children.
-   */
-  const defaultTextClass =
-    "inline-block text-[18vw] md:text-[14vw] font-black italic text-white/10 leading-none mx-4";
+  const isVertical = direction === "vertical";
+
+  const defaultTextClass = isVertical
+    ? "font-black italic leading-none my-3 text-[18vw] md:text-[14vw]"
+    : "inline-block font-black italic leading-none mx-4 text-[18vw] md:text-[14vw]";
 
   return (
-    <div className="w-full h-full flex items-center overflow-hidden">
-      <motion.div className="flex whitespace-nowrap" style={{ x }}>
+    <div
+      className={`w-full h-full overflow-hidden flex ${
+        isVertical ? `${verticalJustify[position]} items-start` : "items-center"
+      }`}>
+      <motion.div
+        className={`flex ${isVertical ? "flex-col items-center" : "whitespace-nowrap"}`}
+        style={isVertical ? { y: pos } : { x: pos }}>
         {Array.from({ length: 10 }).map((_, i) => (
           <span
             key={i}
             className={className ?? defaultTextClass}
-            style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
+            style={{
+              fontFamily: "Georgia, 'Times New Roman', serif",
+              color: color ?? "rgba(255,255,255,0.1)",
+              ...(isVertical && { writingMode: "vertical-rl" }),
+              ...(isVertical && flip && { transform: "rotate(180deg)" }),
+            }}>
             {children}
           </span>
         ))}

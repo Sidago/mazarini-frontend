@@ -15,7 +15,7 @@ export function PillarsSection({ data }: PillarsSectionProps): React.ReactElemen
   return (
     <section
       id="pillars"
-      className="relative w-screen h-screen flex-none bg-neutral-900 text-white overflow-hidden flex flex-col justify-center py-16"
+      className="relative w-screen min-h-screen md:h-screen flex-none bg-neutral-900 text-white overflow-hidden flex flex-col justify-center py-16"
     >
       {/* Watermark */}
       {data.pillarsWatermark && (
@@ -32,21 +32,8 @@ export function PillarsSection({ data }: PillarsSectionProps): React.ReactElemen
       )}
 
       <div className="relative z-10 w-full max-w-[90%] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Top row: pillar text cards */}
-        {pillars.length > 0 && (
-          <div className="mb-16 overflow-x-auto scrollbar-hide">
-            <div className="flex gap-12 pb-4 border-b border-white/10">
-              {pillars.map((pillar) => (
-                <div key={pillar.id} className="flex-none max-w-xs">
-                  <h4 className="text-base font-bold mb-2">{pillar.title}</h4>
-                  <p className="text-sm text-white/60 leading-relaxed">{pillar.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
 
-        {/* Bottom: left title + right image cards */}
+        {/* left title + right image cards */}
         <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-16 items-center">
           <div>
             <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-6">

@@ -1,0 +1,23 @@
+"use client";
+
+import { usePathname } from "next/navigation";
+import { Footer } from "@/components/layout/footer";
+import type {
+  FooterColumnComponent,
+  SocialLinkComponent,
+  LinkComponent,
+} from "@/lib/types/strapi";
+
+interface ConditionalFooterProps {
+  description: string | null;
+  columns: FooterColumnComponent[];
+  socialLinks: SocialLinkComponent[];
+  copyright: string | null;
+  bottomLinks: LinkComponent[];
+}
+
+export function ConditionalFooter(props: ConditionalFooterProps) {
+  const pathname = usePathname();
+  if (pathname.startsWith("/experience") || pathname.startsWith("/rd")) return null;
+  return <Footer {...props} />;
+}
