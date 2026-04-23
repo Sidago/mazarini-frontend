@@ -21,6 +21,9 @@ export async function strapiGet<T>(
   params?: Record<string, string>,
 ): Promise<T> {
   const url = new URL(`/api${path}`, STRAPI_PUBLIC_URL);
+
+  console.log("Fetching Strapi API:", url.toString());
+
   if (params) {
     Object.entries(params).forEach(([key, value]) =>
       url.searchParams.set(key, value),
