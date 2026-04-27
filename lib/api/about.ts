@@ -5,6 +5,7 @@ export async function getAbout(): Promise<About> {
   const res = await strapiGet<StrapiResponse<About>>("/about", {
     "populate[heroVideo]": "true",
     "populate[heroImage]": "true",
+    "populate[stats]": "true",
     // "populate[blocks][populate]": "*",
   });
   return res.data;

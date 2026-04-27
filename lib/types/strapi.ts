@@ -229,6 +229,15 @@ export interface About {
   timelineHeading: string | null;
   timelineDescription: string | null;
   blocks: ContentBlock[];
+  stats: AboutStat[];
+}
+
+export interface AboutStat {
+  id: number;
+  value: string;
+  suffix: string | null;
+  label: string;
+  description: string | null;
 }
 
 export interface Contact {

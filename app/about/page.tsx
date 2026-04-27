@@ -4,6 +4,7 @@ import { getTimelineEntries } from "@/lib/api/timeline";
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import { FadeIn } from "@/components/ui/fade-in";
 import { TimelineSection } from "@/components/about/timeline-section";
+import { NumbersMarquee } from "@/components/about/numbers-marquee";
 import { IntroSection } from "@/components/home/intro-section";
 import type {
   About as AboutType,
@@ -30,6 +31,7 @@ const FALLBACK_ABOUT: AboutType = {
   timelineHeading: null,
   timelineDescription: null,
   blocks: [],
+  stats: [],
 };
 
 export default async function About(): Promise<React.ReactElement> {
@@ -61,6 +63,8 @@ export default async function About(): Promise<React.ReactElement> {
         highlightText={about.introHighlight}
         description={about.introDiscription}
       />
+
+      <NumbersMarquee stats={about.stats} />
 
       <TimelineSection
         heading={about.timelineHeading}
