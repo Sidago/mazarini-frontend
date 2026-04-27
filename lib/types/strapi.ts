@@ -467,6 +467,7 @@ export interface RdWhyCard {
   id: number;
   documentId: string;
   label: string;
+  description: string | null;
   image: StrapiMedia | null;
   order: number | null;
 }

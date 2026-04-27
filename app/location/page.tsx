@@ -10,7 +10,6 @@ import {
 import React from "react";
 
 export const metadata = {
-  title: "Our Locations | Mazarini Group",
   description:
     "Discover Mazarini Group's global presence. Explore our offices and project locations worldwide.",
 };

@@ -152,7 +152,7 @@ export function RdSections({ data }: RdSectionsProps): React.ReactElement {
   return (
     <>
       {/* ── Mobile: normal vertical scroll ── */}
-      <div className="md:hidden flex flex-col gap-4">
+      <div className="lg:hidden flex flex-col gap-4">
         {hero}
         <WhySection data={data} />
         <PillarsSection data={data} />
@@ -164,7 +164,7 @@ export function RdSections({ data }: RdSectionsProps): React.ReactElement {
       </div>
 
       {/* ── Desktop: horizontal carousel ── */}
-      <div className="hidden md:block">
+      <div className="hidden lg:block">
         <AnimatePresence>
           {activeIndex > 0 && (
             <motion.button
@@ -187,6 +187,32 @@ export function RdSections({ data }: RdSectionsProps): React.ReactElement {
                 <path d="M19 12H5M5 12l7 7M5 12l7-7" />
               </svg>
               Back
+            </motion.button>
+          )}
+        </AnimatePresence>
+
+        <AnimatePresence>
+          {activeIndex === 0 && (
+            <motion.button
+              key="next-btn"
+              initial={{ opacity: 0, x: 16 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 16 }}
+              transition={{ duration: 0.25 }}
+              onClick={() => navigate(1)}
+              className="fixed right-6 top-1/2 -translate-y-1/2 z-50 flex items-center justify-center text-xl px-3 font-headline text-primary hover:text-primary/70 transition-colors">
+              scroll 
+              <svg
+                width="35"
+                height="23"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
             </motion.button>
           )}
         </AnimatePresence>

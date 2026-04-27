@@ -25,13 +25,13 @@ export async function generateMetadata(): Promise<Metadata> {
   try {
     const global = await getGlobal();
     return {
-      title: global.defaultSeo?.metaTitle ?? global.siteName,
+      title: "Mazarini Inc. | Building America",
       description:
         global.defaultSeo?.metaDescription ?? global.siteDescription ?? "",
     };
   } catch {
     return {
-      title: "Mazarini Group",
+      title: "Mazarini Inc. | Building America",
       description:
         "Modern construction and real estate development company. Leading the way in sustainable commercial and residential development.",
     };

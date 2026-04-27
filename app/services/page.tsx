@@ -11,7 +11,6 @@ import { ProjectCarousel } from "@/components/projects/project-carousel";
 import { ServiceCarousel } from "@/components/services/service-carousel";
 
 export const metadata = {
-  title: "Our Services | Mazarini Group",
   description: "Explore our services and what we deliver across industries.",
 };
 

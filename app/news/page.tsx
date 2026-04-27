@@ -7,7 +7,6 @@ import { getNews, getNewsPage } from "@/lib/api/news";
 import type { News, NewsPage as NewsPageType } from "@/lib/types/strapi";
 
 export const metadata = {
-  title: "News & Insights | Mazarini Group",
   description:
     "Stay up to date with the latest news, insights, and updates from Mazarini Group.",
 };
