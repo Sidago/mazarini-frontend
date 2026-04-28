@@ -6,6 +6,9 @@ export async function getAbout(): Promise<About> {
     "populate[heroVideo]": "true",
     "populate[heroImage]": "true",
     "populate[stats]": "true",
+    "populate[leadershipBlocks][populate][image]": "true",
+    "populate[cultureCards][populate][image]": "true",
+    "populate[lifeImages][populate][image]": "true",
     // "populate[blocks][populate]": "*",
   });
   return res.data;

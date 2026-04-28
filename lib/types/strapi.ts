@@ -230,6 +230,14 @@ export interface About {
   timelineDescription: string | null;
   blocks: ContentBlock[];
   stats: AboutStat[];
+  leadershipBlocks: LeadershipBlock[];
+  cultureHeading: string | null;
+  cultureDescription: string | null;
+  cultureWatermark: string | null;
+  cultureCards: CultureCard[];
+  lifeHeading: string | null;
+  lifeDescription: string | null;
+  lifeImages: LifeImage[];
 }
 
 export interface AboutStat {
@@ -238,6 +246,28 @@ export interface AboutStat {
   suffix: string | null;
   label: string;
   description: string | null;
+}
+
+export interface LeadershipBlock {
+  id: number;
+  watermark: string | null;
+  image: StrapiMedia;
+  description: string;
+  ctaText: string | null;
+  ctaUrl: string | null;
+}
+
+export interface CultureCard {
+  id: number;
+  tag: string | null;
+  title: string;
+  image: StrapiMedia;
+  url: string | null;
+}
+
+export interface LifeImage {
+  id: number;
+  image: StrapiMedia;
 }
 
 export interface Contact {

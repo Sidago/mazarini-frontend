@@ -25,7 +25,7 @@ export function NumbersMarquee({
 
   return (
     <section className="bg-neutral-950 text-white pt-30 pb-60 overflow-hidden">
-      <p className="text-center text-5xl font-semibold mb-20 tracking-wide">
+      <p className="text-center text-3xl md:text-4xl font-semibold mb-25 tracking-wide">
         {title}
       </p>
 

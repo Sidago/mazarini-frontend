@@ -5,6 +5,9 @@ import { getStrapiMediaUrl } from "@/lib/api/client";
 import { FadeIn } from "@/components/ui/fade-in";
 import { TimelineSection } from "@/components/about/timeline-section";
 import { NumbersMarquee } from "@/components/about/numbers-marquee";
+import { LeadershipBlocksSection } from "@/components/about/leadership-blocks-section";
+import { CultureSection } from "@/components/about/culture-section";
+import { LifeSection } from "@/components/about/life-section";
 import { IntroSection } from "@/components/home/intro-section";
 import type {
   About as AboutType,
@@ -32,6 +35,14 @@ const FALLBACK_ABOUT: AboutType = {
   timelineDescription: null,
   blocks: [],
   stats: [],
+  leadershipBlocks: [],
+  cultureHeading: null,
+  cultureDescription: null,
+  cultureWatermark: null,
+  cultureCards: [],
+  lifeHeading: null,
+  lifeDescription: null,
+  lifeImages: [],
 };
 
 export default async function About(): Promise<React.ReactElement> {
@@ -70,6 +81,21 @@ export default async function About(): Promise<React.ReactElement> {
         heading={about.timelineHeading}
         description={about.timelineDescription}
         entries={timelineEntries}
+      />
+
+      <LeadershipBlocksSection blocks={about.leadershipBlocks} />
+      
+      <CultureSection
+        heading={about.cultureHeading}
+        description={about.cultureDescription}
+        watermark={about.cultureWatermark}
+        cards={about.cultureCards}
+      />
+
+      <LifeSection
+        heading={about.lifeHeading}
+        description={about.lifeDescription}
+        images={about.lifeImages}
       />
     </>
   );
