@@ -21,10 +21,11 @@ export function HeroContent({
     <div className="relative z-20 flex flex-col items-center justify-center h-full px-6 text-center">
       <FadeIn delay={0.3}>
         <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight text-white leading-[1.1] max-w-5xl">
-          {titleBeforeHighlight}
           {highlightText && (
-            <span className="italic font-light">{highlightText}</span>
+            <span className="italic font-light">{titleBeforeHighlight}</span>
           )}
+          <span className="whitespace-pre-line"> </span>
+          {highlightText}
         </h1>
       </FadeIn>
 
@@ -35,8 +36,7 @@ export function HeroContent({
               <Link
                 key={cta.id}
                 href={cta.url}
-                className="inline-flex items-center justify-center px-10 py-4 text-sm font-bold uppercase tracking-widest text-neutral-900 bg-primary hover:bg-amber-500 transition-all"
-              >
+                className="inline-flex items-center justify-center px-10 py-4 text-sm font-bold uppercase tracking-widest text-neutral-900 bg-primary hover:bg-amber-500 transition-all">
                 {cta.text}
               </Link>
             ))}

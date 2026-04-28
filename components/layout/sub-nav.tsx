@@ -44,7 +44,7 @@ export function SubNav({ items, scrolled }: SubNavProps): React.ReactElement {
     <nav
       className={`hidden md:block relative border-b ${scrolled ? "border-black/20" : "border-white/15"}`}>
       {/* Nav link row */}
-      <div className="relative z-50 max-w-400 mx-auto px-4 sm:px-6 lg:px-8 top-0.5">
+      <div className="relative z-50 max-w-400 mx-auto px-4 sm:px-6 lg:px-8 h-11.5">
         <div className="flex items-center justify-center gap-10">
           {items.map((item, index) => {
             const slug = item?.slug ?? "/";
@@ -78,11 +78,10 @@ export function SubNav({ items, scrolled }: SubNavProps): React.ReactElement {
           activeItem && activeItem?.subItems?.length > 0 ? "visible" : "hidden"
         }>
         <div
-          className="absolute top-[3.09rem] left-0 right-0 w-full z-40"
+          className="absolute top-[2.9rem] left-0 right-0 w-[90%] mx-auto z-40"
           onMouseEnter={cancelClose}
           onMouseLeave={scheduleClose}>
-          <div className="bg-neutral-900/98 backdrop-blur-md border-t border-white/10 flex items-stretch h-127 w-[80%] mx-auto">
-
+          <div className="bg-neutral-900/98 backdrop-blur-md border-t border-white/10 flex items-stretch h-127">
             {/* Left: title + sub-items (padded) */}
             <div className="w-[65%] px-8 lg:px-12 py-10 flex gap-8 items-start min-w-0 overflow-y-auto">
               {/* Section title */}
@@ -95,8 +94,11 @@ export function SubNav({ items, scrolled }: SubNavProps): React.ReactElement {
               {/* Sub-items: 1 col if ≤9, 2 cols if >9 (column-major fill) */}
               <div
                 className={`grid mx-auto gap-x-8 gap-y-1 ${useTwoColumns ? "grid-cols-2 grid-flow-col" : "grid-cols-1 items-center"}`}
-                style={useTwoColumns ? { gridTemplateRows: `repeat(${columnRows}, auto)` } : undefined}
-              >
+                style={
+                  useTwoColumns
+                    ? { gridTemplateRows: `repeat(${columnRows}, auto)` }
+                    : undefined
+                }>
                 {activeItem?.subItems.map(
                   (sub: SubNavSubItem, subIdx: number) => (
                     <Link
@@ -125,7 +127,6 @@ export function SubNav({ items, scrolled }: SubNavProps): React.ReactElement {
                 />
               </div>
             )}
-
           </div>
         </div>
       </Activity>
