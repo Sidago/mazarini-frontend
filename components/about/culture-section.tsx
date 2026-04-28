@@ -36,8 +36,8 @@ export function CultureSection({
       {watermark && (
         <div className="pointer-events-none select-none absolute top-0 left-0 right-0 h-full z-0">
           <ParallaxText
-            baseVelocity={0.12}
-            color="rgba(255,255,255,0.05)"
+            baseVelocity={0.15}
+            color="rgba(255,255,255,0.15)"
             direction="horizontal">
             {watermark}
           </ParallaxText>

@@ -91,7 +91,7 @@ export function Footer({
       {/* ── NEW FOOTER ── */}
       <footer className="bg-black text-white border-t border-white/20">
         {/* Main section */}
-        <div className="max-w-360 mx-auto px-8 md:px-16 py-20 flex flex-col lg:flex-row justify-between items-start gap-16">
+        <div className="max-w-360 mx-auto px-8 md:px-[10%] py-20 flex flex-col lg:flex-row justify-between items-start gap-16">
           {/* Left: headline + circular contact CTA */}
           <div className="flex flex-col gap-10">
             <h2 className="font-headline font-semibold text-4xl lg:text-5xl text-white tracking-tight leading-none">
@@ -164,7 +164,7 @@ export function Footer({
 
         {/* Bottom bar */}
         <div className="border-t border-white/30">
-          <div className="max-w-360 mx-auto px-8 md:px-16 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="max-w-360 mx-auto px-8 md:px-[10%] py-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex flex-wrap gap-6 text-sm text-white/70 uppercase tracking-widest">
               {bottomLinks.map((link) => (
                 <Link
