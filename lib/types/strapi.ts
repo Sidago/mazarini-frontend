@@ -98,6 +98,8 @@ export interface SubNavSubItem {
   name: string;
   linkTo: string | null;
   image: StrapiMedia | null;
+  category?: string | null;
+  description?: string | null;
 }
 
 export interface SubNavItem {
