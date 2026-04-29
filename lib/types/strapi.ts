@@ -361,6 +361,8 @@ export interface Service {
   detail_discriptions: unknown;
   accordion_items: AccordionItem[];
   slug: string | null;
+  testimonials?: Testimonial[];
+  teams?: Teams[];
 }
 
 export interface ServicesPage {
@@ -374,6 +376,7 @@ export interface ServicesPage {
   heroImage: StrapiMedia | null;
   featuredCTA?: string | null;
   featuredServices: Service[];
+  stats?: StatComponent[];
 }
 
 // Experience

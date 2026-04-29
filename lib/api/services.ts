@@ -19,8 +19,9 @@ export async function getService(id: string): Promise<Service> {
     "populate[image]": "true",
     "populate[heroImage]": "true",
     "populate[accordion_items]": "true",
+    "populate[testimonials][populate][image]": "true",
+    "populate[teams][populate][image]": "true",
   });
-  console.log("Fetched service data:", res.data);
   return res.data;
 }
 
@@ -31,6 +32,7 @@ export async function getServicesPage(): Promise<ServicesPage> {
       "populate[heroVideo]": "true",
       "populate[heroImage]": "true",
       "populate[featuredServices][populate][image]": "true",
+      "populate[stats]": "true",
     },
   );
   return res.data;
