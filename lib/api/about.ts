@@ -5,6 +5,10 @@ export async function getAbout(): Promise<About> {
   const res = await strapiGet<StrapiResponse<About>>("/about", {
     "populate[heroVideo]": "true",
     "populate[heroImage]": "true",
+    "populate[stats]": "true",
+    "populate[leadershipBlocks][populate][image]": "true",
+    "populate[cultureCards][populate][image]": "true",
+    "populate[lifeImages][populate][image]": "true",
     // "populate[blocks][populate]": "*",
   });
   return res.data;

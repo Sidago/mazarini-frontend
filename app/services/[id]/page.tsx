@@ -2,11 +2,14 @@ import { notFound } from "next/navigation";
 import { FadeIn } from "@/components/ui/fade-in";
 import { ServiceDetailSection } from "@/components/services/service-detail-section";
 import { ServiceRelatedProjects } from "@/components/services/service-related-projects";
+import { ServiceKeyTeamMembers } from "@/components/services/service-key-team-members";
+import { ServiceTestimonialSection } from "@/components/services/service-testimonial-section";
+import { ServiceByTheNumbers } from "@/components/services/service-by-the-numbers";
 import { ContactForm } from "@/components/contact/contact-form";
 import { getService, getServicesPage } from "@/lib/api/services";
 import { getProjects } from "@/lib/api/projects";
 import { ImgOrVideoHero } from "@/components/common/img-video-hero";
-import type { News, Project, Service } from "@/lib/types/strapi";
+import type { News, Project, Service, StatComponent } from "@/lib/types/strapi";
 import { NewsSection } from "@/components/home/news-section";
 import { getNews } from "@/lib/api/news";
 
@@ -28,18 +31,18 @@ export default async function ServiceDetailPage({
 
   if (!service) notFound();
 
-  // Use service-specific heroImage if set, otherwise fall back to common hero from services-page
   let heroImage = service.heroImage ?? null;
   let heroVideo = null;
-
-  if (!heroImage) {
-    try {
-      const servicesPage = await getServicesPage();
+  let servicePageStats: StatComponent[] = [];
+  try {
+    const servicesPage = await getServicesPage();
+    if (!heroImage) {
       heroImage = servicesPage.heroImage ?? null;
       heroVideo = servicesPage.heroVideo ?? null;
-    } catch {
-      // services-page not available — hero will render without media
     }
+    servicePageStats = servicesPage.stats ?? [];
+  } catch {
+    // services-page not available
   }
 
   let relatedProjects: Project[] = [];
@@ -80,13 +83,24 @@ export default async function ServiceDetailPage({
         text={text}
         heroImage={heroImage}
         heroVideo={heroVideo}
+        ctaText={null}
+        ctaUrl={null}
       />
 
       {/* Detail content section — image + text */}
       <ServiceDetailSection service={service} />
 
+      {/* By the Numbers */}
+      <ServiceByTheNumbers stats={servicePageStats} />
+
       {/* Related projects */}
       <ServiceRelatedProjects projects={relatedProjects} />
+
+      {/* Testimonials */}
+      <ServiceTestimonialSection testimonials={service.testimonials ?? []} />
+
+      {/* Key Team Members */}
+      <ServiceKeyTeamMembers members={service.teams ?? []} />
 
       {/* News & Insights section */}
       <NewsSection heading={newsHeading} news={news ?? []} />

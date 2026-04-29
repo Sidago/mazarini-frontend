@@ -219,6 +219,7 @@ interface ParallaxProps {
   children: string;
   baseVelocity: number;
   className?: string;
+  paddingStart?: string;
   /** CSS color value, e.g. "rgba(255,255,255,0.08)" */
   color?: string;
   /** Scroll axis for the marquee. Defaults to "horizontal". */
@@ -243,6 +244,7 @@ export function ParallaxText({
   direction = "horizontal",
   position = "middle",
   flip = false,
+  paddingStart,
 }: ParallaxProps) {
   const basePos = useMotionValue(0);
   const { scrollY } = useScroll();
@@ -269,14 +271,15 @@ export function ParallaxText({
   const isVertical = direction === "vertical";
 
   const defaultTextClass = isVertical
-    ? "font-black italic leading-none my-3 text-[18vw] md:text-[14vw]"
-    : "inline-block font-black italic leading-none mx-4 text-[18vw] md:text-[14vw]";
+    ? "font-black italic leading-none text-[16vw]"
+    : "inline-block font-black italic leading-none mx-4 text-[30vw] md:text-[14vw]";
 
   return (
     <div
       className={`w-full h-full overflow-hidden flex ${
         isVertical ? `${verticalJustify[position]} items-start` : "items-center"
-      }`}>
+      }`}
+      style={paddingStart ? { paddingInlineStart: paddingStart } : undefined}>
       <motion.div
         className={`flex ${isVertical ? "flex-col items-center" : "whitespace-nowrap"}`}
         style={isVertical ? { y: pos } : { x: pos }}>

@@ -1,7 +1,8 @@
 "use client";
 
-import { Activity, useState, useRef } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import type { SubNavItem, SubNavSubItem } from "@/lib/types/strapi";
 
@@ -10,29 +11,82 @@ interface SubNavProps {
   scrolled: boolean;
 }
 
+const PANEL_H = 440;
+const COL_LIMIT = 9;
+
+function groupByCategory(
+  subs: SubNavSubItem[],
+): [string, SubNavSubItem[]][] {
+  const map = new Map<string, SubNavSubItem[]>();
+  for (const s of subs) {
+    const key = s.category ?? "";
+    if (!map.has(key)) map.set(key, []);
+    map.get(key)!.push(s);
+  }
+  return Array.from(map.entries());
+}
+
+function splitGroups(
+  groups: [string, SubNavSubItem[]][],
+  col1Max: number,
+): [[string, SubNavSubItem[]][], [string, SubNavSubItem[]][]] {
+  const col1: [string, SubNavSubItem[]][] = [];
+  const col2: [string, SubNavSubItem[]][] = [];
+  let filled = 0;
+
+  for (const [cat, subs] of groups) {
+    if (filled >= col1Max) {
+      col2.push([cat, subs]);
+    } else if (filled + subs.length <= col1Max) {
+      col1.push([cat, subs]);
+      filled += subs.length;
+    } else {
+      // Split the group across columns
+      const take = col1Max - filled;
+      col1.push([cat, subs.slice(0, take)]);
+      col2.push(["", subs.slice(take)]);
+      filled = col1Max;
+    }
+  }
+
+  return [col1, col2];
+}
+
 export function SubNav({ items, scrolled }: SubNavProps): React.ReactElement {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const [hoveredSubIndex, setHoveredSubIndex] = useState<number | null>(null);
+  const [hoveredSubId, setHoveredSubId] = useState<number | null>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const activeItem = activeIndex !== null ? items[activeIndex] : null;
+  const isOpen = !!activeItem && (activeItem.subItems?.length ?? 0) > 0;
 
   const hoveredSub =
-    hoveredSubIndex !== null ? activeItem?.subItems?.[hoveredSubIndex] : null;
-  const displayImage =
-    hoveredSub?.image ??
-    activeItem?.subItems?.find((sub: SubNavSubItem) => sub.image)?.image ??
-    null;
-  const displayImageUrl = displayImage ? getStrapiMediaUrl(displayImage) : "";
+    hoveredSubId !== null
+      ? activeItem?.subItems?.find((s) => s.id === hoveredSubId)
+      : null;
 
-  const subItemCount = activeItem?.subItems?.length ?? 0;
-  const useTwoColumns = subItemCount > 9;
-  const columnRows = useTwoColumns ? Math.ceil(subItemCount / 2) : subItemCount;
+  const displayImageUrl = getStrapiMediaUrl(
+    hoveredSub?.image ??
+      activeItem?.subItems?.find((s) => s.image)?.image ??
+      null,
+  );
+
+  const groups = groupByCategory(activeItem?.subItems ?? []);
+  const totalItems = groups.reduce((sum, [, subs]) => sum + subs.length, 0);
+
+  const useTwoColumns = totalItems > COL_LIMIT;
+  const col1Max = totalItems > COL_LIMIT * 2
+    ? Math.ceil(totalItems / 2)   // >18: balance evenly
+    : COL_LIMIT;                  // 10–18: first col gets exactly 9
+
+  const [col1Groups, col2Groups] = useTwoColumns
+    ? splitGroups(groups, col1Max)
+    : [groups, []];
 
   function scheduleClose(): void {
     closeTimer.current = setTimeout(() => {
       setActiveIndex(null);
-      setHoveredSubIndex(null);
+      setHoveredSubId(null);
     }, 80);
   }
 
@@ -42,9 +96,12 @@ export function SubNav({ items, scrolled }: SubNavProps): React.ReactElement {
 
   return (
     <nav
-      className={`hidden md:block relative border-b ${scrolled ? "border-black/20" : "border-white/15"}`}>
+      className={`hidden md:block relative border-b ${
+        scrolled ? "border-black/20" : "border-white/15"
+      }`}
+    >
       {/* Nav link row */}
-      <div className="relative z-50 max-w-400 mx-auto px-4 sm:px-6 lg:px-8 top-0.5">
+      <div className="relative z-50 max-w-400 mx-auto px-4 sm:px-6 lg:px-8 h-11.5">
         <div className="flex items-center justify-center gap-10">
           {items.map((item, index) => {
             const slug = item?.slug ?? "/";
@@ -55,15 +112,21 @@ export function SubNav({ items, scrolled }: SubNavProps): React.ReactElement {
                 onMouseEnter={() => {
                   cancelClose();
                   setActiveIndex(index);
-                  setHoveredSubIndex(null);
+                  setHoveredSubId(null);
                 }}
-                onMouseLeave={scheduleClose}>
+                onMouseLeave={scheduleClose}
+              >
                 <span
                   className={`text-xs font-semibold uppercase tracking-widest transition-colors cursor-pointer py-4 inline-block ${
                     scrolled
                       ? "text-black/90 hover:text-black/60"
                       : "text-white/90 hover:text-white/60"
-                  } ${activeIndex === index ? (scrolled ? "text-black!" : "text-white!") : ""}`}>
+                  } ${
+                    activeIndex === index
+                      ? scrolled ? "text-black!" : "text-white!"
+                      : ""
+                  }`}
+                >
                   {item.name}
                 </span>
               </Link>
@@ -72,63 +135,132 @@ export function SubNav({ items, scrolled }: SubNavProps): React.ReactElement {
         </div>
       </div>
 
-      {/* Full-width mega-menu dropdown */}
-      <Activity
-        mode={
-          activeItem && activeItem?.subItems?.length > 0 ? "visible" : "hidden"
-        }>
-        <div
-          className="absolute top-[3.09rem] left-0 right-0 w-full z-40"
-          onMouseEnter={cancelClose}
-          onMouseLeave={scheduleClose}>
-          <div className="bg-neutral-900/98 backdrop-blur-md border-t border-white/10 flex items-stretch h-127 w-[80%] mx-auto">
-
-            {/* Left: title + sub-items (padded) */}
-            <div className="w-[65%] px-8 lg:px-12 py-10 flex gap-8 items-start min-w-0 overflow-y-auto">
+      {/* Mega-menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            key="mega"
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.18, ease: "easeOut" }}
+            className="absolute top-full left-0 right-0 z-40 max-w-[93%] mx-auto shadow-2xl overflow-hidden"
+            onMouseEnter={cancelClose}
+            onMouseLeave={scheduleClose}
+          >
+            <div
+              className="flex items-stretch bg-neutral-950"
+              style={{ height: PANEL_H }}
+            >
               {/* Section title */}
-              <div className="shrink-0">
-                <h3 className="text-3xl lg:text-4xl font-black text-white leading-tight tracking-tight">
+              <div className="shrink-0 w-40 xl:w-52 flex items-start pt-10 justify-start ps-8">
+                <h3 className="font-serif text-3xl font-black text-white leading-tight text-center">
                   {activeItem?.name}
                 </h3>
               </div>
 
-              {/* Sub-items: 1 col if ≤9, 2 cols if >9 (column-major fill) */}
-              <div
-                className={`grid mx-auto gap-x-8 gap-y-1 ${useTwoColumns ? "grid-cols-2 grid-flow-col" : "grid-cols-1 items-center"}`}
-                style={useTwoColumns ? { gridTemplateRows: `repeat(${columnRows}, auto)` } : undefined}
-              >
-                {activeItem?.subItems.map(
-                  (sub: SubNavSubItem, subIdx: number) => (
-                    <Link
-                      key={sub.id}
-                      href={sub.linkTo ?? "#"}
-                      className="group flex items-center py-2 text-white/60 hover:text-white transition-colors"
-                      onMouseEnter={() => setHoveredSubIndex(subIdx)}
-                      onMouseLeave={() => setHoveredSubIndex(null)}>
-                      <span className="w-0 group-hover:w-4 h-px bg-primary transition-all duration-200 mr-0 group-hover:mr-3" />
-                      <span className="text-sm uppercase tracking-wide font-medium">
-                        {sub.name}
-                      </span>
-                    </Link>
-                  ),
+              {/* Links area */}
+              <div className={`flex-1 px-8 xl:px-14 py-4 overflow-y-auto mega-scroll ${useTwoColumns ? "grid grid-cols-2 gap-x-10" : "flex flex-col"}`}>
+                <ItemColumn
+                  groups={col1Groups}
+                  hoveredSubId={hoveredSubId}
+                  setHoveredSubId={setHoveredSubId}
+                />
+                {useTwoColumns && (
+                  <ItemColumn
+                    groups={col2Groups}
+                    hoveredSubId={hoveredSubId}
+                    setHoveredSubId={setHoveredSubId}
+                  />
                 )}
               </div>
-            </div>
 
-            {/* Right: image flush to edge, no padding */}
-            {displayImageUrl && (
-              <div className="w-[35%] shrink-0 self-stretch">
-                <img
-                  src={displayImageUrl}
-                  alt={hoveredSub?.name ?? activeItem?.name ?? "Featured image"}
-                  className="w-full h-full object-cover transition-opacity duration-300"
-                />
+              {/* Image — always rendered, dark fallback */}
+              <div className="shrink-0 w-[38%] xl:w-[42%] self-stretch bg-neutral-900 overflow-hidden">
+                <AnimatePresence mode="wait">
+                  {displayImageUrl && (
+                    <motion.img
+                      key={displayImageUrl}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.25 }}
+                      src={displayImageUrl}
+                      alt={hoveredSub?.name ?? activeItem?.name ?? ""}
+                      className="w-full h-full object-cover"
+                    />
+                  )}
+                </AnimatePresence>
               </div>
-            )}
-
-          </div>
-        </div>
-      </Activity>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
+  );
+}
+
+function ItemColumn({
+  groups,
+  hoveredSubId,
+  setHoveredSubId,
+}: {
+  groups: [string, SubNavSubItem[]][];
+  hoveredSubId: number | null;
+  setHoveredSubId: (id: number | null) => void;
+}): React.ReactElement {
+  return (
+    <div className="flex flex-col">
+      {groups.map(([category, subs], gi) => (
+        <div key={`${category}-${gi}`} className={gi > 0 ? "mt-6" : ""}>
+          {category && (
+            <p className="text-[10px] font-black uppercase tracking-[0.18em] text-primary mb-3">
+              {category}
+            </p>
+          )}
+          {subs.map((sub) => {
+            const hovered = hoveredSubId === sub.id;
+            return (
+              <Link
+                key={sub.id}
+                href={sub.linkTo ?? "#"}
+                className="flex items-center gap-3 py-2 transition-colors duration-150"
+                onMouseEnter={() => setHoveredSubId(sub.id)}
+                onMouseLeave={() => setHoveredSubId(null)}>
+                <span className="flex flex-col min-w-0">
+                  <span
+                    className={`font-serif text-base font-bold leading-snug transition-colors duration-150 ${
+                      hovered ? "text-white" : "text-white/70"
+                    }`}>
+                    {sub.name}
+                  </span>
+                  {sub.description && (
+                    <span className="text-sm font-serif text-white/55 leading-snug mt-1">
+                      {sub.description}
+                    </span>
+                  )}
+                </span>
+                <span
+                  className={`shrink-0 w-6 h-6 rounded-full flex items-center justify-center transition-all duration-150 ${
+                    hovered ? "bg-primary" : "bg-transparent"
+                  }`}>
+                  {hovered && (
+                    <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
+                      <path
+                        d="M2 6h8M7 3l3 3-3 3"
+                        stroke="white"
+                        strokeWidth="1.6"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  )}
+                </span>
+              </Link>
+            );
+          })}
+        </div>
+      ))}
+    </div>
   );
 }

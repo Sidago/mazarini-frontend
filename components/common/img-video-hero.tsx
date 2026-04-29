@@ -1,32 +1,14 @@
-"use client";
-
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { StrapiMedia } from "@/lib/types/strapi";
-import { HeroVideo } from "../home/hero-video";
-import { FadeIn } from "../ui/fade-in";
+import { HeroVideo } from "@/components/home/hero-video";
+import type { StrapiMedia } from "@/lib/types/strapi";
 
 interface ImgOrVideoHeroProps {
   title: string;
   text: string;
   heroVideo: StrapiMedia | null;
   heroImage: StrapiMedia | null;
-  ctaText?: string | null;
-  ctaUrl?: string | null;
-}
-
-function WithLineBreaks({ text }: { text: string }) {
-  const lines = text.split(/\r?\n/);
-  return (
-    <>
-      {lines.map((line, i) => (
-        <span key={i}>
-          {line}
-          {i < lines.length - 1 && <br />}
-        </span>
-      ))}
-    </>
-  );
+  ctaText: string | null;
+  ctaUrl: string | null;
 }
 
 export function ImgOrVideoHero({
@@ -37,41 +19,31 @@ export function ImgOrVideoHero({
   ctaText,
   ctaUrl,
 }: ImgOrVideoHeroProps): React.ReactElement {
-  const pathname = usePathname();
-  ctaUrl = ctaUrl || "/contact";
-  ctaText = ctaText || "Contact Us";
-  const showCta = ctaText && ctaUrl && ctaUrl !== pathname;
-
   return (
-    <section className="relative w-full h-screen overflow-hidden">
-      {/* Video / Image background */}
+    <section className="relative w-screen h-screen overflow-hidden flex-none">
       <HeroVideo video={heroVideo} fallbackImage={heroImage} />
 
-      {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/50 z-10" />
 
-      {/* Content overlay */}
-      <div className="relative z-20 flex flex-col justify-center h-full px-6 lg:pl-[18%] lg:pr-16 text-left">
-        <FadeIn delay={0.3}>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.1] max-w-5xl">
-            <WithLineBreaks text={title} />
-          </h1>
-        </FadeIn>
+      <div className="relative lg:ps-[18%] z-20 flex flex-col items-start justify-center h-full px-16 text-left">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.1] max-w-5xl whitespace-pre-line">
+          {title}
+        </h1>
 
-        <FadeIn delay={0.5}>
-          <p className="mt-8 text-lg sm:text-xl text-white/90 max-w-2xl leading-relaxed">
-            <WithLineBreaks text={text} />
+        {text && (
+          <p className="mt-6 text-lg text-white/80 max-w-2xl leading-relaxed">
+            {text}
           </p>
-        </FadeIn>
+        )}
 
-        {showCta && (
-          <FadeIn delay={0.7}>
+        {ctaText && ctaUrl && (
+          <div className="mt-12">
             <Link
-              href={ctaUrl!}
-              className="mt-10 inline-block px-10 py-4 text-white/90 text-xs font-bold uppercase tracking-widest bg-primary hover:bg-primary/90 transition-colors">
+              href={ctaUrl}
+              className="inline-flex items-center justify-center px-10 py-4 text-sm font-bold uppercase tracking-widest text-neutral-900 bg-primary hover:bg-amber-500 transition-all">
               {ctaText}
             </Link>
-          </FadeIn>
+          </div>
         )}
       </div>
     </section>

@@ -98,6 +98,8 @@ export interface SubNavSubItem {
   name: string;
   linkTo: string | null;
   image: StrapiMedia | null;
+  category?: string | null;
+  description?: string | null;
 }
 
 export interface SubNavItem {
@@ -229,6 +231,45 @@ export interface About {
   timelineHeading: string | null;
   timelineDescription: string | null;
   blocks: ContentBlock[];
+  stats: AboutStat[];
+  leadershipBlocks: LeadershipBlock[];
+  cultureHeading: string | null;
+  cultureDescription: string | null;
+  cultureWatermark: string | null;
+  cultureCards: CultureCard[];
+  lifeHeading: string | null;
+  lifeDescription: string | null;
+  lifeImages: LifeImage[];
+}
+
+export interface AboutStat {
+  id: number;
+  value: string;
+  suffix: string | null;
+  label: string;
+  description: string | null;
+}
+
+export interface LeadershipBlock {
+  id: number;
+  watermark: string | null;
+  image: StrapiMedia;
+  description: string;
+  ctaText: string | null;
+  ctaUrl: string | null;
+}
+
+export interface CultureCard {
+  id: number;
+  tag: string | null;
+  title: string;
+  image: StrapiMedia;
+  url: string | null;
+}
+
+export interface LifeImage {
+  id: number;
+  image: StrapiMedia;
 }
 
 export interface Contact {
@@ -322,6 +363,8 @@ export interface Service {
   detail_discriptions: unknown;
   accordion_items: AccordionItem[];
   slug: string | null;
+  testimonials?: Testimonial[];
+  teams?: Teams[];
 }
 
 export interface ServicesPage {
@@ -335,6 +378,7 @@ export interface ServicesPage {
   heroImage: StrapiMedia | null;
   featuredCTA?: string | null;
   featuredServices: Service[];
+  stats?: StatComponent[];
 }
 
 // Experience
@@ -467,6 +511,7 @@ export interface RdWhyCard {
   id: number;
   documentId: string;
   label: string;
+  description: string | null;
   image: StrapiMedia | null;
   order: number | null;
 }

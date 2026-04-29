@@ -10,7 +10,6 @@ import type { SubcontractorsPage } from "@/lib/types/strapi";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Subcontractors | Mazarini Group",
   description:
     "Partner with Mazarini Group as a subcontractor. Learn about onboarding, requirements, and how we celebrate our trade partners.",
 };

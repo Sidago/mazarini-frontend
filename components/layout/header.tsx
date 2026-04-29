@@ -52,7 +52,7 @@ export function Header({
       <div
         className={`border-b  ${scrolled ? "border-black/20" : "border-white/15"}`}>
         <div className="max-w-400 mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-18">
+          <div className="flex items-center justify-between h-17">
             {/* Left utility links */}
             <div className="hidden md:flex items-center gap-6">
               <button

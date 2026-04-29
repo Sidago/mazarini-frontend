@@ -129,7 +129,7 @@ export default async function Home(): Promise<React.ReactElement> {
         projects={homepage.projects ?? []}
       /> */}
       <OurClientsSection clients={homepage.our_clients ?? []} />
-      <TestimonialSection testimonials={homepage.testimonials ?? []} />
+      {/* <TestimonialSection testimonials={homepage.testimonials ?? []} /> */}
       <CtaSection
         title={homepage.ctaTitle}
         highlightWord={homepage.ctaHighlightWord}
