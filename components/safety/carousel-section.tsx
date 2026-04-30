@@ -65,42 +65,59 @@ export function CarouselSection({
         })}
       </div>
 
-      {/* Content — image left, text right */}
-      <div className="flex flex-col lg:flex-row min-h-[480px]">
-        {/* Image */}
-        <div className="relative w-full lg:w-[55%] h-72 lg:h-auto overflow-hidden">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={active.id}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.4 }}
-              className="absolute inset-0">
-              {imageUrl ? (
-                <Image
-                  src={imageUrl}
-                  alt={active.image?.alternativeText ?? active.title}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 55vw"
-                />
-              ) : (
-                <div className="w-full h-full bg-neutral-200 dark:bg-neutral-800" />
-              )}
-            </motion.div>
-          </AnimatePresence>
-        </div>
+      {/* Content */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={active.id}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.4 }}
+          className="flex flex-col lg:flex-row min-h-120">
 
-        {/* Text */}
-        <div className="w-full lg:w-[45%] flex items-center px-10 lg:px-16 py-12 lg:py-0 bg-white dark:bg-neutral-950">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={active.id}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.35 }}>
+          {/* Mobile — image with text overlay */}
+          <div className="relative lg:hidden w-full h-120 overflow-hidden">
+            {imageUrl ? (
+              <Image
+                src={imageUrl}
+                alt={active.image?.alternativeText ?? active.title}
+                fill
+                className="object-cover"
+                sizes="100vw"
+              />
+            ) : (
+              <div className="w-full h-full bg-neutral-200" />
+            )}
+            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/30 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-8">
+              <h3 className="text-2xl font-bold font-serif text-white mb-3">
+                {active.title}
+              </h3>
+              {active.description && (
+                <p className="text-white/80 leading-relaxed text-sm">
+                  {active.description}
+                </p>
+              )}
+            </div>
+          </div>
+
+          {/* Desktop — image left, text right */}
+          <div className="hidden lg:block relative w-[55%] overflow-hidden">
+            {imageUrl ? (
+              <Image
+                src={imageUrl}
+                alt={active.image?.alternativeText ?? active.title}
+                fill
+                className="object-cover"
+                sizes="55vw"
+              />
+            ) : (
+              <div className="w-full h-full bg-neutral-200 dark:bg-neutral-800" />
+            )}
+          </div>
+
+          <div className="hidden lg:flex w-[45%] items-center px-16 bg-white dark:bg-neutral-950">
+            <div>
               <h3 className="text-2xl md:text-3xl font-bold font-serif text-neutral-900 dark:text-white mb-4">
                 {active.title}
               </h3>
@@ -109,10 +126,11 @@ export function CarouselSection({
                   {active.description}
                 </p>
               )}
-            </motion.div>
-          </AnimatePresence>
-        </div>
-      </div>
+            </div>
+          </div>
+
+        </motion.div>
+      </AnimatePresence>
     </section>
   );
 }

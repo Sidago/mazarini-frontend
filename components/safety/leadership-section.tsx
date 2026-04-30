@@ -23,10 +23,10 @@ export function LeadershipSection({
   return (
     <section className="text-black overflow-hidden py-24">
       {parallaxText && (
-        <div className="pointer-events-none select-none w-full mb-14">
+        <div className="absolute pointer-events-none select-none w-full pt-10 mb-14">
           <ParallaxText
-            baseVelocity={0.15}
-            color="rgba(0,0,0,0.12)"
+            baseVelocity={0.2}
+            color="rgba(0,0,0,0.05)"
             direction="horizontal">
             {parallaxText}
           </ParallaxText>
@@ -34,18 +34,18 @@ export function LeadershipSection({
       )}
 
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
-        <div className="mb-14">
+        <div className="mb-10">
           <h2 className="text-4xl md:text-5xl font-bold leading-tight">
             {title}
           </h2>
           {details && (
-            <p className="mt-4 text-black/70 max-w-xl leading-relaxed">
+            <p className="mt-4 text-lg text-black/70 max-w-xl leading-relaxed">
               {details}
             </p>
           )}
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {members.map((member) => {
             const url = getStrapiMediaUrl(member.image ?? null);
             return (
@@ -66,7 +66,9 @@ export function LeadershipSection({
                 <p className="text-base font-semibold text-black/80">
                   {member.name}
                 </p>
-                <p className="text-sm text-black/70 mt-0.5">{member.position}</p>
+                <p className="text-sm text-black/70 mt-0.5">
+                  {member.position}
+                </p>
               </div>
             );
           })}

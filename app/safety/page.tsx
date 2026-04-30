@@ -4,10 +4,29 @@ import React from "react";
 import { notFound } from "next/navigation";
 import { SafetySections } from "@/components/safety/safety-sections";
 import { getSafetyPage } from "@/lib/api/safety";
+import { getNews } from "@/lib/api/news";
 
 export default async function SafetyPage(): Promise<React.ReactElement> {
-  const data = await getSafetyPage().catch(() => null);
-  if (!data) return notFound();
+  const result = await Promise.all([getSafetyPage(), getNews()]).catch(
+    () => null,
+  );
+  if (!result) return notFound();
 
-  return <SafetySections data={data} />;
+  const [safetyData, allNews] = result;
+
+  const news = allNews
+    .sort(
+      (a, b) =>
+        new Date(b.publishedDate ?? 0).getTime() -
+        new Date(a.publishedDate ?? 0).getTime(),
+    )
+    .slice(0, 3);
+
+  return (
+    <SafetySections
+      data={safetyData}
+      news={news}
+      newsHeading={"News\n& Insights"}
+    />
+  );
 }
