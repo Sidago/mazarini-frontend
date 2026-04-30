@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { FadeIn } from "@/components/ui/fade-in";
 import { ScrollCircle } from "@/components/ui/scroll-circle";
 import { getStrapiMediaUrl } from "@/lib/api/client";
@@ -72,10 +73,12 @@ export function ExperienceSection({
             <FadeIn direction="up" delay={0.2}>
               <div className="relative z-10 w-70 md:w-87.5 lg:w-100 aspect-3/4 rounded-sm overflow-hidden">
                 {imageUrl && (
-                  <img
+                  <Image
                     src={imageUrl}
                     alt="Experience"
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 280px, (max-width: 1024px) 350px, 400px"
                   />
                 )}
                 <div className="absolute inset-0 bg-black/25" />

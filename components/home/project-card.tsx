@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import type { Project } from "@/lib/types/strapi";
 
@@ -12,10 +13,12 @@ export function ProjectCard({ project }: ProjectCardProps): React.ReactElement {
     <div className="group relative cursor-pointer rounded-lg overflow-hidden">
       <div className="relative w-full h-125">
         {imageUrl && (
-          <img
+          <Image
             src={imageUrl}
             alt={project.image[0]?.alternativeText ?? project.title}
-            className="absolute inset-0 w-full h-full object-cover"
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 50vw"
           />
         )}
       </div>

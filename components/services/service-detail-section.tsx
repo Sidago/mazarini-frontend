@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import { FadeIn } from "@/components/ui/fade-in";
 import { ServiceAccordion } from "@/components/services/service-accordion";
@@ -20,10 +21,12 @@ export function ServiceDetailSection({
           <FadeIn direction="left">
             <div className="relative w-full lg:w-100 shrink-0 max-h-145 aspect-3/5 overflow-hidden">
               {imageUrl && (
-                <img
+                <Image
                   src={imageUrl}
                   alt={service.image?.alternativeText ?? service.title}
-                  className="absolute inset-0 w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 400px"
                 />
               )}
             </div>

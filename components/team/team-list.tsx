@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import type { Teams } from "@/lib/types/strapi";
 import { FadeIn } from "@/components/ui/fade-in";
@@ -52,11 +53,12 @@ function TeamCard({ member }: TeamCardProps): React.ReactElement {
     <div className="group flex flex-col justify-center items-center">
       <div className="relative w-65 h-75 overflow-hidden bg-neutral-100 dark:bg-neutral-800 mb-2">
         {imageUrl ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
+          <Image
             src={imageUrl}
             alt={member.name}
-            className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+            fill
+            className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, 260px"
           />
         ) : (
           <div className="w-full h-full bg-neutral-200 dark:bg-neutral-700" />

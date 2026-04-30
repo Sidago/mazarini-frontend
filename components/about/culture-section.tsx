@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import { ParallaxText } from "@/components/ui/scroll-animations";
@@ -99,11 +100,12 @@ export function CultureSection({
                 className="relative flex-none w-64 h-96 lg:w-72 lg:h-[440px] overflow-hidden group cursor-pointer">
                 {/* Image */}
                 {url ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
+                  <Image
                     src={url}
                     alt={card.image?.alternativeText ?? card.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 1024px) 256px, 288px"
                     draggable={false}
                   />
                 ) : (

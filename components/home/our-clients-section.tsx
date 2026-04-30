@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { FadeIn } from "@/components/ui/fade-in";
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import type { OurClient } from "@/lib/types/strapi";
@@ -46,13 +47,15 @@ export function OurClientsSection({
             return (
               <div
                 key={`${client.id}-${i}`}
-                className="shrink-0 mx-8 md:mx-12 flex items-center justify-center w-35 md:w-45 h-20 md:h-25"
+                className="relative shrink-0 mx-8 md:mx-12 w-35 md:w-45 h-20 md:h-25"
               >
                 {imageUrl && (
-                  <img
+                  <Image
                     src={imageUrl}
                     alt={client.name ?? "Client logo"}
-                    className="max-w-full max-h-full object-contain opacity-40 hover:opacity-100 transition-all duration-500 hover:scale-110"
+                    fill
+                    className="object-contain opacity-40 hover:opacity-100 transition-all duration-500 hover:scale-110"
+                    sizes="(max-width: 768px) 140px, 180px"
                   />
                 )}
               </div>

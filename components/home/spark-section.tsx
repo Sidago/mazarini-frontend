@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { FadeIn } from "@/components/ui/fade-in";
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import type { StrapiMedia } from "@/lib/types/strapi";
@@ -30,11 +31,13 @@ export function SparkSection({
           {/* Left: image */}
           {imageUrl && (
             <FadeIn direction="left" duration={0.7} className="w-full lg:w-1/3 shrink-0">
-              <div className="aspect-5/6 overflow-hidden">
-                <img
+              <div className="relative aspect-5/6 overflow-hidden">
+                <Image
                   src={imageUrl}
                   alt={image?.alternativeText ?? heading ?? ""}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 33vw"
                 />
               </div>
             </FadeIn>

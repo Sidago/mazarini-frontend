@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import type { RdPage } from "@/lib/types/strapi";
 import { ParallaxText } from "@/components/ui/scroll-animations";
@@ -69,13 +70,14 @@ export function NewsSection({ data }: NewsSectionProps): React.ReactElement {
               return (
                 <div key={article.id} className="flex flex-col md:flex-row gap-6 items-start">
                   {/* Image */}
-                  <div className="flex-none w-full h-auto md:w-90 md:h-55  overflow-hidden">
+                  <div className="relative flex-none w-full h-48 md:w-90 md:h-55 overflow-hidden">
                     {url ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
+                      <Image
                         src={url}
                         alt={article.title}
-                        className="w-full h-full object-cover"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 360px"
                       />
                     ) : (
                       <div className="w-full h-full bg-neutral-700" />

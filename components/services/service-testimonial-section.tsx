@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import { Icon } from "@/components/ui/icon";
@@ -132,11 +133,12 @@ export function ServiceTestimonialSection({
                 className="absolute inset-0"
               >
                 {imageUrl ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
+                  <Image
                     src={imageUrl}
                     alt={current.client_name}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                 ) : (
                   <div className="w-full h-full bg-neutral-100 dark:bg-neutral-800" />
@@ -218,11 +220,12 @@ function MobileCarousel({
                 {/* Image */}
                 <div className="relative w-full h-[60vh] overflow-hidden bg-neutral-100 dark:bg-neutral-800">
                   {imgUrl ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
+                    <Image
                       src={imgUrl}
                       alt={t.client_name}
-                      className="w-full h-full object-cover"
+                      fill
+                      className="object-cover"
+                      sizes="100vw"
                     />
                   ) : (
                     <div className="w-full h-full bg-neutral-200 dark:bg-neutral-700" />

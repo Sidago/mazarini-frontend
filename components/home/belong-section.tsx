@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { FadeIn } from "@/components/ui/fade-in";
 import { ParallaxText } from "@/components/ui/scroll-animations";
 import { getStrapiMediaUrl } from "@/lib/api/client";
@@ -40,9 +41,11 @@ export function BelongSection({
         {imageUrl && (
           <FadeIn direction="up" duration={0.7}>
             <div className="w-70 sm:w-87.5 md:w-105 lg:w-125 mb-10">
-              <img
+              <Image
                 src={imageUrl}
                 alt={heading ?? ""}
+                width={image?.width ?? 500}
+                height={image?.height ?? 500}
                 className="w-full h-auto object-contain"
               />
             </div>

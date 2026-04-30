@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { RdSectionShell } from "./rd-section-shell";
 import { DragScrollRow } from "./drag-scroll-row";
 import { getStrapiMediaUrl } from "@/lib/api/client";
@@ -38,11 +39,12 @@ export function ProjectsSection({ data }: ProjectsSectionProps): React.ReactElem
                 className="relative flex-none w-64 h-80 overflow-hidden rounded-sm group"
               >
                 {url ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
+                  <Image
                     src={url}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="256px"
                     draggable={false}
                   />
                 ) : (

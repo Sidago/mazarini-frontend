@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import type { RdPage } from "@/lib/types/strapi";
 import { ParallaxText } from "../ui/scroll-animations";
@@ -67,10 +68,11 @@ export function PartnersSection({
                   key={partner.id}
                   className="flex items-center justify-center py-4 opacity-50 hover:opacity-80 transition-opacity">
                   {url ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
+                    <Image
                       src={url}
                       alt={partner.name}
+                      width={partner.image?.width ?? 160}
+                      height={partner.image?.height ?? 88}
                       className="max-h-22 w-auto object-contain grayscale"
                     />
                   ) : (

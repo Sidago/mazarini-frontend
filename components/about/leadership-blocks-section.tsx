@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import { ParallaxText } from "@/components/ui/scroll-animations";
 import type { LeadershipBlock } from "@/lib/types/strapi";
@@ -39,10 +40,11 @@ export function LeadershipBlocksSection({
               {/* Image */}
               {imageUrl && (
                 <div className="w-full max-w-2xl mb-10 overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <Image
                     src={imageUrl}
                     alt={block.image?.alternativeText ?? "Leadership"}
+                    width={block.image?.width ?? 800}
+                    height={block.image?.height ?? 500}
                     className="w-full h-auto object-cover"
                   />
                 </div>

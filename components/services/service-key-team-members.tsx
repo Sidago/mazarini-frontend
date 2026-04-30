@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import { FadeIn } from "@/components/ui/fade-in";
@@ -132,11 +133,12 @@ function MobileCard({ member }: { member: Teams }): React.ReactElement {
     <div className="flex flex-col">
       <div className="relative w-full h-[65vh] overflow-hidden bg-neutral-100 dark:bg-neutral-800">
         {imageUrl ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
+          <Image
             src={imageUrl}
             alt={member.name}
-            className="w-full h-full object-cover object-top"
+            fill
+            className="object-cover object-top"
+            sizes="100vw"
           />
         ) : (
           <div className="w-full h-full bg-neutral-200 dark:bg-neutral-700" />
@@ -166,11 +168,12 @@ function MemberCard({ member }: { member: Teams }): React.ReactElement {
     <div className="group flex flex-col">
       <div className="relative w-55 h-60 aspect-3/4 overflow-hidden bg-neutral-100 dark:bg-neutral-800 mb-3">
         {imageUrl ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
+          <Image
             src={imageUrl}
             alt={member.name}
-            className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+            fill
+            className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+            sizes="(max-width: 1024px) 100vw, 220px"
           />
         ) : (
           <div className="w-full h-full bg-neutral-200 dark:bg-neutral-700" />

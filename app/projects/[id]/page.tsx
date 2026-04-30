@@ -1,10 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { FadeIn } from "@/components/ui/fade-in";
 import { Icon } from "@/components/ui/icon";
 import { getProject } from "@/lib/api/projects";
 import { getStrapiMediaUrl } from "@/lib/api/client";
-import { log } from "console";
 
 interface ProjectDetailPageProps {
   params: Promise<{ id: string }>;
@@ -24,7 +24,6 @@ export default async function ProjectDetailPage({
 
   if (!project) notFound();
 
-  console.log("Project Info:", project);
   const heroImage = getStrapiMediaUrl(project?.image[0] ?? null);
 
   return (
@@ -32,10 +31,13 @@ export default async function ProjectDetailPage({
       {/* Hero image */}
       <section className="relative w-full h-[60vh] min-h-100 overflow-hidden bg-neutral-900">
         {heroImage && (
-          <img
+          <Image
             src={heroImage}
             alt={project.image[0]?.alternativeText ?? project.title}
-            className="absolute inset-0 w-full h-full object-cover"
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority
           />
         )}
         <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent" />
@@ -92,10 +94,12 @@ export default async function ProjectDetailPage({
               {project.image.slice(1).map((img: any) => (
                 <FadeIn key={img.id}>
                   <div className="relative w-full aspect-4/3 rounded-lg overflow-hidden">
-                    <img
+                    <Image
                       src={getStrapiMediaUrl(img)}
                       alt={img.alternativeText ?? project.title}
-                      className="absolute inset-0 w-full h-full object-cover"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
                     />
                   </div>
                 </FadeIn>

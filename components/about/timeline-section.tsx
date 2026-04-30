@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import { FadeIn } from "@/components/ui/fade-in";
@@ -98,12 +99,13 @@ export function TimelineSection({
             className="grid grid-cols-1 lg:grid-cols-[55fr_45fr]">
 
             {/* Image — left, full bleed */}
-            <div className="w-[90%] h-72 sm:h-96 lg:h-[65vh] overflow-hidden">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+            <div className="relative w-[90%] h-72 sm:h-96 lg:h-[65vh] overflow-hidden">
+              <Image
                 src={getStrapiMediaUrl(activeEntry.image)}
                 alt={activeEntry.image?.alternativeText ?? activeEntry.title}
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 90vw, 55vw"
               />
             </div>
 

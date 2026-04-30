@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import type { Project } from "@/lib/types/strapi";
 
@@ -15,10 +16,12 @@ export function ProjectFilterCard({
     <Link href={`/projects/${project.id}`} className="group block">
       <div className="relative w-full aspect-33/40 overflow-hidden">
         {imageUrl && (
-          <img
+          <Image
             src={imageUrl}
             alt={project.image[0]?.alternativeText ?? project.title}
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            fill
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, 33vw"
           />
         )}
         <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/10 to-black/50" />

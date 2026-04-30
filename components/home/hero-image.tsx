@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import { FadeIn } from "@/components/ui/fade-in";
 import type { StrapiMedia, HeroFeaturedComponent } from "@/lib/types/strapi";
@@ -16,11 +17,13 @@ export function HeroImage({
     <div className="w-full lg:w-1/2 min-h-[50vh] lg:min-h-auto relative bg-neutral-900 overflow-hidden group">
       {imageUrl && (
         <>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src={imageUrl}
             alt={image?.alternativeText ?? "Hero image"}
-            className="absolute inset-0 w-full h-full object-cover"
+            fill
+            className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            priority
           />
         </>
       )}

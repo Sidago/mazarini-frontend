@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ParallaxText } from "@/components/ui/scroll-animations";
 import { Icon } from "@/components/ui/icon";
@@ -102,10 +103,11 @@ export function PillarsSection({
                     {pillar.description}
                   </p>
                   {url && (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
+                    <Image
                       src={url}
                       alt={pillar.title}
+                      width={pillar.image?.width ?? 800}
+                      height={pillar.image?.height ?? 600}
                       className="w-full max-h-[60vh] object-cover"
                     />
                   )}

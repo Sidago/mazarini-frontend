@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { createPortal } from "react-dom";
 import { Icon } from "@/components/ui/icon";
 import { useSearch } from "@/hooks/use-search";
@@ -50,10 +51,12 @@ function ResultSection({ title, items }: ResultSectionProps): React.ReactElement
               className="flex items-center gap-4 p-3 rounded-lg hover:bg-white/5 transition-colors cursor-pointer"
             >
               {thumb && (
-                <img
+                <Image
                   src={getStrapiMediaUrl(thumb)}
                   alt={thumb.alternativeText ?? item.title}
-                  className="w-12 h-12 rounded object-cover shrink-0"
+                  width={48}
+                  height={48}
+                  className="rounded object-cover shrink-0"
                 />
               )}
               <div className="min-w-0">

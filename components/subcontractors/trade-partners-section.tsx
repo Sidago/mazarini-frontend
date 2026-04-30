@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import type { TradePartnerTab } from "@/lib/types/strapi";
@@ -69,10 +70,12 @@ export function TradePartnersSection({
             {/* Image */}
             {imageUrl && (
               <div className="relative overflow-hidden rounded-lg aspect-[5/2.5]">
-                <img
+                <Image
                   src={imageUrl}
                   alt={activeItem.title}
-                  className="absolute inset-0 w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                 />
               </div>
             )}

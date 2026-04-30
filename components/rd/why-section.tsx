@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ParallaxText } from "@/components/ui/scroll-animations";
 import { Icon } from "@/components/ui/icon";
@@ -94,11 +95,12 @@ export function WhySection({ data }: WhySectionProps): React.ReactElement {
                   className="group relative flex-none w-72 h-96 lg:w-95 lg:h-130 overflow-hidden"
                 >
                   {url ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
+                    <Image
                       src={url}
                       alt={card.label}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 1024px) 288px, 380px"
                       draggable={false}
                     />
                   ) : (

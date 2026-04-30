@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import type { ExperienceStep } from "@/lib/types/strapi";
@@ -124,13 +125,14 @@ export function CircularScroll({
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.95 }}
                       transition={{ duration: 0.5 }}
-                      className="h-full w-full">
+                      className="relative h-full w-full">
                       {imageUrl ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img
+                        <Image
                           src={imageUrl}
                           alt={activeStep?.title ?? ""}
-                          className="h-full w-full object-cover"
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, 50vw"
                         />
                       ) : (
                         <div className="h-full w-full bg-purple-900/40" />

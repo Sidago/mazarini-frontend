@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { FadeIn } from "@/components/ui/fade-in";
 import { Icon } from "@/components/ui/icon";
@@ -39,10 +40,13 @@ export default async function NewsDetailPage({
       {/* Hero image */}
       <section className="relative w-full h-[60vh] min-h-100 overflow-hidden bg-neutral-900">
         {heroImage && (
-          <img
+          <Image
             src={heroImage}
             alt={article.image?.alternativeText ?? article.title}
-            className="absolute inset-0 w-full h-full object-cover"
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority
           />
         )}
         <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent" />

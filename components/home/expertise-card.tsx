@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import type { Expertise } from "@/lib/types/strapi";
 
@@ -13,10 +14,12 @@ export function ExpertiseCard({
   return (
     <div className="group relative h-115 overflow-hidden cursor-pointer">
       {imageUrl && (
-        <img
+        <Image
           src={imageUrl}
           alt={expertise.image.alternativeText ?? expertise.title}
-          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          fill
+          className="object-cover transition-transform duration-700 group-hover:scale-105"
+          sizes="(max-width: 768px) 100vw, 25vw"
         />
       )}
       <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />

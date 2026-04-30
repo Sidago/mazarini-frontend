@@ -4,6 +4,9 @@ const nextConfig: NextConfig = {
   output: "standalone",
   reactStrictMode: true,
   images: {
+    unoptimized: process.env.NODE_ENV === "development",
+    formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 3600,
     remotePatterns: [
       {
         protocol: "https",
@@ -13,6 +16,12 @@ const nextConfig: NextConfig = {
       {
         protocol: "http",
         hostname: "75.119.135.164",
+        port: "5001",
+        pathname: "/uploads/**",
+      },
+      {
+        protocol: "http",
+        hostname: "localhost",
         port: "5001",
         pathname: "/uploads/**",
       },

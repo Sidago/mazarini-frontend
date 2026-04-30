@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import type { Project } from "@/lib/types/strapi";
 
@@ -16,10 +17,12 @@ export function ServiceProjectCard({
       href={`/projects/${project.id}`}
       className="group relative h-115 rounded-none overflow-hidden cursor-pointer block">
       {imageUrl && (
-        <img
+        <Image
           src={imageUrl}
           alt={project.image[0]?.alternativeText ?? project.title}
-          className="absolute inset-0 w-full h-full object-cover rounded-none transition-transform duration-700 group-hover:scale-105"
+          fill
+          className="object-cover rounded-none transition-transform duration-700 group-hover:scale-105"
+          sizes="(max-width: 768px) 100vw, 33vw"
         />
       )}
       <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />

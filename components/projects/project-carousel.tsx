@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import type { Project } from "@/lib/types/strapi";
@@ -56,10 +57,13 @@ export function ProjectCarousel({
           className="absolute inset-0"
         >
           {imageUrl && (
-            <img
+            <Image
               src={imageUrl}
               alt={current?.image[0]?.alternativeText ?? current?.title ?? ""}
-              className="absolute inset-0 w-full h-full object-cover"
+              fill
+              className="object-cover"
+              sizes="100vw"
+              priority
             />
           )}
           <div className="absolute inset-0 bg-black/40" />

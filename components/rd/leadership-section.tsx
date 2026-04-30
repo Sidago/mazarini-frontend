@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import type { RdPage } from "@/lib/types/strapi";
 import { DragScrollRow } from "./drag-scroll-row";
@@ -58,13 +59,14 @@ export function LeadershipSection({
               const url = getStrapiMediaUrl(member.image ?? null);
               return (
                 <div key={member.id} className="flex-none">
-                  <div className="w-full h-90 overflow-hidden mb-3">
+                  <div className="relative w-full h-90 overflow-hidden mb-3">
                     {url ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
+                      <Image
                         src={url}
                         alt={member.name}
-                        className="w-full h-full object-cover object-top"
+                        fill
+                        className="object-cover object-top"
+                        sizes="(max-width: 768px) 100vw, 280px"
                         draggable={false}
                       />
                     ) : (

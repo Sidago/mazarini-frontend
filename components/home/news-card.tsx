@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import type { News } from "@/lib/types/strapi";
 
@@ -18,11 +19,13 @@ export function NewsCard({
       className={`flex flex-col ${reversed ? "sm:flex-row-reverse" : "sm:flex-row"} gap-6 sm:gap-8`}>
       {/* Image */}
       {imageUrl && (
-        <div className="w-full sm:w-70 md:w-[320px] shrink-0 aspect-4/3 overflow-hidden">
-          <img
+        <div className="relative w-full sm:w-70 md:w-[320px] shrink-0 aspect-4/3 overflow-hidden">
+          <Image
             src={imageUrl}
             alt={news.image?.alternativeText ?? news.title}
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
+            sizes="(max-width: 640px) 100vw, 320px"
           />
         </div>
       )}

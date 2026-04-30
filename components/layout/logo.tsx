@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import type { StrapiMedia } from "@/lib/types/strapi";
 
@@ -19,10 +20,13 @@ export function Logo({
   return (
     <Link href="/" className="flex items-center gap-2 ">
       {imageUrl ? (
-        <img
+        <Image
           src={imageUrl}
           alt={logo?.alternativeText ?? "Logo"}
+          width={logo?.width ?? 200}
+          height={logo?.height ?? 52}
           className={`${imgSize} w-auto object-contain ${scrolled ? "filter brightness-60" : ""}`}
+          priority
         />
       ) : (
         <FallbackLogo size={size} />

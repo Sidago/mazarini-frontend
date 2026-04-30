@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import type { LifeImage } from "@/lib/types/strapi";
@@ -51,10 +52,11 @@ export function LifeSection({
                   key={i}
                   className="flex-none h-64 lg:h-80 overflow-hidden">
                   {url ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
+                    <Image
                       src={url}
                       alt={item.image?.alternativeText ?? "Life at Mazarini"}
+                      width={item.image?.width ?? 320}
+                      height={item.image?.height ?? 320}
                       className="h-full w-auto object-cover"
                       draggable={false}
                     />
