@@ -265,6 +265,7 @@ export interface CultureCard {
   title: string;
   image: StrapiMedia;
   url: string | null;
+  description: string | null;
 }
 
 export interface LifeImage {
@@ -570,4 +571,28 @@ export interface RdPage {
   contactDescription: string | null;
   contactCtaText: string | null;
   contactCtaUrl: string | null;
+}
+
+// Safety Page
+
+export interface SafetyPage {
+  id: number;
+  documentId: string;
+  title: string;
+  heroTitle: string;
+  heroText: string;
+  heroImage: StrapiMedia | null;
+  heroVedio: StrapiMedia | null;
+  accordianTitle: string;
+  accordianDetails: string | null;
+  accordionImage: StrapiMedia | null;
+  accordionItems: AccordionItem[];
+  stats: StatComponent[];
+  carouselTitle: string;
+  carouselText: string;
+  carouselCard: CultureCard[];
+  leadershipTitle: string;
+  leadershipDetails: string | null;
+  leadershipParallaxText: string | null;
+  leadership_cards: Teams[];
 }
