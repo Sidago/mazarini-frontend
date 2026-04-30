@@ -25,6 +25,12 @@ const nextConfig: NextConfig = {
         port: "5001",
         pathname: "/uploads/**",
       },
+      {
+        protocol: "http",
+        hostname: "strapi",
+        port: "5001",
+        pathname: "/uploads/**",
+      },
     ],
   },
 };
