@@ -140,11 +140,11 @@ export function SubNav({ items, scrolled }: SubNavProps): React.ReactElement {
         {isOpen && (
           <motion.div
             key="mega"
-            initial={{ opacity: 0, y: -6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -6 }}
-            transition={{ duration: 0.18, ease: "easeOut" }}
-            className="absolute top-full left-0 right-0 z-40 max-w-[93%] mx-auto shadow-2xl overflow-hidden"
+            initial={{ height: 0 }}
+            animate={{ height: PANEL_H }}
+            exit={{ height: 0 }}
+            transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
+            className="absolute top-full left-0 right-0 z-40 max-w-[93%] mx-auto overflow-hidden shadow-2xl"
             onMouseEnter={cancelClose}
             onMouseLeave={scheduleClose}
           >

@@ -29,7 +29,10 @@ export function Header({
   ctaUrl,
 }: HeaderProps): React.ReactElement {
   const [scrolled, setScrolled] = useState(false);
+  const [hovered, setHovered] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  const active = scrolled || hovered;
 
   useEffect(() => {
     function handleScroll(): void {
@@ -45,19 +48,21 @@ export function Header({
 
   return (
     <header
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
       className={`fixed top-0 left-0 z-50 w-full transition-all duration-300 ${
-        scrolled ? "bg-white" : "bg-transparent"
+        active ? "bg-white" : "bg-transparent"
       }`}>
       {/* Top utility bar */}
       <div
-        className={`border-b  ${scrolled ? "border-black/20" : "border-white/15"}`}>
+        className={`border-b ${active ? "border-black/20" : "border-white/15"}`}>
         <div className="max-w-400 mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-17">
             {/* Left utility links */}
             <div className="hidden md:flex items-center gap-6">
               <button
                 aria-label="Search"
-                className={`p-1 hover:text-white transition-colors ${scrolled ? "text-black/80" : " text-white/80 "}`}
+                className={`p-1 hover:text-white transition-colors ${active ? "text-black/80" : "text-white/80"}`}
                 onClick={() => setIsSearchOpen(true)}>
                 <Icon name="search" />
               </button>
@@ -65,7 +70,7 @@ export function Header({
                 <Link
                   key={link.id}
                   href={link.url}
-                  className={`text-xs font-semibold uppercase tracking-widest transition-colors ${scrolled ? "text-black/90 hover:text-black/60" : " text-white/90 hover:text-white/60 "} `}
+                  className={`text-xs font-semibold uppercase tracking-widest transition-colors ${active ? "text-black/90 hover:text-black/60" : "text-white/90 hover:text-white/60"}`}
                   {...(link.isExternal
                     ? { target: "_blank", rel: "noopener noreferrer" }
                     : {})}>
@@ -77,15 +82,15 @@ export function Header({
             {/* Mobile search button */}
             <button
               aria-label="Search"
-              className={`md:hidden p-1 hover:text-white transition-colors ${scrolled ? "text-black/80" : " text-white/80 "}`}
+              className={`md:hidden p-1 hover:text-white transition-colors ${active ? "text-black/80" : "text-white/80"}`}
               onClick={() => setIsSearchOpen(true)}>
               <Icon name="search" />
             </button>
 
             {/* Center logo */}
             <div
-              className={`absolute left-1/2 -translate-x-1/2 ${scrolled ? "text-black/80" : " text-white/80 "}`}>
-              <Logo logo={logo} scrolled={scrolled} />
+              className={`absolute left-1/2 -translate-x-1/2 ${active ? "text-black/80" : "text-white/80"}`}>
+              <Logo logo={logo} scrolled={active} />
             </div>
 
             {/* Right utility links + CTA */}
@@ -94,7 +99,7 @@ export function Header({
                 <Link
                   key={link.id}
                   href={link.url}
-                  className={`text-xs font-semibold uppercase tracking-widest ${scrolled ? "text-black/90 hover:text-black/60" : "text-white/90 hover:text-white/60"} transition-colors`}
+                  className={`text-xs font-semibold uppercase tracking-widest ${active ? "text-black/90 hover:text-black/60" : "text-white/90 hover:text-white/60"} transition-colors`}
                   {...(link.isExternal
                     ? { target: "_blank", rel: "noopener noreferrer" }
                     : {})}>
@@ -114,7 +119,7 @@ export function Header({
               subNavItems={subNavItems}
               ctaText={ctaText}
               ctaUrl={ctaUrl}
-              scrolled={scrolled}
+              scrolled={active}
               onSearchOpen={() => setIsSearchOpen(true)}
             />
           </div>
@@ -122,7 +127,7 @@ export function Header({
       </div>
 
       {/* Main navigation bar */}
-      <SubNav items={subNavItems} scrolled={scrolled} />
+      <SubNav items={subNavItems} scrolled={active} />
 
       <SearchModal
         isOpen={isSearchOpen}

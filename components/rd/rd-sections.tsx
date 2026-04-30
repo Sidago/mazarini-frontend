@@ -174,7 +174,7 @@ export function RdSections({ data }: RdSectionsProps): React.ReactElement {
               exit={{ opacity: 0, x: -16 }}
               transition={{ duration: 0.25 }}
               onClick={() => goToIndex(0)}
-              className="fixed top-5 left-10 z-50 flex items-center gap-2 py-4 px-5 text-sm font-bold uppercase tracking-widest text-primary hover:text-primary/70 transition-colors border-2">
+              className="fixed top-5 left-10 z-40 flex items-center gap-2 py-4 px-5 text-sm font-bold uppercase tracking-widest text-primary hover:text-primary/70 transition-colors border-2">
               <svg
                 width="15"
                 height="15"
@@ -200,11 +200,11 @@ export function RdSections({ data }: RdSectionsProps): React.ReactElement {
               exit={{ opacity: 0, x: 16 }}
               transition={{ duration: 0.25 }}
               onClick={() => navigate(1)}
-              className="fixed right-6 top-1/2 -translate-y-1/2 z-50 flex items-center justify-center text-xl px-3 font-headline text-primary hover:text-primary/70 transition-colors">
+              className="fixed right-6 top-1/2 -translate-y-1/2 z-40 flex items-center justify-center text-xl px-3 font-headline text-primary hover:text-primary/70 transition-colors">
               scroll 
               <svg
                 width="35"
-                height="23"
+                height="23" 
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
