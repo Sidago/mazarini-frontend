@@ -598,3 +598,26 @@ export interface SafetyPage {
 }
 
 export type ToolsAndTechnologyPage = SafetyPage;
+
+// Leadership Page
+
+export interface LeadershipMember {
+  id: number;
+  name: string;
+  position: string;
+  quote: string | null;
+  bio: string | null;
+  linkedinUrl: string | null;
+  ctaText: string | null;
+  ctaUrl: string | null;
+  image: StrapiMedia;
+}
+
+export interface LeadershipPageData {
+  id: number;
+  documentId: string;
+  pageTitle: string;
+  pageDescription: string | null;
+  groupPhoto: StrapiMedia | null;
+  members: LeadershipMember[];
+}
