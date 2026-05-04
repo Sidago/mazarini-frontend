@@ -18,6 +18,7 @@ export function LeadershipSections({
         groupPhoto={data.groupPhoto}
         members={data.members}
       />
+      
       <MembersCarousel members={data.members} />
     </>
   );

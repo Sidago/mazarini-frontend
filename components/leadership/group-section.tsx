@@ -19,28 +19,28 @@ export function GroupSection({
 }: GroupSectionProps): React.ReactElement {
   const imageUrl = getStrapiMediaUrl(groupPhoto);
 
-  const scrollToMember = (id: number) => {
-    document
-      .getElementById(`member-${id}`)
-      ?.scrollIntoView({ behavior: "smooth", block: "center" });
+  const scrollToMember = (index: number) => {
+    window.dispatchEvent(
+      new CustomEvent("leadership:navigate", { detail: { index } }),
+    );
   };
 
   return (
     <section className="bg-white pt-20 lg:pt-[25vh] pb-0">
       {/* Header */}
-      <div className="max-w-3xl mx-auto text-center px-6 mb-12">
+      <div className="max-w-3xl mx-auto text-left lg:text-center px-6 mb-12">
         <h1 className="text-4xl md:text-5xl font-black font-serif text-neutral-900 leading-tight">
           {title}
         </h1>
         {description && (
-          <p className="mt-4 text-neutral-500 text-base leading-relaxed">
+          <p className="mt-4 font-serif text-neutral-500 text-base leading-relaxed">
             {description}
           </p>
         )}
       </div>
 
       {/* Group photo with column overlays */}
-      <div className="relative mx-auto w-[90%] lg:w-[80%] h-[70vh] min-h-100 overflow-hidden">
+      <div className="hidden lg:block relative mx-auto max-w-7xl w-[90%] lg:w-[80%] h-[70vh] min-h-100 overflow-hidden">
         {imageUrl ? (
           <Image
             src={imageUrl}
@@ -63,7 +63,7 @@ export function GroupSection({
             <button
               key={member.id}
               type="button"
-              onClick={() => scrollToMember(member.id)}
+              onClick={() => scrollToMember(index)}
               className={`group relative flex-1 h-full text-left cursor-pointer transition-colors ${
                 index < members.length - 1 ? "" : ""
               }`}>

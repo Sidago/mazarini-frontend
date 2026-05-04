@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { Logo } from "@/components/layout/logo";
 import { SubNav } from "@/components/layout/sub-nav";
@@ -31,8 +32,10 @@ export function Header({
   const [scrolled, setScrolled] = useState(false);
   const [hovered, setHovered] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const pathname = usePathname();
 
-  const active = scrolled || hovered;
+  const FORCE_ACTIVE_PATHS = ["/leadership"];
+  const active = scrolled || hovered || FORCE_ACTIVE_PATHS.includes(pathname);
 
   useEffect(() => {
     function handleScroll(): void {
