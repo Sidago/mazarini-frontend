@@ -621,3 +621,25 @@ export interface LeadershipPageData {
   groupPhoto: StrapiMedia | null;
   members: LeadershipMember[];
 }
+
+// Insights
+
+export interface Insight {
+  id: number;
+  documentId: string;
+  title: string;
+  slug: string;
+  category: string | null;
+  date: string | null;
+  description: string | null;
+  image: StrapiMedia | null;
+}
+
+export interface InsightsPage {
+  id: number;
+  documentId: string;
+  pageTitle: string;
+  pageDescription: string | null;
+  featuredCTA: string | null;
+  featuredInsights: Insight[];
+}
