@@ -573,7 +573,7 @@ export interface RdPage {
   contactCtaUrl: string | null;
 }
 
-// Safety Page
+// Safety Page & Tools and Technology Page (identical structure)
 
 export interface SafetyPage {
   id: number;
@@ -596,3 +596,5 @@ export interface SafetyPage {
   leadershipParallaxText: string | null;
   leadership_cards: Teams[];
 }
+
+export type ToolsAndTechnologyPage = SafetyPage;
