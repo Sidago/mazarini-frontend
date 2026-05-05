@@ -16,3 +16,11 @@ export async function getInsights(): Promise<Insight[]> {
   });
   return res.data;
 }
+
+export async function getInsightBySlug(slug: string): Promise<Insight> {
+  const res = await strapiGet<StrapiListResponse<Insight>>("/insights", {
+    "filters[slug][$eq]": slug,
+    "populate[image]": "true",
+  });
+  return res.data[0];
+}

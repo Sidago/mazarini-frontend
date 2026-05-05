@@ -633,6 +633,7 @@ export interface Insight {
   date: string | null;
   description: string | null;
   image: StrapiMedia | null;
+  file: StrapiMedia | null;
 }
 
 export interface InsightsPage {
@@ -642,4 +643,68 @@ export interface InsightsPage {
   pageDescription: string | null;
   featuredCTA: string | null;
   featuredInsights: Insight[];
+}
+
+// Corporate Responsibility Page
+
+export interface CrPillar {
+  id: number;
+  documentId: string;
+  title: string;
+  description: string;
+  image: StrapiMedia | null;
+  order: number | null;
+}
+
+export interface CrMetric {
+  id: number;
+  documentId: string;
+  value: string;
+  label: string;
+  order: number | null;
+}
+
+export interface CorporateResponsibilityPage {
+  id: number;
+  documentId: string;
+
+  heroTitle: string;
+  heroText: string | null;
+  heroImage: StrapiMedia | null;
+  heroVideo: StrapiMedia | null;
+  heroCtaText: string | null;
+  heroCtaUrl: string | null;
+
+  quoteText: string | null;
+  quoteAuthorName: string | null;
+  quoteAuthorPosition: string | null;
+  quoteAuthorImage: StrapiMedia | null;
+
+  pillarsTitle: string | null;
+  pillarsDescription: string | null;
+  pillarsWatermark: string | null;
+  pillars: CrPillar[];
+
+  foundationTitle: string | null;
+  foundationDescription: string | null;
+  foundationImage: StrapiMedia | null;
+  foundationCtaText: string | null;
+  foundationCtaUrl: string | null;
+
+  impactTitle: string | null;
+  impactWatermark: string | null;
+  impactCtaText: string | null;
+  impactCtaUrl: string | null;
+  metrics: CrMetric[];
+
+  newsTitle: string | null;
+  newsWatermark: string | null;
+  newsCtaText: string | null;
+  newsCtaUrl: string | null;
+  featuredNews: News[];
+
+  executivesTitle: string | null;
+  executivesDescription: string | null;
+  executivesWatermark: string | null;
+  executives: Teams[];
 }
