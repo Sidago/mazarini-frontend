@@ -24,7 +24,7 @@ export function QuoteSection({ data }: QuoteSectionProps): React.ReactElement {
         </div>
 
         {data.quoteText && (
-          <blockquote className="text-lg font-serif font-semibold leading-relaxed italic tracking-wider text-white mb-8">
+          <blockquote className="text-sm lg:text-lg font-serif font-semibold leading-relaxed italic tracking-wider text-white mb-8">
             {data.quoteText}
           </blockquote>
         )}

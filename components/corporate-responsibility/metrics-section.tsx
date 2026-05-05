@@ -29,7 +29,7 @@ export function MetricsSection({
       id="metrics"
       className="relative w-screen min-h-screen lg:h-screen flex-none flex items-center overflow-hidden py-20 lg:py-0 bg-neutral-900 text-white">
       {data.impactWatermark && (
-        <div className="pointer-events-none select-none absolute">
+        <div className="pointer-events-none select-none absolute top-0 left-0 right-0 h-[40%] lg:inset-0 lg:h-auto z-0">
           <ParallaxText
             baseVelocity={0.2}
             color="rgba(255,255,255,0.06)"

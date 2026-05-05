@@ -18,6 +18,11 @@ interface ConditionalFooterProps {
 
 export function ConditionalFooter(props: ConditionalFooterProps) {
   const pathname = usePathname();
-  if (pathname.startsWith("/experience") || pathname.startsWith("/rd")) return null;
+  if (
+    pathname.startsWith("/experience") ||
+    pathname.startsWith("/rd") ||
+    pathname.startsWith("/corporate-responsibility")
+  )
+    return null;
   return <Footer {...props} />;
 }
