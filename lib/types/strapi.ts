@@ -726,3 +726,65 @@ export interface CorporateResponsibilityPage {
   executivesWatermark: string | null;
   executives: Teams[];
 }
+
+// You Belong Here Page
+
+export interface YouBelongHerePage {
+  id: number;
+  documentId: string;
+  seo?: SeoComponent | null;
+
+  heroTitle: string | null;
+  heroText: string | null;
+  heroImage: StrapiMedia | null;
+  heroVideo: StrapiMedia | null;
+  heroCtaText: string | null;
+  heroCtaUrl: string | null;
+
+  quoteText: string | null;
+  quoteAuthorName: string | null;
+  quoteAuthorPosition: string | null;
+  quoteAuthorImage: StrapiMedia | null;
+
+  belongingTitle: string | null;
+  belongingDescription: string | null;
+  belongingWatermark: string | null;
+  belongingItems: AccordionItem[];
+
+  missionTitle: string | null;
+  missionDescription: string | null;
+  missionWatermark: string | null;
+  missionItems: AccordionItem[];
+
+  subcontractorsText: string | null;
+  subcontractorsCtaText: string | null;
+  subcontractorsCtaUrl: string | null;
+  subcontractorsImage: StrapiMedia | null;
+
+  accomplishmentsTitle: string | null;
+  accomplishmentsSubtitle: string | null;
+  accomplishmentsWatermark: string | null;
+  accomplishments: AccordionItem[];
+
+  goalsTitle: string | null;
+  goalsWatermark: string | null;
+  goalsDescription: string | null;
+  goals: AccordionItem[];
+
+  careersText: string | null;
+  careersCtaText: string | null;
+  careersCtaUrl: string | null;
+  careersImage: StrapiMedia | null;
+  careersWatermark: string | null;
+
+  newsTitle: string | null;
+  newsWatermark: string | null;
+  newsCtaText: string | null;
+  newsCtaUrl: string | null;
+  featuredNews: News[];
+
+  leadershipTitle: string | null;
+  leadershipDescription: string | null;
+  leadershipWatermark: string | null;
+  featuredLeadership: Teams[];
+}
