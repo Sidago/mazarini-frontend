@@ -25,7 +25,7 @@ export function AccordionSection({
         <div className="flex flex-col lg:flex-row items-center justify-center gap-0 mx-auto w-fit">
           {/* Left — image */}
           <FadeIn direction="left">
-            <div className="relative w-full lg:w-100 shrink-0 max-h-145 aspect-3/5 overflow-hidden">
+            <div className="relative w-full lg:w-100 shrink-0 max-h-140 aspect-3/5 overflow-hidden">
               {imageUrl && (
                 <Image
                   src={imageUrl}

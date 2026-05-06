@@ -24,7 +24,7 @@ export function NumbersMarquee({
   const items = [...source, ...source, ...source];
 
   return (
-    <section className="bg-neutral-950 text-white pt-30 pb-60 overflow-hidden">
+    <section className="bg-neutral-950 font-serif text-white pt-30 pb-60 overflow-hidden">
       <p className="text-center text-3xl md:text-4xl font-semibold mb-25 tracking-wide">
         {title}
       </p>

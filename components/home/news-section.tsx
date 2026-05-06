@@ -5,12 +5,12 @@ import { NewsCard } from "@/components/home/news-card";
 import type { News } from "@/lib/types/strapi";
 
 interface NewsSectionProps {
-  heading: string | null;
+  heading?: string | null;
   news: News[];
 }
 
 export function NewsSection({
-  heading,
+  heading = "News \n & Insights",
   news,
 }: NewsSectionProps): React.ReactElement {
   if (news.length === 0 && !heading) return <></>;

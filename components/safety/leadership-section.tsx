@@ -33,7 +33,7 @@ export function LeadershipSection({
         </div>
       )}
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-8">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 font-serif">
         <div className="mb-10">
           <h2 className="text-4xl md:text-5xl font-bold leading-tight">
             {title}

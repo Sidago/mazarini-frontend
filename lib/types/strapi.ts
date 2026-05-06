@@ -614,6 +614,29 @@ export interface SafetyPage {
 
 export type ToolsAndTechnologyPage = SafetyPage;
 
+export interface SustainabilityPage {
+  id: number;
+  documentId: string;
+  seo?: SeoComponent | null;
+  title: string | null;
+  heroTitle: string | null;
+  heroText: string | null;
+  heroImage: StrapiMedia | null;
+  heroVideo: StrapiMedia | null;
+  accordionTitle: string | null;
+  accordionDetails: string | null;
+  accordionImage: StrapiMedia | null;
+  accordionItems: AccordionItem[];
+  stats: StatComponent[];
+  carouselTitle: string | null;
+  carouselText: string | null;
+  carouselCards: CultureCard[];
+  leadershipTitle: string | null;
+  leadershipDetails: string | null;
+  leadershipParallaxText: string | null;
+  leadershipCards: Teams[];
+}
+
 // Leadership Page
 
 export interface LeadershipMember {
