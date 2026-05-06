@@ -12,6 +12,7 @@ export async function getSubcontractorsPage(): Promise<SubcontractorsPage> {
       "populate[onboardingExtraRequirements]": "true",
       "populate[tradePartnerTabs][populate][image]": "true",
       "populate[faqItems]": "true",
+      "populate[seo][populate][shareImage]": "true",
     },
   );
   return res.data;

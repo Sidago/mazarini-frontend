@@ -1,6 +1,22 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 import { getAbout } from "@/lib/api/about";
 import { getTimelineEntries } from "@/lib/api/timeline";
+import { buildMetadata } from "@/lib/utils/seo";
+
+export async function generateMetadata(): Promise<Metadata> {
+  try {
+    const about = await getAbout();
+    return buildMetadata({
+      seo: about.seo,
+      fallbackTitle: "About Us",
+      fallbackDescription: about.introDiscription ?? about.heroText,
+      fallbackImage: about.heroImage,
+    });
+  } catch {
+    return buildMetadata({ fallbackTitle: "About Us" });
+  }
+}
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import { FadeIn } from "@/components/ui/fade-in";
 import { TimelineSection } from "@/components/about/timeline-section";

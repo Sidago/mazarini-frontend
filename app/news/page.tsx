@@ -1,15 +1,25 @@
 export const dynamic = "force-dynamic";
 
+import type { Metadata } from "next";
 import { FadeIn } from "@/components/ui/fade-in";
 import { NewsCarousel } from "@/components/news/news-carousel";
 import { NewsGrid } from "@/components/news/news-grid";
 import { getNews, getNewsPage } from "@/lib/api/news";
+import { buildMetadata } from "@/lib/utils/seo";
 import type { News, NewsPage as NewsPageType } from "@/lib/types/strapi";
 
-export const metadata = {
-  description:
-    "Stay up to date with the latest news, insights, and updates from Mazarini Group.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  try {
+    const pageData = await getNewsPage();
+    return buildMetadata({
+      seo: pageData.seo,
+      fallbackTitle: pageData.pageTitle ?? "News & Insights",
+      fallbackDescription: pageData.pageDescription,
+    });
+  } catch {
+    return buildMetadata({ fallbackTitle: "News & Insights" });
+  }
+}
 
 export default async function NewsPage(): Promise<React.ReactElement> {
   let pageData: NewsPageType | null = null;

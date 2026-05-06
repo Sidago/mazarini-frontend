@@ -18,6 +18,7 @@ export async function getNewsBySlug(slug: string): Promise<News> {
   const res = await strapiGet<StrapiListResponse<News>>("/newses", {
     "filters[slug][$eq]": slug,
     "populate[image]": "true",
+    "populate[seo][populate][shareImage]": "true",
   });
   return res.data[0];
 }
@@ -25,6 +26,7 @@ export async function getNewsBySlug(slug: string): Promise<News> {
 export async function getNewsPage(): Promise<NewsPage> {
   const res = await strapiGet<StrapiResponse<NewsPage>>("/news-page", {
     "populate[featuredNews][populate][image]": "true",
+    "populate[seo][populate][shareImage]": "true",
   });
   return res.data;
 }

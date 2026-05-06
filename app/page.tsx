@@ -11,8 +11,24 @@ import { BelongSection } from "@/components/home/belong-section";
 import { NewsSection } from "@/components/home/news-section";
 import { SparkSection } from "@/components/home/spark-section";
 import { CtaSection } from "@/components/home/cta-section";
+import type { Metadata } from "next";
 import { getHomepage } from "@/lib/api/homepage";
+import { buildMetadata } from "@/lib/utils/seo";
 import type { Homepage } from "@/lib/types/strapi";
+
+export async function generateMetadata(): Promise<Metadata> {
+  try {
+    const homepage = await getHomepage();
+    return buildMetadata({
+      seo: homepage.seo,
+      fallbackTitle: "Mazarini Inc. | Building America",
+      fallbackDescription: homepage.introDescription,
+      fallbackImage: homepage.heroImage,
+    });
+  } catch {
+    return buildMetadata({ fallbackTitle: "Mazarini Inc. | Building America" });
+  }
+}
 
 export const dynamic = "force-dynamic";
 

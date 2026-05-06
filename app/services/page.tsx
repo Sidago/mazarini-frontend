@@ -1,8 +1,10 @@
 export const dynamic = "force-dynamic";
 
+import type { Metadata } from "next";
 import { FadeIn } from "@/components/ui/fade-in";
 import { ServiceGrid } from "@/components/services/service-grid";
 import { getServices, getServicesPage } from "@/lib/api/services";
+import { buildMetadata } from "@/lib/utils/seo";
 import type {
   Service,
   ServicesPage as ServicesPageType,
@@ -10,9 +12,19 @@ import type {
 import { ProjectCarousel } from "@/components/projects/project-carousel";
 import { ServiceCarousel } from "@/components/services/service-carousel";
 
-export const metadata = {
-  description: "Explore our services and what we deliver across industries.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  try {
+    const pageData = await getServicesPage();
+    return buildMetadata({
+      seo: pageData.seo,
+      fallbackTitle: pageData.pageTitle ?? "Our Services",
+      fallbackDescription: pageData.pageDescription ?? pageData.heroText,
+      fallbackImage: pageData.heroImage,
+    });
+  } catch {
+    return buildMetadata({ fallbackTitle: "Our Services" });
+  }
+}
 
 export default async function ServicesPage(): Promise<React.ReactElement> {
   let pageData: ServicesPageType | null = null;

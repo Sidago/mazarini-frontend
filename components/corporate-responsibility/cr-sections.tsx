@@ -222,11 +222,22 @@ export function CrSections({ data }: CrSectionsProps): React.ReactElement {
           </motion.div>
         </div>
 
-        <RdProgressBar
-          sections={SECTIONS}
-          activeId={SECTIONS[activeIndex]?.id ?? "hero"}
-          onNavigate={handleNavigate}
-        />
+        <AnimatePresence>
+          {activeIndex > 0 && (
+            <motion.div
+              key="progress-bar"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 16 }}
+              transition={{ duration: 0.25 }}>
+              <RdProgressBar
+                sections={SECTIONS}
+                activeId={SECTIONS[activeIndex]?.id ?? "hero"}
+                onNavigate={handleNavigate}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </>
   );

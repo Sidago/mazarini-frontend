@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -6,9 +7,25 @@ import { Icon } from "@/components/ui/icon";
 import { InsightDownloadForm } from "@/components/insights/insight-download-form";
 import { getInsightBySlug } from "@/lib/api/insights";
 import { getStrapiMediaUrl } from "@/lib/api/client";
+import { buildMetadata } from "@/lib/utils/seo";
 
 interface InsightDetailPageProps {
   params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({ params }: InsightDetailPageProps): Promise<Metadata> {
+  try {
+    const { slug } = await params;
+    const insight = await getInsightBySlug(slug);
+    return buildMetadata({
+      seo: insight.seo,
+      fallbackTitle: insight.title,
+      fallbackDescription: insight.description,
+      fallbackImage: insight.image,
+    });
+  } catch {
+    return buildMetadata({ fallbackTitle: "Insights" });
+  }
 }
 
 function formatDate(dateStr: string | null): string {

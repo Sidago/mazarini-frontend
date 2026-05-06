@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -5,9 +6,26 @@ import { FadeIn } from "@/components/ui/fade-in";
 import { Icon } from "@/components/ui/icon";
 import { getProject } from "@/lib/api/projects";
 import { getStrapiMediaUrl } from "@/lib/api/client";
+import { buildMetadata } from "@/lib/utils/seo";
 
 interface ProjectDetailPageProps {
   params: Promise<{ id: string }>;
+}
+
+export async function generateMetadata({ params }: ProjectDetailPageProps): Promise<Metadata> {
+  try {
+    const { id } = await params;
+    const raw = await getProject(id);
+    const project = Array.isArray(raw) ? raw[0] : raw;
+    return buildMetadata({
+      seo: project.seo,
+      fallbackTitle: project.title,
+      fallbackDescription: project.description,
+      fallbackImage: project.image?.[0] ?? null,
+    });
+  } catch {
+    return buildMetadata({ fallbackTitle: "Projects" });
+  }
 }
 
 export default async function ProjectDetailPage({

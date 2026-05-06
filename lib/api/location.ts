@@ -5,6 +5,7 @@ export async function getLocationPage(): Promise<LocationPage> {
   const res = await strapiGet<StrapiResponse<LocationPage>>("/location", {
     "populate[heroVideo]": "true",
     "populate[heroImage]": "true",
+    "populate[seo][populate][shareImage]": "true",
   });
   return res.data;
 }

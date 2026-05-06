@@ -1,18 +1,29 @@
 export const dynamic = "force-dynamic";
 
+import type { Metadata } from "next";
 import { ImgOrVideoHero } from "@/components/common/img-video-hero";
 import { LocationList } from "@/components/location/location-list";
 import { getLocationPage, getLocations } from "@/lib/api/location";
+import { buildMetadata } from "@/lib/utils/seo";
 import {
   Location,
   type LocationPage as LocationPageType,
 } from "@/lib/types/strapi";
 import React from "react";
 
-export const metadata = {
-  description:
-    "Discover Mazarini Group's global presence. Explore our offices and project locations worldwide.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  try {
+    const data = await getLocationPage();
+    return buildMetadata({
+      seo: data.seo,
+      fallbackTitle: data.title ?? "Our Locations",
+      fallbackDescription: data.heroText,
+      fallbackImage: data.heroImage,
+    });
+  } catch {
+    return buildMetadata({ fallbackTitle: "Our Locations" });
+  }
+}
 
 const FALLBACK_LOCATION: LocationPageType = {
   id: 0,

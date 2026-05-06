@@ -7,5 +7,6 @@ export async function getExperiencePage(): Promise<StrapiResponse<ExperiencePage
     "populate[heroImage]": "true",
     "populate[experience_steps][populate][image]": "true",
     "populate[experience_steps][sort]": "order:asc",
+    "populate[seo][populate][shareImage]": "true",
   });
 }

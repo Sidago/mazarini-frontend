@@ -1,12 +1,27 @@
 export const dynamic = "force-dynamic";
 
+import type { Metadata } from "next";
 import React from "react";
 import { FadeIn } from "@/components/ui/fade-in";
 import { InsightsCarousel } from "@/components/insights/insights-carousel";
 import { InsightsList } from "@/components/insights/insights-list";
 import { getInsights, getInsightsPage } from "@/lib/api/insights";
+import { buildMetadata } from "@/lib/utils/seo";
 import type { Insight, InsightsPage } from "@/lib/types/strapi";
 import { notFound } from "next/navigation";
+
+export async function generateMetadata(): Promise<Metadata> {
+  try {
+    const pageData = await getInsightsPage();
+    return buildMetadata({
+      seo: pageData.seo,
+      fallbackTitle: pageData.pageTitle ?? "Insights",
+      fallbackDescription: pageData.pageDescription,
+    });
+  } catch {
+    return buildMetadata({ fallbackTitle: "Insights" });
+  }
+}
 
 export default async function InsightsPageRoute(): Promise<React.ReactElement> {
   let pageData: InsightsPage | null = null;

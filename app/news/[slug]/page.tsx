@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -5,9 +6,25 @@ import { FadeIn } from "@/components/ui/fade-in";
 import { Icon } from "@/components/ui/icon";
 import { getNewsBySlug } from "@/lib/api/news";
 import { getStrapiMediaUrl } from "@/lib/api/client";
+import { buildMetadata } from "@/lib/utils/seo";
 
 interface NewsDetailPageProps {
   params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({ params }: NewsDetailPageProps): Promise<Metadata> {
+  try {
+    const { slug } = await params;
+    const article = await getNewsBySlug(slug);
+    return buildMetadata({
+      seo: article.seo,
+      fallbackTitle: article.title,
+      fallbackDescription: article.description,
+      fallbackImage: article.image,
+    });
+  } catch {
+    return buildMetadata({ fallbackTitle: "News" });
+  }
 }
 
 function formatDate(dateString: string | null): string {

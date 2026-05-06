@@ -17,6 +17,7 @@ export async function getProject(id: string): Promise<Project> {
   const res = await strapiGet<StrapiResponse<Project>>(`/projects`, {
     "filters[id][$eq]": id,
     "populate[image]": "true",
+    "populate[seo][populate][shareImage]": "true",
   });
   return res.data;
 }
@@ -24,6 +25,7 @@ export async function getProject(id: string): Promise<Project> {
 export async function getProjectsPage(): Promise<ProjectsPage> {
   const res = await strapiGet<StrapiResponse<ProjectsPage>>("/projects-page", {
     "populate[featuredProjects][populate][image]": "true",
+    "populate[seo][populate][shareImage]": "true",
   });
   return res.data;
 }

@@ -7,6 +7,7 @@ export async function getLeadershipPage(): Promise<LeadershipPageData> {
     {
       "populate[groupPhoto]": "true",
       "populate[members][populate][image]": "true",
+      "populate[seo][populate][shareImage]": "true",
     },
   );
   return res.data;

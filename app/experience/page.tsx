@@ -1,9 +1,26 @@
+import type { Metadata } from "next";
 import { getExperiencePage } from "@/lib/api/experience";
 import { ImgOrVideoHero } from "@/components/common/img-video-hero";
 import { CircularScroll } from "@/components/experience/circular-scroll";
+import { buildMetadata } from "@/lib/utils/seo";
 import type { ExperiencePage, ExperienceStep } from "@/lib/types/strapi";
 
 export const dynamic = "force-dynamic";
+
+export async function generateMetadata(): Promise<Metadata> {
+  try {
+    const res = await getExperiencePage();
+    const data = res.data;
+    return buildMetadata({
+      seo: data.seo,
+      fallbackTitle: data.heroTitle ?? "The Mazarini Experience",
+      fallbackDescription: data.heroText,
+      fallbackImage: data.heroImage,
+    });
+  } catch {
+    return buildMetadata({ fallbackTitle: "The Mazarini Experience" });
+  }
+}
 
 const FALLBACK_PAGE: ExperiencePage = {
   id: 0,

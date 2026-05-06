@@ -5,6 +5,7 @@ import { ConditionalFooter } from "@/components/layout/conditional-footer";
 import { PageLoader } from "@/components/ui/page-loader";
 import { getGlobal } from "@/lib/api/global";
 import { getServices } from "@/lib/api/services";
+import { buildMetadata } from "@/lib/utils/seo";
 import "./globals.css";
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import type { SubNavItem } from "@/lib/types/strapi";
@@ -24,17 +25,13 @@ const notoSerif = Noto_Serif({
 export async function generateMetadata(): Promise<Metadata> {
   try {
     const global = await getGlobal();
-    return {
-      title: "Mazarini Inc. | Building America",
-      description:
-        global.defaultSeo?.metaDescription ?? global.siteDescription ?? "",
-    };
+    return buildMetadata({
+      seo: global.defaultSeo,
+      fallbackTitle: "Mazarini Inc. | Building America",
+      fallbackDescription: global.siteDescription,
+    });
   } catch {
-    return {
-      title: "Mazarini Inc. | Building America",
-      description:
-        "Modern construction and real estate development company. Leading the way in sustainable commercial and residential development.",
-    };
+    return buildMetadata({ fallbackTitle: "Mazarini Inc. | Building America" });
   }
 }
 

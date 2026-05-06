@@ -13,6 +13,7 @@ export async function getCorporateResponsibilityPage(): Promise<CorporateRespons
       "populate[metrics]": "true",
       "populate[featuredNews][populate][image]": "true",
       "populate[executives][populate][image]": "true",
+      "populate[seo][populate][shareImage]": "true",
     },
   );
   return res.data;

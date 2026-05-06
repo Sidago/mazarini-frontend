@@ -1,10 +1,26 @@
 export const dynamic = "force-dynamic";
 
+import type { Metadata } from "next";
 import { ImgOrVideoHero } from "@/components/common/img-video-hero";
 import TeamList from "@/components/team/team-list";
 import { getTeams, getTeamsPage } from "@/lib/api/our-team";
+import { buildMetadata } from "@/lib/utils/seo";
 import { Teams, TeamsPage } from "@/lib/types/strapi";
 import React from "react";
+
+export async function generateMetadata(): Promise<Metadata> {
+  try {
+    const data = await getTeamsPage();
+    return buildMetadata({
+      seo: data.seo,
+      fallbackTitle: data.heroTitle ?? "Our Team",
+      fallbackDescription: data.heroText,
+      fallbackImage: data.heroImage,
+    });
+  } catch {
+    return buildMetadata({ fallbackTitle: "Our Team" });
+  }
+}
 
 export default async function TeamPage(): Promise<React.ReactElement> {
   let teams: Teams[] = [];

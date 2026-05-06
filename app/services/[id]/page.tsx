@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { FadeIn } from "@/components/ui/fade-in";
 import { ServiceDetailSection } from "@/components/services/service-detail-section";
@@ -9,12 +10,29 @@ import { ContactForm } from "@/components/contact/contact-form";
 import { getService, getServicesPage } from "@/lib/api/services";
 import { getProjects } from "@/lib/api/projects";
 import { ImgOrVideoHero } from "@/components/common/img-video-hero";
+import { buildMetadata } from "@/lib/utils/seo";
 import type { News, Project, Service, StatComponent } from "@/lib/types/strapi";
 import { NewsSection } from "@/components/home/news-section";
 import { getNews } from "@/lib/api/news";
 
 interface ServiceDetailPageProps {
   params: Promise<{ id: string }>;
+}
+
+export async function generateMetadata({ params }: ServiceDetailPageProps): Promise<Metadata> {
+  try {
+    const { id } = await params;
+    const service = await getService(id);
+    const s = Array.isArray(service) ? service[0] : service;
+    return buildMetadata({
+      seo: s.seo,
+      fallbackTitle: s.title,
+      fallbackDescription: s.discriptions?.substring(0, 160),
+      fallbackImage: s.heroImage ?? s.image ?? null,
+    });
+  } catch {
+    return buildMetadata({ fallbackTitle: "Services" });
+  }
 }
 
 export default async function ServiceDetailPage({

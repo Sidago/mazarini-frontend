@@ -1,10 +1,26 @@
 export const dynamic = "force-dynamic";
 
+import type { Metadata } from "next";
 import React from "react";
 import { notFound } from "next/navigation";
 import { SafetySections } from "@/components/safety/safety-sections";
 import { getToolsAndTechnologyPage } from "@/lib/api/tools-and-technology";
 import { getNews } from "@/lib/api/news";
+import { buildMetadata } from "@/lib/utils/seo";
+
+export async function generateMetadata(): Promise<Metadata> {
+  try {
+    const data = await getToolsAndTechnologyPage();
+    return buildMetadata({
+      seo: data.seo,
+      fallbackTitle: data.title ?? "Tools & Technology",
+      fallbackDescription: data.heroText,
+      fallbackImage: data.heroImage,
+    });
+  } catch {
+    return buildMetadata({ fallbackTitle: "Tools & Technology" });
+  }
+}
 
 export default async function ToolsAndTechnologyPage(): Promise<React.ReactElement> {
   const result = await Promise.all([

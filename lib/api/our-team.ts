@@ -17,6 +17,7 @@ export async function getTeamsPage(): Promise<TeamsPage> {
   const res = await strapiGet<StrapiResponse<TeamsPage>>("/team-page", {
     "populate[heroImage]": "true",
     "populate[heroVedio]": "true",
+    "populate[seo][populate][shareImage]": "true",
   });
   return res.data;
 }

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { ImgOrVideoHero } from "@/components/common/img-video-hero";
 import { QuoteCarousel } from "@/components/subcontractors/quote-carousel";
 import { OnboardingSection } from "@/components/subcontractors/onboarding-section";
@@ -5,14 +6,24 @@ import { ContactForm } from "@/components/contact/contact-form";
 import { TradePartnersSection } from "@/components/subcontractors/trade-partners-section";
 import { FaqSection } from "@/components/subcontractors/faq-section";
 import { getSubcontractorsPage } from "@/lib/api/subcontractors";
+import { buildMetadata } from "@/lib/utils/seo";
 import type { SubcontractorsPage } from "@/lib/types/strapi";
 
 export const dynamic = "force-dynamic";
 
-export const metadata = {
-  description:
-    "Partner with Mazarini Group as a subcontractor. Learn about onboarding, requirements, and how we celebrate our trade partners.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  try {
+    const data = await getSubcontractorsPage();
+    return buildMetadata({
+      seo: data.seo,
+      fallbackTitle: data.heroTitle ?? "Subcontractors",
+      fallbackDescription: data.heroText,
+      fallbackImage: data.heroImage,
+    });
+  } catch {
+    return buildMetadata({ fallbackTitle: "Subcontractors" });
+  }
+}
 
 const FALLBACK: SubcontractorsPage = {
   id: 0,

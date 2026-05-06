@@ -130,6 +130,7 @@ export interface OurClient {
 // Content types
 
 export interface Homepage {
+  seo?: SeoComponent | null;
   id: number;
   documentId: string;
   heroBadge: string | null;
@@ -219,6 +220,7 @@ export interface About {
   id: number;
   documentId: string;
   title: string;
+  seo?: SeoComponent | null;
   heroTitle: string;
   heroText: string;
   heroVideo: StrapiMedia | null;
@@ -276,6 +278,7 @@ export interface LifeImage {
 export interface Contact {
   id: number;
   documentId: string;
+  seo?: SeoComponent | null;
   heroTitle: string;
   heroText: string;
   heroVideo: StrapiMedia | null;
@@ -299,6 +302,7 @@ export interface TimelineEntry {
 export interface News {
   id: number;
   documentId: string;
+  seo?: SeoComponent | null;
   title: string;
   description: string | null;
   slug: string;
@@ -310,6 +314,7 @@ export interface News {
 export interface NewsPage {
   id: number;
   documentId: string;
+  seo?: SeoComponent | null;
   pageTitle: string;
   pageDescription: string | null;
   featuredNews: News[];
@@ -329,6 +334,7 @@ export interface Expertise {
 export interface Project {
   id: number;
   documentId: string;
+  seo?: SeoComponent | null;
   title: string;
   description: string;
   category: string;
@@ -341,6 +347,7 @@ export interface Project {
 export interface ProjectsPage {
   id: number;
   documentId: string;
+  seo?: SeoComponent | null;
   pageTitle: string;
   pageDescription: string | null;
   featuredProjects: Project[];
@@ -356,6 +363,7 @@ export interface AccordionItem {
 export interface Service {
   id: number;
   documentId: string;
+  seo?: SeoComponent | null;
   title: string;
   discriptions: string;
   catagory: string | null;
@@ -371,6 +379,7 @@ export interface Service {
 export interface ServicesPage {
   id: number;
   documentId: string;
+  seo?: SeoComponent | null;
   pageTitle: string;
   pageDescription: string | null;
   heroTitle: string;
@@ -397,6 +406,7 @@ export interface ExperienceStep {
 export interface ExperiencePage {
   id: number;
   documentId: string;
+  seo?: SeoComponent | null;
   heroTitle: string;
   heroText: string | null;
   heroVideo: StrapiMedia | null;
@@ -410,6 +420,7 @@ export interface ExperiencePage {
 export interface LocationPage {
   id: number;
   documentId: string;
+  seo?: SeoComponent | null;
   title: string;
   heroTitle: string;
   heroText: string;
@@ -446,6 +457,7 @@ export interface Teams {
 export interface TeamsPage {
   id: number;
   documentId: string;
+  seo?: SeoComponent | null;
   heroTitle: string;
   heroText: string;
   heroVedio: StrapiMedia | null;
@@ -482,6 +494,7 @@ export interface TradePartnerTab {
 export interface SubcontractorsPage {
   id: number;
   documentId: string;
+  seo?: SeoComponent | null;
   heroTitle: string;
   heroText: string;
   heroVideo: StrapiMedia | null;
@@ -529,6 +542,7 @@ export interface RdPillar {
 export interface RdPage {
   id: number;
   documentId: string;
+  seo?: SeoComponent | null;
   heroTitle: string;
   heroText: string | null;
   heroImage: StrapiMedia | null;
@@ -578,6 +592,7 @@ export interface RdPage {
 export interface SafetyPage {
   id: number;
   documentId: string;
+  seo?: SeoComponent | null;
   title: string;
   heroTitle: string;
   heroText: string;
@@ -616,6 +631,7 @@ export interface LeadershipMember {
 export interface LeadershipPageData {
   id: number;
   documentId: string;
+  seo?: SeoComponent | null;
   pageTitle: string;
   pageDescription: string | null;
   groupPhoto: StrapiMedia | null;
@@ -627,6 +643,7 @@ export interface LeadershipPageData {
 export interface Insight {
   id: number;
   documentId: string;
+  seo?: SeoComponent | null;
   title: string;
   slug: string;
   category: string | null;
@@ -639,6 +656,7 @@ export interface Insight {
 export interface InsightsPage {
   id: number;
   documentId: string;
+  seo?: SeoComponent | null;
   pageTitle: string;
   pageDescription: string | null;
   featuredCTA: string | null;
@@ -667,7 +685,7 @@ export interface CrMetric {
 export interface CorporateResponsibilityPage {
   id: number;
   documentId: string;
-
+  seo?: SeoComponent | null;
   heroTitle: string;
   heroText: string | null;
   heroImage: StrapiMedia | null;

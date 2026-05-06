@@ -11,6 +11,7 @@ export async function getRdPage(): Promise<RdPage> {
     "populate[featuredNews][populate][image]": "true",
     "populate[partners][populate][image]": "true",
     "populate[featuredLeadership][populate][image]": "true",
+    "populate[seo][populate][shareImage]": "true",
   });
   return res.data;
 }

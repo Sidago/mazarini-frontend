@@ -1,16 +1,27 @@
+import type { Metadata } from "next";
 import { ContactInfo } from "@/components/contact/contact-info";
 import { ContactForm } from "@/components/contact/contact-form";
 import { getGlobal } from "@/lib/api/global";
 import { getContact } from "@/lib/api/contact";
+import { buildMetadata } from "@/lib/utils/seo";
 import type { Contact, SocialLinkComponent } from "@/lib/types/strapi";
 import { ImgOrVideoHero } from "@/components/common/img-video-hero";
 
 export const dynamic = "force-dynamic";
 
-export const metadata = {
-  description:
-    "Get in touch with Mazarini Group. Start a project, ask a question, or explore partnership opportunities.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  try {
+    const contact = await getContact();
+    return buildMetadata({
+      seo: contact.seo,
+      fallbackTitle: "Contact Us",
+      fallbackDescription: contact.heroText,
+      fallbackImage: contact.heroImage,
+    });
+  } catch {
+    return buildMetadata({ fallbackTitle: "Contact Us" });
+  }
+}
 
 const FALLBACK_CONTACT: Contact = {
   id: 0,

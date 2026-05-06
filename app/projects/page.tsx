@@ -1,13 +1,28 @@
 export const dynamic = "force-dynamic";
 
+import type { Metadata } from "next";
 import { FadeIn } from "@/components/ui/fade-in";
 import { ProjectCarousel } from "@/components/projects/project-carousel";
 import { ProjectGrid } from "@/components/projects/project-grid";
 import { getProjects, getProjectsPage } from "@/lib/api/projects";
+import { buildMetadata } from "@/lib/utils/seo";
 import type {
   Project,
   ProjectsPage as ProjectsPageType,
 } from "@/lib/types/strapi";
+
+export async function generateMetadata(): Promise<Metadata> {
+  try {
+    const pageData = await getProjectsPage();
+    return buildMetadata({
+      seo: pageData.seo,
+      fallbackTitle: pageData.pageTitle ?? "Our Projects",
+      fallbackDescription: pageData.pageDescription,
+    });
+  } catch {
+    return buildMetadata({ fallbackTitle: "Our Projects" });
+  }
+}
 
 export default async function ProjectsPage(): Promise<React.ReactElement> {
   let pageData: ProjectsPageType | null = null;

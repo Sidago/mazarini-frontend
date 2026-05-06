@@ -10,6 +10,7 @@ export async function getSafetyPage(): Promise<SafetyPage> {
     "populate[stats]": "true",
     "populate[carouselCard][populate][image]": "true",
     "populate[leadership_cards][populate][image]": "true",
+    "populate[seo][populate][shareImage]": "true",
   });
   return res.data;
 }
