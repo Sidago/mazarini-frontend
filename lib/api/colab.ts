@@ -3,6 +3,8 @@ import type { ColabPage, StrapiResponse } from "@/lib/types/strapi";
 
 export async function getColabPage(): Promise<ColabPage> {
   const res = await strapiGet<StrapiResponse<ColabPage>>("/colab-page", {
+    "populate[heroImage]": "true",
+    "populate[heroVideo]": "true",
     "populate[introImage]": "true",
     "populate[introVideo]": "true",
     "populate[stats]": "true",

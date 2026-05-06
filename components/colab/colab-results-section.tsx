@@ -42,7 +42,7 @@ export function ColabResultsSection({ data }: Props): React.ReactElement {
       <div className="relative z-10 flex flex-col lg:flex-row lg:items-center w-full lg:h-full">
         {/* Left — title */}
         <div className="w-full lg:w-[35vw] flex-none flex flex-col justify-center px-8 lg:pl-[12vw] lg:pr-10 py-12 lg:py-0">
-          <h2 className="text-3xl lg:text-5xl font-serif font-bold text-neutral-900 leading-tight">
+          <h2 className="text-3xl font-serif font-semibold text-neutral-900 leading-tight">
             {data.resultsTitle ?? "The Results"}
           </h2>
         </div>
@@ -53,7 +53,7 @@ export function ColabResultsSection({ data }: Props): React.ReactElement {
             {images.slice(0, 4).map((img) => {
               const url = getStrapiMediaUrl(img);
               return url ? (
-                <div key={img.id} className="relative w-full aspect-[4/3] overflow-hidden">
+                <div key={img.id} className="relative w-full aspect-[5/3] overflow-hidden">
                   <Image
                     src={url}
                     alt={img.alternativeText ?? "Result"}

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { getStrapiMediaUrl } from "@/lib/api/client";
@@ -70,7 +72,7 @@ export function PartnersSection({
                   {url ? (
                     <Image
                       src={url}
-                      alt={partner.name}
+                      alt={partner.image?.alternativeText ?? partner.name}
                       width={partner.image?.width ?? 160}
                       height={partner.image?.height ?? 88}
                       className="max-h-22 w-auto object-contain grayscale"

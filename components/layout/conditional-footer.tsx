@@ -21,7 +21,8 @@ export function ConditionalFooter(props: ConditionalFooterProps) {
   if (
     pathname.startsWith("/experience") ||
     pathname.startsWith("/rd") ||
-    pathname.startsWith("/corporate-responsibility")
+    pathname.startsWith("/corporate-responsibility") ||
+    pathname.startsWith("/colab")
   )
     return null;
   return <Footer {...props} />;

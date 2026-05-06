@@ -39,8 +39,8 @@ export function ColabVisionSection({ data }: Props): React.ReactElement {
 
       <div className="relative z-10 flex flex-col lg:flex-row lg:items-center w-full lg:h-full">
         {/* Left */}
-        <div className="w-full lg:w-[38vw] flex-none flex flex-col justify-center px-6 lg:pl-[15vw] lg:pr-10 py-12 lg:py-0">
-          <h2 className="text-2xl lg:text-3xl font-serif font-bold leading-tight mb-4 text-white">
+        <div className="w-full lg:w-[40vw] flex-none flex flex-col justify-center px-6 lg:pl-[15vw] lg:pr-10 py-12 lg:py-0">
+          <h2 className="text-xl font-serif font-bold leading-tight mb-4 text-white">
             {data.visionTitle ?? "Vision"}
           </h2>
           {data.visionSubtitle && (
@@ -51,7 +51,7 @@ export function ColabVisionSection({ data }: Props): React.ReactElement {
         </div>
 
         {/* Right — item list */}
-        <div className="w-full lg:w-[62vw] flex-none px-6 lg:pr-[10vw] lg:pl-8 py-8 lg:py-0 flex flex-col justify-center gap-8 overflow-y-auto lg:max-h-[80vh]">
+        <div className="w-full lg:w-[60vw] flex-none px-6 lg:pr-[10vw] lg:pl-8 py-8 lg:py-0 flex flex-col justify-center gap-8 overflow-y-auto lg:max-h-[80vh]">
           {items.map((item) => (
             <div key={item.id} className="font-serif border-b border-white/10 pb-6 last:border-0 last:pb-0">
               <h4 className="text-base font-bold text-white mb-2">{item.title}</h4>

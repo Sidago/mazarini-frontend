@@ -46,10 +46,10 @@ export function ColabNumbersSection({ data }: Props): React.ReactElement {
           </h2>
         )}
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mx-auto max-w-6xl ms-[15vw]">
           {stats.map((stat) => (
             <div key={stat.id}>
-              <p className="text-5xl lg:text-7xl font-black text-primary leading-none mb-3">
+              <p className="text-xl font-semibold text-primary leading-none mb-3">
                 {stat.value}
                 {stat.suffix && (
                   <span className="text-3xl lg:text-5xl">{stat.suffix}</span>

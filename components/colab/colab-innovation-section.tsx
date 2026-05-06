@@ -48,7 +48,7 @@ export function ColabInnovationSection({ data }: Props): React.ReactElement {
           </h2>
         )}
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 lg:gap-16 overflow-y-auto lg:max-h-[75vh]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 lg:gap-16 overflow-y-auto lg:max-h-[70vh]">
           {items.map((item) => {
             const url = getStrapiMediaUrl(item.image ?? null);
             return (
@@ -62,7 +62,7 @@ export function ColabInnovationSection({ data }: Props): React.ReactElement {
                   </p>
                 )}
                 {url && (
-                  <div className="relative w-full aspect-[4/3] overflow-hidden">
+                  <div className="relative w-full aspect-[6/3] overflow-hidden">
                     <Image
                       src={url}
                       alt={item.title}

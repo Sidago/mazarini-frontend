@@ -95,14 +95,14 @@ export function ColabElementsSection({ data }: Props): React.ReactElement {
           </div>
 
           {/* Right — content */}
-          <div className="flex-1 flex flex-col justify-center px-8 lg:px-16 py-10 lg:py-12 overflow-y-auto">
+          <div className="font-serif flex-1 flex flex-col justify-center px-8 lg:px-16 py-10 lg:py-12 overflow-y-auto">
             {card.title && (
               <div className="mb-8">
-                <h3 className="text-xl lg:text-2xl font-serif font-bold text-neutral-900 mb-3">
+                <h3 className="text-xl font-bold text-neutral-900 mb-3">
                   {card.title}
                 </h3>
                 {card.description && (
-                  <p className="text-sm lg:text-base text-neutral-500 leading-relaxed">
+                  <p className="text-sm text-neutral-500 leading-relaxed">
                     {card.description}
                   </p>
                 )}
@@ -110,11 +110,11 @@ export function ColabElementsSection({ data }: Props): React.ReactElement {
             )}
             {card.title2 && (
               <div>
-                <h3 className="text-xl lg:text-2xl font-serif font-bold text-neutral-900 mb-3">
+                <h3 className="text-xl font-bold text-neutral-900 mb-3">
                   {card.title2}
                 </h3>
                 {card.description2 && (
-                  <p className="text-sm lg:text-base text-neutral-500 leading-relaxed">
+                  <p className="text-sm text-neutral-500 leading-relaxed">
                     {card.description2}
                   </p>
                 )}

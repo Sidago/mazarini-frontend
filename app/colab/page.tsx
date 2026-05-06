@@ -5,15 +5,16 @@ import { notFound } from "next/navigation";
 import { getColabPage } from "@/lib/api/colab";
 import { buildMetadata } from "@/lib/utils/seo";
 import { ColabSections } from "@/components/colab/colab-sections";
+import { YouMightBeInterested } from "@/components/common/you-might-be-interested";
 
 export async function generateMetadata(): Promise<Metadata> {
   try {
     const data = await getColabPage();
     return buildMetadata({
       seo: data.seo,
-      fallbackTitle: data.introTitle ?? "CoLab",
-      fallbackDescription: data.introText,
-      fallbackImage: data.introImage,
+      fallbackTitle: data.heroTitle ?? data.introTitle ?? "CoLab",
+      fallbackDescription: data.heroText ?? data.introText,
+      fallbackImage: data.heroImage ?? data.introImage,
     });
   } catch {
     return buildMetadata({ fallbackTitle: "CoLab" });
@@ -24,5 +25,5 @@ export default async function ColabPage() {
   const data = await getColabPage().catch(() => null);
   if (!data) return notFound();
 
-  return <ColabSections data={data} />;
+  return <ColabSections data={data} moreSection={<YouMightBeInterested title="More" />} />;
 }

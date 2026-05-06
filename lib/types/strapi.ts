@@ -667,6 +667,13 @@ export interface ColabPage {
   documentId: string;
   seo?: SeoComponent | null;
 
+  heroTitle: string | null;
+  heroText: string | null;
+  heroImage: StrapiMedia | null;
+  heroVideo: StrapiMedia | null;
+  heroCtaText: string | null;
+  heroCtaUrl: string | null;
+
   introTitle: string | null;
   introText: string | null;
   introImage: StrapiMedia | null;

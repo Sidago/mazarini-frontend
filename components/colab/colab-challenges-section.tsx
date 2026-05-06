@@ -41,6 +41,7 @@ export function ColabChallengesSection({ data }: Props): React.ReactElement {
             color="rgba(0,0,0,0.06)"
             direction={isMobile ? "horizontal" : "vertical"}
             position="start"
+            paddingStart={isMobile ? "" : "14vw"}
             flip={true}>
             {data.challengesWatermark}
           </ParallaxText>
@@ -49,8 +50,8 @@ export function ColabChallengesSection({ data }: Props): React.ReactElement {
 
       <div className="relative z-10 flex flex-col lg:flex-row lg:items-center w-full lg:h-full">
         {/* Left */}
-        <div className="w-full lg:w-[40vw] flex-none flex flex-col justify-center px-6 lg:pl-[15vw] lg:pr-8 py-12 lg:py-0">
-          <h2 className="text-3xl lg:text-5xl font-bold leading-tight mb-6">
+        <div className="w-full font-serif lg:w-[40vw] flex-none flex flex-col justify-center px-6 lg:pl-[15vw] lg:pr-8 py-12 lg:py-0">
+          <h2 className="text-3xl font-bold leading-tight mb-6">
             {data.challengesTitle ?? "Challenges"}
           </h2>
           {data.challengesDescription && (
