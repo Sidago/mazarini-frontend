@@ -637,6 +637,87 @@ export interface SustainabilityPage {
   leadershipCards: Teams[];
 }
 
+export interface ColabElementCard {
+  id: number;
+  label: string;
+  image: StrapiMedia | null;
+  title: string | null;
+  description: string | null;
+  title2: string | null;
+  description2: string | null;
+}
+
+export interface ColabChallengeCard {
+  id: number;
+  label: string;
+  description: string | null;
+  image: StrapiMedia | null;
+  order: number | null;
+}
+
+export interface ColabInnovationItem {
+  id: number;
+  title: string;
+  description: string | null;
+  image: StrapiMedia | null;
+}
+
+export interface ColabPage {
+  id: number;
+  documentId: string;
+  seo?: SeoComponent | null;
+
+  introTitle: string | null;
+  introText: string | null;
+  introImage: StrapiMedia | null;
+  introVideo: StrapiMedia | null;
+  introCtaText: string | null;
+  introCtaUrl: string | null;
+  introLocation: string | null;
+  introClient: string | null;
+  introProjectTypes: string | null;
+  introKeyPartners: string | null;
+  introCertifications: string | null;
+  introAwards: string | null;
+
+  numbersTitle: string | null;
+  numbersWatermark: string | null;
+  stats: StatComponent[];
+
+  visionTitle: string | null;
+  visionSubtitle: string | null;
+  visionWatermark: string | null;
+  visionItems: AccordionItem[];
+
+  elementsTitle: string | null;
+  elementsWatermark: string | null;
+  elementCards: ColabElementCard[];
+
+  challengesTitle: string | null;
+  challengesDescription: string | null;
+  challengesWatermark: string | null;
+  challengeCards: ColabChallengeCard[];
+
+  innovationTitle: string | null;
+  innovationWatermark: string | null;
+  innovations: ColabInnovationItem[];
+
+  resultsTitle: string | null;
+  resultsWatermark: string | null;
+  resultsImages: StrapiMedia[];
+
+  teamTitle: string | null;
+  teamDescription: string | null;
+  teamWatermark: string | null;
+  teamMembers: Teams[];
+
+  newsTitle: string | null;
+  newsWatermark: string | null;
+  newsCtaText: string | null;
+  newsCtaUrl: string | null;
+  featuredNews: News[];
+}
+
 // Leadership Page
 
 export interface LeadershipMember {
