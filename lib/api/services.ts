@@ -13,9 +13,9 @@ export async function getServices(): Promise<Service[]> {
   return res.data;
 }
 
-export async function getService(id: string): Promise<Service> {
+export async function getService(slug: string): Promise<Service> {
   const res = await strapiGet<StrapiResponse<Service>>("/services", {
-    "filters[id][$eq]": id,
+    "filters[slug][$eq]": slug,
     "populate[image]": "true",
     "populate[heroImage]": "true",
     "populate[accordion_items]": "true",

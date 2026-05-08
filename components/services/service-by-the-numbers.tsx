@@ -14,7 +14,7 @@ export function ServiceByTheNumbers({
     <section className="py-20 md:py-32 bg-neutral-950 font-serif">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn direction="up">
-          <h2 className="text-center text-2xl md:text-3xl font-bold text-white mb-20">
+          <h2 className="text-center text-2xl md:text-4xl font-bold text-white mb-20">
             By the Numbers
           </h2>
         </FadeIn>
@@ -23,11 +23,11 @@ export function ServiceByTheNumbers({
           {stats.map((stat, i) => (
             <FadeIn key={stat.id} direction="up" delay={i * 0.08}>
               <div className="flex flex-col items-center text-center">
-                <span className="font-black text-5xl md:text-6xl lg:text-7xl text-primary leading-none mb-3">
+                <span className="font-black text-3xl md:text-5xl text-primary leading-none mb-3">
                   {stat.value}
                   {stat.suffix}
                 </span>
-                <p className="text-sm md:text-base font-bold text-white uppercase tracking-wide leading-snug max-w-48">
+                <p className="text-sm font-semibold text-white uppercase tracking-wide leading-snug max-w-50">
                   {stat.label}
                 </p>
                 {stat.description && (

@@ -14,15 +14,16 @@ import { buildMetadata } from "@/lib/utils/seo";
 import type { News, Project, Service, StatComponent } from "@/lib/types/strapi";
 import { NewsSection } from "@/components/home/news-section";
 import { getNews } from "@/lib/api/news";
+import { YouMightBeInterested } from "@/components/common/you-might-be-interested";
 
 interface ServiceDetailPageProps {
-  params: Promise<{ id: string }>;
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateMetadata({ params }: ServiceDetailPageProps): Promise<Metadata> {
   try {
-    const { id } = await params;
-    const service = await getService(id);
+    const { slug } = await params;
+    const service = await getService(slug);
     const s = Array.isArray(service) ? service[0] : service;
     return buildMetadata({
       seo: s.seo,
@@ -38,10 +39,10 @@ export async function generateMetadata({ params }: ServiceDetailPageProps): Prom
 export default async function ServiceDetailPage({
   params,
 }: ServiceDetailPageProps): Promise<React.ReactElement> {
-  const { id } = await params;
+  const { slug } = await params;
   let service: Service | null = null;
   try {
-    service = await getService(id);
+    service = await getService(slug);
     service = Array.isArray(service) ? service[0] : service;
   } catch {
     notFound();
@@ -95,7 +96,6 @@ export default async function ServiceDetailPage({
 
   return (
     <>
-      {/* Hero: per-service heroImage if available, otherwise common hero from services-page */}
       <ImgOrVideoHero
         title={title}
         text={text}
@@ -105,25 +105,18 @@ export default async function ServiceDetailPage({
         ctaUrl={null}
       />
 
-      {/* Detail content section — image + text */}
       <ServiceDetailSection service={service} />
 
-      {/* By the Numbers */}
       <ServiceByTheNumbers stats={servicePageStats} />
 
-      {/* Related projects */}
       <ServiceRelatedProjects projects={relatedProjects} />
 
-      {/* Testimonials */}
       <ServiceTestimonialSection testimonials={service.testimonials ?? []} />
 
-      {/* Key Team Members */}
       <ServiceKeyTeamMembers members={service.teams ?? []} />
 
-      {/* News & Insights section */}
       <NewsSection heading={newsHeading} news={news ?? []} />
 
-      {/* Contact form section */}
       <section className="py-20 md:py-32 w-full bg-background-light dark:bg-background-dark">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col md:flex-row justify-between items-center gap-12">
           <div className="w-full">
@@ -144,6 +137,8 @@ export default async function ServiceDetailPage({
           </div>
         </div>
       </section>
+
+      <YouMightBeInterested />
     </>
   );
 }

@@ -1,18 +1,24 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { FadeIn } from "@/components/ui/fade-in";
-import { Icon } from "@/components/ui/icon";
-import { getProject } from "@/lib/api/projects";
+import { getProject, getProjectTeams } from "@/lib/api/projects";
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import { buildMetadata } from "@/lib/utils/seo";
+import { ProjectDetailsSection } from "@/components/projects/project-details-section";
+import { ProjectOverviewSection } from "@/components/projects/project-overview-section";
+import { ProjectKeyTeamSection } from "@/components/projects/project-key-team-section";
+import type { Project } from "@/lib/types/strapi";
+import { YouMightBeInterested } from "@/components/common/you-might-be-interested";
+import { ImgOrVideoHero } from "@/components/common/img-video-hero";
 
 interface ProjectDetailPageProps {
   params: Promise<{ id: string }>;
 }
 
-export async function generateMetadata({ params }: ProjectDetailPageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: ProjectDetailPageProps): Promise<Metadata> {
   try {
     const { id } = await params;
     const raw = await getProject(id);
@@ -32,22 +38,23 @@ export default async function ProjectDetailPage({
   params,
 }: ProjectDetailPageProps): Promise<React.ReactElement> {
   const { id } = await params;
-  let project;
+  let project: Project | null = null;
   try {
     project = await getProject(id);
     project = Array.isArray(project) ? project[0] : project;
-  } catch (error) {
+  } catch {
     notFound();
   }
 
   if (!project) notFound();
 
+  const teams = await getProjectTeams(id);
   const heroImage = getStrapiMediaUrl(project?.image[0] ?? null);
 
   return (
     <>
-      {/* Hero image */}
-      <section className="relative w-full h-[60vh] min-h-100 overflow-hidden bg-neutral-900">
+      {/* Hero */}
+      {/* <section className="relative w-full h-[60vh] min-h-100 overflow-hidden bg-neutral-900">
         {heroImage && (
           <Image
             src={heroImage}
@@ -72,11 +79,6 @@ export default async function ProjectDetailPage({
                     {project.location}
                   </span>
                 )}
-                {project.type && (
-                  <span className="px-3 py-1 border border-white/30 rounded text-xs font-bold text-white uppercase tracking-wider bg-black/20 backdrop-blur-sm">
-                    {project.type}
-                  </span>
-                )}
               </div>
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
                 {project.title}
@@ -84,48 +86,39 @@ export default async function ProjectDetailPage({
             </FadeIn>
           </div>
         </div>
-      </section>
+      </section> */}
 
-      {/* Content */}
-      <section className="py-16 lg:py-24 bg-background-light dark:bg-background-dark">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Back link */}
-          <FadeIn>
-            <Link
-              href="/projects"
-              className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:text-amber-500 transition-colors mb-12">
-              <Icon name="arrow_back" className="text-lg" />
-              Back to Projects
-            </Link>
-          </FadeIn>
+      <ImgOrVideoHero
+        title={project.title}
+        text={project.location ? `${project.location}` : ""}
+        heroImage={project.image[0]}
+        heroVideo={null}
+      />
 
-          {/* Description */}
-          <FadeIn delay={0.1}>
-            <p className="text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed mb-12">
-              {project.description}
-            </p>
-          </FadeIn>
+      {/* Project metadata + image carousel */}
+      <ProjectDetailsSection
+        location={project.location}
+        client={project.client}
+        contractValue={project.contractValue}
+        squareFeet={project.squareFeet}
+        yearCompleted={project.yearCompleted}
+        schedule={project.schedule}
+        keyPartners={project.keyPartners}
+        projectTypes={project.projectTypes}
+        type={project.type}
+        images={project.image}
+        title={project.title}
+      />
 
-          {/* Additional images */}
-          {project?.image?.length > 1 && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-              {project.image.slice(1).map((img: any) => (
-                <FadeIn key={img.id}>
-                  <div className="relative w-full aspect-4/3 rounded-lg overflow-hidden">
-                    <Image
-                      src={getStrapiMediaUrl(img)}
-                      alt={img.alternativeText ?? project.title}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                    />
-                  </div>
-                </FadeIn>
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
+      {/* Overview */}
+      <ProjectOverviewSection
+        detail_discriptions={project.detail_discriptions}
+      />
+
+      {/* Key Team Members */}
+      <ProjectKeyTeamSection members={teams} />
+
+      <YouMightBeInterested />
     </>
   );
 }

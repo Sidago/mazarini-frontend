@@ -31,6 +31,7 @@ import type {
   TimelineEntry,
 } from "@/lib/types/strapi";
 import { ImgOrVideoHero } from "@/components/common/img-video-hero";
+import { YouMightBeInterested } from "@/components/common/you-might-be-interested";
 
 export const dynamic = "force-dynamic";
 
@@ -113,6 +114,8 @@ export default async function About(): Promise<React.ReactElement> {
         description={about.lifeDescription}
         images={about.lifeImages}
       />
+
+      <YouMightBeInterested />
     </>
   );
 }

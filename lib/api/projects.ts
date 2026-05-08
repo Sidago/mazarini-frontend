@@ -22,6 +22,19 @@ export async function getProject(id: string): Promise<Project> {
   return res.data;
 }
 
+export async function getProjectTeams(id: string): Promise<import("@/lib/types/strapi").Teams[]> {
+  try {
+    const res = await strapiGet<StrapiResponse<Project>>(`/projects`, {
+      "filters[id][$eq]": id,
+      "populate[teams][populate][image]": "true",
+    });
+    const project = Array.isArray(res.data) ? res.data[0] : res.data;
+    return project?.teams ?? [];
+  } catch {
+    return [];
+  }
+}
+
 export async function getProjectsPage(): Promise<ProjectsPage> {
   const res = await strapiGet<StrapiResponse<ProjectsPage>>("/projects-page", {
     "populate[featuredProjects][populate][image]": "true",

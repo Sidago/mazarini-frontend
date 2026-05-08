@@ -20,7 +20,7 @@ export function ServiceFilterCard({
 
   return (
     <Link
-      href={`/services/${service.id}`}
+      href={`/services/${service.slug}`}
       className="group block px-2"
     >
       <div className="relative w-[90%] aspect-[10/10.5] overflow-hidden rounded-lg">

@@ -340,6 +340,14 @@ export interface Project {
   category: string;
   location: string | null;
   type: string | null;
+  client: string | null;
+  contractValue: string | null;
+  squareFeet: string | null;
+  yearCompleted: string | null;
+  schedule: string | null;
+  keyPartners: string | null;
+  projectTypes: string[] | null;
+  teams: Teams[];
   image: StrapiMedia[];
   detail_discriptions: unknown;
 }

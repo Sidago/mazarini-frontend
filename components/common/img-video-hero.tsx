@@ -7,8 +7,8 @@ interface ImgOrVideoHeroProps {
   text: string;
   heroVideo: StrapiMedia | null;
   heroImage: StrapiMedia | null;
-  ctaText: string | null;
-  ctaUrl: string | null;
+  ctaText?: string | null;
+  ctaUrl?: string | null;
 }
 
 export function ImgOrVideoHero({

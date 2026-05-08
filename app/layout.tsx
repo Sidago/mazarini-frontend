@@ -60,7 +60,7 @@ export default async function RootLayout({
         subItems: services.map((s) => ({
           id: s.id,
           name: s.title,
-          linkTo: `/services/${s.id}`,
+          linkTo: `/services/${s.slug}`,
           image: s.image,
         })),
       };
