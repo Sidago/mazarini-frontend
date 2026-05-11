@@ -42,15 +42,17 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
     const accept = req.headers.get("accept") ?? "";
     const useAvif = accept.includes("image/avif");
 
-    const optimized = useAvif
-      ? await sharp(buffer)
-          .resize(width, undefined, { withoutEnlargement: true })
-          .avif({ quality: q })
-          .toBuffer()
-      : await sharp(buffer)
-          .resize(width, undefined, { withoutEnlargement: true })
-          .webp({ quality: q })
-          .toBuffer();
+    const optimized = new Uint8Array(
+      await (useAvif
+        ? sharp(buffer)
+            .resize(width, undefined, { withoutEnlargement: true })
+            .avif({ quality: q })
+            .toBuffer()
+        : sharp(buffer)
+            .resize(width, undefined, { withoutEnlargement: true })
+            .webp({ quality: q })
+            .toBuffer()),
+    );
 
     return new NextResponse(optimized, {
       headers: {
