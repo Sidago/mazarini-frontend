@@ -23,6 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function YouBelongHerePage() {
-  const data = await getYouBelongHerePage();
+  const data = await getYouBelongHerePage().catch(() => null);
+  if (!data) return notFound();
   return <YbySections data={data} />;
 }
