@@ -14,11 +14,14 @@ export async function generateMetadata(): Promise<Metadata> {
     return buildMetadata({
       seo: data.seo,
       fallbackTitle: data.title ?? "Tools & Technology",
-      fallbackDescription: data.heroText,
+      fallbackDescription: data.heroText ?? "Mazarini Inc. leverages cutting-edge tools and technology to deliver smarter, faster, and more efficient construction projects.",
       fallbackImage: data.heroImage,
     });
   } catch {
-    return buildMetadata({ fallbackTitle: "Tools & Technology" });
+    return buildMetadata({
+      fallbackTitle: "Tools & Technology",
+      fallbackDescription: "Mazarini Inc. leverages cutting-edge tools and technology to deliver smarter, faster, and more efficient construction projects.",
+    });
   }
 }
 

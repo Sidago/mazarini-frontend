@@ -18,11 +18,14 @@ export async function generateMetadata(): Promise<Metadata> {
     return buildMetadata({
       seo: pageData.seo,
       fallbackTitle: pageData.pageTitle ?? "Our Services",
-      fallbackDescription: pageData.pageDescription ?? pageData.heroText,
+      fallbackDescription: pageData.pageDescription ?? pageData.heroText ?? "Mazarini Inc. offers a comprehensive range of construction and project management services tailored to every need.",
       fallbackImage: pageData.heroImage,
     });
   } catch {
-    return buildMetadata({ fallbackTitle: "Our Services" });
+    return buildMetadata({
+      fallbackTitle: "Our Services",
+      fallbackDescription: "Mazarini Inc. offers a comprehensive range of construction and project management services tailored to every need.",
+    });
   }
 }
 

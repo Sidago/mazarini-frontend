@@ -31,7 +31,10 @@ export async function generateMetadata(): Promise<Metadata> {
       fallbackDescription: global.siteDescription,
     });
   } catch {
-    return buildMetadata({ fallbackTitle: "Mazarini Inc. | Building America" });
+    return buildMetadata({
+      fallbackTitle: "Mazarini Inc. | Building America",
+      fallbackDescription: "Mazarini Inc. delivers precision construction and architectural excellence across America. Building tomorrow's landmarks today.",
+    });
   }
 }
 

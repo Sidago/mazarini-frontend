@@ -17,10 +17,13 @@ export async function generateMetadata(): Promise<Metadata> {
     return buildMetadata({
       seo: pageData.seo,
       fallbackTitle: pageData.pageTitle ?? "Our Projects",
-      fallbackDescription: pageData.pageDescription,
+      fallbackDescription: pageData.pageDescription ?? "Explore Mazarini Inc.'s portfolio of landmark construction and real estate projects delivered with precision and care.",
     });
   } catch {
-    return buildMetadata({ fallbackTitle: "Our Projects" });
+    return buildMetadata({
+      fallbackTitle: "Our Projects",
+      fallbackDescription: "Explore Mazarini Inc.'s portfolio of landmark construction and real estate projects delivered with precision and care.",
+    });
   }
 }
 

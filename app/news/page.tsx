@@ -14,10 +14,13 @@ export async function generateMetadata(): Promise<Metadata> {
     return buildMetadata({
       seo: pageData.seo,
       fallbackTitle: pageData.pageTitle ?? "News & Insights",
-      fallbackDescription: pageData.pageDescription,
+      fallbackDescription: pageData.pageDescription ?? "The latest news, announcements, and industry updates from Mazarini Inc.",
     });
   } catch {
-    return buildMetadata({ fallbackTitle: "News & Insights" });
+    return buildMetadata({
+      fallbackTitle: "News & Insights",
+      fallbackDescription: "The latest news, announcements, and industry updates from Mazarini Inc.",
+    });
   }
 }
 

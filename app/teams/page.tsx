@@ -14,11 +14,14 @@ export async function generateMetadata(): Promise<Metadata> {
     return buildMetadata({
       seo: data.seo,
       fallbackTitle: data.heroTitle ?? "Our Team",
-      fallbackDescription: data.heroText,
+      fallbackDescription: data.heroText ?? "Meet the talented professionals at Mazarini Inc. — the people who bring every project to life with skill and dedication.",
       fallbackImage: data.heroImage,
     });
   } catch {
-    return buildMetadata({ fallbackTitle: "Our Team" });
+    return buildMetadata({
+      fallbackTitle: "Our Team",
+      fallbackDescription: "Meet the talented professionals at Mazarini Inc. — the people who bring every project to life with skill and dedication.",
+    });
   }
 }
 

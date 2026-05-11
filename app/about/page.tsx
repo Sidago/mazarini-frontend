@@ -10,11 +10,14 @@ export async function generateMetadata(): Promise<Metadata> {
     return buildMetadata({
       seo: about.seo,
       fallbackTitle: "About Us",
-      fallbackDescription: about.introDiscription ?? about.heroText,
+      fallbackDescription: about.introDiscription ?? about.heroText ?? "Learn about Mazarini Inc.'s history, mission, and commitment to delivering exceptional construction projects across the country.",
       fallbackImage: about.heroImage,
     });
   } catch {
-    return buildMetadata({ fallbackTitle: "About Us" });
+    return buildMetadata({
+      fallbackTitle: "About Us",
+      fallbackDescription: "Learn about Mazarini Inc.'s history, mission, and commitment to delivering exceptional construction projects across the country.",
+    });
   }
 }
 import { getStrapiMediaUrl } from "@/lib/api/client";

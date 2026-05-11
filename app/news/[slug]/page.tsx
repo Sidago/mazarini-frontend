@@ -19,11 +19,14 @@ export async function generateMetadata({ params }: NewsDetailPageProps): Promise
     return buildMetadata({
       seo: article.seo,
       fallbackTitle: article.title,
-      fallbackDescription: article.description,
+      fallbackDescription: article.description ?? "Stay informed with the latest news and announcements from Mazarini Inc.",
       fallbackImage: article.image,
     });
   } catch {
-    return buildMetadata({ fallbackTitle: "News" });
+    return buildMetadata({
+      fallbackTitle: "News",
+      fallbackDescription: "Stay informed with the latest news and announcements from Mazarini Inc.",
+    });
   }
 }
 

@@ -13,11 +13,14 @@ export async function generateMetadata(): Promise<Metadata> {
     return buildMetadata({
       seo: data.seo,
       fallbackTitle: "Research & Development",
-      fallbackDescription: data.heroText ?? data.whyDescription,
+      fallbackDescription: data.heroText ?? data.whyDescription ?? "Mazarini Inc. invests in research and development to pioneer new construction technologies, materials, and methodologies.",
       fallbackImage: data.heroImage,
     });
   } catch {
-    return buildMetadata({ fallbackTitle: "Research & Development" });
+    return buildMetadata({
+      fallbackTitle: "Research & Development",
+      fallbackDescription: "Mazarini Inc. invests in research and development to pioneer new construction technologies, materials, and methodologies.",
+    });
   }
 }
 

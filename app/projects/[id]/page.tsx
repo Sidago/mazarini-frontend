@@ -26,11 +26,14 @@ export async function generateMetadata({
     return buildMetadata({
       seo: project.seo,
       fallbackTitle: project.title,
-      fallbackDescription: project.description,
+      fallbackDescription: project.description ?? "Explore Mazarini Inc.'s portfolio of landmark construction and real estate projects delivered with precision.",
       fallbackImage: project.image?.[0] ?? null,
     });
   } catch {
-    return buildMetadata({ fallbackTitle: "Projects" });
+    return buildMetadata({
+      fallbackTitle: "Projects",
+      fallbackDescription: "Explore Mazarini Inc.'s portfolio of landmark construction and real estate projects delivered with precision.",
+    });
   }
 }
 

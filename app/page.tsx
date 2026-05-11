@@ -22,11 +22,14 @@ export async function generateMetadata(): Promise<Metadata> {
     return buildMetadata({
       seo: homepage.seo,
       fallbackTitle: "Mazarini Inc. | Building America",
-      fallbackDescription: homepage.introDescription,
+      fallbackDescription: homepage.introDescription ?? "Mazarini Inc. delivers precision construction and architectural excellence across America. Building tomorrow's landmarks today.",
       fallbackImage: homepage.heroImage,
     });
   } catch {
-    return buildMetadata({ fallbackTitle: "Mazarini Inc. | Building America" });
+    return buildMetadata({
+      fallbackTitle: "Mazarini Inc. | Building America",
+      fallbackDescription: "Mazarini Inc. delivers precision construction and architectural excellence across America. Building tomorrow's landmarks today.",
+    });
   }
 }
 

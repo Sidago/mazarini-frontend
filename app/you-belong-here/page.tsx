@@ -7,14 +7,19 @@ import { notFound } from "next/navigation";
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const data = await getYouBelongHerePage().catch(() => {
-    return notFound();
-  });
-  return buildMetadata({
-    seo: data.seo,
-    fallbackTitle: data.heroTitle ?? "You Belong Here",
-    fallbackDescription: data.heroText,
-  });
+  try {
+    const data = await getYouBelongHerePage();
+    return buildMetadata({
+      seo: data.seo,
+      fallbackTitle: data.heroTitle ?? "You Belong Here",
+      fallbackDescription: data.heroText ?? "Explore career opportunities at Mazarini Inc. Join a team that builds with purpose, passion, and precision.",
+    });
+  } catch {
+    return buildMetadata({
+      fallbackTitle: "You Belong Here",
+      fallbackDescription: "Explore career opportunities at Mazarini Inc. Join a team that builds with purpose, passion, and precision.",
+    });
+  }
 }
 
 export default async function YouBelongHerePage() {

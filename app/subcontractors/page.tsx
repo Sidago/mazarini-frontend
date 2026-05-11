@@ -17,11 +17,14 @@ export async function generateMetadata(): Promise<Metadata> {
     return buildMetadata({
       seo: data.seo,
       fallbackTitle: data.heroTitle ?? "Subcontractors",
-      fallbackDescription: data.heroText,
+      fallbackDescription: data.heroText ?? "Partner with Mazarini Inc. as a subcontractor. Explore opportunities and requirements for working with our team.",
       fallbackImage: data.heroImage,
     });
   } catch {
-    return buildMetadata({ fallbackTitle: "Subcontractors" });
+    return buildMetadata({
+      fallbackTitle: "Subcontractors",
+      fallbackDescription: "Partner with Mazarini Inc. as a subcontractor. Explore opportunities and requirements for working with our team.",
+    });
   }
 }
 

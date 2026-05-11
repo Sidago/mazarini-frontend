@@ -14,11 +14,14 @@ export async function generateMetadata(): Promise<Metadata> {
     return buildMetadata({
       seo: data.seo,
       fallbackTitle: data.heroTitle ?? "The Mazarini Experience",
-      fallbackDescription: data.heroText,
+      fallbackDescription: data.heroText ?? "Decades of expertise, landmark projects, and a relentless pursuit of construction excellence — that's the Mazarini experience.",
       fallbackImage: data.heroImage,
     });
   } catch {
-    return buildMetadata({ fallbackTitle: "The Mazarini Experience" });
+    return buildMetadata({
+      fallbackTitle: "The Mazarini Experience",
+      fallbackDescription: "Decades of expertise, landmark projects, and a relentless pursuit of construction excellence — that's the Mazarini experience.",
+    });
   }
 }
 

@@ -20,11 +20,14 @@ export async function generateMetadata({ params }: InsightDetailPageProps): Prom
     return buildMetadata({
       seo: insight.seo,
       fallbackTitle: insight.title,
-      fallbackDescription: insight.description,
+      fallbackDescription: insight.description ?? "Read the latest insights and thought leadership articles from Mazarini Inc.",
       fallbackImage: insight.image,
     });
   } catch {
-    return buildMetadata({ fallbackTitle: "Insights" });
+    return buildMetadata({
+      fallbackTitle: "Insights",
+      fallbackDescription: "Read the latest insights and thought leadership articles from Mazarini Inc.",
+    });
   }
 }
 

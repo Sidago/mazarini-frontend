@@ -14,11 +14,14 @@ export async function generateMetadata(): Promise<Metadata> {
     return buildMetadata({
       seo: data.seo,
       fallbackTitle: data.title ?? "Safety",
-      fallbackDescription: data.heroText,
+      fallbackDescription: data.heroText ?? "Safety is a core value at Mazarini Inc. Learn about our industry-leading safety programs and zero-incident commitment.",
       fallbackImage: data.heroImage,
     });
   } catch {
-    return buildMetadata({ fallbackTitle: "Safety" });
+    return buildMetadata({
+      fallbackTitle: "Safety",
+      fallbackDescription: "Safety is a core value at Mazarini Inc. Learn about our industry-leading safety programs and zero-incident commitment.",
+    });
   }
 }
 

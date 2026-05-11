@@ -15,11 +15,14 @@ export async function generateMetadata(): Promise<Metadata> {
     return buildMetadata({
       seo: contact.seo,
       fallbackTitle: "Contact Us",
-      fallbackDescription: contact.heroText,
+      fallbackDescription: contact.heroText ?? "Get in touch with Mazarini Inc. We'd love to discuss your next project and build something great together.",
       fallbackImage: contact.heroImage,
     });
   } catch {
-    return buildMetadata({ fallbackTitle: "Contact Us" });
+    return buildMetadata({
+      fallbackTitle: "Contact Us",
+      fallbackDescription: "Get in touch with Mazarini Inc. We'd love to discuss your next project and build something great together.",
+    });
   }
 }
 

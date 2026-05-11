@@ -28,11 +28,14 @@ export async function generateMetadata({ params }: ServiceDetailPageProps): Prom
     return buildMetadata({
       seo: s.seo,
       fallbackTitle: s.title,
-      fallbackDescription: s.discriptions?.substring(0, 160),
+      fallbackDescription: s.discriptions?.substring(0, 160) ?? "Learn more about Mazarini Inc.'s specialized construction and project management services.",
       fallbackImage: s.heroImage ?? s.image ?? null,
     });
   } catch {
-    return buildMetadata({ fallbackTitle: "Services" });
+    return buildMetadata({
+      fallbackTitle: "Services",
+      fallbackDescription: "Learn more about Mazarini Inc.'s specialized construction and project management services.",
+    });
   }
 }
 

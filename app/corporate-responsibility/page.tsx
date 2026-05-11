@@ -13,11 +13,14 @@ export async function generateMetadata(): Promise<Metadata> {
     return buildMetadata({
       seo: data.seo,
       fallbackTitle: "Corporate Responsibility",
-      fallbackDescription: data.heroText ?? data.pillarsDescription,
+      fallbackDescription: data.heroText ?? data.pillarsDescription ?? "Explore Mazarini Inc.'s commitment to ethical business, community investment, and responsible construction practices.",
       fallbackImage: data.heroImage,
     });
   } catch {
-    return buildMetadata({ fallbackTitle: "Corporate Responsibility" });
+    return buildMetadata({
+      fallbackTitle: "Corporate Responsibility",
+      fallbackDescription: "Explore Mazarini Inc.'s commitment to ethical business, community investment, and responsible construction practices.",
+    });
   }
 }
 

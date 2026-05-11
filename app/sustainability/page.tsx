@@ -13,11 +13,14 @@ export async function generateMetadata(): Promise<Metadata> {
     return buildMetadata({
       seo: data.seo,
       fallbackTitle: data.title ?? "Sustainability",
-      fallbackDescription: data.heroText,
+      fallbackDescription: data.heroText ?? "Mazarini Inc. is committed to sustainable construction practices, green building, and environmental stewardship.",
       fallbackImage: data.heroImage,
     });
   } catch {
-    return buildMetadata({ fallbackTitle: "Sustainability" });
+    return buildMetadata({
+      fallbackTitle: "Sustainability",
+      fallbackDescription: "Mazarini Inc. is committed to sustainable construction practices, green building, and environmental stewardship.",
+    });
   }
 }
 

@@ -12,11 +12,10 @@ interface SubNavProps {
 }
 
 const PANEL_H = 440;
+const NAV_H = 46; // h-11.5 = 2.875rem × 16px
 const COL_LIMIT = 9;
 
-function groupByCategory(
-  subs: SubNavSubItem[],
-): [string, SubNavSubItem[]][] {
+function groupByCategory(subs: SubNavSubItem[]): [string, SubNavSubItem[]][] {
   const map = new Map<string, SubNavSubItem[]>();
   for (const s of subs) {
     const key = s.category ?? "";
@@ -75,9 +74,10 @@ export function SubNav({ items, scrolled }: SubNavProps): React.ReactElement {
   const totalItems = groups.reduce((sum, [, subs]) => sum + subs.length, 0);
 
   const useTwoColumns = totalItems > COL_LIMIT;
-  const col1Max = totalItems > COL_LIMIT * 2
-    ? Math.ceil(totalItems / 2)   // >18: balance evenly
-    : COL_LIMIT;                  // 10–18: first col gets exactly 9
+  const col1Max =
+    totalItems > COL_LIMIT * 2
+      ? Math.ceil(totalItems / 2) // >18: balance evenly
+      : COL_LIMIT; // 10–18: first col gets exactly 9
 
   const [col1Groups, col2Groups] = useTwoColumns
     ? splitGroups(groups, col1Max)
@@ -95,13 +95,12 @@ export function SubNav({ items, scrolled }: SubNavProps): React.ReactElement {
   }
 
   return (
-    <nav
-      className={`hidden md:block relative border-b ${
-        scrolled ? "border-black/20" : "border-white/15"
-      }`}
-    >
+    <nav className={`hidden md:block relative `}>
       {/* Nav link row */}
-      <div className="relative z-50 max-w-400 mx-auto px-4 sm:px-6 lg:px-8 h-11.5">
+      <div
+        className={`relative z-60 overflow-hidden max-w-400 mx-auto px-4 sm:px-6 lg:px-8 h-11.5 border-b ${
+          scrolled ? "border-black/20 shadow-xs" : "border-white/15"
+        }`}>
         <div className="flex items-center justify-center gap-10">
           {items.map((item, index) => {
             const slug = item?.slug ?? "/";
@@ -114,8 +113,7 @@ export function SubNav({ items, scrolled }: SubNavProps): React.ReactElement {
                   setActiveIndex(index);
                   setHoveredSubId(null);
                 }}
-                onMouseLeave={scheduleClose}
-              >
+                onMouseLeave={scheduleClose}>
                 <span
                   className={`text-xs font-semibold uppercase tracking-widest transition-colors cursor-pointer py-4 inline-block ${
                     scrolled
@@ -123,10 +121,11 @@ export function SubNav({ items, scrolled }: SubNavProps): React.ReactElement {
                       : "text-white/90 hover:text-white/60"
                   } ${
                     activeIndex === index
-                      ? scrolled ? "text-black!" : "text-white!"
+                      ? scrolled
+                        ? "text-black!"
+                        : "text-white!"
                       : ""
-                  }`}
-                >
+                  }`}>
                   {item.name}
                 </span>
               </Link>
@@ -135,67 +134,63 @@ export function SubNav({ items, scrolled }: SubNavProps): React.ReactElement {
         </div>
       </div>
 
-      {/* Mega-menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            key="mega"
-            initial={{ height: 0 }}
-            animate={{ height: PANEL_H }}
-            exit={{ height: 0 }}
-            transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
-            className="absolute top-full left-0 right-0 z-40 max-w-[93%] mx-auto overflow-hidden shadow-2xl"
-            onMouseEnter={cancelClose}
-            onMouseLeave={scheduleClose}
-          >
-            <div
-              className="flex items-stretch bg-neutral-950"
-              style={{ height: PANEL_H }}
-            >
-              {/* Section title */}
-              <div className="shrink-0 w-40 xl:w-52 flex items-start pt-10 justify-start ps-8">
-                <h3 className="font-serif text-3xl font-black text-white leading-tight text-center">
-                  {activeItem?.name}
-                </h3>
-              </div>
+      {/* Mega-menu — clips via overflow-hidden; inner div slides from behind the nav */}
+      <motion.div
+        className={`absolute top-full left-0 right-0 z-40 max-w-[93%] mx-auto overflow-hidden`}
+        animate={{ height: isOpen ? PANEL_H : 0 }}
+        initial={false}
+        transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
+        onMouseEnter={cancelClose}
+        onMouseLeave={scheduleClose}>
+        <motion.div
+          className={`flex items-stretch bg-neutral-950`}
+          style={{ height: PANEL_H }}
+          animate={{ y: isOpen ? 0 : -PANEL_H }}
+          initial={false}
+          transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}>
+          {/* Section title */}
+          <div className="shrink-0 w-40 xl:w-52 flex items-start pt-10 justify-start ps-8">
+            <h3 className="font-serif text-3xl font-black text-white leading-tight text-center">
+              {activeItem?.name}
+            </h3>
+          </div>
 
-              {/* Links area */}
-              <div className={`flex-1 px-8 xl:px-14 py-4 overflow-y-auto mega-scroll ${useTwoColumns ? "grid grid-cols-2 gap-x-10" : "flex flex-col"}`}>
-                <ItemColumn
-                  groups={col1Groups}
-                  hoveredSubId={hoveredSubId}
-                  setHoveredSubId={setHoveredSubId}
+          {/* Links area */}
+          <div
+            className={`flex-1 px-8 xl:px-14 py-4 overflow-y-auto mega-scroll ${useTwoColumns ? "grid grid-cols-2 gap-x-10" : "flex flex-col"}`}>
+            <ItemColumn
+              groups={col1Groups}
+              hoveredSubId={hoveredSubId}
+              setHoveredSubId={setHoveredSubId}
+            />
+            {useTwoColumns && (
+              <ItemColumn
+                groups={col2Groups}
+                hoveredSubId={hoveredSubId}
+                setHoveredSubId={setHoveredSubId}
+              />
+            )}
+          </div>
+
+          {/* Image — always rendered, dark fallback */}
+          <div className="shrink-0 w-[38%] xl:w-[42%] self-stretch bg-neutral-900 overflow-hidden">
+            <AnimatePresence mode="wait">
+              {displayImageUrl && (
+                <motion.img
+                  key={displayImageUrl}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.25 }}
+                  src={displayImageUrl}
+                  alt={hoveredSub?.name ?? activeItem?.name ?? ""}
+                  className="w-full h-full object-cover"
                 />
-                {useTwoColumns && (
-                  <ItemColumn
-                    groups={col2Groups}
-                    hoveredSubId={hoveredSubId}
-                    setHoveredSubId={setHoveredSubId}
-                  />
-                )}
-              </div>
-
-              {/* Image — always rendered, dark fallback */}
-              <div className="shrink-0 w-[38%] xl:w-[42%] self-stretch bg-neutral-900 overflow-hidden">
-                <AnimatePresence mode="wait">
-                  {displayImageUrl && (
-                    <motion.img
-                      key={displayImageUrl}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.25 }}
-                      src={displayImageUrl}
-                      alt={hoveredSub?.name ?? activeItem?.name ?? ""}
-                      className="w-full h-full object-cover"
-                    />
-                  )}
-                </AnimatePresence>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              )}
+            </AnimatePresence>
+          </div>
+        </motion.div>
+      </motion.div>
     </nav>
   );
 }

@@ -13,11 +13,14 @@ export async function generateMetadata(): Promise<Metadata> {
     return buildMetadata({
       seo: data.seo,
       fallbackTitle: data.heroTitle ?? data.introTitle ?? "CoLab",
-      fallbackDescription: data.heroText ?? data.introText,
+      fallbackDescription: data.heroText ?? data.introText ?? "Mazarini CoLab: a collaborative innovation hub where ideas, partnerships, and cutting-edge construction solutions come together.",
       fallbackImage: data.heroImage ?? data.introImage,
     });
   } catch {
-    return buildMetadata({ fallbackTitle: "CoLab" });
+    return buildMetadata({
+      fallbackTitle: "CoLab",
+      fallbackDescription: "Mazarini CoLab: a collaborative innovation hub where ideas, partnerships, and cutting-edge construction solutions come together.",
+    });
   }
 }
 
