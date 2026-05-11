@@ -23,7 +23,7 @@ export function NewsFilterCard({
       href={`/news/${news.slug}`}
       className="group block px-2"
     >
-      <div className="relative w-[90%] aspect-[10/10.5] overflow-hidden rounded-lg">
+      <div className="relative w-[90%] aspect-[10/10.5] overflow-hidden">
         {imageUrl ? (
           <Image
             src={imageUrl}
@@ -37,10 +37,10 @@ export function NewsFilterCard({
         )}
       </div>
       <div className="mt-4 px-1">
-        <h3 className="text-xl font-bold text-neutral-900 dark:text-white leading-tight">
+        <h3 className="text-base font-semibold text-neutral-900 dark:text-white leading-tight">
           {news.title}
         </h3>
-        <p className="mt-1 text-neutral-500 dark:text-neutral-400">
+        <p className="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
           {news.description ? truncateWords(news.description, 6) : ""}
         </p>
       </div>

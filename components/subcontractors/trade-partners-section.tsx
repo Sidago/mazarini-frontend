@@ -29,7 +29,7 @@ export function TradePartnersSection({
       <div className="max-w-350 mx-auto px-6 sm:px-8">
         {/* Header */}
         <div className="text-center mb-10">
-          <h2 className="text-4xl md:text-5xl font-black text-neutral-900 dark:text-white italic">
+          <h2 className="text-4xl md:text-5xl font-black text-neutral-900 dark:text-white">
             {title}
           </h2>
           {description && (
@@ -40,7 +40,7 @@ export function TradePartnersSection({
         </div>
 
         {/* Tab navigation */}
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
+        <div className="flex flex-wrap justify-center gap-2 mb-5">
           {tabs.map((tab, index) => (
             <button
               key={tab.id}
@@ -69,7 +69,7 @@ export function TradePartnersSection({
           >
             {/* Image */}
             {imageUrl && (
-              <div className="relative overflow-hidden rounded-lg aspect-[5/2.5]">
+              <div className="relative overflow-hidden aspect-[5.5/3]">
                 <Image
                   src={imageUrl}
                   alt={activeItem.title}
@@ -82,7 +82,7 @@ export function TradePartnersSection({
 
             {/* Content */}
             <div>
-              <h3 className="text-3xl font-black text-neutral-900 dark:text-white italic mb-4">
+              <h3 className="text-3xl font-black text-neutral-900 dark:text-white  mb-4">
                 {activeItem.title}
               </h3>
               <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">

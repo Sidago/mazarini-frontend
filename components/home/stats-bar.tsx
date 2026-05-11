@@ -29,10 +29,10 @@ export function StatsBar({
           initial={{ width: 0 }}
           whileInView={{ width: 96 }}
           viewport={{ once: true, margin: "0px" }}
-          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+          transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
         />
       </div>
-      <div className="max-w-360 mx-auto px-8 md:px-16 py-14 flex flex-col gap-8 lg:gap-16">
+      <div className="max-w-360 mx-auto px-8 md:px-16 pt-5 pb-14 flex flex-col gap-8 lg:gap-16">
         {description && (
           <div className="md:w-[60%]">
             <p className="font-headline leading-relaxed text-on-surface whitespace-pre-line">

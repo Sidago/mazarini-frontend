@@ -25,7 +25,7 @@ export function FaqSection({
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-16">
           {/* Left column */}
           <div>
-            <h2 className="text-4xl md:text-5xl font-black text-neutral-900 dark:text-white italic leading-tight">
+            <h2 className="text-4xl md:text-5xl font-black text-neutral-900 dark:text-white font-serif italic leading-tight">
               {title}
             </h2>
             {description && (

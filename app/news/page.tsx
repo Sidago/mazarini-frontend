@@ -7,6 +7,7 @@ import { NewsGrid } from "@/components/news/news-grid";
 import { getNews, getNewsPage } from "@/lib/api/news";
 import { buildMetadata } from "@/lib/utils/seo";
 import type { News, NewsPage as NewsPageType } from "@/lib/types/strapi";
+import { YouMightBeInterested } from "@/components/common/you-might-be-interested";
 
 export async function generateMetadata(): Promise<Metadata> {
   try {
@@ -14,12 +15,15 @@ export async function generateMetadata(): Promise<Metadata> {
     return buildMetadata({
       seo: pageData.seo,
       fallbackTitle: pageData.pageTitle ?? "News & Insights",
-      fallbackDescription: pageData.pageDescription ?? "The latest news, announcements, and industry updates from Mazarini Inc.",
+      fallbackDescription:
+        pageData.pageDescription ??
+        "The latest news, announcements, and industry updates from Mazarini Inc.",
     });
   } catch {
     return buildMetadata({
       fallbackTitle: "News & Insights",
-      fallbackDescription: "The latest news, announcements, and industry updates from Mazarini Inc.",
+      fallbackDescription:
+        "The latest news, announcements, and industry updates from Mazarini Inc.",
     });
   }
 }
@@ -68,6 +72,8 @@ export default async function NewsPage(): Promise<React.ReactElement> {
       </section>
 
       <NewsGrid news={news} />
+
+      <YouMightBeInterested />
     </>
   );
 }

@@ -104,6 +104,7 @@ export function SubNav({ items, scrolled }: SubNavProps): React.ReactElement {
         <div className="flex items-center justify-center gap-10">
           {items.map((item, index) => {
             const slug = item?.slug ?? "/";
+            const isActive = activeIndex === index;
             return (
               <Link
                 key={item.id}
@@ -116,15 +117,9 @@ export function SubNav({ items, scrolled }: SubNavProps): React.ReactElement {
                 onMouseLeave={scheduleClose}>
                 <span
                   className={`text-xs font-semibold uppercase tracking-widest transition-colors cursor-pointer py-4 inline-block ${
-                    scrolled
-                      ? "text-black/90 hover:text-black/60"
-                      : "text-white/90 hover:text-white/60"
-                  } ${
-                    activeIndex === index
-                      ? scrolled
-                        ? "text-black!"
-                        : "text-white!"
-                      : ""
+                    isActive
+                      ? scrolled ? "text-black/70" : "text-white/70"
+                      : scrolled ? "text-black" : "text-white"
                   }`}>
                   {item.name}
                 </span>
@@ -149,7 +144,7 @@ export function SubNav({ items, scrolled }: SubNavProps): React.ReactElement {
           initial={false}
           transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}>
           {/* Section title */}
-          <div className="shrink-0 w-40 xl:w-52 flex items-start pt-10 justify-start ps-8">
+          <div className="shrink-0 w-40 lg:w-52 flex items-start pt-10 justify-start ps-8">
             <h3 className="font-serif text-3xl font-black text-white leading-tight text-center">
               {activeItem?.name}
             </h3>

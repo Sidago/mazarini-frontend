@@ -96,11 +96,11 @@ export default async function SubcontractorsPage(): Promise<React.ReactElement> 
       />
 
       {/* Contact Form */}
-      <section className="py-24 bg-neutral-900">
+      <section className="py-24 bg-neutral-900/95">
         <div className="max-w-350 mx-auto px-6 sm:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div>
-              <h2 className="text-4xl md:text-5xl font-black text-white italic leading-tight">
+              <h2 className="text-4xl md:text-5xl font-serif font-black text-white italic leading-tight">
                 {page.formTitle ?? "Get in Touch"}
               </h2>
               {page.formDescription && (

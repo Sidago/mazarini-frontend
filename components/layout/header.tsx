@@ -65,7 +65,7 @@ export function Header({
             <div className="hidden md:flex items-center gap-6">
               <button
                 aria-label="Search"
-                className={`p-1 hover:text-white transition-colors ${active ? "text-black/80" : "text-white/80"}`}
+                className={`p-1 hover:text-white transition-colors ${active ? "text-black/70" : "text-white/70"}`}
                 onClick={() => setIsSearchOpen(true)}>
                 <Icon name="search" />
               </button>
@@ -85,14 +85,14 @@ export function Header({
             {/* Mobile search button */}
             <button
               aria-label="Search"
-              className={`md:hidden p-1 hover:text-white transition-colors ${active ? "text-black/80" : "text-white/80"}`}
+              className={`md:hidden p-1 hover:text-white transition-colors ${active ? "text-black/70" : "text-white/70"}`}
               onClick={() => setIsSearchOpen(true)}>
               <Icon name="search" />
             </button>
 
             {/* Center logo */}
             <div
-              className={`absolute left-1/2 -translate-x-1/2 ${active ? "text-black/80" : "text-white/80"}`}>
+              className={`absolute left-1/2 -translate-x-1/2 ${active ? "text-black/70" : "text-white/70"}`}>
               <Logo logo={logo} scrolled={active} />
             </div>
 

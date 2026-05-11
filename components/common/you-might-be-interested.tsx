@@ -79,7 +79,7 @@ interface Props {
 }
 
 export async function YouMightBeInterested({
-  title = "You Might Be Interested In ...",
+  title = "You Might Be Interested In...",
 }: Props = {}): Promise<React.ReactElement> {
   const cards = await getCards();
   if (cards.length === 0) return <></>;
@@ -87,7 +87,7 @@ export async function YouMightBeInterested({
   return (
     <section className="bg-neutral-950 py-24 px-6 lg:px-16">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-2xl lg:text-3xl font-serif font-bold text-white mb-12">
+        <h2 className="text-2xl lg:text-4xl font-serif font-bold text-white mb-12">
           {title}
         </h2>
 

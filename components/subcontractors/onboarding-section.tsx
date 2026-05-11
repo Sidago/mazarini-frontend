@@ -21,11 +21,11 @@ export function OnboardingSection({
   return (
     <section className="bg-neutral-950 py-24">
       <div className="max-w-[1400px] mx-auto px-6 sm:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-10 items-start">
           {/* Left column */}
           <FadeIn direction="left">
             <div>
-              <h2 className="text-4xl md:text-5xl font-black text-white italic leading-tight">
+              <h2 className="text-4xl md:text-5xl font-black font-serif text-white italic leading-tight">
                 {title}
               </h2>
               {ctaText && ctaUrl && (

@@ -10,6 +10,7 @@ import {
   type LocationPage as LocationPageType,
 } from "@/lib/types/strapi";
 import React from "react";
+import { YouMightBeInterested } from "@/components/common/you-might-be-interested";
 
 export async function generateMetadata(): Promise<Metadata> {
   try {
@@ -65,6 +66,8 @@ export default async function LocationPage(): Promise<React.ReactElement> {
         ctaUrl={locationPage.heroCtaUrl}
       />
       <LocationList locations={locations} />
+
+      <YouMightBeInterested />
     </>
   );
 }

@@ -6,6 +6,7 @@ import { getContact } from "@/lib/api/contact";
 import { buildMetadata } from "@/lib/utils/seo";
 import type { Contact, SocialLinkComponent } from "@/lib/types/strapi";
 import { ImgOrVideoHero } from "@/components/common/img-video-hero";
+import { YouMightBeInterested } from "@/components/common/you-might-be-interested";
 
 export const dynamic = "force-dynamic";
 
@@ -83,6 +84,8 @@ export default async function ContactPage(): Promise<React.ReactElement> {
           </div>
         </div>
       </section>
+
+      <YouMightBeInterested />
     </>
   );
 }
