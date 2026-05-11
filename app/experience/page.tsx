@@ -5,7 +5,7 @@ import { CircularScroll } from "@/components/experience/circular-scroll";
 import { buildMetadata } from "@/lib/utils/seo";
 import type { ExperiencePage, ExperienceStep } from "@/lib/types/strapi";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
 
 export async function generateMetadata(): Promise<Metadata> {
   try {

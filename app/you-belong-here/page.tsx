@@ -4,7 +4,7 @@ import { buildMetadata } from "@/lib/utils/seo";
 import { YbySections } from "@/components/you-belong-here/yby-sections";
 import { notFound } from "next/navigation";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
 
 export async function generateMetadata(): Promise<Metadata> {
   try {

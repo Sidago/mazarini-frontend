@@ -36,7 +36,7 @@ import type {
 import { ImgOrVideoHero } from "@/components/common/img-video-hero";
 import { YouMightBeInterested } from "@/components/common/you-might-be-interested";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
 
 const FALLBACK_ABOUT: AboutType = {
   id: 0,

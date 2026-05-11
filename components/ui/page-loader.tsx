@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const EXIT_ANIMATION_MS = 900;
+const MAX_WAIT_MS = 3000;
 
 export function PageLoader(): React.ReactElement | null {
   const [isVisible, setIsVisible] = useState(true);
@@ -38,7 +39,11 @@ export function PageLoader(): React.ReactElement | null {
       }, EXIT_ANIMATION_MS);
     }
 
+    // Hard cap: exit after MAX_WAIT_MS even if load hasn't fired yet
+    const maxTimer = setTimeout(triggerExit, MAX_WAIT_MS);
+
     if (document.readyState === "complete") {
+      clearTimeout(maxTimer);
       const t = setTimeout(triggerExit, 300);
       return () => {
         clearTimeout(t);
@@ -47,8 +52,12 @@ export function PageLoader(): React.ReactElement | null {
       };
     }
 
-    window.addEventListener("load", triggerExit);
+    window.addEventListener("load", () => {
+      clearTimeout(maxTimer);
+      triggerExit();
+    });
     return () => {
+      clearTimeout(maxTimer);
       window.removeEventListener("load", triggerExit);
       unlockScroll();
       document.removeEventListener("touchmove", preventTouch);

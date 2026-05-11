@@ -8,7 +8,7 @@ import type { Contact, SocialLinkComponent } from "@/lib/types/strapi";
 import { ImgOrVideoHero } from "@/components/common/img-video-hero";
 import { YouMightBeInterested } from "@/components/common/you-might-be-interested";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
 
 export async function generateMetadata(): Promise<Metadata> {
   try {

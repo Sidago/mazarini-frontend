@@ -33,7 +33,7 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
 
 const FALLBACK_HOMEPAGE: Homepage = {
   id: 0,
