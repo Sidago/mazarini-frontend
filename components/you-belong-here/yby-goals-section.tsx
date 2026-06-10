@@ -44,7 +44,7 @@ export function YbyGoalsSection({ data }: Props): React.ReactElement {
             {data.goalsTitle ?? "Our Goals"}
           </h2>
           {data.goalsDescription && (
-            <p className="text-sm font-serif leading-relaxed text-neutral-600 max-w-2xl">
+            <p className="text-base font-serif leading-relaxed text-neutral-600 max-w-3xl">
               {data.goalsDescription}
             </p>
           )}

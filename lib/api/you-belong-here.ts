@@ -8,7 +8,7 @@ export async function getYouBelongHerePage(): Promise<YouBelongHerePage> {
       "populate[heroImage]": "true",
       "populate[heroVideo]": "true",
       "populate[quoteAuthorImage]": "true",
-      "populate[belongingItems]": "true",
+      "populate[belongingItems][populate][image]": "true",
       "populate[missionItems]": "true",
       "populate[subcontractorsImage]": "true",
       "populate[accomplishments]": "true",

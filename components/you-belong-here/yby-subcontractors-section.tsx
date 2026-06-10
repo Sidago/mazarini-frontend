@@ -34,9 +34,9 @@ export function YbySubcontractorsSection({ data }: Props): React.ReactElement {
       <div className="absolute inset-0 bg-black/55 z-10" />
 
       {/* Content */}
-      <div className="relative z-20 w-full px-8 lg:pl-[18vw] lg:pr-[10vw] py-20 lg:py-0 flex flex-col justify-center max-w-4xl">
+      <div className="relative z-20 w-full px-8 py-20 lg:py-0 flex flex-col items-center justify-center text-left mx-auto max-w-3xl">
         {data.subcontractorsText && (
-          <p className="text-white font-serif text-xl font-semibold leading-snug mb-10 max-w-3xl">
+          <p className="text-white font-serif text-xl leading-snug mb-10 w-full">
             {data.subcontractorsText}
           </p>
         )}

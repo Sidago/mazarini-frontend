@@ -30,7 +30,7 @@ export function YbyQuoteSection({ data }: Props): React.ReactElement {
 
         <div className="flex items-center gap-5">
           {authorImageUrl && (
-            <div className="relative w-16 h-16 rounded-full overflow-hidden flex-none">
+            <div className="relative w-24 h-24 border-2 border-white/30 rounded-full overflow-hidden flex-none">
               <Image
                 src={authorImageUrl}
                 alt={data.quoteAuthorName ?? "Author"}

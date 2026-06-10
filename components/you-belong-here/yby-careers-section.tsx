@@ -58,9 +58,9 @@ export function YbyCareersSection({ data }: Props): React.ReactElement {
       )}
 
       {/* Content */}
-      <div className="relative z-30 w-full px-8 lg:pl-[18vw] lg:pr-[10vw] py-20 lg:py-0 flex flex-col justify-center max-w-4xl">
+      <div className="relative z-30 w-full px-8 py-20 lg:py-0 flex flex-col items-center justify-center text-left mx-auto max-w-3xl">
         {data.careersText && (
-          <p className="text-white font-serif text-lg lg:text-xl font-semibold leading-snug mb-10 max-w-2xl">
+          <p className="text-white font-serif text-lg lg:text-xl leading-snug mb-10 max-w-4xl">
             {data.careersText}
           </p>
         )}
