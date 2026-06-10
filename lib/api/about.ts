@@ -7,6 +7,8 @@ export async function getAbout(): Promise<About> {
     "populate[heroImage]": "true",
     "populate[stats]": "true",
     "populate[leadershipBlocks][populate][image]": "true",
+    // "populate[leadershipHeading]": "true",
+    // "populate[leadershipDescription]": "true",
     "populate[cultureCards][populate][image]": "true",
     "populate[lifeImages][populate][image]": "true",
     "populate[coreValuesImage]": "true",
@@ -14,5 +16,6 @@ export async function getAbout(): Promise<About> {
     // "populate[blocks][populate]": "*",
     "populate[seo][populate][shareImage]": "true",
   });
+  console.log("Raw about response:", res);
   return res.data;
 }

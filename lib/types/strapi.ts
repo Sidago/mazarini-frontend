@@ -240,6 +240,8 @@ export interface About {
   timelineDescription: string | null;
   blocks: ContentBlock[];
   stats: AboutStat[];
+  leadershipHeading: string | null;
+  leadershipDescription: string | null;
   leadershipBlocks: LeadershipBlock[];
   coreValuesImage: StrapiMedia | null;
   coreValues: CoreValue[];
@@ -264,7 +266,7 @@ export interface LeadershipBlock {
   id: number;
   watermark: string | null;
   image: StrapiMedia;
-  description: string;
+  description: string | null;
   ctaText: string | null;
   ctaUrl: string | null;
 }

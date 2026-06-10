@@ -7,16 +7,33 @@ import { ParallaxText } from "@/components/ui/scroll-animations";
 import type { LeadershipBlock } from "@/lib/types/strapi";
 
 interface LeadershipBlocksSectionProps {
+  heading: string | null;
+  description: string | null;
   blocks: LeadershipBlock[];
 }
 
 export function LeadershipBlocksSection({
+  heading,
+  description,
   blocks,
 }: LeadershipBlocksSectionProps): React.ReactElement {
   if (blocks.length === 0) return <></>;
 
   return (
     <>
+      {(heading || description) && (
+        <div className="bg-neutral-950 text-white text-center px-6 pt-20 pb-4 max-w-2xl mx-auto">
+          {heading && (
+            <h2 className="text-3xl sm:text-4xl font-bold font-serif text-white mb-4 leading-tight">
+              {heading}
+            </h2>
+          )}
+          {description && (
+            <p className="text-base text-white/60 leading-relaxed">{description}</p>
+          )}
+        </div>
+      )}
+
       {blocks.map((block) => {
         const imageUrl = getStrapiMediaUrl(block.image);
 
@@ -37,23 +54,25 @@ export function LeadershipBlocksSection({
             )}
 
             <div className="relative z-10 flex flex-col items-center px-6 text-center">
-              {/* Image */}
+              {/* Image — no crop so transparent/cutout PNGs render naturally */}
               {imageUrl && (
-                <div className="w-full max-w-2xl mb-10 overflow-hidden">
+                <div className="w-full max-w-2xl mb-10">
                   <Image
                     src={imageUrl}
                     alt={block.image?.alternativeText ?? "Leadership"}
                     width={block.image?.width ?? 800}
                     height={block.image?.height ?? 500}
-                    className="w-full h-auto object-cover"
+                    className="w-full h-auto"
                   />
                 </div>
               )}
 
               {/* Description */}
-              <p className="text-base lg:text-lg text-white/70 leading-relaxed max-w-xl mb-8">
-                {block.description}
-              </p>
+              {block.description && (
+                <p className="text-base lg:text-lg text-white/70 leading-relaxed max-w-xl mb-8">
+                  {block.description}
+                </p>
+              )}
 
               {/* CTA */}
               {block.ctaUrl && (

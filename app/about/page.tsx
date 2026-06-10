@@ -56,6 +56,8 @@ const FALLBACK_ABOUT: AboutType = {
   timelineDescription: null,
   blocks: [],
   stats: [],
+  leadershipHeading: null,
+  leadershipDescription: null,
   leadershipBlocks: [],
   cultureHeading: null,
   cultureDescription: null,
@@ -105,13 +107,17 @@ export default async function About(): Promise<React.ReactElement> {
         values={about.coreValues}
       />
 
+      <LeadershipBlocksSection
+        heading={about.leadershipHeading}
+        description={about.leadershipDescription}
+        blocks={about.leadershipBlocks}
+      />
+
       <TimelineSection
         heading={about.timelineHeading}
         description={about.timelineDescription}
         entries={timelineEntries}
       />
-
-      <LeadershipBlocksSection blocks={about.leadershipBlocks} />
       
       <CultureSection
         heading={about.cultureHeading}

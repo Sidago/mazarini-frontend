@@ -32,7 +32,7 @@ export function CultureSection({
   };
 
   return (
-    <section className="relative bg-neutral-950 text-white overflow-hidden py-20">
+    <section className="relative bg-neutral-950 text-white overflow-hidden py-50">
       {/* Watermark */}
       {watermark && (
         <div className="pointer-events-none select-none absolute top-0 left-0 right-0 h-full z-0">
