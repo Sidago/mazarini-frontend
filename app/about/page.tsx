@@ -26,6 +26,7 @@ import { TimelineSection } from "@/components/about/timeline-section";
 import { NumbersMarquee } from "@/components/about/numbers-marquee";
 import { LeadershipBlocksSection } from "@/components/about/leadership-blocks-section";
 import { CultureSection } from "@/components/about/culture-section";
+import { CoreValuesSection } from "@/components/about/core-values-section";
 import { LifeSection } from "@/components/about/life-section";
 import { IntroSection } from "@/components/home/intro-section";
 import type {
@@ -60,6 +61,8 @@ const FALLBACK_ABOUT: AboutType = {
   cultureDescription: null,
   cultureWatermark: null,
   cultureCards: [],
+  coreValuesImage: null,
+  coreValues: [],
   lifeHeading: null,
   lifeDescription: null,
   lifeImages: [],
@@ -96,6 +99,11 @@ export default async function About(): Promise<React.ReactElement> {
       />
 
       <NumbersMarquee stats={about.stats} />
+
+      <CoreValuesSection
+        image={about.coreValuesImage}
+        values={about.coreValues}
+      />
 
       <TimelineSection
         heading={about.timelineHeading}

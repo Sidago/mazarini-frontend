@@ -9,6 +9,8 @@ export async function getAbout(): Promise<About> {
     "populate[leadershipBlocks][populate][image]": "true",
     "populate[cultureCards][populate][image]": "true",
     "populate[lifeImages][populate][image]": "true",
+    "populate[coreValuesImage]": "true",
+    "populate[coreValues]": "true",
     // "populate[blocks][populate]": "*",
     "populate[seo][populate][shareImage]": "true",
   });

@@ -216,6 +216,12 @@ export interface QuoteBlock {
 
 export type ContentBlock = RichTextBlock | MediaBlock | QuoteBlock;
 
+export interface CoreValue {
+  id: number;
+  title: string;
+  description: string | null;
+}
+
 export interface About {
   id: number;
   documentId: string;
@@ -235,6 +241,8 @@ export interface About {
   blocks: ContentBlock[];
   stats: AboutStat[];
   leadershipBlocks: LeadershipBlock[];
+  coreValuesImage: StrapiMedia | null;
+  coreValues: CoreValue[];
   cultureHeading: string | null;
   cultureDescription: string | null;
   cultureWatermark: string | null;
@@ -289,6 +297,12 @@ export interface Contact {
   formDescription: string | null;
 }
 
+export interface TimelineMilestone {
+  id: number;
+  year: string;
+  description: string;
+}
+
 export interface TimelineEntry {
   id: number;
   documentId: string;
@@ -297,6 +311,7 @@ export interface TimelineEntry {
   description: string;
   image: StrapiMedia;
   order: number | null;
+  milestones: TimelineMilestone[] | null;
 }
 
 export interface News {

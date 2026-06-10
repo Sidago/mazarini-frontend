@@ -6,6 +6,7 @@ export async function getTimelineEntries(): Promise<TimelineEntry[]> {
     "/timeline-entries",
     {
       "populate[image]": "true",
+      "populate[milestones]": "true",
       "sort[0]": "order:asc",
     },
   );
