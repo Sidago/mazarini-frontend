@@ -36,23 +36,28 @@ const INITIAL_FORM_STATE: FormState = {
   notes: "",
 };
 
-const INPUT_CLASS =
-  "w-full bg-neutral-800 border border-neutral-700 text-white px-4 py-2.5 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-sm transition-colors placeholder:text-neutral-500";
+interface ContactFormProps {
+  variant?: "short" | "regular";
+}
 
-export function ContactForm(): React.ReactElement {
+export function ContactForm({ variant = "regular" }: ContactFormProps): React.ReactElement {
+  const short = variant === "short";
+
+  const inputClass = `w-full bg-neutral-800 border border-neutral-700 text-white rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-colors placeholder:text-neutral-500 ${
+    short ? "px-3 py-2 text-sm" : "px-4 py-2.5 text-sm"
+  }`;
+
+  const labelClass = `block text-neutral-400 mb-1 ${short ? "text-xs" : "text-sm"}`;
+
   const [form, setForm] = useState<FormState>(INITIAL_FORM_STATE);
   const [files, setFiles] = useState<File[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<
-    "idle" | "success" | "error"
-  >("idle");
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   function handleChange(
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
   ): void {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
@@ -61,12 +66,9 @@ export function ContactForm(): React.ReactElement {
   function handleFileChange(e: React.ChangeEvent<HTMLInputElement>): void {
     const selected = e.target.files;
     if (!selected) return;
-
     for (const file of Array.from(selected)) {
       if (file.size > MAX_FILE_SIZE_BYTES) {
-        setErrorMessage(
-          `File "${file.name}" exceeds ${MAX_FILE_SIZE_MB}MB limit.`,
-        );
+        setErrorMessage(`File "${file.name}" exceeds ${MAX_FILE_SIZE_MB}MB limit.`);
         return;
       }
     }
@@ -83,7 +85,6 @@ export function ContactForm(): React.ReactElement {
     setIsSubmitting(true);
     setSubmitStatus("idle");
     setErrorMessage("");
-
     try {
       const payload: ContactSubmissionPayload = {
         firstName: form.firstName.trim(),
@@ -94,7 +95,6 @@ export function ContactForm(): React.ReactElement {
         inquiryType: form.inquiryType,
         notes: form.notes.trim(),
       };
-
       await submitContactForm(payload, files);
       setSubmitStatus("success");
       setForm(INITIAL_FORM_STATE);
@@ -103,9 +103,7 @@ export function ContactForm(): React.ReactElement {
     } catch (err) {
       setSubmitStatus("error");
       setErrorMessage(
-        err instanceof Error
-          ? err.message
-          : "Something went wrong. Please try again.",
+        err instanceof Error ? err.message : "Something went wrong. Please try again.",
       );
     } finally {
       setIsSubmitting(false);
@@ -114,14 +112,13 @@ export function ContactForm(): React.ReactElement {
 
   if (submitStatus === "success") {
     return (
-      <div className="bg-neutral-900 rounded-2xl p-8 md:p-12 text-center">
+      <div className={`bg-neutral-900 rounded-2xl text-center ${short ? "p-6" : "p-8 md:p-12"}`}>
         <span className="material-icons-outlined text-primary text-5xl mb-4 block">
           check_circle
         </span>
         <h3 className="text-2xl font-bold text-white mb-1">Thank You!</h3>
         <p className="text-neutral-400 mb-6">
-          Your message has been sent successfully. We&apos;ll get back to you
-          shortly.
+          Your message has been sent successfully. We&apos;ll get back to you shortly.
         </p>
         <button
           type="button"
@@ -137,15 +134,12 @@ export function ContactForm(): React.ReactElement {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-neutral-900 rounded-2xl p-8 md:p-10 space-y-3"
+      className={`bg-neutral-900 rounded-2xl ${short ? "p-5 space-y-2" : "p-8 md:p-10 space-y-3"}`}
     >
       {/* First Name + Last Name */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className={`grid grid-cols-1 sm:grid-cols-2 ${short ? "gap-2" : "gap-4"}`}>
         <div>
-          <label
-            htmlFor="firstName"
-            className="block text-sm text-neutral-400 mb-1"
-          >
+          <label htmlFor="firstName" className={labelClass}>
             First Name <span className="text-primary">*</span>
           </label>
           <input
@@ -155,15 +149,12 @@ export function ContactForm(): React.ReactElement {
             required
             value={form.firstName}
             onChange={handleChange}
-            className={INPUT_CLASS}
+            className={inputClass}
             placeholder="John"
           />
         </div>
         <div>
-          <label
-            htmlFor="lastName"
-            className="block text-sm text-neutral-400 mb-1"
-          >
+          <label htmlFor="lastName" className={labelClass}>
             Last Name <span className="text-primary">*</span>
           </label>
           <input
@@ -173,7 +164,7 @@ export function ContactForm(): React.ReactElement {
             required
             value={form.lastName}
             onChange={handleChange}
-            className={INPUT_CLASS}
+            className={inputClass}
             placeholder="Doe"
           />
         </div>
@@ -181,10 +172,7 @@ export function ContactForm(): React.ReactElement {
 
       {/* Email */}
       <div>
-        <label
-          htmlFor="email"
-          className="block text-sm text-neutral-400 mb-1"
-        >
+        <label htmlFor="email" className={labelClass}>
           Email Address <span className="text-primary">*</span>
         </label>
         <input
@@ -194,17 +182,14 @@ export function ContactForm(): React.ReactElement {
           required
           value={form.email}
           onChange={handleChange}
-          className={INPUT_CLASS}
+          className={inputClass}
           placeholder="john@company.com"
         />
       </div>
 
       {/* Phone */}
       <div>
-        <label
-          htmlFor="phone"
-          className="block text-sm text-neutral-400 mb-1"
-        >
+        <label htmlFor="phone" className={labelClass}>
           Phone
         </label>
         <input
@@ -213,17 +198,14 @@ export function ContactForm(): React.ReactElement {
           type="tel"
           value={form.phone}
           onChange={handleChange}
-          className={INPUT_CLASS}
+          className={inputClass}
           placeholder="+1 (555) 000-0000"
         />
       </div>
 
       {/* Company Name */}
       <div>
-        <label
-          htmlFor="companyName"
-          className="block text-sm text-neutral-400 mb-1"
-        >
+        <label htmlFor="companyName" className={labelClass}>
           Company Name <span className="text-primary">*</span>
         </label>
         <input
@@ -233,17 +215,14 @@ export function ContactForm(): React.ReactElement {
           required
           value={form.companyName}
           onChange={handleChange}
-          className={INPUT_CLASS}
+          className={inputClass}
           placeholder="Acme Inc."
         />
       </div>
 
       {/* Inquiry Type */}
       <div>
-        <label
-          htmlFor="inquiryType"
-          className="block text-sm text-neutral-400 mb-1"
-        >
+        <label htmlFor="inquiryType" className={labelClass}>
           Inquiry Type <span className="text-primary">*</span>
         </label>
         <select
@@ -252,7 +231,7 @@ export function ContactForm(): React.ReactElement {
           required
           value={form.inquiryType}
           onChange={handleChange}
-          className={`${INPUT_CLASS} appearance-none`}
+          className={`${inputClass} appearance-none`}
         >
           {INQUIRY_OPTIONS.map((opt) => (
             <option key={opt.value} value={opt.value}>
@@ -264,57 +243,54 @@ export function ContactForm(): React.ReactElement {
 
       {/* Notes */}
       <div>
-        <label
-          htmlFor="notes"
-          className="block text-sm text-neutral-400 mb-1"
-        >
+        <label htmlFor="notes" className={labelClass}>
           Notes <span className="text-primary">*</span>
         </label>
         <textarea
           id="notes"
           name="notes"
           required
-          rows={4}
+          rows={short ? 2 : 4}
           value={form.notes}
           onChange={handleChange}
-          className={`${INPUT_CLASS} resize-none`}
+          className={`${inputClass} resize-none`}
           placeholder="Tell us about your project..."
         />
       </div>
 
       {/* Attachments */}
       <div>
-        <label className="block text-sm text-neutral-400 mb-1">
+        <label className={labelClass}>
           Attachments{" "}
-          <span className="text-neutral-600">
-            (max {MAX_FILE_SIZE_MB}MB per file)
-          </span>
+          <span className="text-neutral-600">(max {MAX_FILE_SIZE_MB}MB per file)</span>
         </label>
         <input
           ref={fileInputRef}
           type="file"
           multiple
           onChange={handleFileChange}
-          className="w-full text-neutral-400 text-sm file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-neutral-800 file:text-primary hover:file:bg-neutral-700 file:cursor-pointer file:transition-colors"
+          className={`w-full text-neutral-400 file:rounded file:border-0 file:font-semibold file:bg-neutral-800 file:text-primary hover:file:bg-neutral-700 file:cursor-pointer file:transition-colors ${
+            short
+              ? "text-xs file:mr-3 file:py-1.5 file:px-3 file:text-xs"
+              : "text-sm file:mr-4 file:py-2 file:px-4 file:text-sm"
+          }`}
         />
         {files.length > 0 && (
-          <div className="mt-3 space-y-2">
+          <div className={`mt-2 ${short ? "space-y-1" : "space-y-2"}`}>
             {files.map((file, i) => (
               <div
                 key={`${file.name}-${i}`}
-                className="flex items-center justify-between bg-neutral-800 px-3 py-2 rounded text-sm"
+                className={`flex items-center justify-between bg-neutral-800 px-3 rounded ${
+                  short ? "py-1.5 text-xs" : "py-2 text-sm"
+                }`}
               >
-                <span className="text-neutral-300 truncate mr-2">
-                  {file.name}
-                </span>
+                <span className="text-neutral-300 truncate mr-2">{file.name}</span>
                 <button
                   type="button"
                   onClick={() => removeFile(i)}
                   className="text-neutral-500 hover:text-red-400 transition-colors shrink-0"
                 >
-                  <span className="material-icons-outlined text-sm">
-                    close
-                  </span>
+                  <span className="material-icons-outlined text-sm">close</span>
                 </button>
               </div>
             ))}
@@ -329,7 +305,9 @@ export function ContactForm(): React.ReactElement {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full py-4 bg-primary text-white font-bold rounded-lg hover:bg-amber-600 transition-colors uppercase text-sm tracking-wide disabled:opacity-50 disabled:cursor-not-allowed"
+        className={`w-full bg-primary text-white font-bold rounded-lg hover:bg-amber-600 transition-colors uppercase text-sm tracking-wide disabled:opacity-50 disabled:cursor-not-allowed ${
+          short ? "py-2.5" : "py-4"
+        }`}
       >
         {isSubmitting ? "Submitting..." : "Submit"}
       </button>

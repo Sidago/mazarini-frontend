@@ -8,6 +8,7 @@ export async function getRdPage(): Promise<RdPage> {
     "populate[whyCards][populate][image]": "true",
     "populate[pillars][populate][image]": "true",
     "populate[featuredProjects][populate][image]": "true",
+    "populate[innovationItems][populate][image]": "true",
     "populate[featuredNews][populate][image]": "true",
     "populate[partners][populate][image]": "true",
     "populate[featuredLeadership][populate][image]": "true",

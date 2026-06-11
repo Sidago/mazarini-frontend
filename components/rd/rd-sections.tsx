@@ -6,6 +6,7 @@ import type { RdPage } from "@/lib/types/strapi";
 import { WhySection } from "./why-section";
 import { PillarsSection } from "./pillars-section";
 import { ProjectsSection } from "./projects-section";
+import { InnovationSection } from "./innovation-section";
 import { NewsSection } from "./news-section";
 import { PartnersSection } from "./partners-section";
 import { LeadershipSection } from "./leadership-section";
@@ -22,6 +23,7 @@ const SECTIONS = [
   { id: "why", label: "Why" },
   { id: "pillars", label: "Pillars" },
   { id: "projects", label: "Projects" },
+  { id: "innovation", label: "Innovation" },
   { id: "news", label: "News" },
   { id: "partners", label: "Partners" },
   { id: "leadership", label: "Leadership" },
@@ -157,6 +159,7 @@ export function RdSections({ data }: RdSectionsProps): React.ReactElement {
         <WhySection data={data} />
         <PillarsSection data={data} />
         <ProjectsSection data={data} />
+        <InnovationSection data={data} />
         <NewsSection data={data} />
         <PartnersSection data={data} />
         <LeadershipSection data={data} />
@@ -226,6 +229,7 @@ export function RdSections({ data }: RdSectionsProps): React.ReactElement {
             <WhySection data={data} />
             <PillarsSection data={data} />
             <ProjectsSection data={data} />
+            <InnovationSection data={data} />
             <NewsSection data={data} />
             <PartnersSection data={data} />
             <LeadershipSection data={data} />

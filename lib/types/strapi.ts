@@ -547,6 +547,12 @@ export interface SubcontractorsPage {
 
 // R&D Page
 
+export interface RdInnovationItem {
+  id: number;
+  title: string | null;
+  image: StrapiMedia | null;
+}
+
 export interface RdWhyCard {
   id: number;
   documentId: string;
@@ -590,6 +596,11 @@ export interface RdPage {
   projectsDescription: string | null;
   projectsWatermark: string | null;
   featuredProjects: Project[];
+
+  innovationTitle: string | null;
+  innovationDescription: string | null;
+  innovationWatermark: string | null;
+  innovationItems: RdInnovationItem[];
 
   newsTitle: string | null;
   newsWatermark: string | null;

@@ -54,10 +54,10 @@ export function WhySection({ data }: WhySectionProps): React.ReactElement {
 
         {/* Left */}
         <div className="w-full lg:w-[40vw] flex-none flex flex-col justify-center px-6 lg:pl-[15vw] lg:pr-8 py-12 lg:py-0">
-          <h2 className="text-3xl lg:text-5xl font-bold leading-tight mb-6">
-            {data.whyTitle ?? "Why We're Investing in R&D"}
+          <h2 className="text-3xl lg:text-4xl font-serif font-bold leading-tight mb-6 whitespace-pre-line">
+            {data.whyTitle ?? "Why We're\nInvesting in R&D"}
           </h2>
-          <p className="text-base lg:text-lg leading-relaxed text-neutral-600 max-w-sm">
+          <p className="text-base leading-relaxed text-neutral-600 max-w-sm">
             {data.whyDescription}
           </p>
         </div>
@@ -70,8 +70,8 @@ export function WhySection({ data }: WhySectionProps): React.ReactElement {
             onClick={() => scroll(-1)}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 hidden lg:flex w-12 h-12 rounded-full bg-primary items-center justify-center cursor-pointer shadow-lg">
-            <Icon name="arrow_back" className="text-lg text-white" />
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 hidden lg:flex w-10 h-10 rounded-full bg-primary items-center justify-center cursor-pointer shadow-lg">
+            <Icon name="arrow_back" className="text-base text-white" />
           </motion.button>
 
           {/* Right arrow — desktop only */}
@@ -79,8 +79,8 @@ export function WhySection({ data }: WhySectionProps): React.ReactElement {
             onClick={() => scroll(1)}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 hidden lg:flex w-12 h-12 rounded-full bg-primary items-center justify-center cursor-pointer shadow-lg">
-            <Icon name="arrow_forward" className="text-lg text-white" />
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 hidden lg:flex w-10 h-10 rounded-full bg-primary items-center justify-center cursor-pointer shadow-lg">
+            <Icon name="arrow_forward" className="text-base text-white" />
           </motion.button>
 
           <div

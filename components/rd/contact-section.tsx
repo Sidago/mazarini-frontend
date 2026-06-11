@@ -43,10 +43,10 @@ export function ContactSection({
             <p className="text-primary text-sm font-bold uppercase tracking-widest mb-4">
               Get In Touch
             </p>
-            <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-6">
-              {data.contactTitle ?? "Let's Work Together"}
+            <h2 className="text-4xl lg:text-5xl font-serif font-bold leading-tight mb-6 whitespace-pre-line">
+              {data.contactTitle ?? "Let's Work\nTogether"}
             </h2>
-            <p className="text-lg leading-relaxed text-neutral-600 max-w-sm mb-10">
+            <p className="leading-relaxed text-neutral-600 max-w-sm mb-10">
               {data.contactDescription}
             </p>
             {data.contactCtaUrl && (
@@ -58,9 +58,11 @@ export function ContactSection({
             )}
           </div>
 
-          {/* Right: simple accent block */}
-          <div className="flex flex-col gap-6">
-            <ContactForm />
+          {/* Right — form constrained to 70vh and centered */}
+          <div className="flex justify-center">
+            <div className="w-full max-w-md md:max-h-[80vh] overflow-hidden">
+              <ContactForm variant="short" />
+            </div>
           </div>
         </div>
       </div>
