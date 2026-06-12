@@ -9,6 +9,8 @@ export async function getColabPage(): Promise<ColabPage> {
     "populate[introVideo]": "true",
     "populate[stats]": "true",
     "populate[visionItems]": "true",
+    "populate[experienceImage]": "true",
+    "populate[testimonialImage]": "true",
     "populate[elementCards][populate][image]": "true",
     "populate[challengeCards][populate][image]": "true",
     "populate[innovations][populate][image]": "true",

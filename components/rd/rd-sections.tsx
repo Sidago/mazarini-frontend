@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { RdPage } from "@/lib/types/strapi";
 import { WhySection } from "./why-section";
+import { RdQuoteSection } from "./rd-quote-section";
 import { PillarsSection } from "./pillars-section";
 import { ProjectsSection } from "./projects-section";
 import { InnovationSection } from "./innovation-section";
@@ -20,6 +21,7 @@ interface RdSectionsProps {
 
 const SECTIONS = [
   { id: "hero", label: "Intro" },
+  { id: "quote", label: "Quote" },
   { id: "why", label: "Why" },
   { id: "pillars", label: "Pillars" },
   { id: "projects", label: "Projects" },
@@ -157,6 +159,7 @@ export function RdSections({ data }: RdSectionsProps): React.ReactElement {
       <div className="lg:hidden flex flex-col gap-4">
         {hero}
         <WhySection data={data} />
+        <RdQuoteSection data={data} />
         <PillarsSection data={data} />
         <ProjectsSection data={data} />
         <InnovationSection data={data} />
@@ -226,6 +229,7 @@ export function RdSections({ data }: RdSectionsProps): React.ReactElement {
             transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
             className="flex h-full">
             <div className="w-screen h-full flex-none">{hero}</div>
+            <RdQuoteSection data={data} />
             <WhySection data={data} />
             <PillarsSection data={data} />
             <ProjectsSection data={data} />

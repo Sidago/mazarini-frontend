@@ -1,0 +1,51 @@
+import Image from "next/image";
+import Link from "next/link";
+import { getStrapiMediaUrl } from "@/lib/api/client";
+import type { ColabPage } from "@/lib/types/strapi";
+
+interface Props {
+  data: ColabPage;
+}
+
+export function ColabExperienceSection({ data }: Props): React.ReactElement {
+  const imageUrl = getStrapiMediaUrl(data.experienceImage ?? null);
+
+  return (
+    <section
+      id="experience"
+      className="relative w-screen min-h-screen lg:h-screen flex-none flex items-center overflow-hidden">
+      {/* Background image */}
+      {imageUrl ? (
+        <Image
+          src={imageUrl}
+          alt="Experience"
+          fill
+          className="object-cover"
+          sizes="100vw"
+          priority
+        />
+      ) : (
+        <div className="absolute inset-0 bg-neutral-800" />
+      )}
+
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/55 z-10" />
+
+      {/* Content */}
+      <div className="relative z-20 w-full px-8 py-20 lg:py-0 flex flex-col items-center justify-center text-left mx-auto max-w-3xl">
+        {data.experienceText && (
+          <p className="text-white font-serif text-xl leading-snug mb-10 w-full">
+            {data.experienceText}
+          </p>
+        )}
+        {data.experienceCtaUrl && (
+          <Link
+            href={data.experienceCtaUrl}
+            className="inline-block self-start bg-primary px-8 py-3 text-xs font-bold uppercase tracking-widest text-neutral-900 hover:bg-amber-500 transition-colors">
+            {data.experienceCtaText ?? "Learn More"}
+          </Link>
+        )}
+      </div>
+    </section>
+  );
+}

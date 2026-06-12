@@ -7,6 +7,8 @@ import { ImgOrVideoHero } from "@/components/common/img-video-hero";
 import { ColabIntroSection } from "./colab-intro-section";
 import { ColabNumbersSection } from "./colab-numbers-section";
 import { ColabVisionSection } from "./colab-vision-section";
+import { ColabExperienceSection } from "./colab-experience-section";
+import { ColabTestimonialSection } from "./colab-testimonial-section";
 import { ColabElementsSection } from "./colab-elements-section";
 import { ColabChallengesSection } from "./colab-challenges-section";
 import { ColabInnovationSection } from "./colab-innovation-section";
@@ -25,6 +27,8 @@ const SECTIONS = [
   { id: "intro", label: "intro" },
   { id: "numbers", label: "Numbers" },
   { id: "vision", label: "Vision" },
+  { id: "experience", label: "Experience" },
+  { id: "testimonial", label: "Testimonial" },
   { id: "elements", label: "Elements" },
   { id: "challenges", label: "Challenges" },
   { id: "innovation", label: "Innovation" },
@@ -156,6 +160,8 @@ export function ColabSections({ data, moreSection }: Props): React.ReactElement 
         <ColabIntroSection data={data} />
         <ColabNumbersSection data={data} />
         <ColabVisionSection data={data} />
+        <ColabExperienceSection data={data} />
+        <ColabTestimonialSection data={data} />
         <ColabElementsSection data={data} />
         <ColabChallengesSection data={data} />
         <ColabInnovationSection data={data} />
@@ -228,13 +234,15 @@ export function ColabSections({ data, moreSection }: Props): React.ReactElement 
             <ColabIntroSection data={data} />
             <ColabNumbersSection data={data} />
             <ColabVisionSection data={data} />
+            <ColabExperienceSection data={data} />
+            <ColabTestimonialSection data={data} />
             <ColabElementsSection data={data} />
             <ColabChallengesSection data={data} />
             <ColabInnovationSection data={data} />
             <ColabResultsSection data={data} />
             <ColabTeamSection data={data} />
             <ColabNewsSection data={data} />
-            <div className="w-screen h-full flex-none overflow-y-auto">
+            <div className="w-screen h-full flex-none overflow z-y-auto">
               {moreSection}
             </div>
           </motion.div>

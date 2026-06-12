@@ -582,6 +582,11 @@ export interface RdPage {
   heroCtaText: string | null;
   heroCtaUrl: string | null;
 
+  quoteText: string | null;
+  quoteAuthorName: string | null;
+  quoteAuthorPosition: string | null;
+  quoteAuthorImage: StrapiMedia | null;
+
   whyTitle: string | null;
   whyDescription: string | null;
   whyWatermark: string | null;
@@ -732,6 +737,16 @@ export interface ColabPage {
   visionSubtitle: string | null;
   visionWatermark: string | null;
   visionItems: AccordionItem[];
+
+  experienceText: string | null;
+  experienceCtaText: string | null;
+  experienceCtaUrl: string | null;
+  experienceImage: StrapiMedia | null;
+
+  testimonialQuote: string | null;
+  testimonialAuthorName: string | null;
+  testimonialAuthorPosition: string | null;
+  testimonialImage: StrapiMedia | null;
 
   elementsTitle: string | null;
   elementsWatermark: string | null;

@@ -4,6 +4,7 @@ import type { RdPage, StrapiResponse } from "@/lib/types/strapi";
 export async function getRdPage(): Promise<RdPage> {
   const res = await strapiGet<StrapiResponse<RdPage>>("/rd-page", {
     "populate[heroImage]": "true",
+    "populate[quoteAuthorImage]": "true",
     "populate[heroVideo]": "true",
     "populate[whyCards][populate][image]": "true",
     "populate[pillars][populate][image]": "true",
