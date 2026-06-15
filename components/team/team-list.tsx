@@ -23,11 +23,11 @@ export default function TeamList({ teams }: TeamListProps): React.ReactElement {
           return (
             <div key={section}>
               <FadeIn direction="up">
-                <h2 className="font-serif text-3xl md:text-4xl font-black text-neutral-900 dark:text-white mb-10">
+                <h2 className="font-serif text-3xl md:text-4xl font-black text-neutral-900 dark:text-white mb-10 text-center">
                   {section}
                 </h2>
               </FadeIn>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+              <div className="flex flex-wrap justify-center gap-8">
                 {members.map((member, i) => (
                   <FadeIn key={member.id} direction="up" delay={i * 0.05}>
                     <TeamCard member={member} />
