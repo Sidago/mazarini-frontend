@@ -21,9 +21,9 @@ export function NewsFilterCard({
   return (
     <Link
       href={`/news/${news.slug}`}
-      className="group block px-2"
+      className="group block"
     >
-      <div className="relative w-[90%] aspect-[10/10.5] overflow-hidden">
+      <div className="relative w-full aspect-[10/10.5] overflow-hidden">
         {imageUrl ? (
           <Image
             src={imageUrl}
@@ -36,7 +36,7 @@ export function NewsFilterCard({
           <div className="absolute inset-0 bg-neutral-800 rounded-lg" />
         )}
       </div>
-      <div className="mt-4 px-1">
+      <div className="mt-4">
         <h3 className="text-base font-semibold text-neutral-900 dark:text-white leading-tight">
           {news.title}
         </h3>
