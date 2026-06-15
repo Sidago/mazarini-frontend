@@ -22,33 +22,33 @@ export function AccordionSection({
   return (
     <section className="py-20 md:py-32 bg-neutral-950">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-0 mx-auto w-fit">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16 mx-auto w-fit">
           {/* Left — image */}
           <FadeIn direction="left">
-            <div className="relative w-full lg:w-100 shrink-0 max-h-140 aspect-3/5 overflow-hidden">
+            <div className="relative w-80 lg:w-96 shrink-0 aspect-4/5 overflow-hidden">
               {imageUrl && (
                 <Image
                   src={imageUrl}
                   alt={image?.alternativeText ?? title}
                   fill
                   className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 400px"
+                  sizes="(max-width: 1024px) 320px, 384px"
                 />
               )}
             </div>
           </FadeIn>
 
           {/* Right — content */}
-          <div className="flex-1 lg:pl-16 pt-10 lg:pt-0 flex flex-col justify-center">
+          <div className="w-full lg:w-[550px] shrink-0 flex flex-col justify-center">
             <FadeIn direction="right">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight mb-6">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight mb-6 whitespace-pre-line">
                 {title}
               </h2>
             </FadeIn>
 
             {details && (
               <FadeIn direction="right" delay={0.1}>
-                <p className="text-lg text-neutral-400 leading-relaxed mb-10">
+                <p className="text-lg text-neutral-400 leading-relaxed mb-10 max-w-lg whitespace-pre-line">
                   {details}
                 </p>
               </FadeIn>

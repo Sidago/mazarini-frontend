@@ -732,6 +732,7 @@ export interface ColabPage {
 
   numbersTitle: string | null;
   numbersWatermark: string | null;
+  numbersImage: StrapiMedia | null;
   stats: StatComponent[];
 
   visionTitle: string | null;
