@@ -42,41 +42,47 @@ export function LeadershipSection({
       )}
 
       <div className="relative z-10 w-full max-w-[90%] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2">
-          {/* Left */}
-          <div className="lg:ps-[15vw]">
-            <h2 className="text-4xl lg:text-5xl font-semibold leading-tight mb-6 mt-10">
-              {data.leadershipTitle ?? "Leadership"}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          {/* Left — header */}
+          <div className="lg:ps-[8vw]">
+            <h2 className="text-4xl lg:text-5xl font-serif font-semibold leading-tight mb-4">
+              {data.leadershipTitle ?? "Key Leadership"}
             </h2>
-            <p className="text-lg leading-relaxed text-white/60 max-w-sm">
-              {data.leadershipDescription}
-            </p>
+            {data.leadershipDescription && (
+              <p className="text-base leading-relaxed text-white/60 max-w-sm">
+                {data.leadershipDescription}
+              </p>
+            )}
           </div>
 
-          {/* Right: member cards */}
+          {/* Right — cards */}
           <DragScrollRow>
             {members.map((member) => {
               const url = getStrapiMediaUrl(member.image ?? null);
               return (
-                <div key={member.id} className="flex-none">
-                  <div className="relative w-full h-90 overflow-hidden mb-3">
+                <div
+                  key={member.id}
+                  className="flex-none flex flex-col items-center">
+                  <div className="relative w-60 h-80 overflow-hidden">
                     {url ? (
                       <Image
                         src={url}
                         alt={member.name}
                         fill
-                        className="object-cover object-top"
-                        sizes="(max-width: 768px) 100vw, 280px"
+                        className="object-cover rounded-sm"
+                        sizes=""
                         draggable={false}
                       />
                     ) : (
                       <div className="w-full h-full bg-neutral-700" />
                     )}
                   </div>
-                  <p className="text-xl font-semibold text-white">
+                  <p className="text-base font-semibold text-white text-center mt-3">
                     {member.name}
                   </p>
-                  <p className=" text-white/50 mt-0.5">{member.position}</p>
+                  <p className="text-sm text-white/50 text-center mt-0.5">
+                    {member.position}
+                  </p>
                 </div>
               );
             })}

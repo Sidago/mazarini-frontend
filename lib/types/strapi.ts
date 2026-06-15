@@ -693,6 +693,7 @@ export interface ColabChallengeCard {
   id: number;
   label: string;
   description: string | null;
+  hoverDescription: string | null;
   image: StrapiMedia | null;
   order: number | null;
 }
