@@ -29,7 +29,7 @@ export function ServiceAccordion({
                   : "border-white/20 hover:border-white/40"
               }`}>
               <h3
-                className={`text-xl font-bold transition-colors ${
+                className={`text-lg font-bold transition-colors ${
                   isOpen ? "text-white" : "text-white/60"
                 }`}>
                 {item.title}
@@ -45,7 +45,7 @@ export function ServiceAccordion({
                   transition={{ duration: 0.3, ease: "easeInOut" }}
                   className="overflow-hidden">
                   <div className="border-l-4 border-primary pl-8 pb-2">
-                    <p className="text-neutral-400 text-lg leading-normal whitespace-pre-line">
+                    <p className="text-neutral-400 text-md leading-normal whitespace-pre-line">
                       {item.description}
                     </p>
                   </div>

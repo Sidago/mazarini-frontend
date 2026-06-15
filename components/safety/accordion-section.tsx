@@ -21,8 +21,8 @@ export function AccordionSection({
 
   return (
     <section className="py-20 md:py-32 bg-neutral-950">
-      <div className="mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16 mx-auto w-fit">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
           {/* Left — image */}
           <FadeIn direction="left">
             <div className="relative w-80 lg:w-96 shrink-0 aspect-4/5 overflow-hidden">
