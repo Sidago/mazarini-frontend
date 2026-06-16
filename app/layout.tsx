@@ -89,7 +89,7 @@ export default async function RootLayout({
           navLinks={global?.navLinks ?? []}
           subNavItems={subNavItems}
           ctaText={global?.headerCtaText ?? "Work With Us"}
-          ctaUrl={global?.headerCtaUrl ?? "contact"}
+          ctaUrl={global?.headerCtaUrl ?? "/career"}
         />
         <main>{children}</main>
         <ConditionalFooter

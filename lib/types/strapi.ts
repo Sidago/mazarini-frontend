@@ -892,6 +892,91 @@ export interface CorporateResponsibilityPage {
   executives: Teams[];
 }
 
+// Career Page
+
+export interface ResourceItem {
+  id: number;
+  title: string;
+  url: string | null;
+}
+
+export interface CareerQuote {
+  id: number;
+  text: string;
+  authorName: string | null;
+  authorPosition: string | null;
+  authorImage: StrapiMedia | null;
+}
+
+export interface CareerCultureCard {
+  id: number;
+  title: string;
+  tag: string | null;
+  url: string | null;
+  image: StrapiMedia | null;
+}
+
+export interface FeatureItem {
+  id: number;
+  title: string;
+  description: string | null;
+  image: StrapiMedia | null;
+}
+
+export interface Job {
+  id: number;
+  documentId: string;
+  title: string;
+  department: string | null;
+  location: string | null;
+  jobType: string | null;
+  description: string | null;
+  applyUrl: string | null;
+  order: number | null;
+  isActive: boolean;
+}
+
+export interface CareerPage {
+  id: number;
+  documentId: string;
+  heroTitle: string | null;
+  heroText: string | null;
+  heroCtaText: string | null;
+  heroCtaUrl: string | null;
+  heroImage: StrapiMedia | null;
+  heroVideo: StrapiMedia | null;
+  missionTitle: string | null;
+  missionText: string | null;
+  stats: StatComponent[];
+  quotesTitle: string | null;
+  quotes: CareerQuote[];
+  jobsSectionTitle: string | null;
+  peopleTitle: string | null;
+  peopleSubtitle: string | null;
+  peopleImages: StrapiMedia[];
+  benefitsTitle: string | null;
+  benefitsText: string | null;
+  benefitsImage: StrapiMedia | null;
+  benefitItems: AccordionItem[];
+  cultureTitle: string | null;
+  cultureSubtitle: string | null;
+  cultureCards: CareerCultureCard[];
+  featuresTitle: string | null;
+  featureItems: FeatureItem[];
+  belongTitle: string | null;
+  belongDescription: string | null;
+  belongImage: StrapiMedia | null;
+  personName: string | null;
+  personPosition: string | null;
+  personQuote: string | null;
+  personCtaText: string | null;
+  personCtaUrl: string | null;
+  personImage: StrapiMedia | null;
+  resourcesTitle: string | null;
+  resourceItems: ResourceItem[];
+  seo: SeoComponent | null;
+}
+
 // You Belong Here Page
 
 export interface YouBelongHerePage {
