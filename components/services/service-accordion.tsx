@@ -45,7 +45,7 @@ export function ServiceAccordion({
                   transition={{ duration: 0.3, ease: "easeInOut" }}
                   className="overflow-hidden">
                   <div className="border-l-4 border-primary pl-8 pb-2">
-                    <p className="text-neutral-400 text-md leading-normal whitespace-pre-line">
+                    <p className="text-neutral-400 text-md leading-normal">
                       {item.description}
                     </p>
                   </div>

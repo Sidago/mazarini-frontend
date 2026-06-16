@@ -19,7 +19,7 @@ export function ServiceDetailSection({
         <div className="flex flex-col lg:flex-row items-center gap-0">
           {/* Left — image */}
           <FadeIn direction="left">
-            <div className="relative w-full lg:w-[400px] shrink-0 aspect-3/5 overflow-hidden">
+            <div className="relative w-full lg:w-[450px] shrink-0 aspect-4/5 overflow-hidden">
               {imageUrl && (
                 <Image
                   src={imageUrl}
