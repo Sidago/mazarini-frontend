@@ -41,7 +41,7 @@ export function IntroSection({
   }
 
   return (
-    <section className="bg-neutral-950 py-30 lg:py-40 min-h-[80vh]! flex items-center">
+    <section className="bg-neutral-950 pt-30 lg:pt-40 min-h-[80vh]! flex items-center">
       <div className="max-w-300 mx-auto px-4 sm:px-6 lg:px-8 ">
         <div className=" gap-12 lg:gap-20 items-start whitespace-pre-line">
           {/* Left — large heading */}

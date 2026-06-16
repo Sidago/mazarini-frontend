@@ -26,7 +26,7 @@ export function SparkSection({
   return (
     <section className="bg-white py-24 lg:py-32">
       <div className="max-w-360 mx-auto px-8 md:px-16">
-        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-24">
 
           {/* Left: image */}
           {imageUrl && (
@@ -44,14 +44,14 @@ export function SparkSection({
           )}
 
           {/* Right: content */}
-          <FadeIn direction="right" delay={0.2} duration={0.7} className="w-full lg:w-1/2">
+          <FadeIn direction="right" delay={0.2} duration={0.7} className="w-full lg:w-fit">
             {heading && (
-              <h2 className="text-3xl lg:text-5xl font-black text-neutral-900 leading-tight mb-6">
+              <h2 className="text-3xl lg:text-5xl font-semibold max-w-lg text-neutral-900 leading-tight mb-6">
                 {heading}
               </h2>
             )}
             {description && (
-              <p className="text-neutral-500 leading-relaxed mb-10">
+              <p className="text-neutral-500 text-lg font-thin leading-relaxed mb-10 max-w-lg">
                 {description}
               </p>
             )}
