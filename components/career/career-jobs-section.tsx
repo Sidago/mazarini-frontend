@@ -16,10 +16,10 @@ export function CareerJobsSection({ data, jobs }: Props): React.ReactElement {
       <div className="max-w-7xl mx-auto px-8 lg:px-16">
         {/* Header */}
         <div className="flex items-end justify-between mb-12">
-          <h2 className="text-3xl lg:text-4xl font-black tracking-tight text-neutral-900">
+          <h2 className="text-3xl lg:text-4xl font-black font-serif tracking-tight text-neutral-900">
             {title}
           </h2>
-          <Link
+          {/* <Link
             href="/careers/jobs"
             className="text-xs font-bold uppercase tracking-widest text-primary hover:text-primary/70 transition-colors flex items-center gap-2">
             See All
@@ -35,7 +35,7 @@ export function CareerJobsSection({ data, jobs }: Props): React.ReactElement {
               aria-hidden="true">
               <path d="M5 12h14M13 6l6 6-6 6" />
             </svg>
-          </Link>
+          </Link> */}
         </div>
 
         {/* Job cards grid */}
@@ -112,13 +112,13 @@ export function CareerJobsSection({ data, jobs }: Props): React.ReactElement {
         )}
 
         {/* Bottom CTA */}
-        <div className="flex justify-center">
+        {/* <div className="flex justify-center">
           <Link
             href="/careers/jobs"
             className="inline-flex items-center justify-center px-10 py-4 text-sm font-bold uppercase tracking-widest text-neutral-900 bg-primary hover:bg-amber-500 transition-all">
             View All Open Positions
           </Link>
-        </div>
+        </div> */}
       </div>
     </section>
   );

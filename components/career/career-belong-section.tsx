@@ -29,13 +29,13 @@ export function CareerBelongSection({ data }: Props): React.ReactElement {
 
       {/* Image with gradient overlay */}
       {imageUrl && (
-        <div className="relative mx-auto max-w-7xl w-[90%] lg:w-[80%] h-[55vh] lg:h-[70vh] min-h-100 overflow-hidden">
+        <div className="relative mx-auto max-w-7xl w-[90%] lg:w-[70%] h-[65vh] lg:h-[80vh] min-h-100 overflow-hidden">
           <Image
             src={imageUrl}
             alt={data?.belongImage?.alternativeText ?? data?.belongTitle ?? "You Belong Here"}
             fill
-            className="object-cover object-top"
-            sizes="80vw"
+            className="object-fill"
+            sizes="70vw"
           />
           <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/10 to-transparent" />
         </div>

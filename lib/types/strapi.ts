@@ -905,6 +905,7 @@ export interface CareerQuote {
   text: string;
   authorName: string | null;
   authorPosition: string | null;
+  contactUrl: string | null;
   authorImage: StrapiMedia | null;
 }
 
@@ -957,6 +958,7 @@ export interface CareerPage {
   peopleSubtitle: string | null;
   peopleImages: StrapiMedia[];
   benefitsTitle: string | null;
+  benefitsHighlight: string | null;
   benefitsText: string | null;
   benefitsImage: StrapiMedia | null;
   benefitItems: AccordionItem[];
