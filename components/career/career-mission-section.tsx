@@ -1,37 +1,75 @@
 "use client";
 
+import { FadeIn } from "@/components/ui/fade-in";
 import type { CareerPage } from "@/lib/types/strapi";
 
 interface Props {
   data: CareerPage | null;
 }
 
-export function CareerMissionSection({ data }: Props): React.ReactElement {
+// Split the heading around the highlight text to wrap it in a styled span
+function renderHeading(
+  text: string,
+  highlight: string | null,
+): React.ReactNode {
+  if (!highlight) {
+    return text;
+  }
+  const index = text.toLowerCase().indexOf(highlight.toLowerCase());
+  if (index === -1) {
+    return text;
+  }
+  const before = text.slice(0, index);
+  const match = text.slice(index, index + highlight.length);
+  const after = text.slice(index + highlight.length);
   return (
-    <section className="w-full py-20 lg:py-28 bg-white">
-      <div className="max-w-7xl mx-auto px-8 lg:px-16">
-        <div className="flex flex-col lg:flex-row lg:gap-20">
-          {/* Left: large serif title */}
-          <div className="lg:w-1/2 mb-10 lg:mb-0">
-            <h2 className="text-3xl lg:text-5xl font-serif font-bold leading-tight text-neutral-900">
-              {data?.missionTitle ?? "Why Build With Us"}
-            </h2>
-          </div>
+    <>
+      {before}
+      <span className="text-primary">{match}</span>
+      {after}
+    </>
+  );
+}
 
-          {/* Right: text */}
-          <div className="lg:w-1/2 flex items-center">
-            {data?.missionText ? (
-              <p className="text-base lg:text-lg font-serif leading-relaxed text-neutral-600 whitespace-pre-line">
-                {data.missionText}
-              </p>
-            ) : (
-              <p className="text-base lg:text-lg font-serif leading-relaxed text-neutral-400">
-                Our team is made up of builders, thinkers, and problem-solvers
-                who are passionate about creating lasting impact through
-                construction excellence.
-              </p>
-            )}
-          </div>
+export function CareerMissionSection({ data }: Props): React.ReactElement {
+  const heading = data?.missionTitle ?? null;
+  const description = data?.missionText ?? null;
+  const highlightText = data?.missionHighlight ?? null;
+
+  if (!heading && !description) {
+    return <></>;
+  }
+
+  return (
+    <section className="bg-neutral-950 pt-30 lg:pt-40 min-h-[80vh]! flex items-center">
+      <div className="max-w-300 mx-auto px-4 sm:px-6 lg:px-8 ">
+        <div className=" gap-12 lg:gap-20 items-start whitespace-pre-line">
+          {/* Left — large heading */}
+          {heading && (
+            <FadeIn direction="left" duration={0.7}>
+              <h2 className="md:w-[85%] text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight">
+                {renderHeading(heading, highlightText)}
+              </h2>
+            </FadeIn>
+          )}
+
+          {/* Right — description */}
+          {description && (
+            <div className="flex justify-beteen w-full items-start gap-12 lg:gap-20 mt-12">
+              <div className="hidden md:block md:w-[60%]"></div>
+              <FadeIn
+                direction="right"
+                className="w-full"
+                delay={0.2}
+                duration={0.7}>
+                <div className="lg:pt-4 w-full">
+                  <p className="text-base lg:text-lg text-white/60 leading-relaxed">
+                    {description}
+                  </p>
+                </div>
+              </FadeIn>
+            </div>
+          )}
         </div>
       </div>
     </section>

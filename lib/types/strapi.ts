@@ -946,7 +946,9 @@ export interface CareerPage {
   heroImage: StrapiMedia | null;
   heroVideo: StrapiMedia | null;
   missionTitle: string | null;
+  missionHighlight: string | null;
   missionText: string | null;
+  statsTitle: string | null;
   stats: StatComponent[];
   quotesTitle: string | null;
   quotes: CareerQuote[];
