@@ -9,6 +9,7 @@ export async function getContact(): Promise<Contact> {
   const res = await strapiGet<StrapiResponse<Contact>>("/contact", {
     "populate[heroVideo]": "true",
     "populate[heroImage]": "true",
+    "populate[cultureCards][populate][image]": "true",
     "populate[seo][populate][shareImage]": "true",
   });
   return res.data;

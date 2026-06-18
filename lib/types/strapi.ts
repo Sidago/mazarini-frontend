@@ -297,6 +297,10 @@ export interface Contact {
   heroCtaUrl: string | null;
   formTitle: string | null;
   formDescription: string | null;
+  cultureHeading: string | null;
+  cultureDescription: string | null;
+  cultureWatermark: string | null;
+  cultureCards: CultureCard[];
 }
 
 export interface TimelineMilestone {

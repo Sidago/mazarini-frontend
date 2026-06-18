@@ -29,11 +29,11 @@ export function TradePartnersSection({
       <div className="max-w-350 mx-auto px-6 sm:px-8">
         {/* Header */}
         <div className="text-center mb-10">
-          <h2 className="text-4xl md:text-5xl font-black text-neutral-900 dark:text-white">
+          <h2 className="text-4xl md:text-5xl font-serif font-black text-neutral-900 dark:text-white">
             {title}
           </h2>
           {description && (
-            <p className="mt-4 text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
+            <p className="mt-4 text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto leading-relaxed">
               {description}
             </p>
           )}

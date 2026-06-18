@@ -20,7 +20,7 @@ export function OnboardingSection({
 }: OnboardingSectionProps): React.ReactElement {
   return (
     <section className="bg-neutral-950 py-24">
-      <div className="max-w-[1400px] mx-auto px-6 sm:px-8">
+      <div className="max-w-300 mx-auto px-6 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-10 items-start">
           {/* Left column */}
           <FadeIn direction="left">

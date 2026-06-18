@@ -7,6 +7,7 @@ import { buildMetadata } from "@/lib/utils/seo";
 import type { Contact, SocialLinkComponent } from "@/lib/types/strapi";
 import { ImgOrVideoHero } from "@/components/common/img-video-hero";
 import { YouMightBeInterested } from "@/components/common/you-might-be-interested";
+import { CultureSection } from "@/components/about/culture-section";
 
 export const revalidate = 300;
 
@@ -40,6 +41,10 @@ const FALLBACK_CONTACT: Contact = {
   formTitle: "Contact us",
   formDescription:
     "Have a project in mind or want to learn more about how we can help? Reach out to our team and we'll get back to you as soon as possible.",
+  cultureHeading: null,
+  cultureDescription: null,
+  cultureWatermark: null,
+  cultureCards: [],
 };
 
 export default async function ContactPage(): Promise<React.ReactElement> {
@@ -84,6 +89,13 @@ export default async function ContactPage(): Promise<React.ReactElement> {
           </div>
         </div>
       </section>
+
+      <CultureSection
+        heading={contact.cultureHeading}
+        description={contact.cultureDescription}
+        watermark={contact.cultureWatermark}
+        cards={contact.cultureCards ?? []}
+      />
 
       <YouMightBeInterested />
     </>
