@@ -17,7 +17,7 @@ export function ContactInfo({
     <div className="flex flex-col justify-start lg:min-h-150">
       <div>
         <FadeIn>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-neutral-900 mb-6">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-black tracking-tight text-neutral-900 mb-6">
             {title}
           </h1>
         </FadeIn>

@@ -35,7 +35,7 @@ const SOCIAL_ICONS: Record<string, React.ReactElement> = {
 
 export function SocialLinks({ links }: SocialLinksProps): React.ReactElement {
   return (
-    <div className="flex gap-4">
+    <div className="flex gap-5">
       {links.map((link) => (
         <Link
           key={link.id}

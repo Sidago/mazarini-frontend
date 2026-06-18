@@ -134,7 +134,7 @@ export function ContactForm({ variant = "regular" }: ContactFormProps): React.Re
   return (
     <form
       onSubmit={handleSubmit}
-      className={`bg-neutral-900 rounded-2xl ${short ? "p-5 space-y-2" : "p-8 md:p-10 space-y-3"}`}
+      className={`bg-neutral-900 ${short ? "p-5 space-y-2" : "p-8 md:p-10 space-y-3"}`}
     >
       {/* First Name + Last Name */}
       <div className={`grid grid-cols-1 sm:grid-cols-2 ${short ? "gap-2" : "gap-4"}`}>

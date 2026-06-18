@@ -33,23 +33,23 @@ export function LeadershipSection({
         </div>
       )}
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 font-serif">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 font-serif text-center">
         <div className="mb-10">
           <h2 className="text-4xl md:text-5xl font-bold leading-tight">
             {title}
           </h2>
           {details && (
-            <p className="mt-4 text-lg text-black/70 max-w-xl leading-relaxed">
+            <p className="mt-4 text-lg text-black/70 max-w-xl justify-self-center leading-relaxed">
               {details}
             </p>
           )}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-center gap-6">
           {members.map((member) => {
             const url = getStrapiMediaUrl(member.image ?? null);
             return (
-              <div key={member.id}>
+              <div key={member.id} className="w-full max-w-64 mx-auto">
                 <div className="relative w-full aspect-[3/4] overflow-hidden mb-3">
                   {url ? (
                     <Image

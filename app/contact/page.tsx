@@ -65,17 +65,17 @@ export default async function ContactPage(): Promise<React.ReactElement> {
   return (
     <>
       {/* Contact Hero Section like about hero page */}
-      <ImgOrVideoHero
+      {/* <ImgOrVideoHero
         title={contact.heroTitle}
         text={contact.heroText}
         heroVideo={contact.heroVideo}
         heroImage={contact.heroImage}
         ctaText={contact.heroCtaText}
         ctaUrl={contact.heroCtaUrl}
-      />
+      /> */}
 
-      <section className="py-20 md:py-32 bg-background-light">
-        <div className="max-w-350 mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 md:py-50 bg-background-light">
+        <div className="max-w-300 mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             <ContactInfo
               title={contact.formTitle ?? "Contact us"}

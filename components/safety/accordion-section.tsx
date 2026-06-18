@@ -25,7 +25,7 @@ export function AccordionSection({
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
           {/* Left — image */}
           <FadeIn direction="left">
-            <div className="relative w-80 lg:w-96 shrink-0 aspect-4/5 overflow-hidden">
+            <div className="relative w-80 lg:w-96 shrink-0 aspect-[3.5/5] overflow-hidden">
               {imageUrl && (
                 <Image
                   src={imageUrl}
@@ -39,16 +39,16 @@ export function AccordionSection({
           </FadeIn>
 
           {/* Right — content */}
-          <div className="w-full lg:w-[550px] shrink-0 flex flex-col justify-center">
+          <div className="w-full lg:w-[600px] shrink-0 flex flex-col justify-center">
             <FadeIn direction="right">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight mb-6 whitespace-pre-line">
+              <h2 className="text-3xl md:text-4xl font-serif font-black text-white leading-tight mb-6 whitespace-pre-line">
                 {title}
               </h2>
             </FadeIn>
 
             {details && (
               <FadeIn direction="right" delay={0.1}>
-                <p className="text-lg text-neutral-400 leading-relaxed mb-10 max-w-lg whitespace-pre-line">
+                <p className="text-lg text-neutral-400 mb-10 max-w-lg whitespace-pre-line">
                   {details}
                 </p>
               </FadeIn>

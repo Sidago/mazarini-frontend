@@ -44,8 +44,8 @@ export function ColabTeamSection({ data }: Props): React.ReactElement {
 
       <div className="relative font-serif z-10 w-full max-w-[90%] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2">
-          <div className="lg:ps-[15vw]">
-            <h2 className="text-4xl font-semibold leading-tight mb-6 mt-10">
+          <div className="lg:ps-[15vw] text-center my-auto">
+            <h2 className="text-4xl font-semibold leading-tight mb-6">
               {data.teamTitle ?? "Team Members"}
             </h2>
             {data.teamDescription && (

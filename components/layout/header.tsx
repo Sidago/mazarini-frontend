@@ -34,7 +34,7 @@ export function Header({
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const pathname = usePathname();
 
-  const FORCE_ACTIVE_PATHS = ["/leadership", "/insights/"];
+  const FORCE_ACTIVE_PATHS = ["/leadership", "/insights/", "/contact"];
   const active = scrolled || hovered || FORCE_ACTIVE_PATHS.some((p) => pathname.startsWith(p));
 
   useEffect(() => {
