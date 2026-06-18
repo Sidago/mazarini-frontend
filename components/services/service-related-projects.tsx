@@ -30,9 +30,10 @@ export function ServiceRelatedProjects({
       {/* Watermark — same as expertise section */}
       <div className="absolute inset-0 flex items-center pointer-events-none select-none">
         <ParallaxText
-          baseVelocity={-1}
-          className="inline-block text-[20vw] md:text-[15vw] font-black text-neutral-900/4 dark:text-white/4 leading-none mx-4">
-          Projects
+          baseVelocity={.2}
+          color="rgba(0,0,0,0.05)"
+          className="inline-block text-[20vw] md:text-[15vw] font-black text-neutral-900/30 eading-none mx-4">
+          Relevant Projects
         </ParallaxText>
       </div>
 
@@ -41,7 +42,7 @@ export function ServiceRelatedProjects({
           {/* Left: sticky heading */}
           <div className="lg:w-[30%] lg:sticky lg:top-32 shrink-0">
             <FadeIn direction="left" duration={0.7}>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-neutral-900 dark:text-white leading-tight mb-6">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-black text-neutral-900 dark:text-white leading-tight mb-6">
                 Relevant Projects
               </h2>
               <p className="text-base lg:text-lg text-neutral-500 dark:text-neutral-400 leading-relaxed mb-8">

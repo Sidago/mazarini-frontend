@@ -124,7 +124,7 @@ export default async function ServiceDetailPage({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col md:flex-row justify-between items-center gap-12">
           <div className="w-full">
             <FadeIn direction="up">
-              <h2 className="text-3xl md:text-6xl font-black text-neutral-900 dark:text-white mb-4 text-left">
+              <h2 className="text-3xl md:text-6xl font-serif font-black text-neutral-900 dark:text-white mb-4 text-left">
                 Get in Touch
               </h2>
             </FadeIn>
