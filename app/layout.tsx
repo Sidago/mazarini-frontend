@@ -73,7 +73,7 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <head>
         <link rel="icon" href={fabIcon} sizes="32x32" />
         <link

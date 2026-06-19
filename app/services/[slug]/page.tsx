@@ -104,8 +104,8 @@ export default async function ServiceDetailPage({
         text={text}
         heroImage={heroImage}
         heroVideo={heroVideo}
-        ctaText={null}
-        ctaUrl={null}
+        ctaText={"contact with us"}
+        ctaUrl={"#contact-with-us"}
       />
 
       <ServiceDetailSection service={service} />
@@ -120,7 +120,9 @@ export default async function ServiceDetailPage({
 
       <NewsSection heading={newsHeading} news={news ?? []} />
 
-      <section className="py-20 md:py-32 w-full bg-background-light dark:bg-background-dark">
+      <section
+        id="contact-with-us"
+        className="scroll-mt-28 py-20 md:py-32 w-full bg-background-light dark:bg-background-dark">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col md:flex-row justify-between items-center gap-12">
           <div className="w-full">
             <FadeIn direction="up">

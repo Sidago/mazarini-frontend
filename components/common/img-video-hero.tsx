@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { HeroVideo } from "@/components/home/hero-video";
+import { HeroCta } from "@/components/common/hero-cta";
 import type { StrapiMedia } from "@/lib/types/strapi";
 
 interface ImgOrVideoHeroProps {
@@ -38,11 +38,11 @@ export function ImgOrVideoHero({
 
         {ctaText && ctaUrl && (
           <div className="mt-12">
-            <Link
-              href={ctaUrl}
-              className="inline-flex items-center justify-center px-10 py-4 text-sm font-bold uppercase tracking-widest text-neutral-900 bg-primary hover:bg-amber-500 transition-all">
-              {ctaText}
-            </Link>
+            <HeroCta
+              ctaText={ctaText}
+              ctaUrl={ctaUrl}
+              className="inline-flex items-center justify-center px-7 py-4 text-sm font-bold uppercase tracking-widest text-neutral-900 bg-primary hover:bg-amber-500 transition-all"
+            />
           </div>
         )}
       </div>
