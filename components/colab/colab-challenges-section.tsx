@@ -86,15 +86,15 @@ export function ColabChallengesSection({ data }: Props): React.ReactElement {
               return (
                 <div
                   key={card.id}
-                  className="group flex-none w-72 lg:w-80 h-72 lg:h-80 relative overflow-hidden bg-neutral-800/40 p-6 flex flex-col justify-end cursor-default">
+                  className="group flex-none w-72 lg:w-90 h-72 lg:h-90 relative overflow-hidden bg-neutral-800/40 p-4 flex flex-col justify-end cursor-default">
 
                   {/* Default view — challenge label + description */}
                   <div className="transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-2">
-                    <p className="text-primary text-xs font-bold uppercase tracking-widest mb-3">
+                    <p className="text-primary text-lg font-bold uppercase tracking-widest mb-3">
                       {card.label}
                     </p>
                     {card.description && (
-                      <p className="text-white text-sm leading-relaxed">
+                      <p className="text-white text-lg leading-relaxed">
                         {card.description}
                       </p>
                     )}
@@ -103,10 +103,10 @@ export function ColabChallengesSection({ data }: Props): React.ReactElement {
                   {/* Hover view — "Solution" + hoverDescription */}
                   {card.hoverDescription && (
                     <div className="absolute inset-0 p-6 flex flex-col justify-end bg-neutral-800/80 opacity-0 -translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-                      <p className="text-primary text-xs font-bold uppercase tracking-widest mb-3">
+                      <p className="text-primary text-lg font-bold uppercase tracking-widest mb-3">
                         Solution
                       </p>
-                      <p className="text-white text-sm leading-relaxed">
+                      <p className="text-white text-lg leading-relaxed">
                         {card.hoverDescription}
                       </p>
                     </div>

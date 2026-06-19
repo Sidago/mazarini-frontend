@@ -40,12 +40,12 @@ export function ServiceRelatedProjects({
       <div className="relative z-10 max-w-400 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
           {/* Left: sticky heading */}
-          <div className="lg:w-[30%] lg:sticky lg:top-32 shrink-0">
+          <div className="lg:w-[30%] lg:sticky lg:top-32 shrink-0 my-auto">
             <FadeIn direction="left" duration={0.7}>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-black text-neutral-900 dark:text-white leading-tight mb-6">
                 Relevant Projects
               </h2>
-              <p className="text-base lg:text-lg text-neutral-500 dark:text-neutral-400 leading-relaxed mb-8">
+              <p className="text-base lg:text-lg text-neutral-500 dark:text-neutral-400 leading-relaxed">
                 Explore a selection of projects that showcase our work in this
                 area.
               </p>

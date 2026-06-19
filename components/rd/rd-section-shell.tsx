@@ -70,7 +70,7 @@ export function RdSectionShell({
         </div>
       )}
 
-      <div className={`relative z-10 w-full ${contentClassName ?? "max-w-[90%] mx-auto px-4 sm:px-6 lg:px-8"}`}>
+      <div className={`relative z-10 w-full ${contentClassName ?? "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"}`}>
         <div className={`grid grid-cols-1 items-center ${gridClassName ?? "lg:grid-cols-[2fr_3fr] gap-16"}`}>
           <div className="flex flex-col justify-center">{leftContent}</div>
           <div>{rightContent}</div>

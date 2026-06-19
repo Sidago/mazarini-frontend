@@ -27,7 +27,7 @@ export function InnovationSection({ data }: InnovationSectionProps): React.React
         </>
       }
       rightContent={
-        <div className="grid grid-cols-2 gap-3 max-w-[78%] ml-auto">
+        <div className="grid grid-cols-2 gap-3 max-w-[90%]">
           {items.slice(0, 4).map((item) => {
             const url = getStrapiMediaUrl(item.image ?? null);
             return (

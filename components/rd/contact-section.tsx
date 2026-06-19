@@ -37,7 +37,7 @@ export function ContactSection({
       </div>
 
       <div className="relative z-10 w-full max-w-[90%] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           {/* Left */}
           <div className="lg:ps-[15vw]">
             <p className="text-primary text-sm font-bold uppercase tracking-widest mb-4">
@@ -59,7 +59,7 @@ export function ContactSection({
           </div>
 
           {/* Right — form constrained to 70vh and centered */}
-          <div className="flex justify-center">
+          <div className="flex justify-start">
             <div className="w-full max-w-md md:max-h-[80vh] overflow-hidden">
               <ContactForm variant="short" />
             </div>

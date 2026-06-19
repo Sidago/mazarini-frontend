@@ -53,7 +53,7 @@ export function PartnersSection({
         <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-10 items-center">
           {/* Left */}
           <div className="lg:ps-[12vw]">
-            <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-6 whitespace-pre-line">
+            <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold font-serif leading-tight mb-6 whitespace-pre-line">
               {data.partnersTitle ?? "In Good Company"}
             </h2>
             <p className="text-lg leading-relaxed text-neutral-600 max-w-sm whitespace-pre-line">

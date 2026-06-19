@@ -87,7 +87,7 @@ export function CultureSection({
 
           <div
             ref={scrollRef}
-            className="flex gap-4 overflow-x-auto scrollbar-hide px-8 lg:px-0 pb-2">
+            className="flex gap-4 overflow-x-auto scrollbar-hide px-8 lg:px-0 pb-2 after:content-[''] after:flex-none after:w-4 lg:after:w-16">
           {cards.map((card) => {
             const url = getStrapiMediaUrl(card.image);
             const Wrapper = card.url ? Link : "div";

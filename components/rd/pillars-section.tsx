@@ -79,13 +79,13 @@ export function PillarsSection({
             onClick={() => scroll(1)}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 hidden lg:flex w-10 h-10 rounded-full bg-primary items-center justify-center cursor-pointer shadow-lg">
+            className="absolute right-[3vw] top-1/2 -translate-y-1/2 z-20 hidden lg:flex w-10 h-10 rounded-full bg-primary items-center justify-center cursor-pointer shadow-lg">
             <Icon name="arrow_forward" className="text-white" />
           </motion.button>
 
           <div
             ref={scrollRef}
-            className="flex gap-4 overflow-x-auto scrollbar-hide pb-4 select-none px-6 lg:px-0">
+            className="flex gap-4 overflow-x-auto scrollbar-hide pb-4 select-none px-6 lg:pl-0 lg:pr-[3vw]">
             {pillars.map((pillar) => {
               const url = getStrapiMediaUrl(pillar.image);
               return (
@@ -95,15 +95,17 @@ export function PillarsSection({
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -16 }}
                   transition={{ duration: 0.3 }}
-                  className="flex flex-col gap-2 flex-none w-[70vw] lg:w-[25vw]">
-                  <h4 className="text-2xl font-bold text-primary">
-                    {pillar.title}
-                  </h4>
-                  <p className="text-white/80 leading-relaxed max-w-md">
-                    {pillar.description}
-                  </p>
+                  className="flex flex-col gap-3 flex-none w-[70vw] lg:w-[25vw]">
+                  <div className="h-28 overflow-hidden">
+                    <h4 className="text-xl font-bold text-primary line-clamp-1">
+                      {pillar.title}
+                    </h4>
+                    <p className="mt-2 text-white/80 leading-relaxed text-sm line-clamp-3">
+                      {pillar.description}
+                    </p>
+                  </div>
                   {url && (
-                    <div className="relative w-full h-100 overflow-hidden">
+                    <div className="relative w-full h-90 flex-none overflow-hidden">
                       <Image
                         src={url}
                         alt={pillar.title}

@@ -51,7 +51,7 @@ export function NewsSection({ data }: NewsSectionProps): React.ReactElement {
         <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-16 items-center">
           {/* Left */}
           <div className="ps-6 lg:pl-[15vw] lg:pr-8 py-12 lg:py-0">
-            <h2 className="text-4xl lg:text-6xl font-bold mb-8">
+            <h2 className="text-4xl lg:text-6xl font-bold mb-8 font-serif">
               {data.newsTitle ?? "News"}
             </h2>
             {data.newsCtaUrl && (
