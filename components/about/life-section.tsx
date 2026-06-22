@@ -21,7 +21,7 @@ export function LifeSection({
   const items = [...images, ...images, ...images];
 
   return (
-    <section className="bg-neutral-950 text-white py-30 overflow-hidden">
+    <section className="bg-neutral-950 text-white pb-30 overflow-hidden">
       {/* Heading + description */}
       {(heading || description) && (
         <div className="text-center mb-14 px-6">

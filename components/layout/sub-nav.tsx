@@ -118,8 +118,12 @@ export function SubNav({ items, scrolled }: SubNavProps): React.ReactElement {
                 <span
                   className={`text-xs font-semibold uppercase tracking-widest transition-colors cursor-pointer py-4 inline-block ${
                     isActive
-                      ? scrolled ? "text-black/70" : "text-white/70"
-                      : scrolled ? "text-black" : "text-white"
+                      ? scrolled
+                        ? "text-black/70"
+                        : "text-white/70"
+                      : scrolled
+                        ? "text-black"
+                        : "text-white"
                   }`}>
                   {item.name}
                 </span>
@@ -131,7 +135,7 @@ export function SubNav({ items, scrolled }: SubNavProps): React.ReactElement {
 
       {/* Mega-menu — clips via overflow-hidden; inner div slides from behind the nav */}
       <motion.div
-        className={`absolute top-full left-0 right-0 z-40 max-w-[93%] mx-auto overflow-hidden`}
+        className={`absolute max-w-400 top-full left-0 right-0 z-40 w-[93%] mx-auto overflow-hidden`}
         animate={{ height: isOpen ? PANEL_H : 0 }}
         initial={false}
         transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
