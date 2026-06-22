@@ -1,4 +1,5 @@
 import { strapiGet } from "@/lib/api/client";
+import { aliasStats } from "@/lib/api/stats";
 import type {
   CareerPage,
   Job,
@@ -10,7 +11,7 @@ export async function getCareerPage(): Promise<CareerPage> {
   const res = await strapiGet<StrapiResponse<CareerPage>>("/career-page", {
     "populate[heroImage]": "true",
     "populate[heroVideo]": "true",
-    "populate[stats]": "true",
+    "populate[statItems]": "true",
     "populate[quotes][populate][authorImage]": "true",
     "populate[peopleImages]": "true",
     "populate[benefitsImage]": "true",
@@ -22,7 +23,7 @@ export async function getCareerPage(): Promise<CareerPage> {
     "populate[resourceItems]": "true",
     "populate[seo][populate][shareImage]": "true",
   });
-  return res.data;
+  return aliasStats(res.data);
 }
 
 export async function getJobs(): Promise<Job[]> {

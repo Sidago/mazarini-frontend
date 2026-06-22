@@ -1,4 +1,5 @@
 import { strapiGet } from "@/lib/api/client";
+import { aliasStats } from "@/lib/api/stats";
 import type { SafetyPage, StrapiResponse } from "@/lib/types/strapi";
 
 export async function getSafetyPage(): Promise<SafetyPage> {
@@ -7,10 +8,10 @@ export async function getSafetyPage(): Promise<SafetyPage> {
     "populate[heroVedio]": "true",
     "populate[accordionImage]": "true",
     "populate[accordionItems]": "true",
-    "populate[stats]": "true",
+    "populate[statItems]": "true",
     "populate[carouselCard][populate][image]": "true",
     "populate[leadership_cards][populate][image]": "true",
     "populate[seo][populate][shareImage]": "true",
   });
-  return res.data;
+  return aliasStats(res.data);
 }

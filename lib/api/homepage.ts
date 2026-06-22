@@ -1,4 +1,5 @@
 import { strapiGet } from "@/lib/api/client";
+import { aliasStats } from "@/lib/api/stats";
 import type { Homepage, StrapiResponse } from "@/lib/types/strapi";
 
 export async function getHomepage(): Promise<Homepage> {
@@ -7,7 +8,7 @@ export async function getHomepage(): Promise<Homepage> {
     "populate[heroVideo]": "true",
     "populate[heroFeatured]": "true",
     "populate[heroCTAs]": "true",
-    "populate[stats]": "true",
+    "populate[statItems]": "true",
     "populate[ctaCTAs]": "true",
     "populate[projects][populate][image]": "true",
     "populate[expertise][populate][image]": "true",
@@ -20,5 +21,5 @@ export async function getHomepage(): Promise<Homepage> {
     "populate[seo][populate][shareImage]": "true",
   });
   // console.log("Fetched homepage data:", res.data);
-  return res.data;
+  return aliasStats(res.data);
 }

@@ -1,4 +1,5 @@
 import { strapiGet } from "@/lib/api/client";
+import { aliasStats } from "@/lib/api/stats";
 import type { ColabPage, StrapiResponse } from "@/lib/types/strapi";
 
 export async function getColabPage(): Promise<ColabPage> {
@@ -8,7 +9,7 @@ export async function getColabPage(): Promise<ColabPage> {
     "populate[heroVideo]": "true",
     "populate[introImage]": "true",
     "populate[introVideo]": "true",
-    "populate[stats]": "true",
+    "populate[statItems]": "true",
     "populate[visionItems]": "true",
     "populate[experienceImage]": "true",
     "populate[testimonialImage]": "true",
@@ -20,5 +21,5 @@ export async function getColabPage(): Promise<ColabPage> {
     "populate[featuredNews][populate][image]": "true",
     "populate[seo][populate][shareImage]": "true",
   });
-  return res.data;
+  return aliasStats(res.data);
 }

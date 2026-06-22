@@ -1,11 +1,12 @@
 import { strapiGet } from "@/lib/api/client";
+import { aliasStats } from "@/lib/api/stats";
 import type { About, StrapiResponse } from "@/lib/types/strapi";
 
 export async function getAbout(): Promise<About> {
   const res = await strapiGet<StrapiResponse<About>>("/about", {
     "populate[heroVideo]": "true",
     "populate[heroImage]": "true",
-    "populate[stats]": "true",
+    "populate[statItems]": "true",
     "populate[leadershipBlocks][populate][image]": "true",
     // "populate[leadershipHeading]": "true",
     // "populate[leadershipDescription]": "true",
@@ -17,5 +18,5 @@ export async function getAbout(): Promise<About> {
     "populate[seo][populate][shareImage]": "true",
   });
   console.log("Raw about response:", res);
-  return res.data;
+  return aliasStats(res.data);
 }

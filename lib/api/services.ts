@@ -1,4 +1,5 @@
 import { strapiGet } from "@/lib/api/client";
+import { aliasStats } from "@/lib/api/stats";
 import type {
   Service,
   ServicesPage,
@@ -33,9 +34,9 @@ export async function getServicesPage(): Promise<ServicesPage> {
       "populate[heroVideo]": "true",
       "populate[heroImage]": "true",
       "populate[featuredServices][populate][image]": "true",
-      "populate[stats]": "true",
+      "populate[statItems]": "true",
       "populate[seo][populate][shareImage]": "true",
     },
   );
-  return res.data;
+  return aliasStats(res.data);
 }
