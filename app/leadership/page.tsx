@@ -25,6 +25,12 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function LeadershipPage(): Promise<React.ReactElement> {
+  // TEMP: Leadership page is hidden until we have professional team photos.
+  // To restore it, delete this guard block (or set NEXT_PUBLIC_SHOW_LEADERSHIP=true).
+  if (process.env.NEXT_PUBLIC_SHOW_LEADERSHIP !== "true") {
+    notFound();
+  }
+
   const data = await getLeadershipPage().catch(() => null);
   if (!data) return notFound();
 

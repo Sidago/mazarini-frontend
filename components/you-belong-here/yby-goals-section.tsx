@@ -39,8 +39,8 @@ export function YbyGoalsSection({ data }: Props): React.ReactElement {
 
       <div className="relative z-10 flex flex-col lg:flex-row lg:items-center w-full lg:h-full">
         {/* Left */}
-        <div className="w-full flex-none flex flex-col justify-center px-6 lg:pl-[15vw] lg:pr-10 py-12 lg:py-0">
-          <h2 className="text-2xl lg:text-4xl font-serif font-bold leading-tight mb-6 text-neutral-900">
+        <div className="w-full flex-none flex flex-col justify-center items-center px-6 lg:pl-[15vw] lg:pr-10 py-12 lg:py-0">
+          <h2 className="text-2xl lg:text-4xl font-serif font-bold leading-tight mb-6 text-neutral-900 text-left w-full max-w-3xl">
             {data.goalsTitle ?? "Our Goals"}
           </h2>
           {data.goalsDescription && (
