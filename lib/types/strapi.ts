@@ -985,6 +985,41 @@ export interface CareerPage {
   seo: SeoComponent | null;
 }
 
+// Spark Page ("Igniting Progress")
+
+export interface SparkBlock {
+  id: number;
+  title: string | null;
+  text: string | null;
+  image: StrapiMedia | null;
+  ctaText: string | null;
+  ctaUrl: string | null;
+}
+
+export interface SparkPage {
+  id: number;
+  documentId: string;
+  heroTitle: string | null;
+  heroText: string | null;
+  heroCtaText: string | null;
+  heroCtaUrl: string | null;
+  heroImage: StrapiMedia | null;
+  heroVideo: StrapiMedia | null;
+  introHeading: string | null;
+  introHighlight: string | null;
+  introText: string | null;
+  statementHeading: string | null;
+  statementHighlight: string | null;
+  statementImage: StrapiMedia | null;
+  blocks: SparkBlock[];
+  wideImage: StrapiMedia | null;
+  wideCaption: string | null;
+  newsTitle: string | null;
+  contactTitle: string | null;
+  contactDescription: string | null;
+  seo: SeoComponent | null;
+}
+
 // You Belong Here Page
 
 export interface YouBelongHerePage {

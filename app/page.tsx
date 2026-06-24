@@ -82,7 +82,7 @@ const FALLBACK_HOMEPAGE: Homepage = {
     "We believe that every breakthrough starts with a spark of curiosity — a question, an idea, a bold 'what if?' For nearly 90 years, we've challenged conventional thinking, embraced innovation, and pioneered smarter ways to build.",
   sparkImage: null,
   sparkCtaText: "SEE OUR SPARK",
-  sparkCtaUrl: "/about",
+  sparkCtaUrl: "/spark",
   newsHeading: "News\n& Insights",
   news: [],
 };

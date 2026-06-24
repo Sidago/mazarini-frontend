@@ -41,52 +41,54 @@ export function LeadershipSection({
         </div>
       )}
 
-      <div className="relative z-10 w-full max-w-[90%] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-10">
           {/* Left — header */}
-          <div className="lg:ps-[8vw]">
+          <div className="shrink-0 max-w-sm text-center lg:text-left">
             <h2 className="text-4xl lg:text-5xl font-serif font-semibold leading-tight mb-4">
               {data.leadershipTitle ?? "Key Leadership"}
             </h2>
             {data.leadershipDescription && (
-              <p className="text-base leading-relaxed text-white/60 max-w-sm">
+              <p className="text-base leading-relaxed text-white/60">
                 {data.leadershipDescription}
               </p>
             )}
           </div>
 
           {/* Right — cards */}
-          <DragScrollRow>
-            {members.map((member) => {
-              const url = getStrapiMediaUrl(member.image ?? null);
-              return (
-                <div
-                  key={member.id}
-                  className="flex-none flex flex-col items-center">
-                  <div className="relative w-60 h-80 overflow-hidden">
-                    {url ? (
-                      <Image
-                        src={url}
-                        alt={member.name}
-                        fill
-                        className="object-cover rounded-sm"
-                        sizes=""
-                        draggable={false}
-                      />
-                    ) : (
-                      <div className="w-full h-full bg-neutral-700" />
-                    )}
+          <div className="min-w-0 w-full lg:w-auto">
+            <DragScrollRow>
+              {members.map((member) => {
+                const url = getStrapiMediaUrl(member.image ?? null);
+                return (
+                  <div
+                    key={member.id}
+                    className="flex-none flex flex-col items-center">
+                    <div className="relative w-60 h-80 overflow-hidden">
+                      {url ? (
+                        <Image
+                          src={url}
+                          alt={member.name}
+                          fill
+                          className="object-cover rounded-sm"
+                          sizes=""
+                          draggable={false}
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-neutral-700" />
+                      )}
+                    </div>
+                    <p className="text-base font-semibold text-white text-center mt-3">
+                      {member.name}
+                    </p>
+                    <p className="text-sm text-white/50 text-center mt-0.5">
+                      {member.position}
+                    </p>
                   </div>
-                  <p className="text-base font-semibold text-white text-center mt-3">
-                    {member.name}
-                  </p>
-                  <p className="text-sm text-white/50 text-center mt-0.5">
-                    {member.position}
-                  </p>
-                </div>
-              );
-            })}
-          </DragScrollRow>
+                );
+              })}
+            </DragScrollRow>
+          </div>
         </div>
       </div>
     </section>

@@ -96,7 +96,7 @@ export function ExperienceSection({
               )}
               {ctaText && (
                 <a
-                  href="#contact"
+                  href="/contact"
                   className="inline-block px-6 py-3 bg-primary text-white text-xs font-bold uppercase tracking-widest hover:bg-primary/90 transition-colors">
                   {ctaText}
                 </a>

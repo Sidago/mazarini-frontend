@@ -26,7 +26,7 @@ export function SparkSection({
   return (
     <section className="bg-white py-24 lg:py-32">
       <div className="max-w-360 mx-auto px-8 md:px-16">
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-24">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-16">
 
           {/* Left: image */}
           {imageUrl && (

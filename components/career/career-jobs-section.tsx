@@ -12,7 +12,7 @@ export function CareerJobsSection({ data, jobs }: Props): React.ReactElement {
   const title = data?.jobsSectionTitle ?? "Featured Jobs";
 
   return (
-    <section className="w-full py-20 lg:py-28 bg-white">
+    <section id="jobs" className="w-full py-20 lg:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-8 lg:px-16">
         {/* Header */}
         <div className="flex items-end justify-between mb-12">

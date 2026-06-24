@@ -9,7 +9,7 @@ export async function getSustainabilityPage(): Promise<SustainabilityPage> {
       "populate[heroImage]": "true",
       "populate[heroVideo]": "true",
       "populate[accordionImage]": "true",
-      "populate[accordionItems]": "true",
+      "populate[accordionItems][populate][image]": "true",
       "populate[statItems]": "true",
       "populate[carouselCards][populate][image]": "true",
       "populate[leadershipCards][populate][image]": "true",

@@ -7,7 +7,7 @@ export async function getSafetyPage(): Promise<SafetyPage> {
     "populate[heroImage]": "true",
     "populate[heroVedio]": "true",
     "populate[accordionImage]": "true",
-    "populate[accordionItems]": "true",
+    "populate[accordionItems][populate][image]": "true",
     "populate[statItems]": "true",
     "populate[carouselCard][populate][image]": "true",
     "populate[leadership_cards][populate][image]": "true",

@@ -6,10 +6,13 @@ import type { AccordionItem } from "@/lib/types/strapi";
 
 interface ServiceAccordionProps {
   items: AccordionItem[];
+  /** Called with the newly opened index (or -1 when collapsed). */
+  onActiveChange?: (index: number) => void;
 }
 
 export function ServiceAccordion({
   items,
+  onActiveChange,
 }: ServiceAccordionProps): React.ReactElement {
   const [openIndex, setOpenIndex] = useState(0);
 
@@ -22,7 +25,11 @@ export function ServiceAccordion({
           <div key={item.id ?? index}>
             <button
               type="button"
-              onClick={() => setOpenIndex(isOpen ? -1 : index)}
+              onClick={() => {
+                const next = isOpen ? -1 : index;
+                setOpenIndex(next);
+                onActiveChange?.(next);
+              }}
               className={`w-full text-left border-l-4 pl-6 py-2 transition-colors cursor-pointer ${
                 isOpen
                   ? "border-primary"

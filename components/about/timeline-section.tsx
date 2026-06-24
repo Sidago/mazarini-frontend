@@ -104,25 +104,25 @@ export function TimelineSection({
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: directionRef.current * -120 }}
             transition={{ duration: 0.45, ease: [0.32, 0.72, 0, 1] }}
-            className="grid grid-cols-1 lg:grid-cols-[55fr_45fr]">
-
+            className="grid grid-cols-1 lg:grid-cols-[45fr_55fr]">
+            
             {/* Image — left, full bleed */}
-            <div className="relative w-[90%] h-72 sm:h-96 lg:h-[65vh] overflow-hidden">
+            <div className="relative w-full h-64 sm:h-80 lg:h-[58vh] overflow-hidden">
               <Image
                 src={getStrapiMediaUrl(activeEntry.image)}
                 alt={activeEntry.image?.alternativeText ?? activeEntry.title}
                 fill
                 className="object-cover"
-                sizes="(max-width: 1024px) 90vw, 55vw"
+                sizes="(max-width: 1024px) 80vw, 45vw"
               />
             </div>
 
             {/* Text — right */}
-            <div className="flex flex-col justify-center px-8 py-12 lg:px-16 lg:py-0">
+            <div className="flex flex-col justify-center items-start px-8 lg:px-16 py-12 lg:py-0">
               <h3 className="text-3xl sm:text-4xl font-semibold text-neutral-900 mb-6 font-serif leading-tight">
                 {activeEntry.title}
               </h3>
-              <p className="text-base lg:text-lg text-neutral-600 leading-relaxed mb-8 max-w-md">
+              <p className="text-base lg:text-lg text-neutral-600 leading-relaxed mb-8 max-w-xl">
                 {activeEntry.description}
               </p>
               <button

@@ -74,7 +74,7 @@ export function BelongSection({
         {ctaText && (
           <FadeIn direction="up" delay={0.45} duration={0.7}>
             <a
-              href="#careers"
+              href="/career"
               className="inline-block px-8 py-3 border border-primary text-neutral-900 text-xs font-bold uppercase tracking-widest hover:bg-primary hover:text-white transition-colors"
             >
               {ctaText}

@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { ParallaxText } from "@/components/ui/scroll-animations";
+import { Icon } from "@/components/ui/icon";
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import type { YouBelongHerePage } from "@/lib/types/strapi";
 
@@ -13,9 +14,8 @@ interface Props {
 
 export function YbyBelongingSection({ data }: Props): React.ReactElement {
   const items = data.belongingItems ?? [];
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
 
+  const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 1024);
     check();
@@ -23,14 +23,17 @@ export function YbyBelongingSection({ data }: Props): React.ReactElement {
     return () => window.removeEventListener("resize", check);
   }, []);
 
-  if (items.length === 0) return <></>;
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const scroll = (direction: 1 | -1) => {
+    scrollRef.current?.scrollBy({ left: direction * 380, behavior: "smooth" });
+  };
 
-  const activeItem = items[activeIndex];
+  if (items.length === 0) return <></>;
 
   return (
     <section
       id="belonging"
-      className="relative w-screen min-h-screen lg:h-screen flex-none flex flex-col overflow-hidden bg-background-light text-neutral-900">
+      className="relative w-screen min-h-screen lg:h-screen flex-none flex items-center overflow-hidden py-20 lg:py-0 bg-background-light text-neutral-900">
 
       {/* Watermark */}
       {data.belongingWatermark && (
@@ -47,83 +50,76 @@ export function YbyBelongingSection({ data }: Props): React.ReactElement {
         </div>
       )}
 
-      {/* Main content — fills available height above the bottom nav */}
-      <div className="relative z-10 flex flex-col lg:flex-row flex-1 min-h-0 w-full">
-
-        {/* Left — static section heading + description */}
-        <div className="w-full lg:w-[50vw] flex-none flex flex-col justify-center px-6 lg:pl-[15vw] lg:pr-10 py-12 lg:py-0">
-          <h2 className="text-2xl lg:text-3xl font-serif font-bold leading-tight mb-6 text-neutral-900">
+      <div className="relative z-10 flex flex-col lg:flex-row lg:items-center w-full lg:h-full">
+        {/* Left */}
+        <div className="w-full lg:w-[40vw] flex-none flex flex-col justify-center px-6 lg:pl-[15vw] lg:pr-8 py-12 lg:py-0">
+          <h2 className="text-3xl lg:text-5xl font-serif font-bold leading-tight mb-6 whitespace-pre-line">
             {data.belongingTitle ?? "Why Belonging Matters"}
           </h2>
           {data.belongingDescription && (
-            <p className="text-sm font-serif leading-relaxed text-neutral-600 max-w-xl">
+            <p className="text-base font-serif leading-relaxed text-neutral-600 max-w-sm">
               {data.belongingDescription}
             </p>
           )}
         </div>
 
-        {/* Right — active item: title + description + image */}
-        <div className="w-full lg:w-[50vw] flex-none px-6 lg:pr-[8vw] lg:pl-8 py-8 lg:py-16 flex flex-col justify-center overflow-hidden">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeIndex}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.35, ease: [0.32, 0.72, 0, 1] }}
-              className="flex flex-col">
+        {/* Right — scrollable cards */}
+        <div className="relative w-full lg:w-[60vw] flex-none min-w-0">
+          {/* Left arrow — desktop only */}
+          <motion.button
+            onClick={() => scroll(-1)}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 hidden lg:flex w-10 h-10 rounded-full bg-primary items-center justify-center cursor-pointer shadow-lg">
+            <Icon name="arrow_back" className="text-white" />
+          </motion.button>
 
-              <h3 className="text-base font-bold font-serif text-neutral-900 mb-3">
-                {activeItem.title}
-              </h3>
+          {/* Right arrow — desktop only */}
+          <motion.button
+            onClick={() => scroll(1)}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className="absolute right-[3vw] top-1/2 -translate-y-1/2 z-20 hidden lg:flex w-10 h-10 rounded-full bg-primary items-center justify-center cursor-pointer shadow-lg">
+            <Icon name="arrow_forward" className="text-white" />
+          </motion.button>
 
-              <p className="text-sm font-serif text-neutral-600 leading-relaxed mb-6 max-w-lg">
-                {activeItem.description}
-              </p>
-
-              {activeItem.image && (
-                <div className="w-full max-w-lg overflow-hidden">
-                  <Image
-                    src={getStrapiMediaUrl(activeItem.image)}
-                    alt={activeItem.image.alternativeText ?? activeItem.title}
-                    width={activeItem.image.width ?? 600}
-                    height={activeItem.image.height ?? 420}
-                    className="w-full h-auto object-cover"
-                  />
-                </div>
-              )}
-            </motion.div>
-          </AnimatePresence>
-        </div>
-      </div>
-
-      {/* Bottom dot navigation */}
-      <div className="relative z-10 px-6 lg:px-[8vw] pb-8 pt-4">
-        <div className="flex items-center">
-          {items.map((item, i) => (
-            <div key={item.id} className="flex items-center flex-1 last:flex-none">
-              <button
-                type="button"
-                onClick={() => setActiveIndex(i)}
-                className="relative flex flex-col items-center shrink-0 group">
-                {i === activeIndex && (
-                  <span className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 text-[10px] font-bold uppercase tracking-widest text-primary whitespace-nowrap">
-                    {item.title}
-                  </span>
-                )}
-                <span
-                  className={`block rounded-full transition-all duration-300 ${
-                    i === activeIndex
-                      ? "w-3 h-3 bg-primary"
-                      : "w-2.5 h-2.5 bg-neutral-300 group-hover:bg-neutral-500"
-                  }`}
-                />
-              </button>
-              {i < items.length - 1 && (
-                <div className="flex-1 h-px bg-neutral-300 mx-1" />
-              )}
-            </div>
-          ))}
+          <div
+            ref={scrollRef}
+            className="flex gap-4 overflow-x-auto scrollbar-hide pb-4 select-none px-6 lg:pl-0 lg:pr-[3vw]">
+            {items.map((item) => {
+              const url = getStrapiMediaUrl(item.image ?? null);
+              return (
+                <motion.div
+                  key={item.id}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -16 }}
+                  transition={{ duration: 0.3 }}
+                  className="font-serif flex flex-col gap-3 flex-none w-[70vw] lg:w-[25vw]">
+                  <div className="h-28 overflow-hidden">
+                    <h4 className="text-xl font-semibold text-primary line-clamp-1">
+                      {item.title}
+                    </h4>
+                    <p className="mt-2 text-sm text-neutral-600 leading-relaxed line-clamp-3">
+                      {item.description}
+                    </p>
+                  </div>
+                  {url && (
+                    <div className="relative w-full h-90 flex-none overflow-hidden">
+                      <Image
+                        src={url}
+                        alt={item.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 1024px) 70vw, 25vw"
+                        draggable={false}
+                      />
+                    </div>
+                  )}
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
