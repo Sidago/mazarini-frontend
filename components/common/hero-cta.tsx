@@ -6,12 +6,14 @@ interface HeroCtaProps {
   ctaText: string;
   ctaUrl: string;
   className?: string;
+  openInBlank?: boolean;
 }
 
 export function HeroCta({
   ctaText,
   ctaUrl,
   className,
+  openInBlank = false
 }: HeroCtaProps): React.ReactElement {
   const isHash = ctaUrl.startsWith("#");
 
@@ -34,7 +36,7 @@ export function HeroCta({
   }
 
   return (
-    <Link href={ctaUrl} className={className}>
+    <Link href={ctaUrl} target={openInBlank ? "_blank" : undefined} rel={openInBlank ? "noopener noreferrer" : undefined} className={className}>
       {ctaText}
     </Link>
   );

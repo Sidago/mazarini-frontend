@@ -32,9 +32,10 @@ export function ProjectsSection({
         <div className="pointer-events-none select-none absolute top-0 left-0 right-0 h-[40%] lg:inset-0 lg:h-auto z-0">
           <ParallaxText
             baseVelocity={0.2}
-            color="rgba(255,255,255,0.06)"
+            color="rgba(255,255,255,0.1)"
             direction={isMobile ? "horizontal" : "vertical"}
             position="start"
+            paddingStart="12vw"
             flip={true}>
             {data.projectsWatermark}
           </ParallaxText>
@@ -42,7 +43,7 @@ export function ProjectsSection({
       )}
 
       {/* Heading panel */}
-      <div className="relative z-10 flex-none w-full lg:w-[34vw] flex flex-col justify-center px-6 lg:pl-[12vw] lg:pr-10 py-12 lg:py-0">
+      <div className="relative z-10 flex-none w-full lg:w-[45vw] flex flex-col justify-center px-6 lg:pl-[15vw] lg:pr-10 py-12 lg:py-0">
         <h2 className="text-3xl lg:text-4xl font-serif font-bold leading-tight mb-6 whitespace-pre-line">
           {data.projectsTitle ?? "Featured Projects"}
         </h2>
@@ -52,7 +53,7 @@ export function ProjectsSection({
       </div>
 
       {/* Cards row */}
-      <div className="relative z-10 flex flex-col items-center lg:flex-row lg:items-stretch gap-6 px-6 lg:px-0 lg:pr-[6vw]">
+      <div className="relative z-10 flex flex-col items-center lg:flex-row lg:items-stretch gap-10 px-6 lg:px-0 lg:pr-[15vw]">
         {projects.map((project) => {
           const firstImage = Array.isArray(project.image)
             ? project.image[0]

@@ -30,7 +30,7 @@ export function LeadershipSection({
         <div className="pointer-events-none select-none absolute top-0 left-0 right-0 h-[40%] lg:inset-0 lg:h-auto z-0">
           <ParallaxText
             baseVelocity={0.2}
-            color="rgba(255,255,255,0.06)"
+            color="rgba(255,255,255,0.1)"
             direction={isMobile ? "horizontal" : "vertical"}
             position="start"
             paddingStart="18vw"

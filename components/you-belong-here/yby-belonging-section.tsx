@@ -43,7 +43,7 @@ export function YbyBelongingSection({ data }: Props): React.ReactElement {
       )}
 
       {/* Heading panel */}
-      <div className="relative z-10 flex-none w-full lg:w-[50vw] flex flex-col justify-center px-6 lg:pl-[20vw] lg:pr-10 py-12 lg:py-0">
+      <div className="relative z-10 flex-none w-full lg:w-[50vw] flex flex-col justify-center px-6 lg:pl-[20vw] lg:pr-20 py-12 lg:py-0">
         <h2 className="text-3xl lg:text-4xl font-serif font-bold leading-tight mb-6 whitespace-pre-line">
           {data.belongingTitle ?? "Why Belonging Matters"}
         </h2>
@@ -55,7 +55,7 @@ export function YbyBelongingSection({ data }: Props): React.ReactElement {
       </div>
 
       {/* Cards row */}
-      <div className="relative z-10 flex flex-col items-center lg:flex-row lg:items-stretch gap-6 px-6 lg:px-0 lg:pr-[6vw]">
+      <div className="relative z-10 flex flex-col items-center lg:flex-row lg:items-stretch gap-8 px-6 lg:px-0 lg:pr-[10vw]">
         {items.map((item) => {
           const url = getStrapiMediaUrl(item.image ?? null);
           return (

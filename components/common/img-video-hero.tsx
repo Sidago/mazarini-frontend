@@ -9,6 +9,7 @@ interface ImgOrVideoHeroProps {
   heroImage: StrapiMedia | null;
   ctaText?: string | null;
   ctaUrl?: string | null;
+  openInBlank?: boolean;
 }
 
 export function ImgOrVideoHero({
@@ -18,6 +19,7 @@ export function ImgOrVideoHero({
   heroImage,
   ctaText,
   ctaUrl,
+  openInBlank = false,
 }: ImgOrVideoHeroProps): React.ReactElement {
   return (
     <section className="relative w-screen h-screen overflow-hidden flex-none">
@@ -41,6 +43,7 @@ export function ImgOrVideoHero({
             <HeroCta
               ctaText={ctaText}
               ctaUrl={ctaUrl}
+              openInBlank={openInBlank}
               className="inline-flex items-center justify-center px-7 py-4 text-sm font-bold uppercase tracking-widest text-neutral-900 bg-primary hover:bg-amber-500 transition-all"
             />
           </div>

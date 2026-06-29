@@ -16,6 +16,7 @@ export function CareerHeroSection({ data }: Props): React.ReactElement {
       heroImage={data?.heroImage ?? null}
       ctaText={data?.heroCtaText}
       ctaUrl={data?.heroCtaUrl}
+      openInBlank={true}
     />
   );
 }

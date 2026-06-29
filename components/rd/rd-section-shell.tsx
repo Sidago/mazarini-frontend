@@ -64,6 +64,7 @@ export function RdSectionShell({
             color={watermarkColor ?? defaultWatermarkColor}
             direction={isMobile ? "horizontal" : watermarkDirection}
             position={watermarkPosition}
+            paddingStart={isMobile ? "6vw" : "12vw"}
             flip={watermarkFlip}>
             {watermark}
           </ParallaxText>

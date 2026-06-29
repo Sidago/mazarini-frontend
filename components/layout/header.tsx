@@ -37,6 +37,10 @@ export function Header({
   const FORCE_ACTIVE_PATHS = ["/leadership", "/insights/", "/contact"];
   const active = scrolled || hovered || FORCE_ACTIVE_PATHS.some((p) => pathname.startsWith(p));
 
+  // Routes where the header should not render at all.
+  const HIDE_HEADER_PATHS: string[] = ["/jobs"];
+  const hidden = HIDE_HEADER_PATHS.some((p) => pathname.startsWith(p));
+
   useEffect(() => {
     function handleScroll(): void {
       setScrolled(window.scrollY > 50);
@@ -48,6 +52,8 @@ export function Header({
   const midpoint = Math.ceil(navLinks.length / 2);
   const leftLinks = navLinks.slice(0, midpoint);
   const rightLinks = navLinks.slice(midpoint);
+
+  if (hidden) return <></>;
 
   return (
     <header

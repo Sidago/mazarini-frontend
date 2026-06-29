@@ -24,12 +24,12 @@ export function YbyLeadershipSection({ data }: Props): React.ReactElement {
   return (
     <section
       id="leadership"
-      className="relative flex-none w-screen lg:w-auto lg:min-w-screen lg:h-screen bg-neutral-900 text-white overflow-hidden flex flex-col lg:flex-row lg:items-center py-20 lg:py-0">
+      className="relative flex-none w-screen lg:w-auto lg:min-w-screen lg:h-screen bg-neutral-900 text-white overflow-hidden flex flex-col lg:flex-row lg:items-center lg:justify-center py-20 lg:py-0">
       {data.leadershipWatermark && (
         <div className="pointer-events-none select-none absolute top-0 left-0 right-0 h-[40%] lg:inset-0 lg:h-auto z-0">
           <ParallaxText
             baseVelocity={0.2}
-            color="rgba(255,255,255,0.06)"
+            color="rgba(255,255,255,0.1)"
             direction={isMobile ? "horizontal" : "vertical"}
             position="start"
             paddingStart="18vw"
@@ -40,12 +40,12 @@ export function YbyLeadershipSection({ data }: Props): React.ReactElement {
       )}
 
       {/* Heading panel */}
-      <div className="relative z-10 flex-none w-full lg:w-[34vw] font-serif flex flex-col justify-center px-6 lg:pl-[15vw] lg:pr-10 py-12 lg:py-0">
+      <div className="relative z-10 flex-none w-full lg:w-auto lg:max-w-md font-serif flex flex-col justify-center px-6 lg:px-10 py-12 lg:py-0">
         <h2 className="text-4xl font-semibold leading-tight mb-6">
           {data.leadershipTitle ?? "Leadership"}
         </h2>
         {data.leadershipDescription && (
-          <p className="text-base leading-relaxed text-white/70 max-w-sm">
+          <p className="text-base leading-relaxed text-white/70 max-w-lg">
             {data.leadershipDescription}
           </p>
         )}

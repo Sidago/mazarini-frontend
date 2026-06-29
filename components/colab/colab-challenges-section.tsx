@@ -30,7 +30,7 @@ export function ColabChallengesSection({ data }: Props): React.ReactElement {
         <div className="pointer-events-none select-none absolute top-0 left-0 right-0 h-[40%] lg:inset-0 lg:h-auto z-0">
           <ParallaxText
             baseVelocity={0.2}
-            color="rgba(255,255,255,0.05)"
+            color="rgba(255,255,255,0.15)"
             direction={isMobile ? "horizontal" : "vertical"}
             position="start"
             paddingStart={isMobile ? "" : "14vw"}
@@ -41,7 +41,7 @@ export function ColabChallengesSection({ data }: Props): React.ReactElement {
       )}
 
       {/* Heading panel */}
-      <div className="relative z-10 flex-none w-full lg:w-[34vw] flex flex-col justify-center px-6 lg:pl-[15vw] lg:pr-8 py-12 lg:py-0">
+      <div className="relative z-10 flex-none w-full lg:w-[40vw] flex flex-col justify-center px-6 lg:pl-[15vw] lg:pr-15 py-12 lg:py-0">
         <h2 className="text-3xl lg:text-4xl font-serif font-bold leading-tight mb-6 whitespace-pre-line">
           {data.challengesTitle ?? "Unique Challenges,\nSmart Solutions"}
         </h2>
@@ -53,7 +53,7 @@ export function ColabChallengesSection({ data }: Props): React.ReactElement {
       </div>
 
       {/* Cards row */}
-      <div className="relative z-10 flex flex-col items-center lg:flex-row lg:items-stretch gap-6 px-6 lg:px-0 lg:pr-[6vw]">
+      <div className="relative z-10 flex flex-col items-center lg:flex-row lg:items-stretch gap-10 px-6 lg:px-0 lg:pr-[10vw]">
         {cards.map((card) => {
           return (
             <div
