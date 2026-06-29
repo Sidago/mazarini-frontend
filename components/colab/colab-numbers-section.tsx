@@ -29,7 +29,7 @@ export function ColabNumbersSection({ data }: Props): React.ReactElement {
       id="numbers"
       className="relative w-screen min-h-screen lg:h-screen flex-none flex flex-col lg:flex-row overflow-hidden">
       {/* Left — stats */}
-      <div className="relative w-full lg:w-[55%] flex-none bg-background-light flex items-center overflow-hidden py-20 lg:py-0">
+      <div className="relative w-full lg:w-[50%] flex-none bg-background-light flex items-center overflow-hidden py-20 lg:py-0">
         {/* Watermark */}
         {data.numbersWatermark && (
           <div className="pointer-events-none select-none absolute top-0 left-0 right-0 h-[40%] lg:inset-0 lg:h-auto z-0">
@@ -78,7 +78,7 @@ export function ColabNumbersSection({ data }: Props): React.ReactElement {
       </div>
 
       {/* Right — image with right gap */}
-      <div className="relative w-full lg:w-[45%] flex-none min-h-[50vh] lg:min-h-0 lg:pr-[5vw]">
+      <div className="relative w-full lg:w-[50%] flex-none min-h-[50vh] lg:min-h-0 lg:pr-[10vw]">
         <div className="relative w-full h-full">
           {imageUrl ? (
             <Image

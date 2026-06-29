@@ -159,7 +159,9 @@ export function CircularScroll({
                 {steps.map((step, i) => {
                   const angle = startAngle + i * anglePerStep;
                   const rad = (angle * Math.PI) / 180;
-                  const radius = 200;
+                  // Place labels beyond the outer ring (circle radius is up to
+                  // 230px at xl) so they never overlap the circle.
+                  const radius = 230;
                   const xOffset = Math.cos(rad) * radius;
                   const yOffset = Math.sin(rad) * radius;
 

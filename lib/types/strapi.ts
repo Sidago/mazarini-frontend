@@ -193,6 +193,23 @@ export interface Global {
   bottomLinks: LinkComponent[];
 }
 
+// Strapi "blocks" rich-text field (the Blocks editor) — a tree of nodes.
+export interface BlocksNode {
+  type: string;
+  level?: number;
+  format?: "ordered" | "unordered";
+  url?: string;
+  text?: string;
+  bold?: boolean;
+  italic?: boolean;
+  underline?: boolean;
+  strikethrough?: boolean;
+  code?: boolean;
+  children?: BlocksNode[];
+}
+
+export type BlocksContent = BlocksNode[];
+
 // Dynamic zone block types
 
 export interface RichTextBlock {
@@ -932,13 +949,29 @@ export interface Job {
   id: number;
   documentId: string;
   title: string;
+  jobCode: string | null;
   department: string | null;
   location: string | null;
   jobType: string | null;
-  description: string | null;
+  description: BlocksContent | null;
   applyUrl: string | null;
   order: number | null;
   isActive: boolean;
+  createdAt: string | null;
+}
+
+export interface JobsPage {
+  id: number;
+  documentId: string;
+  heroTitle: string | null;
+  heroSubtitle: string | null;
+  heroImage: StrapiMedia | null;
+  aboutTitle: string | null;
+  aboutText: string | null;
+  fraudTitle: string | null;
+  fraudText: string | null;
+  fraudUrl: string | null;
+  seo: SeoComponent | null;
 }
 
 export interface CareerPage {
