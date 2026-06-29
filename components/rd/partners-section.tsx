@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import type { RdPage } from "@/lib/types/strapi";
@@ -22,13 +22,6 @@ export function PartnersSection({
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
   }, []);
-
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  const scroll = (direction: 1 | -1) => {
-    if (!scrollRef.current) return;
-    scrollRef.current.scrollBy({ left: direction * 380, behavior: "smooth" });
-  };
 
   return (
     <section
