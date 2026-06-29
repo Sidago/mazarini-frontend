@@ -27,12 +27,12 @@ const SECTIONS = [
 ];
 
 export function CrSections({ data }: CrSectionsProps): React.ReactElement {
-  const count = SECTIONS.length;
-  const [activeIndex, setActiveIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
-  const canNavigateRef = useRef(true);
-  const activeIndexRef = useRef(0);
+  const [activeId, setActiveId] = useState("hero");
+  const [atStart, setAtStart] = useState(true);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
+  // Track breakpoint — lg = 1024px
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 1024);
     check();
@@ -40,94 +40,82 @@ export function CrSections({ data }: CrSectionsProps): React.ReactElement {
     return () => window.removeEventListener("resize", check);
   }, []);
 
-  const navigate = useCallback(
-    (direction: 1 | -1) => {
-      if (!canNavigateRef.current) return;
-      const next = activeIndexRef.current + direction;
-      if (next < 0 || next >= count) return;
-      canNavigateRef.current = false;
-      activeIndexRef.current = next;
-      setActiveIndex(next);
-      setTimeout(() => {
-        canNavigateRef.current = true;
-      }, 700);
-    },
-    [count],
-  );
+  // Desktop: wheel → continuous horizontal scroll + track active section.
+  useEffect(() => {
+    if (isMobile) return;
+    const el = scrollRef.current;
+    if (!el) return;
 
-  const goToIndex = useCallback(
-    (idx: number) => {
-      const clamped = Math.max(0, Math.min(count - 1, idx));
-      activeIndexRef.current = clamped;
-      canNavigateRef.current = true;
-      setActiveIndex(clamped);
-    },
-    [count],
-  );
+    const handleWheel = (e: WheelEvent) => {
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+      if (e.deltaY === 0) return;
+      e.preventDefault();
+      el.scrollLeft += e.deltaY;
+    };
 
-  // Header hide/show — desktop only
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const offset = window.innerWidth * 0.4;
+      const x = el.scrollLeft + offset;
+      let current = "hero";
+      for (const child of Array.from(el.children) as HTMLElement[]) {
+        if (child.id && child.offsetLeft <= x) current = child.id;
+      }
+      setActiveId(current);
+      setAtStart(el.scrollLeft < offset);
+    };
+    const handleScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    };
+
+    update();
+    el.addEventListener("wheel", handleWheel, { passive: false });
+    el.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      el.removeEventListener("wheel", handleWheel);
+      el.removeEventListener("scroll", handleScroll);
+    };
+  }, [isMobile]);
+
+  // Hide the site header once past the hero (desktop only).
   useEffect(() => {
     const header = document.querySelector<HTMLElement>("header");
     if (!header) return;
+
     if (isMobile) {
       header.style.transform = "";
       header.style.pointerEvents = "";
       return;
     }
+
     header.style.transition = "transform 0.3s ease";
-    header.style.transform = activeIndex > 0 ? "translateY(-100%)" : "";
-    header.style.pointerEvents = activeIndex > 0 ? "none" : "";
+    header.style.transform = atStart ? "" : "translateY(-100%)";
+    header.style.pointerEvents = atStart ? "" : "none";
+
     return () => {
       header.style.transform = "";
       header.style.pointerEvents = "";
     };
-  }, [activeIndex, isMobile]);
+  }, [atStart, isMobile]);
 
-  // Wheel / keyboard / touch — desktop only
-  useEffect(() => {
-    if (isMobile) return;
+  const scrollToId = useCallback((id: string) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const target = (Array.from(el.children) as HTMLElement[]).find(
+      (c) => c.id === id,
+    );
+    el.scrollTo({ left: target?.offsetLeft ?? 0, behavior: "smooth" });
+  }, []);
 
-    const handleWheel = (e: WheelEvent) => {
-      e.preventDefault();
-      navigate(e.deltaY > 0 ? 1 : -1);
-    };
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "ArrowRight" || e.key === "ArrowDown") navigate(1);
-      if (e.key === "ArrowLeft" || e.key === "ArrowUp") navigate(-1);
-    };
-    let touchStartX = 0;
-    let touchStartY = 0;
-    const handleTouchStart = (e: TouchEvent) => {
-      touchStartX = e.touches[0].clientX;
-      touchStartY = e.touches[0].clientY;
-    };
-    const handleTouchEnd = (e: TouchEvent) => {
-      const dx = touchStartX - e.changedTouches[0].clientX;
-      const dy = touchStartY - e.changedTouches[0].clientY;
-      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 30) {
-        navigate(dx > 0 ? 1 : -1);
-      }
-    };
-
-    window.addEventListener("wheel", handleWheel, { passive: false });
-    window.addEventListener("keydown", handleKeyDown);
-    window.addEventListener("touchstart", handleTouchStart, { passive: true });
-    window.addEventListener("touchend", handleTouchEnd, { passive: true });
-    return () => {
-      window.removeEventListener("wheel", handleWheel);
-      window.removeEventListener("keydown", handleKeyDown);
-      window.removeEventListener("touchstart", handleTouchStart);
-      window.removeEventListener("touchend", handleTouchEnd);
-    };
-  }, [navigate, isMobile]);
-
-  const handleNavigate = useCallback(
-    (id: string) => {
-      const idx = SECTIONS.findIndex((s) => s.id === id);
-      if (idx !== -1) goToIndex(idx);
-    },
-    [goToIndex],
-  );
+  const scrollNext = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const next = (el.children[1] as HTMLElement) ?? null;
+    el.scrollTo({ left: next?.offsetLeft ?? window.innerWidth, behavior: "smooth" });
+  }, []);
 
   const hero = (
     <ImgOrVideoHero
@@ -142,7 +130,7 @@ export function CrSections({ data }: CrSectionsProps): React.ReactElement {
 
   return (
     <>
-      {/* Mobile: vertical scroll */}
+      {/* ── Mobile: normal vertical scroll ── */}
       <div className="lg:hidden flex flex-col gap-4">
         {hero}
         <QuoteSection data={data} />
@@ -153,18 +141,19 @@ export function CrSections({ data }: CrSectionsProps): React.ReactElement {
         <CrNewsSection data={data} />
       </div>
 
-      {/* Desktop: horizontal carousel */}
+      {/* ── Desktop: one continuous horizontal scroll ── */}
       <div className="hidden lg:block">
+        {/* Back button — appears once past the hero */}
         <AnimatePresence>
-          {activeIndex > 0 && (
+          {!atStart && (
             <motion.button
               key="back-btn"
               initial={{ opacity: 0, x: -16 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -16 }}
               transition={{ duration: 0.25 }}
-              onClick={() => goToIndex(0)}
-              className="fixed top-5 left-10 z-40 flex items-center gap-2 py-4 px-5 text-sm font-bold uppercase tracking-widest text-primary hover:text-primary/70 transition-colors border-2">
+              onClick={() => scrollToId("hero")}
+              className="fixed top-5 left-10 z-50 flex items-center gap-2 py-4 px-5 text-sm font-bold uppercase tracking-widest text-primary hover:text-primary/70 transition-colors border-2">
               <svg
                 width="15"
                 height="15"
@@ -181,20 +170,21 @@ export function CrSections({ data }: CrSectionsProps): React.ReactElement {
           )}
         </AnimatePresence>
 
+        {/* Scroll hint — on the hero, right center */}
         <AnimatePresence>
-          {activeIndex === 0 && (
+          {atStart && (
             <motion.button
-              key="next-btn"
+              key="scroll-btn"
               initial={{ opacity: 0, x: 16 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 16 }}
               transition={{ duration: 0.25 }}
-              onClick={() => navigate(1)}
-              className="fixed right-6 top-1/2 -translate-y-1/2 z-40 flex items-center justify-center text-xl px-3 font-headline text-primary hover:text-primary/70 transition-colors">
+              onClick={scrollNext}
+              className="fixed right-6 top-1/2 -translate-y-1/2 z-40 flex items-center justify-center text-lg font-semibold tracking-wider px-3 font-headline text-primary hover:text-primary/70 transition-colors">
               scroll
               <svg
-                width="35"
-                height="23"
+                width="30"
+                height="22"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -207,23 +197,23 @@ export function CrSections({ data }: CrSectionsProps): React.ReactElement {
           )}
         </AnimatePresence>
 
-        <div className="h-screen overflow-hidden">
-          <motion.div
-            animate={{ x: `-${activeIndex * 100}vw` }}
-            transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
-            className="flex h-full">
-            <div className="w-screen h-full flex-none">{hero}</div>
-            <QuoteSection data={data} />
-            <CrPillarsSection data={data} />
-            <FoundationSection data={data} />
-            <MetricsSection data={data} />
-            <CrNewsSection data={data} />
-            <ExecutivesSection data={data} />
-          </motion.div>
+        <div
+          ref={scrollRef}
+          className="relative h-screen overflow-x-auto overflow-y-hidden scrollbar-hide flex">
+          <div id="hero" className="w-screen h-full flex-none">
+            {hero}
+          </div>
+          <QuoteSection data={data} />
+          <CrPillarsSection data={data} />
+          <FoundationSection data={data} />
+          <MetricsSection data={data} />
+          <CrNewsSection data={data} />
+          <ExecutivesSection data={data} />
         </div>
 
+        {/* Bottom section navigation */}
         <AnimatePresence>
-          {activeIndex > 0 && (
+          {!atStart && (
             <motion.div
               key="progress-bar"
               initial={{ opacity: 0, y: 16 }}
@@ -232,8 +222,8 @@ export function CrSections({ data }: CrSectionsProps): React.ReactElement {
               transition={{ duration: 0.25 }}>
               <RdProgressBar
                 sections={SECTIONS}
-                activeId={SECTIONS[activeIndex]?.id ?? "hero"}
-                onNavigate={handleNavigate}
+                activeId={activeId}
+                onNavigate={scrollToId}
               />
             </motion.div>
           )}

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { getStrapiMediaUrl } from "@/lib/api/client";
@@ -21,11 +21,6 @@ export function CrNewsSection({ data }: CrNewsSectionProps): React.ReactElement 
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
   }, []);
-
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const scroll = (direction: 1 | -1) => {
-    scrollRef.current?.scrollBy({ left: direction * 380, behavior: "smooth" });
-  };
 
   return (
     <section
