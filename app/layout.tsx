@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Noto_Serif } from "next/font/google";
 import { Header } from "@/components/layout/header";
 import { ConditionalFooter } from "@/components/layout/conditional-footer";
-import { PageLoader } from "@/components/ui/page-loader";
+import { LogoLoader } from "@/components/ui/logo-loader";
 import { getGlobal } from "@/lib/api/global";
 import { getServices } from "@/lib/api/services";
 import { buildMetadata } from "@/lib/utils/seo";
@@ -83,7 +83,7 @@ export default async function RootLayout({
       </head>
       <body
         className={`${inter.variable} ${notoSerif.variable} font-display bg-background-light dark:bg-background-dark text-neutral-800 dark:text-neutral-100 antialiased selection:bg-primary selection:text-white`}>
-        <PageLoader />
+        <LogoLoader />
         <Header
           logo={global?.logo ?? null}
           navLinks={global?.navLinks ?? []}
