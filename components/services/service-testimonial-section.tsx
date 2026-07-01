@@ -74,7 +74,7 @@ export function ServiceTestimonialSection({
           )}
 
           {/* Left — text */}
-          <div className="flex-1 flex flex-col justify-center pr-10">
+          <div className="flex-1 flex flex-col justify-center pr-5">
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={index}
@@ -116,7 +116,7 @@ export function ServiceTestimonialSection({
           </div>
 
           {/* Right — image */}
-          <div className="w-[52%] relative min-h-105 overflow-hidden">
+          <div className="w-[40%] relative min-h-105 overflow-hidden">
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={index}

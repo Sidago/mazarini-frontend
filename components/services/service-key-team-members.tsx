@@ -41,8 +41,8 @@ export function ServiceKeyTeamMembers({
       </div>
 
       {/* Desktop layout */}
-      <div className="hidden lg:block relative max-w-7xl mx-auto px-4 sm:px-6 lg:ps-[12vw]">
-        <div className="flex flex-row gap-20">
+      <div className="hidden lg:block relative max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="flex flex-row gap-12 lg:gap-16">
           <div className="w-56 shrink-0 flex items-start">
             <FadeIn direction="up">
               <h2 className="text-3xl md:text-4xl font-black font-serif text-neutral-900 dark:text-white leading-tight">
@@ -166,7 +166,7 @@ function MemberCard({ member }: { member: Teams }): React.ReactElement {
 
   return (
     <div className="group flex flex-col">
-      <div className="relative w-55 h-60 aspect-3/4 overflow-hidden bg-neutral-100 dark:bg-neutral-800 mb-3">
+      <div className="relative w-full aspect-3/4 overflow-hidden bg-neutral-100 dark:bg-neutral-800 mb-3">
         {imageUrl ? (
           <Image
             src={imageUrl}
