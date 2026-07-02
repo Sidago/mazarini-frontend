@@ -42,9 +42,9 @@ export function ColabNewsSection({ data }: Props): React.ReactElement {
         </div>
       )}
 
-      <div className="relative font-serif z-10 w-full max-w-[90%] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-16 items-center">
-          <div className="lg:pl-[15vw] lg:pr-8 py-12 lg:py-0">
+      <div className="relative font-serif z-10 w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-[2fr_2fr] gap-12 lg:gap-16 items-center">
+          <div className="py-12 lg:py-0">
             <h2 className="text-4xl font-semibold mb-8">
               {data.newsTitle ?? "News & Insights"}
             </h2>

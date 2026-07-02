@@ -44,19 +44,19 @@ export function CrPillarsSection({
       )}
 
       {/* Heading panel */}
-      <div className="relative z-10 flex-none w-full lg:w-[34vw] flex flex-col justify-center px-6 lg:pl-[12vw] lg:pr-10 py-12 lg:py-0">
+      <div className="relative z-10 flex-none w-full lg:w-[40vw] flex flex-col justify-center px-6 lg:pl-[12vw] lg:pr-10 py-12 lg:py-0">
         <h2 className="text-3xl lg:text-5xl font-serif font-bold leading-tight mb-6 whitespace-pre-line">
           {data.pillarsTitle ?? "Our Social Responsibility"}
         </h2>
         {data.pillarsDescription && (
-          <p className="text-base font-serif leading-relaxed text-neutral-600 max-w-sm">
+          <p className="text-base font-serif leading-relaxed text-neutral-600 max-w-lg">
             {data.pillarsDescription}
           </p>
         )}
       </div>
 
       {/* Cards row */}
-      <div className="relative z-10 flex flex-col items-center lg:flex-row lg:items-stretch gap-6 px-6 lg:px-0 lg:pr-[6vw]">
+      <div className="relative z-10 flex flex-col items-center lg:flex-row lg:items-stretch gap-6 px-6 lg:px-10 lg:pr-[10vw]">
         {pillars.map((pillar) => {
           const url = getStrapiMediaUrl(pillar.image);
           return (

@@ -42,12 +42,12 @@ export function ExecutivesSection({
       )}
 
       {/* Heading panel */}
-      <div className="relative z-10 flex-none w-full lg:w-[34vw] flex flex-col justify-center px-6 lg:pl-[12vw] lg:pr-10 py-12 lg:py-0">
+      <div className="relative z-10 flex-none w-full lg:w-[40vw] flex flex-col justify-center px-6 lg:pl-[12vw] lg:pr-10 py-12 lg:py-0">
         <h2 className="text-4xl font-semibold leading-tight mb-6">
           {data.executivesTitle ?? "Corporate Responsibility Leadership"}
         </h2>
         {data.executivesDescription && (
-          <p className="text-base leading-relaxed text-white/70 max-w-sm">
+          <p className="text-base leading-relaxed text-white/70 max-w-lg">
             {data.executivesDescription}
           </p>
         )}

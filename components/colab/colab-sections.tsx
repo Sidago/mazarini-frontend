@@ -232,7 +232,7 @@ export function ColabSections({ data, moreSection }: Props): React.ReactElement 
           <ColabResultsSection data={data} />
           <ColabTeamSection data={data} />
           <ColabNewsSection data={data} />
-          <div id="more" className="w-screen h-full flex-none overflow-y-auto">
+          <div id="more" className="w-screen h-full bg-black flex-none overflow-y-auto">
             {moreSection}
           </div>
         </div>

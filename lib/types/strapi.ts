@@ -1029,6 +1029,46 @@ export interface SparkBlock {
   ctaUrl: string | null;
 }
 
+export interface AwardChallengeCard {
+  id: number;
+  description: string;
+  solution: string | null;
+  image: StrapiMedia | null;
+}
+
+export interface AwardTextColumn {
+  id: number;
+  title: string;
+  text: string | null;
+}
+
+export interface AwardPage {
+  id: number;
+  documentId: string;
+  heroTitle: string | null;
+  heroText: string | null;
+  heroImage: StrapiMedia | null;
+  heroWatermark: string | null;
+  peopleTitle: string | null;
+  peopleText: string | null;
+  peopleCtaText: string | null;
+  peopleCtaUrl: string | null;
+  knowledgeTitle: string | null;
+  knowledgeDescription: string | null;
+  knowledgeWatermark: string | null;
+  fieldMembers: Teams[];
+  challengesTitle: string | null;
+  challengesDescription: string | null;
+  challengeCards: AwardChallengeCard[];
+  textColumns: AwardTextColumn[];
+  journeyTitle: string | null;
+  journeyText: string | null;
+  journeyImage: StrapiMedia | null;
+  journeyCtaText: string | null;
+  journeyCtaUrl: string | null;
+  seo: SeoComponent | null;
+}
+
 export interface SparkPage {
   id: number;
   documentId: string;
