@@ -20,6 +20,7 @@ import { RdProgressBar } from "@/components/rd/rd-progress-bar";
 interface Props {
   data: ColabPage;
   moreSection: React.ReactNode;
+  footerSection?: React.ReactNode;
 }
 
 const SECTIONS = [
@@ -38,7 +39,11 @@ const SECTIONS = [
   { id: "more", label: "More" },
 ];
 
-export function ColabSections({ data, moreSection }: Props): React.ReactElement {
+export function ColabSections({
+  data,
+  moreSection,
+  footerSection,
+}: Props): React.ReactElement {
   const [isMobile, setIsMobile] = useState(false);
   const [activeId, setActiveId] = useState("hero");
   const [atStart, setAtStart] = useState(true);
@@ -157,6 +162,7 @@ export function ColabSections({ data, moreSection }: Props): React.ReactElement 
         <ColabTeamSection data={data} />
         <ColabNewsSection data={data} />
         {moreSection}
+        {footerSection}
       </div>
 
       {/* ── Desktop: one continuous horizontal scroll ── */}
@@ -232,9 +238,16 @@ export function ColabSections({ data, moreSection }: Props): React.ReactElement 
           <ColabResultsSection data={data} />
           <ColabTeamSection data={data} />
           <ColabNewsSection data={data} />
-          <div id="more" className="w-screen h-full bg-black flex-none overflow-y-auto">
+          <div id="more" className="w-screen h-full bg-black flex-none overflow-y-auto scrollbar-hide">
             {moreSection}
           </div>
+          {footerSection && (
+            <div
+              id="footer"
+              className="w-screen h-full bg-black flex-none overflow-y-auto scrollbar-hide flex flex-col justify-center">
+              {footerSection}
+            </div>
+          )}
         </div>
 
         {/* Bottom section navigation */}

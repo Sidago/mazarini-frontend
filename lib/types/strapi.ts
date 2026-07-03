@@ -1069,6 +1069,77 @@ export interface AwardPage {
   seo: SeoComponent | null;
 }
 
+export interface PreconstructionPage {
+  id: number;
+  documentId: string;
+  heroTitle: string | null;
+  heroText: string | null;
+  heroBody: string | null;
+  heroWatermark: string | null;
+  heroImage: StrapiMedia | null;
+  accordionTitle: string | null;
+  accordionDetails: string | null;
+  accordionImage: StrapiMedia | null;
+  accordionItems: AccordionItem[];
+  journeyTitle: string | null;
+  journeyText: string | null;
+  journeyImage: StrapiMedia | null;
+  journeyCtaText: string | null;
+  journeyCtaUrl: string | null;
+  seo: SeoComponent | null;
+}
+
+export interface ConstructionSustainabilityCard {
+  id: number;
+  title: string;
+  image: StrapiMedia | null;
+  url: string | null;
+}
+
+export interface ConstructionInnovationItem {
+  id: number;
+  tab: string;
+  title: string | null;
+  description: string | null;
+  image: StrapiMedia | null;
+  ctaText: string | null;
+  ctaUrl: string | null;
+}
+
+export interface ConstructionPage {
+  id: number;
+  documentId: string;
+  heroTitle: string | null;
+  heroText: string | null;
+  heroBody: string | null;
+  heroWatermark: string | null;
+  heroImage: StrapiMedia | null;
+  experienceTitle: string | null;
+  experienceHighlight: string | null;
+  experienceText: string | null;
+  quotes: CareerQuote[];
+  accordionTitle: string | null;
+  accordionDetails: string | null;
+  accordionImage: StrapiMedia | null;
+  accordionItems: AccordionItem[];
+  statsTitle: string | null;
+  statItems?: StatComponent[];
+  stats: StatComponent[];
+  textColumns: AwardTextColumn[];
+  sustainabilityTitle: string | null;
+  sustainabilityText: string | null;
+  sustainabilityCards: ConstructionSustainabilityCard[];
+  innovationTitle: string | null;
+  innovationDescription: string | null;
+  innovationItems: ConstructionInnovationItem[];
+  journeyTitle: string | null;
+  journeyText: string | null;
+  journeyImage: StrapiMedia | null;
+  journeyCtaText: string | null;
+  journeyCtaUrl: string | null;
+  seo: SeoComponent | null;
+}
+
 export interface SparkPage {
   id: number;
   documentId: string;

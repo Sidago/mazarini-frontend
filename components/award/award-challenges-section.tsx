@@ -90,7 +90,7 @@ export function AwardChallengesSection({ data }: Props): React.ReactElement {
           </FadeIn>
         )}
 
-        <div className="grid gap-6 md:grid-cols-3 max-w-6xl mx-auto">
+        <div className="grid gap-6 md:grid-cols-3 max-w-7xl mx-auto">
           {cards.map((card, index) => (
             <FadeIn key={card.id} direction="up" delay={index * 0.1}>
               <ChallengeCard card={card} />

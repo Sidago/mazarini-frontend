@@ -3,9 +3,11 @@ export const revalidate = 300;
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getColabPage } from "@/lib/api/colab";
+import { getGlobal } from "@/lib/api/global";
 import { buildMetadata } from "@/lib/utils/seo";
 import { ColabSections } from "@/components/colab/colab-sections";
 import { YouMightBeInterested } from "@/components/common/you-might-be-interested";
+import { Footer } from "@/components/layout/footer";
 
 export async function generateMetadata(): Promise<Metadata> {
   try {
@@ -25,8 +27,28 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function ColabPage() {
-  const data = await getColabPage().catch(() => null);
+  const [data, global] = await Promise.all([
+    getColabPage().catch(() => null),
+    getGlobal().catch(() => null),
+  ]);
   if (!data) return notFound();
 
-  return <ColabSections data={data} moreSection={<YouMightBeInterested title="More" />} />;
+  const footerSection = (
+    <Footer
+      description={global?.footerDescription ?? null}
+      columns={global?.footerColumns ?? []}
+      socialLinks={global?.socialLinks ?? []}
+      copyright={global?.copyright ?? null}
+      bottomLinks={global?.bottomLinks ?? []}
+    />
+  );
+
+  return (
+    <ColabSections
+      data={data}
+      moreSection={<YouMightBeInterested title="More" />}
+      footerSection={footerSection}
+    />
+  );
 }
+
