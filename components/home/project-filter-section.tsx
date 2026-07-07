@@ -54,7 +54,7 @@ export function ProjectFilterSection({
   return (
     <section
       ref={sectionRef}
-      className="relative bg-neutral-950 py-24 lg:py-32 overflow-hidden">
+      className="relative bg-neutral-950 pt-10 pb-24 lg:pb-32 overflow-hidden">
       <div className="relative z-10 max-w-400 mx-auto px-4 sm:px-6 lg:px-8">
         {/* ── Filter bar with background text ── */}
         <div className="relative pb-16 mb-10 md:py-24">
@@ -147,7 +147,7 @@ export function ProjectFilterSection({
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.25 }}
-              className="flex gap-5 px-4 sm:px-6 lg:px-8 py-16 snap-x snap-mandatory"
+              className="flex items-center justify-center gap-5 px-4 sm:px-6 lg:px-8 py-16 snap-x snap-mandatory"
             >
               {filteredProjects.map((project, index) => {
                 const isOdd = index % 2 == 0;

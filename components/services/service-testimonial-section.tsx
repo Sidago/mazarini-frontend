@@ -38,7 +38,6 @@ export function ServiceTestimonialSection({
 
   return (
     <section className="relative py-16 md:py-24 bg-background-light dark:bg-background-dark overflow-hidden">
-
       {/* Mobile layout */}
       <div className="lg:hidden">
         <div className="px-4 sm:px-6 mb-8">
@@ -59,14 +58,12 @@ export function ServiceTestimonialSection({
       {/* Desktop layout */}
       <div className="hidden lg:block max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-row items-stretch gap-0">
-
           {/* Prev button */}
           {hasMultiple ? (
             <button
               type="button"
               onClick={prev}
-              className="flex shrink-0 self-center mr-4 w-11 h-11 rounded-full bg-primary text-white items-center justify-center hover:bg-primary/80 transition-all"
-            >
+              className="flex shrink-0 self-center mr-4 w-11 h-11 rounded-full bg-primary text-white items-center justify-center hover:bg-primary/80 transition-all">
               <Icon name="arrow_back" className="text-base" />
             </button>
           ) : (
@@ -88,8 +85,7 @@ export function ServiceTestimonialSection({
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="flex flex-col"
-              >
+                className="flex flex-col">
                 <h2 className="font-serif text-2xl md:text-3xl font-black text-neutral-900 dark:text-white mb-4">
                   Our Clients Say
                 </h2>
@@ -130,13 +126,15 @@ export function ServiceTestimonialSection({
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="absolute inset-0"
-              >
+                className="absolute inset-0">
                 {imageUrl ? (
                   <Image
                     src={imageUrl}
                     alt={current.client_name}
                     fill
+                    unoptimized
+                    priority
+                    quality={100}
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
@@ -152,14 +150,12 @@ export function ServiceTestimonialSection({
             <button
               type="button"
               onClick={next}
-              className="flex shrink-0 self-center ml-4 w-11 h-11 rounded-full bg-primary text-white items-center justify-center hover:bg-primary/80 transition-all"
-            >
+              className="flex shrink-0 self-center ml-4 w-11 h-11 rounded-full bg-primary text-white items-center justify-center hover:bg-primary/80 transition-all">
               <Icon name="arrow_forward" className="text-base" />
             </button>
           ) : (
             <div className="shrink-0 w-11 ml-4" />
           )}
-
         </div>
       </div>
     </section>
@@ -211,12 +207,14 @@ function MobileCarousel({
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={0.1}
           onDragStart={handleDragStart}
-          onDragEnd={handleDragEnd}
-        >
+          onDragEnd={handleDragEnd}>
           {testimonials.map((t) => {
             const imgUrl = getStrapiMediaUrl(t.image ?? null);
             return (
-              <div key={t.id} className="shrink-0 flex flex-col" style={{ width: CARD_WIDTH }}>
+              <div
+                key={t.id}
+                className="shrink-0 flex flex-col"
+                style={{ width: CARD_WIDTH }}>
                 {/* Image */}
                 <div className="relative w-full h-[60vh] overflow-hidden bg-neutral-100 dark:bg-neutral-800">
                   {imgUrl ? (

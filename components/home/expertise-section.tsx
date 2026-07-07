@@ -33,9 +33,7 @@ export function ExpertiseSection({
       className="relative py-24 lg:py-32 bg-background-light dark:bg-background-dark overflow-hidden">
       {/* ParallaxText — contained within the section by overflow-hidden */}
       <div className="absolute inset-0 flex items-center pointer-events-none select-none">
-        <ParallaxText
-          baseVelocity={-1}
-          className="inline-block text-[20vw] md:text-[15vw] font-black text-neutral-900/4 dark:text-white/4 leading-none mx-4">
+        <ParallaxText baseVelocity={-1} color="rgba(0,0,0,0.06)">
           Expertise
         </ParallaxText>
       </div>

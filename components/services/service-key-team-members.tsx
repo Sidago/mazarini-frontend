@@ -43,7 +43,7 @@ export function ServiceKeyTeamMembers({
       {/* Desktop layout */}
       <div className="hidden lg:block relative max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex flex-row gap-12 lg:gap-16">
-          <div className="w-56 shrink-0 flex items-start">
+          <div className="w-56 shrink-0 flex items-center">
             <FadeIn direction="up">
               <h2 className="text-3xl md:text-4xl font-black font-serif text-neutral-900 dark:text-white leading-tight">
                 Key Team

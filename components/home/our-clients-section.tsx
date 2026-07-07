@@ -54,7 +54,7 @@ export function OurClientsSection({
                     src={imageUrl}
                     alt={client.name ?? "Client logo"}
                     fill
-                    className="object-contain opacity-40 hover:opacity-100 transition-all duration-500 hover:scale-110"
+                    className="object-contain transition-all duration-500 hover:scale-110"
                     sizes="(max-width: 768px) 140px, 180px"
                   />
                 )}

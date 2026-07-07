@@ -1,11 +1,11 @@
 import Image from "next/image";
 import { FadeIn } from "@/components/ui/fade-in";
 import { getStrapiMediaUrl } from "@/lib/api/client";
-import type { AwardPage } from "@/lib/types/strapi";
+import type { AwardPage, IPostConstructionPage } from "@/lib/types/strapi";
 import { ParallaxText } from "../ui/scroll-animations";
 
 interface Props {
-  data: AwardPage | null;
+  data: AwardPage | IPostConstructionPage | null;
 }
 
 export function AwardHeroSection({ data }: Props): React.ReactElement {

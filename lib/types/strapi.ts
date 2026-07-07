@@ -1225,3 +1225,33 @@ export interface YouBelongHerePage {
   leadershipWatermark: string | null;
   featuredLeadership: Teams[];
 }
+
+export interface IPostConstructionPage {
+  id: number;
+  documentId: string;
+  seo?: SeoComponent | null;
+
+  heroTitle: string | null;
+  heroText: string | null;
+  heroWatermark: string | null;
+  heroImage: StrapiMedia | null;
+
+  trustTitle: string;
+  trustText: string;
+
+  quotes: CareerQuote[];
+
+  accordionItems: AccordionItem[];
+
+  statsTitle: string | null;
+  stats: StatComponent[];
+
+  nextTitle: string | null;
+  nextDetails: string | null;
+  nextImage: StrapiMedia | null;
+
+  conversationTitle: string | null;
+  conversationText: string | null;
+  conversationWatermark: string | null;
+  conversationBlock: CultureCard[] | null;
+}

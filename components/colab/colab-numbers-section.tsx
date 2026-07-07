@@ -55,13 +55,13 @@ export function ColabNumbersSection({ data }: Props): React.ReactElement {
             <div className="flex flex-col gap-6">
               {stats.map((stat) => (
                 <div key={stat.id} className="border-neutral-200 pt-2">
-                  <p className="text-lg text-neutral-700 leading-none mb-1">
+                  <p className="text-lg font-semibold text-neutral-700 leading-none mb-1">
                     {stat.value}
                     {stat.suffix && (
                       <span className="text-lg">{stat.suffix}</span>
                     )}
                   </p>
-                  <p className="text-xs font-bold text-neutral-900 uppercase tracking-widest">
+                  <p className="font-bold text-neutral-900 uppercase tracking-widest">
                     {stat.label}
                   </p>
                   {stat.description && (

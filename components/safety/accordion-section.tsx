@@ -58,6 +58,9 @@ export function AccordionSection({
                       src={imageUrl}
                       alt={activeImage?.alternativeText ?? title}
                       fill
+                      unoptimized
+                      priority
+                      quality={100}
                       className="object-cover"
                       sizes="(max-width: 1024px) 320px, 384px"
                     />

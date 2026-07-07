@@ -238,7 +238,7 @@ export function ColabSections({
           <ColabResultsSection data={data} />
           <ColabTeamSection data={data} />
           <ColabNewsSection data={data} />
-          <div id="more" className="w-screen h-full bg-black flex-none overflow-y-auto scrollbar-hide">
+          <div id="more" className="w-screen h-full bg-black flex-none overflow-y-auto scrollbar-hide flex items-center justify-center">
             {moreSection}
           </div>
           {footerSection && (
