@@ -51,14 +51,14 @@ export async function SustainabilitySections({
 
       <NewsSection news={news} />
 
-      {data.leadershipTitle && (
+      {/* {data.leadershipTitle && (
         <LeadershipSection
           title={data.leadershipTitle}
           details={data.leadershipDetails}
           parallaxText={data.leadershipParallaxText}
           members={data.leadershipCards}
         />
-      )}
+      )} */}
 
       <YouMightBeInterested />
     </>

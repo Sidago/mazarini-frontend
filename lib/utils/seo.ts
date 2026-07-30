@@ -17,11 +17,13 @@ export function buildMetadata({
   fallbackDescription?: string | null;
   fallbackImage?: StrapiMedia | null;
 }): Metadata {
-  const title = seo?.metaTitle
-    ? `${seo.metaTitle} | ${SITE_NAME}`
-    : fallbackTitle
-      ? `${fallbackTitle} | ${SITE_NAME}`
-      : `${SITE_NAME} | Building America`;
+  const baseTitle =
+    seo?.metaTitle ?? fallbackTitle ?? `${SITE_NAME} | Building America`;
+  // Don't append the site name again if the title already includes it
+  // (e.g. the homepage title "Mazarini Inc. | Building America").
+  const title = baseTitle.includes(SITE_NAME)
+    ? baseTitle
+    : `${baseTitle} | ${SITE_NAME}`;
 
   const description =
     seo?.metaDescription ?? fallbackDescription ?? DEFAULT_DESCRIPTION;

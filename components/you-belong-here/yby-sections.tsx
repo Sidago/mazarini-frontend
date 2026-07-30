@@ -29,7 +29,7 @@ const SECTIONS = [
   { id: "goals", label: "Goals" },
   { id: "careers", label: "Careers" },
   { id: "news", label: "News" },
-  { id: "leadership", label: "Leadership" },
+  // { id: "leadership", label: "Leadership" },
 ];
 
 export function YbySections({ data }: Props): React.ReactElement {
@@ -147,7 +147,7 @@ export function YbySections({ data }: Props): React.ReactElement {
         <YbyGoalsSection data={data} />
         <YbyCareersSection data={data} />
         <YbyNewsSection data={data} />
-        <YbyLeadershipSection data={data} />
+        {/* <YbyLeadershipSection data={data} /> */}
       </div>
 
       {/* ── Desktop: one continuous horizontal scroll ── */}
@@ -220,7 +220,7 @@ export function YbySections({ data }: Props): React.ReactElement {
           <YbyGoalsSection data={data} />
           <YbyCareersSection data={data} />
           <YbyNewsSection data={data} />
-          <YbyLeadershipSection data={data} />
+          {/* <YbyLeadershipSection data={data} /> */}
         </div>
 
         {/* Bottom section navigation */}

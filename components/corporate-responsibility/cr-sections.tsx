@@ -23,7 +23,7 @@ const SECTIONS = [
   { id: "foundation", label: "Foundation" },
   { id: "metrics", label: "Metrics" },
   { id: "news", label: "News" },
-  { id: "executives", label: "Executives" },
+  // { id: "executives", label: "Executives" },
 ];
 
 export function CrSections({ data }: CrSectionsProps): React.ReactElement {
@@ -137,7 +137,7 @@ export function CrSections({ data }: CrSectionsProps): React.ReactElement {
         <CrPillarsSection data={data} />
         <FoundationSection data={data} />
         <MetricsSection data={data} />
-        <ExecutivesSection data={data} />
+        {/* <ExecutivesSection data={data} /> */}
         <CrNewsSection data={data} />
       </div>
 
@@ -208,7 +208,7 @@ export function CrSections({ data }: CrSectionsProps): React.ReactElement {
           <FoundationSection data={data} />
           <MetricsSection data={data} />
           <CrNewsSection data={data} />
-          <ExecutivesSection data={data} />
+          {/* <ExecutivesSection data={data} /> */}
         </div>
 
         {/* Bottom section navigation */}

@@ -28,7 +28,7 @@ const SECTIONS = [
   { id: "innovation", label: "Innovation" },
   { id: "news", label: "News" },
   { id: "partners", label: "Partners" },
-  { id: "leadership", label: "Leadership" },
+  // { id: "leadership", label: "Leadership" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -146,7 +146,7 @@ export function RdSections({ data }: RdSectionsProps): React.ReactElement {
         <InnovationSection data={data} />
         <NewsSection data={data} />
         <PartnersSection data={data} />
-        <LeadershipSection data={data} />
+        {/* <LeadershipSection data={data} /> */}
         <ContactSection data={data} />
       </div>
 
@@ -219,7 +219,7 @@ export function RdSections({ data }: RdSectionsProps): React.ReactElement {
           <InnovationSection data={data} />
           <NewsSection data={data} />
           <PartnersSection data={data} />
-          <LeadershipSection data={data} />
+          {/* <LeadershipSection data={data} /> */}
           <ContactSection data={data} />
         </div>
 

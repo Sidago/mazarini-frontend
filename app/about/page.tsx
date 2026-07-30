@@ -107,11 +107,15 @@ export default async function About(): Promise<React.ReactElement> {
         values={about.coreValues}
       />
 
+     {/* 
+
       <LeadershipBlocksSection
         heading={about.leadershipHeading}
         description={about.leadershipDescription}
         blocks={about.leadershipBlocks}
       />
+
+     */}
 
       <TimelineSection
         heading={about.timelineHeading}
