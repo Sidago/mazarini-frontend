@@ -15,7 +15,7 @@ export function AwardSections({ data }: Props): React.ReactElement {
     <main>
       <AwardHeroSection data={data} />
       <AwardPeopleSection data={data} />
-      <AwardKnowledgeSection data={data} />
+      {/* <AwardKnowledgeSection data={data} /> */}
       <AwardChallengesSection data={data} />
       <AwardColumnsSection data={data} />
       <AwardJourneySection data={data} />

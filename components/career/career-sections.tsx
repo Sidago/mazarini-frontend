@@ -23,14 +23,14 @@ export function CareerSections({ data, jobs }: Props): React.ReactElement {
       <CareerHeroSection data={data} />
       <CareerMissionSection data={data} />
       <CareerStatsSection data={data} />
-      <CareerQuotesSection data={data} />
+      {/* <CareerQuotesSection data={data} /> */}
       <CareerJobsSection data={data} jobs={jobs} />
       <CareerPeopleSection data={data} />
       <CareerBenefitsSection data={data} />
       <CareerCultureSection data={data} />
       <CareerFeaturesSection data={data} />
       <CareerBelongSection data={data} />
-      <CareerPersonSection data={data} />
+      {/* <CareerPersonSection data={data} /> */}
       <CareerResourcesSection data={data} />
     </main>
   );
