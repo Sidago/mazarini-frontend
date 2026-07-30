@@ -1089,6 +1089,46 @@ export interface PreconstructionPage {
   seo: SeoComponent | null;
 }
 
+export interface ConsiderationPartner {
+  id: number;
+  name: string;
+  logo: StrapiMedia | null;
+}
+
+export interface ConsiderationQuizQuestion {
+  id: number;
+  question: string;
+  options: string[] | null;
+}
+
+export interface ConsiderationPage {
+  id: number;
+  documentId: string;
+  heroTitle: string | null;
+  heroText: string | null;
+  heroBody: string | null;
+  heroWatermark: string | null;
+  heroImage: StrapiMedia | null;
+  advisorTitle: string | null;
+  advisorDescription: string | null;
+  advisorFeatureText: string | null;
+  advisorImage: StrapiMedia | null;
+  advisorCtaText: string | null;
+  advisorCtaUrl: string | null;
+  partnersTitle: string | null;
+  partnersSubtitle: string | null;
+  partners: ConsiderationPartner[];
+  quizTitle: string | null;
+  quizDescription: string | null;
+  quizQuestions: ConsiderationQuizQuestion[];
+  journeyTitle: string | null;
+  journeyText: string | null;
+  journeyImage: StrapiMedia | null;
+  journeyCtaText: string | null;
+  journeyCtaUrl: string | null;
+  seo: SeoComponent | null;
+}
+
 export interface ConstructionSustainabilityCard {
   id: number;
   title: string;
