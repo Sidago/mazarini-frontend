@@ -15,10 +15,10 @@ const ALLOWED_WIDTHS = new Set([
 // In-memory cache of already-optimized images. Persists for the life of the
 // server process, so a given (url + width + quality) is fetched from Strapi and
 // re-encoded only ONCE — every later request is served instantly from memory.
-const CACHE = new Map<string, Uint8Array>();
+const CACHE = new Map<string, Uint8Array<ArrayBuffer>>();
 const MAX_ENTRIES = 400;
 
-function cacheSet(key: string, value: Uint8Array): void {
+function cacheSet(key: string, value: Uint8Array<ArrayBuffer>): void {
   // Bound memory: drop the oldest entry when full (Map keeps insertion order).
   if (CACHE.size >= MAX_ENTRIES) {
     const oldest = CACHE.keys().next().value;
