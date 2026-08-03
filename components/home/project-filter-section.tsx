@@ -57,7 +57,7 @@ export function ProjectFilterSection({
       className="relative bg-neutral-950 pt-10 pb-24 lg:pb-32 overflow-hidden">
       <div className="relative z-10 max-w-400 mx-auto px-4 sm:px-6 lg:px-8">
         {/* ── Filter bar with background text ── */}
-        <div className="relative pb-16 mb-10 md:py-24">
+        <div className="relative pb-16 md:py-24">
           {/* Scrolling "Projects" text — positioned behind the filter bar */}
           <div className="absolute inset-0 flex items-center overflow-hidden pointer-events-none select-none">
             <ParallaxText

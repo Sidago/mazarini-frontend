@@ -116,7 +116,7 @@ export default async function ServiceDetailPage({
 
       <ServiceTestimonialSection testimonials={service.testimonials ?? []} />
 
-      <ServiceKeyTeamMembers members={service.teams ?? []} />
+      {/* <ServiceKeyTeamMembers members={service.teams ?? []} /> */}
 
       <NewsSection heading={newsHeading} news={news ?? []} />
 

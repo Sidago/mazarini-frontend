@@ -48,12 +48,12 @@ export function SafetySections({
 
       <NewsSection heading={newsHeading} news={news} />
 
-      <LeadershipSection
+      {/* <LeadershipSection
         title={data.leadershipTitle}
         details={data.leadershipDetails}
         parallaxText={data.leadershipParallaxText}
         members={data.leadership_cards}
-      />
+      /> */}
     </>
   );
 }

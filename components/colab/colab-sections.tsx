@@ -34,7 +34,7 @@ const SECTIONS = [
   { id: "challenges", label: "Challenges" },
   { id: "innovation", label: "Innovation" },
   { id: "results", label: "Results" },
-  { id: "team", label: "Team" },
+  // { id: "team", label: "Team" },
   { id: "news", label: "News" },
   { id: "more", label: "More" },
 ];
@@ -236,7 +236,7 @@ export function ColabSections({
           <ColabChallengesSection data={data} />
           <ColabInnovationSection data={data} />
           <ColabResultsSection data={data} />
-          <ColabTeamSection data={data} />
+          {/* <ColabTeamSection data={data} /> */}
           <ColabNewsSection data={data} />
           <div id="more" className="w-screen h-full bg-black flex-none overflow-y-auto scrollbar-hide flex items-center justify-center">
             {moreSection}

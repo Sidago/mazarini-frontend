@@ -27,15 +27,10 @@ export function ConsiderationAdvisorSection({
       <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-16">
         {/* Heading + body — right-aligned column */}
         <FadeIn direction="up" duration={0.7}>
-          <div className="max-w-3xl ml-auto text-right">
+          <div className="max-w-3xl ml-auto text-left">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight tracking-tight">
               {title}
             </h2>
-            {description && (
-              <p className="mt-6 text-base lg:text-lg leading-relaxed text-white/70 whitespace-pre-line">
-                {description}
-              </p>
-            )}
           </div>
         </FadeIn>
 
