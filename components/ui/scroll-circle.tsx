@@ -15,12 +15,18 @@ interface ScrollCircleProps {
   size?: number;
   strokeWidth?: number;
   className?: string;
+  /** Colour of the static full-circle track. Defaults suit dark backgrounds. */
+  trackColor?: string;
+  /** Colour of the two rotating arc segments. */
+  arcColor?: string;
 }
 
 export function ScrollCircle({
   size = 550,
   strokeWidth = 3,
   className,
+  trackColor = "rgba(255, 255, 255, 0.3)",
+  arcColor = "rgb(243,140,41)",
 }: ScrollCircleProps): React.ReactElement {
   const radius = (size - strokeWidth) / 2;
   const center = size / 2;
@@ -68,7 +74,7 @@ export function ScrollCircle({
         cx={center}
         cy={center}
         r={radius}
-        stroke="rgba(255, 255, 255, 0.3)"
+        stroke={trackColor}
         strokeWidth={strokeWidth}
         fill="none"
       />
@@ -79,7 +85,7 @@ export function ScrollCircle({
           cx={center}
           cy={center}
           r={radius}
-          stroke="rgb(243,140,41)"
+          stroke={arcColor}
           strokeWidth={arcWidth}
           strokeDasharray={`${circumference * 0.07} ${circumference * 0.93}`}
           strokeDashoffset={0}
@@ -91,7 +97,7 @@ export function ScrollCircle({
           cx={center}
           cy={center}
           r={radius}
-          stroke="rgb(243,140,41)"
+          stroke={arcColor}
           strokeWidth={arcWidth}
           strokeDasharray={`${circumference * 0.07} ${circumference * 0.93}`}
           strokeDashoffset={-circumference * 0.5}

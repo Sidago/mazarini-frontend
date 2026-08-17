@@ -11,7 +11,7 @@ import { Footer } from "@/components/layout/footer";
 
 export async function generateMetadata(): Promise<Metadata> {
   try {
-    const data = await getColabPage();
+    const data = await getColabPage(                    );
     return buildMetadata({
       seo: data.seo,
       fallbackTitle: data.heroTitle ?? data.introTitle ?? "CoLab",

@@ -7,7 +7,8 @@ export async function getConsiderationPage(): Promise<ConsiderationPage> {
     {
       "populate[heroImage]": "true",
       "populate[advisorImage]": "true",
-      "populate[partners][populate][logo]": "true",
+      "populate[alignedImage]": "true",
+      "populate[partner][populate][image]": "true",
       "populate[quizQuestions]": "true",
       "populate[journeyImage]": "true",
       "populate[seo][populate][shareImage]": "true",

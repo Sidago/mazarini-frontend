@@ -1089,12 +1089,6 @@ export interface PreconstructionPage {
   seo: SeoComponent | null;
 }
 
-export interface ConsiderationPartner {
-  id: number;
-  name: string;
-  logo: StrapiMedia | null;
-}
-
 export interface ConsiderationQuizQuestion {
   id: number;
   question: string;
@@ -1115,9 +1109,15 @@ export interface ConsiderationPage {
   advisorImage: StrapiMedia | null;
   advisorCtaText: string | null;
   advisorCtaUrl: string | null;
+  alignedTitle: string | null;
+  alignedDescription: string | null;
+  alignedHighlightText: string | null;
+  alignedImage: StrapiMedia | null;
+  alignedCtaText: string | null;
+  alignedCtaUrl: string | null;
   partnersTitle: string | null;
   partnersSubtitle: string | null;
-  partners: ConsiderationPartner[];
+  partner: OurClient[];
   quizTitle: string | null;
   quizDescription: string | null;
   quizQuestions: ConsiderationQuizQuestion[];
