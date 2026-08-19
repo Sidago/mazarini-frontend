@@ -119,7 +119,7 @@ export default async function ProjectDetailPage({
       />
 
       {/* Key Team Members */}
-      <ProjectKeyTeamSection members={teams} />
+      {/* <ProjectKeyTeamSection members={teams} /> */}
 
       <YouMightBeInterested />
     </>
