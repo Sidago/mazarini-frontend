@@ -80,7 +80,7 @@ export function ConsiderationAdvisorSection({
               <div className="relative w-full aspect-4/5 sm:aspect-5/8">
                 <div
                   aria-hidden="true"
-                  className="pointer-events-none absolute -top-[13%] left-[25%] w-[94%] aspect-square">
+                  className="pointer-events-none absolute top-[-13%] left-[25%] w-[94%] aspect-square">
                   <ScrollCircle
                     size={480}
                     strokeWidth={1.5}

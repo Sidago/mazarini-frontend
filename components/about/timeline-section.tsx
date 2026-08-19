@@ -104,7 +104,7 @@ export function TimelineSection({
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: directionRef.current * -120 }}
             transition={{ duration: 0.45, ease: [0.32, 0.72, 0, 1] }}
-            className="grid grid-cols-1 lg:grid-cols-[45fr_55fr]">
+            className="grid grid-cols-1 lg:grid-cols-[50fr_50fr]  a a   q qqqsa items-center justify-center">
             
             {/* Image — left, full bleed */}
             <div className="relative w-full h-64 sm:h-80 lg:h-[58vh] overflow-hidden">

@@ -8,6 +8,7 @@ import { InsightDownloadForm } from "@/components/insights/insight-download-form
 import { getInsightBySlug } from "@/lib/api/insights";
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import { buildMetadata } from "@/lib/utils/seo";
+import { YouMightBeInterested } from "@/components/common/you-might-be-interested";
 
 interface InsightDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -59,7 +60,7 @@ export default async function InsightDetailPage({
   const fileName = insight.file?.url?.split("/").pop() ?? `${insight.slug}.pdf`;
 
   return (
-    <section className="py-16 lg:py-35 bg-background-light dark:bg-background-dark">
+    <section className="pt-16 lg:pt-35 bg-background-light dark:bg-background-dark">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Back link */}
         {/* <FadeIn>
@@ -73,7 +74,7 @@ export default async function InsightDetailPage({
         </FadeIn> */}
 
         {/* Two-column layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-12 items-start pt-10">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-12 items-start py-10">
           {/* Left: content */}
           <FadeIn direction="up" delay={0.05}>
             <div>
@@ -123,7 +124,7 @@ export default async function InsightDetailPage({
 
               {/* Description */}
               {insight.description && (
-                <p className="text-base lg:text-lg text-neutral-600 dark:text-neutral-400 tracking-wide leading-relaxed">
+                <p className="text-base lg:text-lg whitespace-pre-line text-neutral-600 dark:text-neutral-400 tracking-wide leading-relaxed">
                   {insight.description}
                 </p>
               )}
@@ -143,6 +144,10 @@ export default async function InsightDetailPage({
             </div>
           </FadeIn>
         </div>
+      </div>
+
+      <div className="pt-15">
+        <YouMightBeInterested />
       </div>
     </section>
   );
