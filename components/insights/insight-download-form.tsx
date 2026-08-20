@@ -1,10 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { submitReportDownload } from "@/lib/api/report-downloads";
 
 interface InsightDownloadFormProps {
   fileUrl: string | null;
   fileName?: string;
+  insightSlug: string;
+  insightTitle: string;
 }
 
 interface FormState {
@@ -26,10 +29,14 @@ const EMPTY_FORM: FormState = {
 export function InsightDownloadForm({
   fileUrl,
   fileName = "report.pdf",
+  insightSlug,
+  insightTitle,
 }: InsightDownloadFormProps): React.ReactElement {
   const [form, setForm] = useState<FormState>(EMPTY_FORM);
   const [errors, setErrors] = useState<Partial<FormState>>({});
   const [downloaded, setDownloaded] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   function validate(): boolean {
     const next: Partial<FormState> = {};
@@ -50,19 +57,39 @@ export function InsightDownloadForm({
     }
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!validate()) return;
     if (!fileUrl) return;
 
-    const link = document.createElement("a");
-    link.href = fileUrl;
-    link.download = fileName;
-    link.target = "_blank";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    setDownloaded(true);
+    setIsSubmitting(true);
+    setSubmitError("");
+    try {
+      await submitReportDownload({
+        firstName: form.firstName.trim(),
+        lastName: form.lastName.trim(),
+        email: form.email.trim(),
+        phone: form.phone.trim(),
+        company: form.company.trim(),
+        insightSlug,
+        insightTitle,
+      });
+
+      const link = document.createElement("a");
+      link.href = fileUrl;
+      link.download = fileName;
+      link.target = "_blank";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      setDownloaded(true);
+    } catch (err) {
+      setSubmitError(
+        err instanceof Error ? err.message : "Something went wrong. Please try again.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   if (downloaded) {
@@ -141,12 +168,14 @@ export function InsightDownloadForm({
           onChange={handleChange}
         />
 
+        {submitError && <p className="text-red-400 text-xs">{submitError}</p>}
+
         <button
           type="submit"
-          disabled={!fileUrl}
+          disabled={!fileUrl || isSubmitting}
           className="mt-2 w-full bg-primary text-neutral-900 font-bold text-sm tracking-widest uppercase py-4 hover:bg-amber-500 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
         >
-          Download
+          {isSubmitting ? "Submitting..." : "Download"}
         </button>
       </form>
 

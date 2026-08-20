@@ -73,6 +73,16 @@ export interface ContactSubmissionPayload {
   notes: string;
 }
 
+export interface ReportDownloadPayload {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  company: string;
+  insightSlug: string;
+  insightTitle: string;
+}
+
 export interface SeoComponent {
   id: number;
   metaTitle: string | null;

@@ -140,7 +140,12 @@ export default async function InsightDetailPage({
           {/* Right: download form */}
           <FadeIn direction="up" delay={0.15}>
             <div className="lg:sticky lg:top-28">
-              <InsightDownloadForm fileUrl={fileUrl} fileName={fileName} />
+              <InsightDownloadForm
+                fileUrl={fileUrl}
+                fileName={fileName}
+                insightSlug={insight.slug}
+                insightTitle={insight.title}
+              />
             </div>
           </FadeIn>
         </div>
