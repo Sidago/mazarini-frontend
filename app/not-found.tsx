@@ -11,17 +11,17 @@ export default function NotFound(): React.ReactElement {
     <main className="min-h-screen flex flex-col items-center justify-center bg-background-dark text-white px-6 py-32 text-center">
       {/* Local public asset — plain img to bypass the custom Strapi next/image loader. */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
+      {/* <img
         src="/images/Logo.png"
         alt="Mazarini"
         className="h-14 w-auto object-contain mb-12"
-      />
+      /> */}
 
       <p className="text-7xl sm:text-8xl lg:text-9xl font-serif font-black text-primary leading-none">
         404
       </p>
 
-      <h1 className="mt-6 text-2xl sm:text-3xl font-serif font-bold">
+      <h1 className="mt-6 text-2xl sm:text-4xl font-serif font-bold">
         Page Not Found
       </h1>
 

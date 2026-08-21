@@ -21,7 +21,7 @@ export function FoundationSection({
       className="relative w-screen min-h-screen lg:h-screen flex-none overflow-hidden bg-neutral-900 text-white">
       <div className="flex flex-col lg:flex-row h-full">
         {/* Left: image with overlay */}
-        <div className="relative w-full lg:w-[60vw] min-h-[50vh] lg:h-full flex-none">
+        <div className="relative w-full min-h-[50vh] lg:h-full flex-none">
           {imageUrl && (
             <Image
               src={imageUrl}
@@ -32,9 +32,9 @@ export function FoundationSection({
             />
           )}
           <div className="absolute inset-0 bg-black/55" />
-          <div className="absolute font-serif inset-0 flex flex-col justify-center p-10 lg:p-16">
+          <div className="absolute font-serif flex flex-col justify-center inset-0 max-w-3xl mx-auto px-6 lg:px-8">
             {data.foundationDescription && (
-              <p className="text-white text-sm lg:text-base leading-relaxed mb-8 max-w-xl">
+              <p className="text-white text-base lg:text-xl leading-relaxed mb-8">
                 {data.foundationDescription}
               </p>
             )}
@@ -49,7 +49,7 @@ export function FoundationSection({
         </div>
 
         {/* Right: impact intro */}
-        <div className="w-full lg:w-[40vw] font-serif flex-none flex items-center justify-center bg-neutral-900 p-10 lg:p-16">
+        {/* <div className="w-full lg:w-[40vw] font-serif flex-none flex items-center justify-center bg-neutral-900 p-10 lg:p-16">
           <div className="pointer-events-none select-none absolute top-0 left-0 right-0 h-[40%] lg:inset-0 lg:h-auto z-0">
             <ParallaxText
               baseVelocity={0.2}
@@ -73,7 +73,7 @@ export function FoundationSection({
               </Link>
             )}
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
