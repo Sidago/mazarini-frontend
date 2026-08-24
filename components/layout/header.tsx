@@ -34,7 +34,7 @@ export function Header({
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const pathname = usePathname();
 
-  const FORCE_ACTIVE_PATHS = ["/leadership", "/insights/", "/contact"];
+  const FORCE_ACTIVE_PATHS = ["/leadership", "/insights/", "/contact", "/establishes-nonprofit-foundation"];
   const active = scrolled || hovered || FORCE_ACTIVE_PATHS.some((p) => pathname.startsWith(p));
 
   // Routes where the header should not render at all.

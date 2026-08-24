@@ -6,6 +6,7 @@ import Link from "next/link";
 import { getEstablishesNonprofitFoundationPage } from "@/lib/api/establishes-nonprofit-foundation";
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import { buildMetadata } from "@/lib/utils/seo";
+import { YouMightBeInterested } from "@/components/common/you-might-be-interested";
 
 export async function generateMetadata(): Promise<Metadata> {
   try {
@@ -201,13 +202,12 @@ export default async function EstablishesNonprofitFoundation(): Promise<React.Re
       </article>
 
       {/* ── Bottom Dual-Promo Section ("Projects" and "The Mazarini Experience") ── */}
-      <section className="w-full bg-black text-white py-16 sm:py-24 px-4 sm:px-6 lg:px-12 border-t border-white/15">
+      {/* <section className="w-full bg-black text-white py-16 sm:py-24 px-4 sm:px-6 lg:px-12 border-t border-white/15">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-            {/* Card 1: Projects */}
             <Link
               href={data?.promoProjectsUrl ?? "/projects"}
-              className="group relative aspect-[16/11] sm:aspect-[16/10] overflow-hidden bg-neutral-900 flex flex-col justify-end"
+              className="group relative w-full h-[360px] sm:h-[420px] lg:h-[460px] overflow-hidden bg-neutral-900 flex flex-col justify-end"
             >
               <Image
                 src={promoProjectsImgUrl}
@@ -242,10 +242,9 @@ export default async function EstablishesNonprofitFoundation(): Promise<React.Re
               </div>
             </Link>
 
-            {/* Card 2: The Mazarini Experience */}
             <Link
               href={data?.promoExperienceUrl ?? "/experience"}
-              className="group relative aspect-[16/11] sm:aspect-[16/10] overflow-hidden bg-neutral-900 flex flex-col justify-end"
+              className="group relative w-full h-[360px] sm:h-[420px] lg:h-[460px] overflow-hidden bg-neutral-900 flex flex-col justify-end"
             >
               <Image
                 src={promoExperienceImgUrl}
@@ -281,7 +280,9 @@ export default async function EstablishesNonprofitFoundation(): Promise<React.Re
             </Link>
           </div>
         </div>
-      </section>
+      </section> */}
+
+      <YouMightBeInterested limit={3} />
     </div>
   );
 }
