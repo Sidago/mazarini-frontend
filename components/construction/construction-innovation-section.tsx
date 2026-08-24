@@ -33,7 +33,7 @@ export function ConstructionInnovationSection({
   }
 
   return (
-    <section className="bg-white text-black overflow-hidden py-20 lg:py-28">
+    <section className="bg-white text-black overflow-hidden py-10 lg:pb-20">
       {/* Heading + description */}
       {(title || description) && (
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-16 mb-10 text-center">

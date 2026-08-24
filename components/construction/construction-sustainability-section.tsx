@@ -70,10 +70,10 @@ export function ConstructionSustainabilitySection({
   }
 
   return (
-    <section className="bg-white text-black py-20 lg:py-32">
+    <section className="bg-white text-black pb-10">
       <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-16">
         {(title || text) && (
-          <div className="max-w-3xl mb-14">
+          <div className="max-w-3xl mb-10">
             {title && (
               <FadeIn direction="up" duration={0.7}>
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight tracking-tight">
