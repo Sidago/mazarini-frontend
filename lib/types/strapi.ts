@@ -1305,3 +1305,33 @@ export interface IPostConstructionPage {
   conversationWatermark: string | null;
   conversationBlock: CultureCard[] | null;
 }
+
+export interface EstablishesNonprofitFoundationPage {
+  id: number;
+  documentId: string;
+  heroImage: StrapiMedia | null;
+  category: string | null;
+  publishedDate: string | null;
+  title: string | null;
+  subheading: string | null;
+  paragraph1: string | null;
+  paragraph2: string | null;
+  paragraph3: string | null;
+  paragraph4: string | null;
+  paragraph5: string | null;
+  crLinkText: string | null;
+  crLinkUrl: string | null;
+  galleryImage1: StrapiMedia | null;
+  galleryImage2: StrapiMedia | null;
+  galleryImage3: StrapiMedia | null;
+  galleryImage4: StrapiMedia | null;
+  galleryCaption: string | null;
+  promoProjectsTitle: string | null;
+  promoProjectsUrl: string | null;
+  promoProjectsImage: StrapiMedia | null;
+  promoExperienceTitle: string | null;
+  promoExperienceUrl: string | null;
+  promoExperienceImage: StrapiMedia | null;
+  seo: SeoComponent | null;
+}
+
