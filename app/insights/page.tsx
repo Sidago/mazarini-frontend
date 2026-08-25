@@ -9,6 +9,7 @@ import { getInsights, getInsightsPage } from "@/lib/api/insights";
 import { buildMetadata } from "@/lib/utils/seo";
 import type { Insight, InsightsPage } from "@/lib/types/strapi";
 import { notFound } from "next/navigation";
+import { YouMightBeInterested } from "@/components/common/you-might-be-interested";
 
 export async function generateMetadata(): Promise<Metadata> {
   try {
@@ -69,6 +70,8 @@ export default async function InsightsPageRoute(): Promise<React.ReactElement> {
       </section>
 
       <InsightsList insights={insights} />
+
+      <YouMightBeInterested />
     </>
   );
 }

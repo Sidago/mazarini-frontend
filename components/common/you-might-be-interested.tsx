@@ -103,7 +103,7 @@ export async function YouMightBeInterested({
   return (
     <section className="w-full bg-neutral-950 text-white py-16 sm:py-24 px-4 sm:px-6 lg:px-12 border-t border-white/10">
       <div className="max-w-7xl mx-auto w-full">
-        <h2 className="font-serif font-bold text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight mb-10 sm:mb-12">
+        <h2 className="font-serif font-bold text-2xl sm:text-3xl lg:text-4xl text-white tracking-wider leading-relaxed mb-10 sm:mb-12">
           {title}
         </h2>
 
