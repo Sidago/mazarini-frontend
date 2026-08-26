@@ -1,8 +1,12 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
+import { AnimatePresence, motion } from "framer-motion";
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import { FadeIn } from "@/components/ui/fade-in";
 import { ServiceAccordion } from "@/components/services/service-accordion";
-import type { Service } from "@/lib/types/strapi";
+import type { Service, StrapiMedia } from "@/lib/types/strapi";
 
 interface ServiceDetailSectionProps {
   service: Service;
@@ -11,24 +15,49 @@ interface ServiceDetailSectionProps {
 export function ServiceDetailSection({
   service,
 }: ServiceDetailSectionProps): React.ReactElement {
-  const imageUrl = getStrapiMediaUrl(service.image ?? null);
+  // The accordion opens the first item by default, so start with its image
+  // when it has one; otherwise fall back to the service's own image.
+  const [activeImage, setActiveImage] = useState<StrapiMedia | null>(
+    service.accordion_items?.[0]?.image ?? service.image ?? null,
+  );
+
+  const imageUrl = getStrapiMediaUrl(activeImage);
+
+  function handleActiveChange(index: number): void {
+    const itemImage = service.accordion_items?.[index]?.image ?? null;
+    // Only swap if the active item actually has an image — otherwise keep the
+    // currently displayed one.
+    if (itemImage && getStrapiMediaUrl(itemImage)) {
+      setActiveImage(itemImage);
+    }
+  }
 
   return (
     <section className="py-20 md:py-32 bg-neutral-950">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center gap-0">
-          {/* Left — image */}
+          {/* Left — image (swaps with the active accordion item) */}
           <FadeIn direction="left">
             <div className="relative w-full lg:w-[450px] shrink-0 aspect-4/5 overflow-hidden">
-              {imageUrl && (
-                <Image
-                  src={imageUrl}
-                  alt={service.image?.alternativeText ?? service.title}
-                  fill
-                  className="object-cover object-center"
-                  sizes="(max-width: 1200px) 100vw, 480px"
-                />
-              )}
+              <AnimatePresence mode="wait">
+                {imageUrl && (
+                  <motion.div
+                    key={imageUrl}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.35, ease: "easeInOut" }}
+                    className="absolute inset-0">
+                    <Image
+                      src={imageUrl}
+                      alt={activeImage?.alternativeText ?? service.title}
+                      fill
+                      className="object-cover object-center"
+                      sizes="(max-width: 1200px) 100vw, 480px"
+                    />
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </FadeIn>
 
@@ -50,7 +79,10 @@ export function ServiceDetailSection({
             {Array.isArray(service.accordion_items) &&
               service.accordion_items.length > 0 && (
                 <FadeIn direction="right" delay={0.2}>
-                  <ServiceAccordion items={service.accordion_items} />
+                  <ServiceAccordion
+                    items={service.accordion_items}
+                    onActiveChange={handleActiveChange}
+                  />
                 </FadeIn>
               )}
           </div>

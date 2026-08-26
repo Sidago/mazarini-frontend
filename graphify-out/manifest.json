@@ -728,8 +728,8 @@
     "hash": "c0852d667edcd6c301116b45e1809cee"
   },
   "/media/khaled/Education/Sidago/Mazarini/mazarini-frontend/components/services/service-detail-section.tsx": {
-    "mtime": 1781878054.005237,
-    "hash": "0d15d61022b658e37ff50217dfd047fb"
+    "mtime": 1787760145.8768463,
+    "hash": "9407ae7725dde7c89662401c2fc3ba82"
   },
   "/media/khaled/Education/Sidago/Mazarini/mazarini-frontend/components/services/service-filter-card.tsx": {
     "mtime": 1778488707.3883102,
@@ -875,6 +875,10 @@
     "mtime": 1781511326.4419005,
     "hash": "34e1071b177f70f8c030ab8866f543e4"
   },
+  "/media/khaled/Education/Sidago/Mazarini/mazarini-frontend/lib/api/location.ts": {
+    "mtime": 1778035531.1734858,
+    "hash": "d0fc15309df93815a0e179835d35e53e"
+  },
   "/media/khaled/Education/Sidago/Mazarini/mazarini-frontend/lib/api/about.ts": {
     "mtime": 1782129038.2927592,
     "hash": "e95de53c829fac87e7597394215c0187"
@@ -943,10 +947,6 @@
     "mtime": 1778035512.787946,
     "hash": "290de9c0a7e35c7aafc13875aa0d7563"
   },
-  "/media/khaled/Education/Sidago/Mazarini/mazarini-frontend/lib/api/location.ts": {
-    "mtime": 1778035531.1734858,
-    "hash": "d0fc15309df93815a0e179835d35e53e"
-  },
   "/media/khaled/Education/Sidago/Mazarini/mazarini-frontend/lib/api/news.ts": {
     "mtime": 1778035553.719105,
     "hash": "616660be9db1b81a62e48bd7b26a5f0f"
@@ -984,8 +984,8 @@
     "hash": "eb01ae706cd27915b64481f0e40091b5"
   },
   "/media/khaled/Education/Sidago/Mazarini/mazarini-frontend/lib/api/services.ts": {
-    "mtime": 1782129039.5065267,
-    "hash": "18131c2a3181e3e4208c2084ad5a7ea4"
+    "mtime": 1787761313.0947585,
+    "hash": "cd5ccbb986da30f7ed4ab6239c3c03a3"
   },
   "/media/khaled/Education/Sidago/Mazarini/mazarini-frontend/lib/api/spark.ts": {
     "mtime": 1782225894.0488174,

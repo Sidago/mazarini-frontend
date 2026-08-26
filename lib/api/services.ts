@@ -19,7 +19,7 @@ export async function getService(slug: string): Promise<Service> {
     "filters[slug][$eq]": slug,
     "populate[image]": "true",
     "populate[heroImage]": "true",
-    "populate[accordion_items]": "true",
+    "populate[accordion_items][populate]": "image",
     "populate[testimonials][populate][image]": "true",
     "populate[teams][populate][image]": "true",
     "populate[seo][populate][shareImage]": "true",
