@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `8a4dd427`
+- Built from commit: `44a2b5f0`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -36,7 +36,7 @@
 - [[_COMMUNITY_Community 18|Community 18]]
 - [[_COMMUNITY_Community 20|Community 20]]
 - [[_COMMUNITY_Community 23|Community 23]]
-- [[_COMMUNITY_Community 25|Community 25]]
+- [[_COMMUNITY_Community 24|Community 24]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `getStrapiMediaUrl()` - 114 edges
@@ -73,12 +73,12 @@ Cohesion: 0.07
 Nodes (27): getCorporateResponsibilityPage(), getEstablishesNonprofitFoundationPage(), getAllJobs(), getJobsPage(), getLeadershipPage(), getPreconstructionPage(), getRdPage(), getYouBelongHerePage() (+19 more)
 
 ### Community 3 - "Community 3"
-Cohesion: 0.09
-Nodes (22): About(), generateMetadata(), getAbout(), getCareerPage(), getJobs(), strapiGet(), getConstructionPage(), getExperiencePage() (+14 more)
-
-### Community 4 - "Community 4"
 Cohesion: 0.06
 Nodes (6): getStrapiMediaUrl(), JobsHero(), handleActiveChange(), handleActiveChange(), ServiceProjectCard(), SparkImageSection()
+
+### Community 4 - "Community 4"
+Cohesion: 0.09
+Nodes (22): About(), generateMetadata(), getAbout(), getCareerPage(), getJobs(), strapiGet(), getConstructionPage(), getExperiencePage() (+14 more)
 
 ### Community 5 - "Community 5"
 Cohesion: 0.09
@@ -134,11 +134,11 @@ Nodes (4): getTeams(), getTeamsPage(), generateMetadata(), TeamPage()
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `getStrapiMediaUrl()` connect `Community 4` to `Community 0`, `Community 1`, `Community 2`, `Community 3`, `Community 5`, `Community 8`, `Community 9`, `Community 10`, `Community 12`, `Community 15`, `Community 19`, `Community 20`, `Community 21`, `Community 24`, `Community 27`, `Community 28`, `Community 29`, `Community 37`, `Community 38`, `Community 39`, `Community 40`, `Community 41`, `Community 42`, `Community 43`, `Community 44`, `Community 45`, `Community 46`, `Community 47`, `Community 48`, `Community 49`, `Community 50`, `Community 51`, `Community 52`, `Community 53`, `Community 54`, `Community 55`, `Community 56`, `Community 57`, `Community 58`, `Community 59`, `Community 60`, `Community 61`, `Community 62`?**
+- **Why does `getStrapiMediaUrl()` connect `Community 3` to `Community 0`, `Community 1`, `Community 2`, `Community 4`, `Community 5`, `Community 8`, `Community 9`, `Community 10`, `Community 12`, `Community 15`, `Community 19`, `Community 20`, `Community 21`, `Community 26`, `Community 27`, `Community 28`, `Community 36`, `Community 37`, `Community 38`, `Community 39`, `Community 40`, `Community 41`, `Community 42`, `Community 43`, `Community 44`, `Community 45`, `Community 46`, `Community 47`, `Community 48`, `Community 49`, `Community 50`, `Community 51`, `Community 52`, `Community 53`, `Community 54`, `Community 55`, `Community 56`, `Community 57`, `Community 58`, `Community 59`, `Community 60`, `Community 61`, `Community 62`?**
   _High betweenness centrality (0.429) - this node is a cross-community bridge._
 - **Why does `buildMetadata()` connect `Community 1` to `Community 3`, `Community 4`, `Community 5`, `Community 7`, `Community 8`, `Community 10`, `Community 13`, `Community 14`, `Community 16`, `Community 18`?**
   _High betweenness centrality (0.290) - this node is a cross-community bridge._
-- **Why does `FadeIn()` connect `Community 2` to `Community 0`, `Community 3`, `Community 4`, `Community 37`, `Community 5`, `Community 7`, `Community 8`, `Community 10`, `Community 20`, `Community 54`, `Community 55`, `Community 27`, `Community 28`?**
+- **Why does `FadeIn()` connect `Community 2` to `Community 0`, `Community 3`, `Community 4`, `Community 5`, `Community 7`, `Community 8`, `Community 10`, `Community 44`, `Community 48`, `Community 20`, `Community 55`, `Community 26`, `Community 27`?**
   _High betweenness centrality (0.105) - this node is a cross-community bridge._
 - **Are the 14 inferred relationships involving `getStrapiMediaUrl()` (e.g. with `EstablishesNonprofitFoundation()` and `ProjectDetailPage()`) actually correct?**
   _`getStrapiMediaUrl()` has 14 INFERRED edges - model-reasoned connections that need verification._
