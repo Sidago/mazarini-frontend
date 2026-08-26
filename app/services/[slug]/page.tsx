@@ -53,7 +53,7 @@ export default async function ServiceDetailPage({
 
   if (!service) notFound();
 
-  let heroImage = service.heroImage ?? null;
+  let heroImage = service.heroImage ?? service.image ?? null;
   let heroVideo = null;
   let servicePageStats: StatComponent[] = [];
   try {
