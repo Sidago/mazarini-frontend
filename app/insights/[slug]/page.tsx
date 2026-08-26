@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { FadeIn } from "@/components/ui/fade-in";
 import { Icon } from "@/components/ui/icon";
 import { InsightDownloadForm } from "@/components/insights/insight-download-form";
+import { StrapiBlocks } from "@/components/ui/strapi-blocks";
 import { getInsightBySlug } from "@/lib/api/insights";
 import { getStrapiMediaUrl } from "@/lib/api/client";
 import { buildMetadata } from "@/lib/utils/seo";
@@ -56,6 +57,7 @@ export default async function InsightDetailPage({
   if (!insight) notFound();
 
   const imageUrl = getStrapiMediaUrl(insight.image ?? null);
+  const videoUrl = getStrapiMediaUrl(insight.video ?? null);
   const fileUrl = getStrapiMediaUrl(insight.file ?? null);
   const fileName = insight.file?.url?.split("/").pop() ?? `${insight.slug}.pdf`;
 
@@ -73,23 +75,39 @@ export default async function InsightDetailPage({
           </Link>
         </FadeIn> */}
 
-        {/* Two-column layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-12 items-start py-10">
-          {/* Left: content */}
+        {/* Two-column layout when there's a report to download, otherwise a single centered column */}
+        <div
+          className={
+            fileUrl
+              ? "grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-12 items-start py-10"
+              : "max-w-3xl mx-auto py-10"
+          }>
+          {/* Content */}
           <FadeIn direction="up" delay={0.05}>
             <div>
-              {/* Hero image */}
-              {imageUrl && (
+              {/* Hero media — video takes priority over image */}
+              {videoUrl ? (
                 <div className="relative w-full aspect-[16/10] overflow-hidden mb-8">
-                  <Image
-                    src={imageUrl}
-                    alt={insight.image?.alternativeText ?? insight.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 65vw"
-                    priority
+                  <video
+                    src={videoUrl}
+                    controls
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover"
                   />
                 </div>
+              ) : (
+                imageUrl && (
+                  <div className="relative w-full aspect-[16/10] overflow-hidden mb-8">
+                    <Image
+                      src={imageUrl}
+                      alt={insight.image?.alternativeText ?? insight.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 65vw"
+                      priority
+                    />
+                  </div>
+                )
               )}
 
               {/* Category + date */}
@@ -118,16 +136,19 @@ export default async function InsightDetailPage({
               </div>
 
               {/* Title */}
-              <h1 className="text-3xl lg:text-4xl font-black font-serif text-neutral-900 dark:text-white leading-tight mb-6">
+              <h1 className="text-3xl lg:text-5xl font-black font-serif text-neutral-900 dark:text-white leading-tight mb-6">
                 {insight.title}
               </h1>
 
-              {/* Description */}
+              {/* Description (lede) */}
               {insight.description && (
                 <p className="text-base lg:text-lg whitespace-pre-line text-neutral-600 dark:text-neutral-400 tracking-wide leading-relaxed">
                   {insight.description}
                 </p>
               )}
+
+              {/* Full body content */}
+              <StrapiBlocks content={insight.content} className="mt-6" />
 
               {fileUrl && (
                 <p className="mt-10 text-sm font-bold text-neutral-700 dark:text-neutral-300 text-center">
@@ -137,17 +158,19 @@ export default async function InsightDetailPage({
             </div>
           </FadeIn>
 
-          {/* Right: download form */}
-          <FadeIn direction="up" delay={0.15}>
-            <div className="lg:sticky lg:top-28">
-              <InsightDownloadForm
-                fileUrl={fileUrl}
-                fileName={fileName}
-                insightSlug={insight.slug}
-                insightTitle={insight.title}
-              />
-            </div>
-          </FadeIn>
+          {/* Download form — only when there's a report to download */}
+          {fileUrl && (
+            <FadeIn direction="up" delay={0.15}>
+              <div className="lg:sticky lg:top-28">
+                <InsightDownloadForm
+                  fileUrl={fileUrl}
+                  fileName={fileName}
+                  insightSlug={insight.slug}
+                  insightTitle={insight.title}
+                />
+              </div>
+            </FadeIn>
+          )}
         </div>
       </div>
 

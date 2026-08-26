@@ -845,7 +845,9 @@ export interface Insight {
   category: string | null;
   date: string | null;
   description: string | null;
+  content: unknown;
   image: StrapiMedia | null;
+  video: StrapiMedia | null;
   file: StrapiMedia | null;
 }
 

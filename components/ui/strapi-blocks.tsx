@@ -1,4 +1,6 @@
 import React from "react";
+import { getStrapiMediaUrl } from "@/lib/api/client";
+import type { StrapiMedia } from "@/lib/types/strapi";
 
 // Minimal Strapi Blocks (rich text) renderer.
 // Covers the node types Strapi v5 emits: paragraph, heading, list, list-item,
@@ -100,6 +102,16 @@ function renderBlock(block: BlockNode, index: number): React.ReactNode {
         <pre key={key} className="rounded bg-neutral-100 dark:bg-neutral-800 p-4 overflow-x-auto text-sm font-mono">
           <code>{block.plainText ?? renderInline(block.children, key)}</code>
         </pre>
+      );
+    case "image":
+      return (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          key={key}
+          src={getStrapiMediaUrl(block.image as StrapiMedia)}
+          alt={block.image.alternativeText ?? ""}
+          className="w-full h-auto rounded"
+        />
       );
     default:
       return null;
