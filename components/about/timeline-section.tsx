@@ -94,8 +94,8 @@ export function TimelineSection({
         </div>
       </div>
 
-      {/* Carousel — full bleed */}
-      <div className="relative">
+      {/* Carousel */}
+      <div className="relative max-w-7xl mx-auto px-6">
         <AnimatePresence mode="wait" custom={directionRef.current}>
           <motion.div
             key={activeEntry.id}
@@ -104,8 +104,8 @@ export function TimelineSection({
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: directionRef.current * -120 }}
             transition={{ duration: 0.45, ease: [0.32, 0.72, 0, 1] }}
-            className="grid grid-cols-1 lg:grid-cols-[50fr_50fr]  a a   q qqqsa items-center justify-center">
-            
+            className="grid grid-cols-1 lg:grid-cols-[58fr_42fr] items-center justify-center">
+
             {/* Image — left, full bleed */}
             <div className="relative w-full h-64 sm:h-80 lg:h-[58vh] overflow-hidden">
               <Image
@@ -113,12 +113,12 @@ export function TimelineSection({
                 alt={activeEntry.image?.alternativeText ?? activeEntry.title}
                 fill
                 className="object-cover"
-                sizes="(max-width: 1024px) 80vw, 45vw"
+                sizes="(max-width: 1024px) 100vw, 48vw"
               />
             </div>
 
             {/* Text — right */}
-            <div className="flex flex-col justify-center items-start px-8 lg:px-16 py-12 lg:py-0">
+            <div className="flex flex-col justify-center items-start ps-8 lg:ps-12 py-12 lg:py-0">
               <h3 className="text-3xl sm:text-4xl font-semibold text-neutral-900 mb-6 font-serif leading-tight">
                 {activeEntry.title}
               </h3>

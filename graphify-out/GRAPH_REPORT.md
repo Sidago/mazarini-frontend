@@ -1,16 +1,16 @@
 # Graph Report - mazarini-frontend  (2026-08-26)
 
 ## Corpus Check
-- 256 files · ~345,644 words
+- 256 files · ~345,641 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 539 nodes · 790 edges · 87 communities (80 shown, 7 thin omitted)
+- 539 nodes · 790 edges · 85 communities (78 shown, 7 thin omitted)
 - Extraction: 83% EXTRACTED · 17% INFERRED · 0% AMBIGUOUS · INFERRED: 135 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `e73d6315`
+- Built from commit: `1265600b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -63,7 +63,7 @@
 - `generateMetadata()` --calls--> `buildMetadata()`  [INFERRED]
   app/about/page.tsx → lib/utils/seo.ts
 
-## Communities (87 total, 7 thin omitted)
+## Communities (85 total, 7 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.05
@@ -73,13 +73,13 @@ Nodes (13): ProjectFilterCard(), TestimonialCard(), JobCard(), postedLabel(), Ne
 Cohesion: 0.07
 Nodes (27): getCorporateResponsibilityPage(), getEstablishesNonprofitFoundationPage(), getAllJobs(), getJobsPage(), getLeadershipPage(), getPreconstructionPage(), getRdPage(), getYouBelongHerePage() (+19 more)
 
-### Community 3 - "Community 3"
-Cohesion: 0.09
-Nodes (22): About(), generateMetadata(), getAbout(), getCareerPage(), getJobs(), strapiGet(), getConstructionPage(), getExperiencePage() (+14 more)
-
-### Community 4 - "Community 4"
+### Community 2 - "Community 2"
 Cohesion: 0.06
 Nodes (5): getStrapiMediaUrl(), JobsHero(), handleActiveChange(), handleActiveChange(), SparkImageSection()
+
+### Community 4 - "Community 4"
+Cohesion: 0.09
+Nodes (22): About(), generateMetadata(), getAbout(), getCareerPage(), getJobs(), strapiGet(), getConstructionPage(), getExperiencePage() (+14 more)
 
 ### Community 5 - "Community 5"
 Cohesion: 0.09
@@ -135,11 +135,11 @@ Nodes (4): getTeams(), getTeamsPage(), generateMetadata(), TeamPage()
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `getStrapiMediaUrl()` connect `Community 4` to `Community 0`, `Community 1`, `Community 2`, `Community 3`, `Community 5`, `Community 8`, `Community 9`, `Community 10`, `Community 12`, `Community 15`, `Community 19`, `Community 20`, `Community 21`, `Community 24`, `Community 27`, `Community 28`, `Community 29`, `Community 41`, `Community 42`, `Community 43`, `Community 44`, `Community 45`, `Community 46`, `Community 47`, `Community 48`, `Community 49`, `Community 50`, `Community 51`, `Community 52`, `Community 53`, `Community 54`, `Community 55`, `Community 56`, `Community 57`, `Community 58`, `Community 59`, `Community 60`, `Community 61`, `Community 62`, `Community 63`, `Community 64`, `Community 65`, `Community 66`?**
+- **Why does `getStrapiMediaUrl()` connect `Community 2` to `Community 0`, `Community 1`, `Community 3`, `Community 4`, `Community 5`, `Community 8`, `Community 9`, `Community 10`, `Community 12`, `Community 15`, `Community 19`, `Community 20`, `Community 21`, `Community 24`, `Community 27`, `Community 28`, `Community 29`, `Community 41`, `Community 42`, `Community 43`, `Community 44`, `Community 45`, `Community 46`, `Community 47`, `Community 48`, `Community 49`, `Community 50`, `Community 51`, `Community 52`, `Community 53`, `Community 54`, `Community 55`, `Community 56`, `Community 57`, `Community 58`, `Community 59`, `Community 60`, `Community 61`, `Community 62`, `Community 63`, `Community 64`?**
   _High betweenness centrality (0.423) - this node is a cross-community bridge._
-- **Why does `buildMetadata()` connect `Community 1` to `Community 3`, `Community 4`, `Community 5`, `Community 7`, `Community 8`, `Community 10`, `Community 13`, `Community 14`, `Community 16`, `Community 18`?**
+- **Why does `buildMetadata()` connect `Community 1` to `Community 2`, `Community 4`, `Community 5`, `Community 7`, `Community 8`, `Community 10`, `Community 13`, `Community 14`, `Community 16`, `Community 18`?**
   _High betweenness centrality (0.289) - this node is a cross-community bridge._
-- **Why does `FadeIn()` connect `Community 2` to `Community 0`, `Community 3`, `Community 4`, `Community 5`, `Community 7`, `Community 8`, `Community 10`, `Community 45`, `Community 47`, `Community 50`, `Community 21`, `Community 24`, `Community 28`, `Community 29`?**
+- **Why does `FadeIn()` connect `Community 3` to `Community 0`, `Community 2`, `Community 4`, `Community 5`, `Community 7`, `Community 8`, `Community 10`, `Community 46`, `Community 61`, `Community 21`, `Community 24`, `Community 57`, `Community 28`, `Community 29`?**
   _High betweenness centrality (0.105) - this node is a cross-community bridge._
 - **Are the 14 inferred relationships involving `getStrapiMediaUrl()` (e.g. with `EstablishesNonprofitFoundation()` and `ProjectDetailPage()`) actually correct?**
   _`getStrapiMediaUrl()` has 14 INFERRED edges - model-reasoned connections that need verification._
