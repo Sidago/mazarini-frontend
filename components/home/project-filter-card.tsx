@@ -13,7 +13,7 @@ export function ProjectFilterCard({
   const imageUrl = getStrapiMediaUrl(project.image[0] ?? null);
 
   return (
-    <Link href={`/projects/${project.id}`} className="group block">
+    <Link href={`/projects/${project.slug}`} className="group block">
       <div className="relative w-full aspect-33/40 overflow-hidden">
         {imageUrl && (
           <Image

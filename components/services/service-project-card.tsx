@@ -14,7 +14,7 @@ export function ServiceProjectCard({
 
   return (
     <Link
-      href={`/projects/${project.id}`}
+      href={`/projects/${project.slug}`}
       className="group relative h-115 rounded-none overflow-hidden cursor-pointer block">
       {imageUrl && (
         <Image

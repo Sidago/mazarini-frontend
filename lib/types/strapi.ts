@@ -384,6 +384,7 @@ export interface Project {
   documentId: string;
   seo?: SeoComponent | null;
   title: string;
+  slug: string;
   description: string;
   category: string;
   location: string | null;

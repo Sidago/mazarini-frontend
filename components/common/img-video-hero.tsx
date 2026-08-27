@@ -28,12 +28,12 @@ export function ImgOrVideoHero({
       <div className="absolute inset-0 bg-black/50 z-10" />
 
       <div className="relative lg:ps-[18%] z-20 flex flex-col items-start justify-center h-full px-10 lg:px-16 text-left">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.1] max-w-5xl whitespace-pre-line">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-semibold tracking-normal text-white leading-[1.1] max-w-5xl whitespace-pre-line">
           {title}
         </h1>
 
         {text && (
-          <p className="mt-6 text-base lg:text-lg text-white/80 max-w-2xl leading-relaxed">
+          <p className="mt-6 text-base lg:text-xl text-white/80 max-w-3xl leading-relaxed">
             {text}
           </p>
         )}

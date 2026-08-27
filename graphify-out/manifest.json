@@ -115,9 +115,9 @@
     "mtime": 1778485713.7775297,
     "hash": "8416e74c9282dabfb8e183bc55221d1d"
   },
-  "/media/khaled/Education/Sidago/Mazarini/mazarini-frontend/app/projects/[id]/page.tsx": {
-    "mtime": 1787159497.458669,
-    "hash": "3ce49bbe982ef1980c3c2fcbdd71dfdd"
+  "/media/khaled/Education/Sidago/Mazarini/mazarini-frontend/app/projects/[slug]/page.tsx": {
+    "mtime": 1787856594.7088692,
+    "hash": "f2e6023e8eeb77942bb6efb9cf47ca6c"
   },
   "/media/khaled/Education/Sidago/Mazarini/mazarini-frontend/app/rd/page.tsx": {
     "mtime": 1778485713.7799485,
@@ -240,16 +240,16 @@
     "hash": "00059552460f3e8d67a22b558f47a311"
   },
   "/media/khaled/Education/Sidago/Mazarini/mazarini-frontend/components/career/career-jobs-section.tsx": {
-    "mtime": 1785443965.119074,
-    "hash": "a34177d7af7e9358323a2c0c73c424e1"
+    "mtime": 1787773275.5433197,
+    "hash": "98d9491dab2b78be5367570deab0faab"
   },
   "/media/khaled/Education/Sidago/Mazarini/mazarini-frontend/components/career/career-mission-section.tsx": {
     "mtime": 1781679971.298464,
     "hash": "5d08b14ba6091151b11a6088b9fc50cf"
   },
   "/media/khaled/Education/Sidago/Mazarini/mazarini-frontend/components/career/career-people-section.tsx": {
-    "mtime": 1781684160.6086621,
-    "hash": "7a6d184ca47a683cabd508f53783a0d5"
+    "mtime": 1787773239.9300058,
+    "hash": "aafe320c8e02dfd3bd0c885518988489"
   },
   "/media/khaled/Education/Sidago/Mazarini/mazarini-frontend/components/career/career-person-section.tsx": {
     "mtime": 1781594548.3772738,
@@ -328,8 +328,8 @@
     "hash": "704b09e1c2b5d2c1fbb25c7f8c785760"
   },
   "/media/khaled/Education/Sidago/Mazarini/mazarini-frontend/components/common/you-might-be-interested.tsx": {
-    "mtime": 1787674645.8626225,
-    "hash": "282fadb063a25de323ef12ea78d038fc"
+    "mtime": 1787856656.6489286,
+    "hash": "c32730dbc0109a5029d358353b8b370a"
   },
   "/media/khaled/Education/Sidago/Mazarini/mazarini-frontend/components/consideration/consideration-advisor-section.tsx": {
     "mtime": 1787145019.290414,
@@ -480,8 +480,8 @@
     "hash": "0c9d6c9d4bb588d2f7e805ce415e9222"
   },
   "/media/khaled/Education/Sidago/Mazarini/mazarini-frontend/components/home/project-filter-card.tsx": {
-    "mtime": 1777525871.810803,
-    "hash": "7c261886b36607f362fbed2314440c34"
+    "mtime": 1787856607.74256,
+    "hash": "019ac3727e6e2df7732c6be25e726aa3"
   },
   "/media/khaled/Education/Sidago/Mazarini/mazarini-frontend/components/home/project-filter-section.tsx": {
     "mtime": 1785766916.4286401,
@@ -624,8 +624,8 @@
     "hash": "efa2a7dfeae59e8640d21f4e0fcd50fe"
   },
   "/media/khaled/Education/Sidago/Mazarini/mazarini-frontend/components/projects/project-carousel.tsx": {
-    "mtime": 1777525982.77266,
-    "hash": "23b8092e3219a5bac5bc8568c5bd6819"
+    "mtime": 1787856622.0754278,
+    "hash": "cdd027967ee7bb2f71674e441c354984"
   },
   "/media/khaled/Education/Sidago/Mazarini/mazarini-frontend/components/projects/project-details-section.tsx": {
     "mtime": 1778236151.1572998,
@@ -744,8 +744,8 @@
     "hash": "c9ba6b3a6181e257653f678de50ca533"
   },
   "/media/khaled/Education/Sidago/Mazarini/mazarini-frontend/components/services/service-project-card.tsx": {
-    "mtime": 1777526214.0902555,
-    "hash": "2bdc67ff33fd8c32fe1b8a622ffba498"
+    "mtime": 1787856640.8407316,
+    "hash": "76cae2162f3d1a6f1e8eb9f400802a48"
   },
   "/media/khaled/Education/Sidago/Mazarini/mazarini-frontend/components/services/service-related-projects.tsx": {
     "mtime": 1781881990.6824324,
@@ -964,8 +964,8 @@
     "hash": "535584041acb0b865e8680b2900c2dc9"
   },
   "/media/khaled/Education/Sidago/Mazarini/mazarini-frontend/lib/api/projects.ts": {
-    "mtime": 1778235419.4002547,
-    "hash": "4609482edc5def7a8ac3f8b4bf581ae8"
+    "mtime": 1787856559.454089,
+    "hash": "afce90f8d1e4e58ea8a54dd65f18a9c8"
   },
   "/media/khaled/Education/Sidago/Mazarini/mazarini-frontend/lib/api/rd.ts": {
     "mtime": 1781172804.0539112,
@@ -1016,8 +1016,8 @@
     "hash": "a40c4a2c8f0647bbcc167229af0c8077"
   },
   "/media/khaled/Education/Sidago/Mazarini/mazarini-frontend/lib/types/strapi.ts": {
-    "mtime": 1787769528.5470314,
-    "hash": "10e25cf03fd6f4f71a55d72cced5b393"
+    "mtime": 1787856543.617507,
+    "hash": "030d97c1593d6faf795d808c2ac6befd"
   },
   "/media/khaled/Education/Sidago/Mazarini/mazarini-frontend/lib/utils/seo.ts": {
     "mtime": 1785450623.084413,

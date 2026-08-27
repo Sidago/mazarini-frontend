@@ -13,19 +13,19 @@ export async function getProjects(): Promise<Project[]> {
   return res.data;
 }
 
-export async function getProject(id: string): Promise<Project> {
+export async function getProject(slug: string): Promise<Project> {
   const res = await strapiGet<StrapiResponse<Project>>(`/projects`, {
-    "filters[id][$eq]": id,
+    "filters[slug][$eq]": slug,
     "populate[image]": "true",
     "populate[seo][populate][shareImage]": "true",
   });
   return res.data;
 }
 
-export async function getProjectTeams(id: string): Promise<import("@/lib/types/strapi").Teams[]> {
+export async function getProjectTeams(slug: string): Promise<import("@/lib/types/strapi").Teams[]> {
   try {
     const res = await strapiGet<StrapiResponse<Project>>(`/projects`, {
-      "filters[id][$eq]": id,
+      "filters[slug][$eq]": slug,
       "populate[teams][populate][image]": "true",
     });
     const project = Array.isArray(res.data) ? res.data[0] : res.data;

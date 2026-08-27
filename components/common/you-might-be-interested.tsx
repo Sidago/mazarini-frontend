@@ -53,7 +53,7 @@ async function getCards(limit: number = 3): Promise<Card[]> {
         description: item.description,
         imageUrl: getStrapiMediaUrl(item.image?.[0] ?? null),
         tag: item.category ?? "Project",
-        url: `/projects/${item.id}`,
+        url: `/projects/${item.slug}`,
       })
     );
   }

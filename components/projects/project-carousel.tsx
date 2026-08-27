@@ -86,7 +86,7 @@ export function ProjectCarousel({
             </h1>
             {current && (
               <Link
-                href={`/projects/${current.id}`}
+                href={`/projects/${current.slug}`}
                 className="inline-flex items-center justify-center px-8 py-3 text-sm font-bold uppercase tracking-widest text-neutral-900 bg-primary hover:bg-amber-500 transition-all"
               >
                 {ctaText}

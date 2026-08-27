@@ -13,15 +13,15 @@ import { YouMightBeInterested } from "@/components/common/you-might-be-intereste
 import { ImgOrVideoHero } from "@/components/common/img-video-hero";
 
 interface ProjectDetailPageProps {
-  params: Promise<{ id: string }>;
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateMetadata({
   params,
 }: ProjectDetailPageProps): Promise<Metadata> {
   try {
-    const { id } = await params;
-    const raw = await getProject(id);
+    const { slug } = await params;
+    const raw = await getProject(slug);
     const project = Array.isArray(raw) ? raw[0] : raw;
     return buildMetadata({
       seo: project.seo,
@@ -40,10 +40,10 @@ export async function generateMetadata({
 export default async function ProjectDetailPage({
   params,
 }: ProjectDetailPageProps): Promise<React.ReactElement> {
-  const { id } = await params;
+  const { slug } = await params;
   let project: Project | null = null;
   try {
-    project = await getProject(id);
+    project = await getProject(slug);
     project = Array.isArray(project) ? project[0] : project;
   } catch {
     notFound();
@@ -51,7 +51,7 @@ export default async function ProjectDetailPage({
 
   if (!project) notFound();
 
-  const teams = await getProjectTeams(id);
+  const teams = await getProjectTeams(slug);
   const heroImage = getStrapiMediaUrl(project?.image[0] ?? null);
 
   return (
