@@ -300,11 +300,16 @@ export interface LeadershipBlock {
 
 export interface CultureCard {
   id: number;
-  tag: string | null;
+  tag?: string | null;
   title: string;
-  image: StrapiMedia;
-  url: string | null;
-  description: string | null;
+  image?: StrapiMedia | null;
+  url?: string | null;
+  ctaUrl?: string | null;
+  cta_url?: string | null;
+  ctaText?: string | null;
+  cta_text?: string | null;
+  text?: string | null;
+  description?: string | null;
 }
 
 export interface LifeImage {

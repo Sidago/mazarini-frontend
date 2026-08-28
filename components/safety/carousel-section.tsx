@@ -22,7 +22,7 @@ export function CarouselSection({
   if (cards.length === 0) return <></>;
 
   const active = cards[activeIndex];
-  const imageUrl = getStrapiMediaUrl(active.image);
+  const imageUrl = getStrapiMediaUrl(active.image ?? null);
 
   return (
     <section className="bg-white dark:bg-neutral-950 py-30">

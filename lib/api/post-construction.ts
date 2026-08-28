@@ -6,13 +6,12 @@ export async function getPostConstructionPage(): Promise<IPostConstructionPage> 
     "/post-construction-page",
     {
       "populate[heroImage]": "true",
-      "populate[stats][populate][icon]": "true",
       "populate[seo][populate][shareImage]": "true",
       "populate[nextImage]": "true",
       "populate[quotes]": "true",
       "populate[accordionItems][populate][image]": "true",
       "populate[stats]": "true",
-      "populate[conversationBlock]": "true",
+      "populate[conversationBlock][populate][image]": "true",
     },
   );
   return res.data;

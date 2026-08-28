@@ -89,15 +89,16 @@ export function CultureSection({
             ref={scrollRef}
             className="flex gap-4 overflow-x-auto scrollbar-hide px-8 lg:px-0 pb-2 after:content-[''] after:flex-none after:w-4 lg:after:w-16">
           {cards.map((card) => {
-            const url = getStrapiMediaUrl(card.image);
-            const Wrapper = card.url ? Link : "div";
-            const wrapperProps = card.url ? { href: card.url } : {};
+            const url = getStrapiMediaUrl(card.image ?? null);
+            const destination = card.url || card.ctaUrl || card.cta_url;
+            const Wrapper = destination ? Link : "div";
+            const wrapperProps = destination ? { href: destination } : {};
 
             return (
               <Wrapper
                 key={card.id}
                 {...(wrapperProps as any)}
-                className="relative flex-none w-64 h-96 lg:w-72 lg:h-[440px] overflow-hidden group cursor-pointer">
+                className="relative flex-none w-64 h-96 lg:w-72 lg:h-[440px] overflow-hidden group cursor-pointer block rounded-lg">
                 {/* Image */}
                 {url ? (
                   <Image
@@ -113,18 +114,29 @@ export function CultureSection({
                 )}
 
                 {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent transition-opacity duration-300 group-hover:from-black/95" />
 
                 {/* Text overlay */}
-                <div className="absolute bottom-0 left-0 right-0 p-5">
+                <div className="absolute bottom-0 left-0 right-0 p-5 flex flex-col justify-end">
                   {card.tag && (
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-white/60 mb-1">
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-primary mb-1">
                       {card.tag}
                     </p>
                   )}
-                  <h3 className="text-lg font-bold text-white leading-snug">
+                  <h3 className="text-lg font-bold text-white leading-snug group-hover:text-primary transition-colors">
                     {card.title}
                   </h3>
+                  {(card.text || card.description) && (
+                    <p className="text-xs text-white/70 line-clamp-2 mt-2 leading-relaxed">
+                      {card.text || card.description}
+                    </p>
+                  )}
+                  {(card.ctaText || card.cta_text || destination) && (
+                    <div className="mt-3 flex items-center gap-1.5 text-xs font-semibold text-primary group-hover:underline">
+                      <span>{card.ctaText || card.cta_text || "Learn More"}</span>
+                      <Icon name="arrow_forward" className="text-xs transition-transform group-hover:translate-x-1" />
+                    </div>
+                  )}
                 </div>
               </Wrapper>
             );
