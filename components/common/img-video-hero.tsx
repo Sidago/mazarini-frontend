@@ -33,7 +33,7 @@ export function ImgOrVideoHero({
         </h1>
 
         {text && (
-          <p className="mt-6 text-base lg:text-xl text-white/80 max-w-3xl leading-relaxed">
+          <p className="mt-6 text-base lg:text-xl text-white/85 max-w-3xl leading-relaxed">
             {text}
           </p>
         )}

@@ -927,7 +927,7 @@
       "source_file": "components/about/core-values-section.tsx",
       "source_location": "L1",
       "id": "components_about_core_values_section_tsx",
-      "community": 40,
+      "community": 3,
       "norm_label": "core-values-section.tsx"
     },
     {
@@ -936,7 +936,7 @@
       "source_file": "components/about/core-values-section.tsx",
       "source_location": "L30",
       "id": "about_core_values_section_handlecarouselscroll",
-      "community": 40,
+      "community": 3,
       "norm_label": "handlecarouselscroll()"
     },
     {
@@ -981,7 +981,7 @@
       "source_file": "components/about/timeline-section.tsx",
       "source_location": "L1",
       "id": "components_about_timeline_section_tsx",
-      "community": 26,
+      "community": 27,
       "norm_label": "timeline-section.tsx"
     },
     {
@@ -990,7 +990,7 @@
       "source_file": "components/about/timeline-section.tsx",
       "source_location": "L34",
       "id": "about_timeline_section_handledecadeclick",
-      "community": 26,
+      "community": 27,
       "norm_label": "handledecadeclick()"
     },
     {
@@ -999,7 +999,7 @@
       "source_file": "components/about/timeline-section.tsx",
       "source_location": "L167",
       "id": "about_timeline_section_handlescroll",
-      "community": 26,
+      "community": 27,
       "norm_label": "handlescroll()"
     },
     {
@@ -1098,7 +1098,7 @@
       "source_file": "components/career/career-benefits-section.tsx",
       "source_location": "L1",
       "id": "components_career_career_benefits_section_tsx",
-      "community": 61,
+      "community": 54,
       "norm_label": "career-benefits-section.tsx"
     },
     {
@@ -1107,7 +1107,7 @@
       "source_file": "components/career/career-benefits-section.tsx",
       "source_location": "L12",
       "id": "career_career_benefits_section_rendertitle",
-      "community": 61,
+      "community": 54,
       "norm_label": "rendertitle()"
     },
     {
@@ -1215,7 +1215,7 @@
       "source_file": "components/career/career-quotes-section.tsx",
       "source_location": "L1",
       "id": "components_career_career_quotes_section_tsx",
-      "community": 53,
+      "community": 56,
       "norm_label": "career-quotes-section.tsx"
     },
     {
@@ -1224,7 +1224,7 @@
       "source_file": "components/career/career-quotes-section.tsx",
       "source_location": "L24",
       "id": "career_career_quotes_section_go",
-      "community": 53,
+      "community": 56,
       "norm_label": "go()"
     },
     {
@@ -1332,7 +1332,7 @@
       "source_file": "components/colab/colab-innovation-section.tsx",
       "source_location": "L1",
       "id": "components_colab_colab_innovation_section_tsx",
-      "community": 57,
+      "community": 62,
       "norm_label": "colab-innovation-section.tsx"
     },
     {
@@ -1341,7 +1341,7 @@
       "source_file": "components/colab/colab-innovation-section.tsx",
       "source_location": "L18",
       "id": "colab_colab_innovation_section_check",
-      "community": 57,
+      "community": 62,
       "norm_label": "check()"
     },
     {
@@ -1359,7 +1359,7 @@
       "source_file": "components/colab/colab-news-section.tsx",
       "source_location": "L1",
       "id": "components_colab_colab_news_section_tsx",
-      "community": 56,
+      "community": 49,
       "norm_label": "colab-news-section.tsx"
     },
     {
@@ -1368,7 +1368,7 @@
       "source_file": "components/colab/colab-news-section.tsx",
       "source_location": "L19",
       "id": "colab_colab_news_section_check",
-      "community": 56,
+      "community": 49,
       "norm_label": "check()"
     },
     {
@@ -1377,7 +1377,7 @@
       "source_file": "components/colab/colab-numbers-section.tsx",
       "source_location": "L1",
       "id": "components_colab_colab_numbers_section_tsx",
-      "community": 3,
+      "community": 47,
       "norm_label": "colab-numbers-section.tsx"
     },
     {
@@ -1386,7 +1386,7 @@
       "source_file": "components/colab/colab-numbers-section.tsx",
       "source_location": "L19",
       "id": "colab_colab_numbers_section_check",
-      "community": 3,
+      "community": 47,
       "norm_label": "check()"
     },
     {
@@ -1395,7 +1395,7 @@
       "source_file": "components/colab/colab-results-section.tsx",
       "source_location": "L1",
       "id": "components_colab_colab_results_section_tsx",
-      "community": 43,
+      "community": 59,
       "norm_label": "colab-results-section.tsx"
     },
     {
@@ -1404,7 +1404,7 @@
       "source_file": "components/colab/colab-results-section.tsx",
       "source_location": "L18",
       "id": "colab_colab_results_section_check",
-      "community": 43,
+      "community": 59,
       "norm_label": "check()"
     },
     {
@@ -1467,7 +1467,7 @@
       "source_file": "components/colab/colab-team-section.tsx",
       "source_location": "L1",
       "id": "components_colab_colab_team_section_tsx",
-      "community": 46,
+      "community": 44,
       "norm_label": "colab-team-section.tsx"
     },
     {
@@ -1476,7 +1476,7 @@
       "source_file": "components/colab/colab-team-section.tsx",
       "source_location": "L18",
       "id": "colab_colab_team_section_check",
-      "community": 46,
+      "community": 44,
       "norm_label": "check()"
     },
     {
@@ -1674,7 +1674,7 @@
       "source_file": "components/construction/construction-innovation-section.tsx",
       "source_location": "L1",
       "id": "components_construction_construction_innovation_section_tsx",
-      "community": 49,
+      "community": 51,
       "norm_label": "construction-innovation-section.tsx"
     },
     {
@@ -1683,7 +1683,7 @@
       "source_file": "components/construction/construction-innovation-section.tsx",
       "source_location": "L30",
       "id": "construction_construction_innovation_section_selecttab",
-      "community": 49,
+      "community": 51,
       "norm_label": "selecttab()"
     },
     {
@@ -1818,7 +1818,7 @@
       "source_file": "components/corporate-responsibility/executives-section.tsx",
       "source_location": "L1",
       "id": "components_corporate_responsibility_executives_section_tsx",
-      "community": 60,
+      "community": 40,
       "norm_label": "executives-section.tsx"
     },
     {
@@ -1827,7 +1827,7 @@
       "source_file": "components/corporate-responsibility/executives-section.tsx",
       "source_location": "L20",
       "id": "corporate_responsibility_executives_section_check",
-      "community": 60,
+      "community": 40,
       "norm_label": "check()"
     },
     {
@@ -1863,7 +1863,7 @@
       "source_file": "components/corporate-responsibility/news-section.tsx",
       "source_location": "L1",
       "id": "components_corporate_responsibility_news_section_tsx",
-      "community": 55,
+      "community": 42,
       "norm_label": "news-section.tsx"
     },
     {
@@ -1872,7 +1872,7 @@
       "source_file": "components/corporate-responsibility/news-section.tsx",
       "source_location": "L19",
       "id": "corporate_responsibility_news_section_check",
-      "community": 55,
+      "community": 42,
       "norm_label": "check()"
     },
     {
@@ -1881,7 +1881,7 @@
       "source_file": "components/corporate-responsibility/pillars-section.tsx",
       "source_location": "L1",
       "id": "components_corporate_responsibility_pillars_section_tsx",
-      "community": 63,
+      "community": 53,
       "norm_label": "pillars-section.tsx"
     },
     {
@@ -1890,7 +1890,7 @@
       "source_file": "components/corporate-responsibility/pillars-section.tsx",
       "source_location": "L22",
       "id": "corporate_responsibility_pillars_section_check",
-      "community": 63,
+      "community": 53,
       "norm_label": "check()"
     },
     {
@@ -2277,7 +2277,7 @@
       "source_file": "components/insights/insights-carousel.tsx",
       "source_location": "L1",
       "id": "components_insights_insights_carousel_tsx",
-      "community": 54,
+      "community": 63,
       "norm_label": "insights-carousel.tsx"
     },
     {
@@ -2286,7 +2286,7 @@
       "source_file": "components/insights/insights-carousel.tsx",
       "source_location": "L37",
       "id": "insights_insights_carousel_goto",
-      "community": 54,
+      "community": 63,
       "norm_label": "goto()"
     },
     {
@@ -2295,7 +2295,7 @@
       "source_file": "components/insights/insights-list.tsx",
       "source_location": "L1",
       "id": "components_insights_insights_list_tsx",
-      "community": 3,
+      "community": 61,
       "norm_label": "insights-list.tsx"
     },
     {
@@ -2304,7 +2304,7 @@
       "source_file": "components/insights/insights-list.tsx",
       "source_location": "L15",
       "id": "insights_insights_list_formatdate",
-      "community": 3,
+      "community": 61,
       "norm_label": "formatdate()"
     },
     {
@@ -2529,7 +2529,7 @@
       "source_file": "components/leadership/group-section.tsx",
       "source_location": "L1",
       "id": "components_leadership_group_section_tsx",
-      "community": 42,
+      "community": 3,
       "norm_label": "group-section.tsx"
     },
     {
@@ -2538,7 +2538,7 @@
       "source_file": "components/leadership/group-section.tsx",
       "source_location": "L22",
       "id": "leadership_group_section_scrolltomember",
-      "community": 42,
+      "community": 3,
       "norm_label": "scrolltomember()"
     },
     {
@@ -2655,7 +2655,7 @@
       "source_file": "components/news/news-carousel.tsx",
       "source_location": "L1",
       "id": "components_news_news_carousel_tsx",
-      "community": 58,
+      "community": 57,
       "norm_label": "news-carousel.tsx"
     },
     {
@@ -2664,7 +2664,7 @@
       "source_file": "components/news/news-carousel.tsx",
       "source_location": "L37",
       "id": "news_news_carousel_goto",
-      "community": 58,
+      "community": 57,
       "norm_label": "goto()"
     },
     {
@@ -2763,7 +2763,7 @@
       "source_file": "components/projects/project-carousel.tsx",
       "source_location": "L1",
       "id": "components_projects_project_carousel_tsx",
-      "community": 41,
+      "community": 48,
       "norm_label": "project-carousel.tsx"
     },
     {
@@ -2772,7 +2772,7 @@
       "source_file": "components/projects/project-carousel.tsx",
       "source_location": "L37",
       "id": "projects_project_carousel_goto",
-      "community": 41,
+      "community": 48,
       "norm_label": "goto()"
     },
     {
@@ -2808,7 +2808,7 @@
       "source_file": "components/projects/project-image-carousel.tsx",
       "source_location": "L1",
       "id": "components_projects_project_image_carousel_tsx",
-      "community": 28,
+      "community": 26,
       "norm_label": "project-image-carousel.tsx"
     },
     {
@@ -2817,7 +2817,7 @@
       "source_file": "components/projects/project-image-carousel.tsx",
       "source_location": "L18",
       "id": "projects_project_image_carousel_prev",
-      "community": 28,
+      "community": 26,
       "norm_label": "prev()"
     },
     {
@@ -2826,7 +2826,7 @@
       "source_file": "components/projects/project-image-carousel.tsx",
       "source_location": "L21",
       "id": "projects_project_image_carousel_next",
-      "community": 28,
+      "community": 26,
       "norm_label": "next()"
     },
     {
@@ -2916,7 +2916,7 @@
       "source_file": "components/rd/leadership-section.tsx",
       "source_location": "L1",
       "id": "components_rd_leadership_section_tsx",
-      "community": 47,
+      "community": 45,
       "norm_label": "leadership-section.tsx"
     },
     {
@@ -2925,7 +2925,7 @@
       "source_file": "components/rd/leadership-section.tsx",
       "source_location": "L18",
       "id": "rd_leadership_section_check",
-      "community": 47,
+      "community": 45,
       "norm_label": "check()"
     },
     {
@@ -2934,7 +2934,7 @@
       "source_file": "components/rd/news-section.tsx",
       "source_location": "L1",
       "id": "components_rd_news_section_tsx",
-      "community": 45,
+      "community": 64,
       "norm_label": "news-section.tsx"
     },
     {
@@ -2943,7 +2943,7 @@
       "source_file": "components/rd/news-section.tsx",
       "source_location": "L17",
       "id": "rd_news_section_check",
-      "community": 45,
+      "community": 64,
       "norm_label": "check()"
     },
     {
@@ -2952,7 +2952,7 @@
       "source_file": "components/rd/partners-section.tsx",
       "source_location": "L1",
       "id": "components_rd_partners_section_tsx",
-      "community": 44,
+      "community": 41,
       "norm_label": "partners-section.tsx"
     },
     {
@@ -2961,7 +2961,7 @@
       "source_file": "components/rd/partners-section.tsx",
       "source_location": "L20",
       "id": "rd_partners_section_check",
-      "community": 44,
+      "community": 41,
       "norm_label": "check()"
     },
     {
@@ -2970,7 +2970,7 @@
       "source_file": "components/rd/pillars-section.tsx",
       "source_location": "L1",
       "id": "components_rd_pillars_section_tsx",
-      "community": 51,
+      "community": 60,
       "norm_label": "pillars-section.tsx"
     },
     {
@@ -2979,7 +2979,7 @@
       "source_file": "components/rd/pillars-section.tsx",
       "source_location": "L22",
       "id": "rd_pillars_section_check",
-      "community": 51,
+      "community": 60,
       "norm_label": "check()"
     },
     {
@@ -2988,7 +2988,7 @@
       "source_file": "components/rd/projects-section.tsx",
       "source_location": "L1",
       "id": "components_rd_projects_section_tsx",
-      "community": 3,
+      "community": 52,
       "norm_label": "projects-section.tsx"
     },
     {
@@ -2997,7 +2997,7 @@
       "source_file": "components/rd/projects-section.tsx",
       "source_location": "L20",
       "id": "rd_projects_section_check",
-      "community": 3,
+      "community": 52,
       "norm_label": "check()"
     },
     {
@@ -3105,7 +3105,7 @@
       "source_file": "components/rd/why-section.tsx",
       "source_location": "L1",
       "id": "components_rd_why_section_tsx",
-      "community": 50,
+      "community": 3,
       "norm_label": "why-section.tsx"
     },
     {
@@ -3114,7 +3114,7 @@
       "source_file": "components/rd/why-section.tsx",
       "source_location": "L20",
       "id": "rd_why_section_check",
-      "community": 50,
+      "community": 3,
       "norm_label": "check()"
     },
     {
@@ -3195,7 +3195,7 @@
       "source_file": "components/services/service-carousel.tsx",
       "source_location": "L1",
       "id": "components_services_service_carousel_tsx",
-      "community": 64,
+      "community": 3,
       "norm_label": "service-carousel.tsx"
     },
     {
@@ -3204,7 +3204,7 @@
       "source_file": "components/services/service-carousel.tsx",
       "source_location": "L37",
       "id": "services_service_carousel_goto",
-      "community": 64,
+      "community": 3,
       "norm_label": "goto()"
     },
     {
@@ -3276,7 +3276,7 @@
       "source_file": "components/services/service-key-team-members.tsx",
       "source_location": "L1",
       "id": "components_services_service_key_team_members_tsx",
-      "community": 27,
+      "community": 28,
       "norm_label": "service-key-team-members.tsx"
     },
     {
@@ -3285,7 +3285,7 @@
       "source_file": "components/services/service-key-team-members.tsx",
       "source_location": "L72",
       "id": "services_service_key_team_members_handledragstart",
-      "community": 27,
+      "community": 28,
       "norm_label": "handledragstart()"
     },
     {
@@ -3294,7 +3294,7 @@
       "source_file": "components/services/service-key-team-members.tsx",
       "source_location": "L76",
       "id": "services_service_key_team_members_handledragend",
-      "community": 27,
+      "community": 28,
       "norm_label": "handledragend()"
     },
     {
@@ -3438,7 +3438,7 @@
       "source_file": "components/spark/spark-statement-section.tsx",
       "source_location": "L1",
       "id": "components_spark_spark_statement_section_tsx",
-      "community": 62,
+      "community": 43,
       "norm_label": "spark-statement-section.tsx"
     },
     {
@@ -3447,7 +3447,7 @@
       "source_file": "components/spark/spark-statement-section.tsx",
       "source_location": "L11",
       "id": "spark_spark_statement_section_renderheading",
-      "community": 62,
+      "community": 43,
       "norm_label": "renderheading()"
     },
     {
@@ -3780,7 +3780,7 @@
       "source_file": "components/ui/strapi-blocks.tsx",
       "source_location": "L1",
       "id": "components_ui_strapi_blocks_tsx",
-      "community": 3,
+      "community": 50,
       "norm_label": "strapi-blocks.tsx"
     },
     {
@@ -3789,7 +3789,7 @@
       "source_file": "components/ui/strapi-blocks.tsx",
       "source_location": "L37",
       "id": "ui_strapi_blocks_renderinline",
-      "community": 3,
+      "community": 50,
       "norm_label": "renderinline()"
     },
     {
@@ -3816,7 +3816,7 @@
       "source_file": "components/you-belong-here/yby-belonging-section.tsx",
       "source_location": "L1",
       "id": "components_you_belong_here_yby_belonging_section_tsx",
-      "community": 48,
+      "community": 58,
       "norm_label": "yby-belonging-section.tsx"
     },
     {
@@ -3825,7 +3825,7 @@
       "source_file": "components/you-belong-here/yby-belonging-section.tsx",
       "source_location": "L18",
       "id": "you_belong_here_yby_belonging_section_check",
-      "community": 48,
+      "community": 58,
       "norm_label": "check()"
     },
     {
@@ -3834,7 +3834,7 @@
       "source_file": "components/you-belong-here/yby-careers-section.tsx",
       "source_location": "L1",
       "id": "components_you_belong_here_yby_careers_section_tsx",
-      "community": 3,
+      "community": 55,
       "norm_label": "yby-careers-section.tsx"
     },
     {
@@ -3843,7 +3843,7 @@
       "source_file": "components/you-belong-here/yby-careers-section.tsx",
       "source_location": "L19",
       "id": "you_belong_here_yby_careers_section_check",
-      "community": 3,
+      "community": 55,
       "norm_label": "check()"
     },
     {
@@ -3870,7 +3870,7 @@
       "source_file": "components/you-belong-here/yby-leadership-section.tsx",
       "source_location": "L1",
       "id": "components_you_belong_here_yby_leadership_section_tsx",
-      "community": 52,
+      "community": 3,
       "norm_label": "yby-leadership-section.tsx"
     },
     {
@@ -3879,7 +3879,7 @@
       "source_file": "components/you-belong-here/yby-leadership-section.tsx",
       "source_location": "L18",
       "id": "you_belong_here_yby_leadership_section_check",
-      "community": 52,
+      "community": 3,
       "norm_label": "check()"
     },
     {
@@ -3906,7 +3906,7 @@
       "source_file": "components/you-belong-here/yby-news-section.tsx",
       "source_location": "L1",
       "id": "components_you_belong_here_yby_news_section_tsx",
-      "community": 59,
+      "community": 46,
       "norm_label": "yby-news-section.tsx"
     },
     {
@@ -3915,7 +3915,7 @@
       "source_file": "components/you-belong-here/yby-news-section.tsx",
       "source_location": "L19",
       "id": "you_belong_here_yby_news_section_check",
-      "community": 59,
+      "community": 46,
       "norm_label": "check()"
     },
     {
@@ -6333,9 +6333,9 @@
       "source_file": "app/projects/[slug]/page.tsx",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_projects_slug_page_tsx",
-      "target": "slug_page_generatemetadata",
-      "confidence_score": 1.0
+      "target": "slug_page_generatemetadata"
     },
     {
       "relation": "contains",
@@ -7035,9 +7035,9 @@
       "source_file": "app/projects/[slug]/page.tsx",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_projects_slug_page_tsx",
-      "target": "ui_fade_in_fadein",
-      "confidence_score": 1.0
+      "target": "ui_fade_in_fadein"
     },
     {
       "relation": "imports",
@@ -7046,9 +7046,9 @@
       "source_file": "app/projects/[slug]/page.tsx",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_projects_slug_page_tsx",
-      "target": "api_projects_getproject",
-      "confidence_score": 1.0
+      "target": "api_projects_getproject"
     },
     {
       "relation": "imports",
@@ -7057,9 +7057,9 @@
       "source_file": "app/projects/[slug]/page.tsx",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_projects_slug_page_tsx",
-      "target": "api_projects_getprojectteams",
-      "confidence_score": 1.0
+      "target": "api_projects_getprojectteams"
     },
     {
       "relation": "imports",
@@ -7068,9 +7068,9 @@
       "source_file": "app/projects/[slug]/page.tsx",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_projects_slug_page_tsx",
-      "target": "api_client_getstrapimediaurl",
-      "confidence_score": 1.0
+      "target": "api_client_getstrapimediaurl"
     },
     {
       "relation": "imports",
@@ -7079,9 +7079,9 @@
       "source_file": "app/projects/[slug]/page.tsx",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_projects_slug_page_tsx",
-      "target": "utils_seo_buildmetadata",
-      "confidence_score": 1.0
+      "target": "utils_seo_buildmetadata"
     },
     {
       "relation": "imports",
@@ -7090,9 +7090,9 @@
       "source_file": "app/projects/[slug]/page.tsx",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_projects_slug_page_tsx",
-      "target": "projects_project_overview_section_projectoverviewsection",
-      "confidence_score": 1.0
+      "target": "projects_project_overview_section_projectoverviewsection"
     },
     {
       "relation": "imports",
@@ -7101,9 +7101,9 @@
       "source_file": "app/projects/[slug]/page.tsx",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_projects_slug_page_tsx",
-      "target": "projects_project_key_team_section_projectkeyteamsection",
-      "confidence_score": 1.0
+      "target": "projects_project_key_team_section_projectkeyteamsection"
     },
     {
       "relation": "contains",
@@ -7111,9 +7111,9 @@
       "source_file": "app/projects/[slug]/page.tsx",
       "source_location": "L40",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_projects_slug_page_tsx",
-      "target": "slug_page_projectdetailpage",
-      "confidence_score": 1.0
+      "target": "slug_page_projectdetailpage"
     },
     {
       "relation": "calls",
@@ -13443,5 +13443,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "8f566e19e21bb4f4773d1cb34113311bbbc6be93"
+  "built_at_commit": "5c6e3586678a701879a90fb14b2c8963e2e8be04"
 }
