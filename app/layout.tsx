@@ -86,7 +86,6 @@ export default async function RootLayout({
         className={`${inter.variable} ${notoSerif.variable} font-display bg-background-light dark:bg-background-dark text-neutral-800 dark:text-neutral-100 antialiased selection:bg-primary selection:text-white`}>
         <LogoLoader />
         <Header
-          logo={global?.logo ?? null}
           navLinks={global?.navLinks ?? []}
           subNavItems={subNavItems}
           ctaText={global?.headerCtaText ?? "Work With Us"}

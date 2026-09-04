@@ -10,12 +10,10 @@ import { MobileMenu } from "@/components/layout/mobile-menu";
 import { SearchModal } from "@/components/ui/search-modal";
 import type {
   LinkComponent,
-  StrapiMedia,
   SubNavItem,
 } from "@/lib/types/strapi";
 
 interface HeaderProps {
-  logo: StrapiMedia | null;
   navLinks: LinkComponent[];
   subNavItems: SubNavItem[];
   ctaText: string;
@@ -23,7 +21,6 @@ interface HeaderProps {
 }
 
 export function Header({
-  logo,
   navLinks,
   subNavItems,
   ctaText,
@@ -99,7 +96,7 @@ export function Header({
             {/* Center logo */}
             <div
               className={`absolute left-1/2 -translate-x-1/2 ${active ? "text-black/70" : "text-white/70"}`}>
-              <Logo logo={logo} scrolled={active} />
+              <Logo scrolled={active} />
             </div>
 
             {/* Right utility links + CTA */}
