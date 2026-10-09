@@ -126,7 +126,7 @@ const FALLBACK_CARDS: CultureCard[] = [
   {
     id: 3,
     title: "Coast-to-Coast Reach",
-    description: "Discover our regional offices and see how our traveling builder model delivers projects wherever you expand.",
+    description: "Discover our regional locations and see how our traveling builder model delivers projects wherever you expand.",
     url: "/location",
     tag: "Locations",
     image: null,
