@@ -5,7 +5,7 @@ import type { AboutStat } from "@/lib/types/strapi";
 
 const DEFAULT_STATS: AboutStat[] = [
   { id: 1, value: "$500M+", suffix: null, label: "Max Project Size", description: null },
-  { id: 2, value: "16", suffix: null, label: "Offices Nationwide", description: null },
+  { id: 2, value: "16", suffix: null, label: "Locations Nationwide", description: null },
   { id: 3, value: "300M+", suffix: null, label: "Square Feet\nDelivered Annually", description: null },
   { id: 4, value: "$14B", suffix: null, label: "2025 Revenue", description: null },
   { id: 5, value: "3,300", suffix: null, label: "Team Members", description: null },

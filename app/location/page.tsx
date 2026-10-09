@@ -18,13 +18,13 @@ export async function generateMetadata(): Promise<Metadata> {
     return buildMetadata({
       seo: data.seo,
       fallbackTitle: data.title ?? "Our Locations",
-      fallbackDescription: data.heroText ?? "Discover Mazarini Inc.'s offices and project sites. Explore our presence across key locations nationwide.",
+      fallbackDescription: data.heroText ?? "Discover Mazarini Inc.'s locations and project sites. Explore our presence across key regions nationwide.",
       fallbackImage: data.heroImage,
     });
   } catch {
     return buildMetadata({
       fallbackTitle: "Our Locations",
-      fallbackDescription: "Discover Mazarini Inc.'s offices and project sites. Explore our presence across key locations nationwide.",
+      fallbackDescription: "Discover Mazarini Inc.'s locations and project sites. Explore our presence across key regions nationwide.",
     });
   }
 }
@@ -35,7 +35,7 @@ const FALLBACK_LOCATION: LocationPageType = {
   title: "Our Locations",
   heroTitle: "Our Locations",
   heroText:
-    "Discover Mazarini Group's global presence. Explore our offices and project locations worldwide.",
+    "Discover Mazarini Group's global presence. Explore our locations and projects worldwide.",
   heroVideo: null,
   heroImage: null,
   heroCtaText: null,

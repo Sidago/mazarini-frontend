@@ -154,7 +154,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps): React.ReactE
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Office, Data Center, etc."
+            placeholder="Healthcare, Data Center, etc."
             className="flex-1 bg-transparent text-2xl md:text-4xl text-white placeholder-white/30 outline-none"
           />
           <button
